@@ -13,42 +13,42 @@
 >
 	<a href="mailto:info@nicoleboman.se" class="group inline-block">
 		<span
-			class="font-display text-[2rem] leading-tight text-ink transition-colors group-hover:text-clay md:text-[3rem]"
-			style="font-variation-settings: 'opsz' 120, 'SOFT' 80, 'wght' 340;"
+			class="font-display text-[2.1rem] leading-tight text-ink transition-colors group-hover:italic group-hover:text-sage md:text-[3.1rem]"
+			style="font-weight: 450;"
 		>
 			info@nicoleboman.se
 		</span>
 	</a>
 
 	<div
-		class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-[0.72rem] uppercase text-stone"
-		style="letter-spacing: 0.22em;"
+		class="font-mono mt-10 flex flex-wrap gap-x-8 gap-y-3 text-[0.72rem] uppercase text-stone"
+		style="letter-spacing: 0.16em;"
 	>
 		<a
-			class="transition-colors hover:text-ink"
+			class="transition-colors hover:text-sage"
 			href="https://www.linkedin.com/in/nicoleboman/"
 			target="_blank"
 			rel="noopener noreferrer">LinkedIn ↗</a
 		>
 		<a
-			class="transition-colors hover:text-ink"
+			class="transition-colors hover:text-sage"
 			href="https://bomannicole.substack.com/"
 			target="_blank"
 			rel="noopener noreferrer">Substack ↗</a
 		>
 		<a
-			class="transition-colors hover:text-ink"
+			class="transition-colors hover:text-sage"
 			href="https://studiosten.se"
 			target="_blank"
 			rel="noopener noreferrer">Studio Stén ↗</a
 		>
 	</div>
 
-	<p class="mt-12 text-[1rem] leading-relaxed text-ink/75">
+	<p class="mt-12 max-w-2xl text-[1.05rem] leading-relaxed text-ink/80">
 		För bokningar av föreläsningar, workshops eller konsultuppdrag — gå
 		via
 		<a
-			class="text-clay underline decoration-line decoration-from-font underline-offset-4 transition hover:decoration-clay"
+			class="text-sage underline decoration-line decoration-from-font underline-offset-4 transition hover:decoration-sage"
 			href="https://studiosten.se"
 			target="_blank"
 			rel="noopener noreferrer">Studio Stén</a

@@ -34,22 +34,22 @@
 	<div class="flex flex-col divide-y divide-line">
 		{#each texter as text}
 			<a
-				class="group flex items-baseline justify-between gap-6 py-6 first:pt-0 transition-colors"
+				class="group flex items-baseline justify-between gap-6 py-6 first:pt-0"
 				href={text.href}
 				target="_blank"
 				rel="noopener noreferrer"
 			>
 				<h4
-					class="font-display text-[1.5rem] leading-tight text-ink transition-colors group-hover:text-clay md:text-[1.85rem]"
-					style="font-variation-settings: 'opsz' 72, 'SOFT' 80, 'wght' 380;"
+					class="font-display text-[1.55rem] leading-tight text-ink transition-colors group-hover:italic group-hover:text-sage md:text-[1.9rem]"
+					style="font-weight: 450;"
 				>
 					{text.title}
 				</h4>
 				<div class="flex shrink-0 items-center gap-4">
-					<span class="text-[0.72rem] uppercase text-stone" style="letter-spacing: 0.22em;">
+					<span class="font-mono text-[0.7rem] uppercase text-stone" style="letter-spacing: 0.16em;">
 						{text.year}
 					</span>
-					<span class="text-stone transition-transform group-hover:translate-x-1">→</span>
+					<span class="text-stone transition-transform group-hover:translate-x-1 group-hover:text-sage">→</span>
 				</div>
 			</a>
 		{/each}
@@ -60,8 +60,8 @@
 			href="https://bomannicole.substack.com/"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="group inline-flex items-center gap-3 text-[0.72rem] uppercase text-stone transition-colors hover:text-clay"
-			style="letter-spacing: 0.22em;"
+			class="group font-mono inline-flex items-center gap-3 text-[0.72rem] uppercase text-stone transition-colors hover:text-sage"
+			style="letter-spacing: 0.16em;"
 		>
 			<span>Alla texter på Substack</span>
 			<span class="inline-block transition-transform group-hover:translate-x-1">→</span>

@@ -30,20 +30,17 @@
 	<div class="flex flex-col divide-y divide-line">
 		{#each arbete as item, i}
 			<div class="group flex items-baseline gap-8 py-7 first:pt-0">
-				<span
-					class="font-display text-sm text-stone"
-					style="font-variation-settings: 'opsz' 14, 'wght' 500;"
-				>
+				<span class="font-mono text-[0.7rem] text-stone" style="letter-spacing: 0.14em;">
 					{String(i + 1).padStart(2, '0')}
 				</span>
 				<div class="flex-1">
 					<h3
-						class="font-display text-[1.7rem] leading-tight text-ink md:text-[2rem]"
-						style="font-variation-settings: 'opsz' 72, 'SOFT' 70, 'wght' 400;"
+						class="font-display text-[1.75rem] leading-tight text-ink md:text-[2.1rem]"
+						style="font-weight: 450;"
 					>
 						{item.label}
 					</h3>
-					<p class="mt-2 max-w-xl text-[1rem] leading-relaxed text-ink/75">
+					<p class="mt-2 max-w-xl text-[1.02rem] leading-relaxed text-ink/80">
 						{item.desc}
 					</p>
 				</div>
@@ -56,8 +53,8 @@
 			href="https://studiosten.se"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="group inline-flex items-center gap-3 text-[0.72rem] uppercase text-stone transition-colors hover:text-clay"
-			style="letter-spacing: 0.22em;"
+			class="group font-mono inline-flex items-center gap-3 text-[0.72rem] uppercase text-stone transition-colors hover:text-sage"
+			style="letter-spacing: 0.16em;"
 		>
 			<span>För bokning — Studio Stén</span>
 			<span class="inline-block transition-transform group-hover:translate-x-1">→</span>
