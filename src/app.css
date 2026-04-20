@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-cream: #f5f1ea;
+	--color-sand: #ede6da;
+	--color-stone: #8b7f72;
+	--color-ink: #2b2520;
+	--color-clay: #b35a3a;
+	--color-line: #d4ccbe;
+
+	--font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+	--font-sans: 'Instrument Sans', system-ui, sans-serif;
+
+	--tracking-widest-plus: 0.28em;
+}
+
+@layer base {
+	:root {
+		color-scheme: light;
+	}
+
+	html {
+		background-color: var(--color-cream);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	body {
+		position: relative;
+		min-height: 100svh;
+	}
+
+	/* Subtle warm grain — barely there, just enough to feel paper-like */
+	body::before {
+		content: '';
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 50;
+		opacity: 0.04;
+		mix-blend-mode: multiply;
+		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.14 0 0 0 0 0.13 0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+	}
+
+	::selection {
+		background-color: var(--color-clay);
+		color: var(--color-cream);
+	}
+
+	.font-display {
+		font-family: var(--font-display);
+		font-variation-settings:
+			'opsz' 144,
+			'SOFT' 80;
+	}
+
+	.font-display-crisp {
+		font-family: var(--font-display);
+		font-variation-settings:
+			'opsz' 144,
+			'SOFT' 0;
+	}
+
+	/* Variable axis breathe-in on load */
+	@keyframes soften {
+		from {
+			font-variation-settings:
+				'opsz' 144,
+				'SOFT' 0,
+				'wght' 340;
+		}
+		to {
+			font-variation-settings:
+				'opsz' 144,
+				'SOFT' 90,
+				'wght' 320;
+		}
+	}
+
+	.soften-in {
+		font-family: var(--font-display);
+		animation: soften 2.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+
+	@keyframes rise {
+		from {
+			opacity: 0;
+			transform: translateY(1rem);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.rise-in {
+		animation: rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+
+	.rule {
+		height: 1px;
+		background-color: var(--color-line);
+	}
+}
