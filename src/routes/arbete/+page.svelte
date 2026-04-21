@@ -1,34 +1,23 @@
 <script lang="ts">
 	import ChapterPage from '$lib/components/ChapterPage.svelte';
+	import { ui } from '$lib/state.svelte';
+	import { translations } from '$lib/i18n';
 
-	const arbete = [
-		{
-			label: 'Föreläsning',
-			desc: 'Keynotes om AI — för ledning, bransch och institutioner.'
-		},
-		{
-			label: 'Utbildning',
-			desc: 'Praktiska workshops som gör teknik användbar i vardagen.'
-		},
-		{
-			label: 'Konsulting',
-			desc: 'Strategiskt arbete där AI möter verksamhet och människor.'
-		}
-	];
+	const t = $derived(translations[ui.lang]);
 </script>
 
 <svelte:head>
-	<title>Arbete · Nicole Boman</title>
+	<title>{t.work.title} · Nicole Boman</title>
 </svelte:head>
 
 <ChapterPage
 	number="03"
-	title="Arbete"
-	prev={{ href: '/om-mig', label: 'Om mig' }}
-	next={{ href: '/texter', label: 'Texter' }}
+	title={t.work.title}
+	prev={{ href: '/om-mig', label: t.nav.about }}
+	next={{ href: '/texter', label: t.nav.writing }}
 >
 	<div class="flex flex-col divide-y divide-line">
-		{#each arbete as item, i}
+		{#each t.work.items as item, i}
 			<div class="group flex items-baseline gap-8 py-7 first:pt-0">
 				<span class="font-mono text-[0.7rem] text-stone" style="letter-spacing: 0.14em;">
 					{String(i + 1).padStart(2, '0')}
@@ -56,7 +45,7 @@
 			class="group font-mono inline-flex items-center gap-3 text-[0.72rem] uppercase text-stone transition-colors hover:text-sage"
 			style="letter-spacing: 0.16em;"
 		>
-			<span>För bokning — Studio Stén</span>
+			<span>{t.work.bookingCta}</span>
 			<span class="inline-block transition-transform group-hover:translate-x-1">→</span>
 		</a>
 	</div>

@@ -3,7 +3,22 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Nicole Boman — översättare mellan teknik och människa. AI-konsult, föreläsare och utbildare i Stockholm." />
+		<meta name="description" content="Nicole Boman — översättare mellan teknik och människa. AI-konsult, föreläsare och utbildare i Sverige." />
+
+		<script>
+			(function () {
+				try {
+					var storedTheme = localStorage.getItem('theme');
+					var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					var theme = storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : (prefersDark ? 'dark' : 'light');
+					document.documentElement.setAttribute('data-theme', theme);
+					var storedLang = localStorage.getItem('lang');
+					var lang = storedLang === 'en' || storedLang === 'sv' ? storedLang : 'sv';
+					document.documentElement.setAttribute('lang', lang);
+					document.documentElement.setAttribute('data-lang', lang);
+				} catch (e) {}
+			})();
+		</script>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

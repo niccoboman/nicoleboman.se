@@ -1,5 +1,9 @@
 <script lang="ts">
 	import ChapterPage from '$lib/components/ChapterPage.svelte';
+	import { ui } from '$lib/state.svelte';
+	import { translations } from '$lib/i18n';
+
+	const t = $derived(translations[ui.lang]);
 
 	const texter = [
 		{
@@ -21,15 +25,15 @@
 </script>
 
 <svelte:head>
-	<title>Texter · Nicole Boman</title>
+	<title>{t.writing.title} · Nicole Boman</title>
 </svelte:head>
 
 <ChapterPage
 	number="04"
-	title="Texter"
-	subtitle="Boundaries of Mind"
-	prev={{ href: '/arbete', label: 'Arbete' }}
-	next={{ href: '/kontakt', label: 'Kontakt' }}
+	title={t.writing.title}
+	subtitle={t.writing.subtitle}
+	prev={{ href: '/arbete', label: t.nav.work }}
+	next={{ href: '/kontakt', label: t.nav.contact }}
 >
 	<div class="flex flex-col divide-y divide-line">
 		{#each texter as text}
@@ -46,10 +50,15 @@
 					{text.title}
 				</h4>
 				<div class="flex shrink-0 items-center gap-4">
-					<span class="font-mono text-[0.7rem] uppercase text-stone" style="letter-spacing: 0.16em;">
+					<span
+						class="font-mono text-[0.7rem] uppercase text-stone"
+						style="letter-spacing: 0.16em;"
+					>
 						{text.year}
 					</span>
-					<span class="text-stone transition-transform group-hover:translate-x-1 group-hover:text-sage">→</span>
+					<span class="text-stone transition-transform group-hover:translate-x-1 group-hover:text-sage"
+						>→</span
+					>
 				</div>
 			</a>
 		{/each}
@@ -63,7 +72,7 @@
 			class="group font-mono inline-flex items-center gap-3 text-[0.72rem] uppercase text-stone transition-colors hover:text-sage"
 			style="letter-spacing: 0.16em;"
 		>
-			<span>Alla texter på Substack</span>
+			<span>{t.writing.allCta}</span>
 			<span class="inline-block transition-transform group-hover:translate-x-1">→</span>
 		</a>
 	</div>

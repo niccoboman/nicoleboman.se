@@ -1,15 +1,19 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/state';
+	import { ui } from '$lib/state.svelte';
+	import { translations } from '$lib/i18n';
 
 	let { children } = $props();
 
+	const t = $derived(translations[ui.lang]);
+
 	const navLinks = [
-		{ href: '/manifest', label: 'Manifest' },
-		{ href: '/om-mig', label: 'Om mig' },
-		{ href: '/arbete', label: 'Arbete' },
-		{ href: '/texter', label: 'Texter' },
-		{ href: '/kontakt', label: 'Kontakt' }
+		{ href: '/manifest', key: 'manifest' as const },
+		{ href: '/om-mig', key: 'about' as const },
+		{ href: '/arbete', key: 'work' as const },
+		{ href: '/texter', key: 'writing' as const },
+		{ href: '/kontakt', key: 'contact' as const }
 	];
 </script>
 
@@ -18,7 +22,35 @@
 </svelte:head>
 
 <div class="relative mx-auto flex min-h-svh max-w-[1240px] flex-col px-6 md:px-12 lg:px-20">
-	<header class="flex items-baseline justify-between pt-8 md:pt-10">
+	<!-- Utility bar: language + theme -->
+	<div
+		class="font-mono flex justify-end gap-6 pt-4 text-[0.68rem] uppercase"
+		style="letter-spacing: 0.14em;"
+	>
+		<button
+			type="button"
+			onclick={() => ui.toggleLang()}
+			class="flex items-baseline gap-1.5 transition-colors hover:text-ink"
+			aria-label={t.common.langLabel}
+		>
+			<span class={ui.lang === 'sv' ? 'text-ink' : 'text-stone/60'}>SV</span>
+			<span class="text-line">/</span>
+			<span class={ui.lang === 'en' ? 'text-ink' : 'text-stone/60'}>EN</span>
+		</button>
+		<button
+			type="button"
+			onclick={() => ui.toggleTheme()}
+			class="flex items-baseline gap-1.5 transition-colors hover:text-ink"
+			style="font-size: 0.82rem;"
+			aria-label={t.common.themeLabel}
+		>
+			<span class={ui.theme === 'light' ? 'text-ink' : 'text-stone/60'}>☀</span>
+			<span class="text-line">/</span>
+			<span class={ui.theme === 'dark' ? 'text-ink' : 'text-stone/60'}>☾</span>
+		</button>
+	</div>
+
+	<header class="flex items-baseline justify-between pt-4 md:pt-6">
 		<a
 			href="/"
 			class="font-display text-[1.15rem] leading-none tracking-tight text-ink transition-colors hover:text-sage"
@@ -38,7 +70,7 @@
 						? 'text-ink'
 						: 'text-stone'}"
 				>
-					{link.label}
+					{t.nav[link.key]}
 					{#if active}
 						<span
 							class="absolute -bottom-2 left-0 right-0 mx-auto block h-px w-3 bg-sage"
@@ -59,8 +91,11 @@
 			style="letter-spacing: 0.16em;"
 		>
 			<span>© {new Date().getFullYear()} Nicole Boman</span>
-			<span class="font-display normal-case italic" style="letter-spacing: 0.01em; font-size: 0.88rem;">info@nicoleboman.se</span>
-			<span>Stockholm · Sverige</span>
+			<span
+				class="font-display normal-case italic"
+				style="letter-spacing: 0.01em; font-size: 0.88rem;">info@nicoleboman.se</span
+			>
+			<span>{t.common.country}</span>
 		</div>
 	</footer>
 </div>

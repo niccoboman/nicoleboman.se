@@ -1,15 +1,19 @@
 <script lang="ts">
 	import ChapterPage from '$lib/components/ChapterPage.svelte';
+	import { ui } from '$lib/state.svelte';
+	import { translations } from '$lib/i18n';
+
+	const t = $derived(translations[ui.lang]);
 </script>
 
 <svelte:head>
-	<title>Kontakt · Nicole Boman</title>
+	<title>{t.contact.title} · Nicole Boman</title>
 </svelte:head>
 
 <ChapterPage
 	number="05"
-	title="Kontakt"
-	prev={{ href: '/texter', label: 'Texter' }}
+	title={t.contact.title}
+	prev={{ href: '/texter', label: t.nav.writing }}
 >
 	<a href="mailto:info@nicoleboman.se" class="group inline-block">
 		<span
@@ -45,13 +49,11 @@
 	</div>
 
 	<p class="mt-12 max-w-2xl text-[1.05rem] leading-relaxed text-ink/80">
-		För bokningar av föreläsningar, workshops eller konsultuppdrag — gå
-		via
-		<a
+		{t.contact.bodyPre}<a
 			class="text-sage underline decoration-line decoration-from-font underline-offset-4 transition hover:decoration-sage"
 			href="https://studiosten.se"
 			target="_blank"
-			rel="noopener noreferrer">Studio Stén</a
-		>. För allt annat är mejl snabbast.
+			rel="noopener noreferrer">{t.contact.bodyLink}</a
+		>{t.contact.bodyPost}
 	</p>
 </ChapterPage>
