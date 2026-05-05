@@ -59,7 +59,7 @@ const STRENGTH_A: Workout = {
     },
     {
       key: 'kb_row_supported',
-      name: 'Single-arm KB row (supported)',
+      name: 'Single-arm KB row',
       unit: 'reps',
       targetSets: 3,
       targetMin: 8,
@@ -262,7 +262,7 @@ const STRENGTH_C: Workout = {
       targetMax: 10,
       targetWeightKg: 12,
       loadDescription: '12 kg KB',
-      cue: 'Samma som onsdag. Att förstärka mönstret är poänten.',
+      cue: 'Samma som onsdag. Att förstärka mönstret är poängen.',
       restSeconds: 75,
       perSide: true
     },

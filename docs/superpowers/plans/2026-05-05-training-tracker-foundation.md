@@ -470,7 +470,7 @@ const STRENGTH_A: Workout = {
     },
     {
       key: 'kb_row_supported',
-      name: 'Single-arm KB row (supported)',
+      name: 'Single-arm KB row',
       unit: 'reps',
       targetSets: 3,
       targetMin: 8,
