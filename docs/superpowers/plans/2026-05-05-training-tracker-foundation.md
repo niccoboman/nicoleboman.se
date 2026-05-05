@@ -2257,5 +2257,5 @@ Genomgång efter att hela planen skrevs. Saker jag verifierat:
 - **Type-konsistens:** `WorkoutKey`, `ExerciseKey`, `PlanExercise.unit`, `SessionSetRow.value`/`side` används konsekvent över tasks.
 - **Ingen uppfunnen funktion:** alla helpers definieras innan de används (`createSession`, `getActiveSession`, `getSession`, `getSessionSets`, `upsertSet`, `finishSession`, `updateSessionNotes` definieras i T10, används från T14 och framåt).
 - **Risk: `enhance` + `?/start` action returns redirect.** SvelteKit `enhance` följer redirects automatiskt (303). Testas i T15 manuella verifiering.
-- **Risk: tom `WORKOUTS` accessed med `Object.values()` i T14.** Vi castar med `as Record<WorkoutKey, Workout>` i T6, men `Object.values()` returnerar bara fyllda fält. Det fungerar — bara fyllda Workout-objekt itereras. Cardio/recovery/EMOM-pass kommer i fas 4-plan.
+- **WORKOUTS-typ:** `Partial<Record<WorkoutKey, Workout>>` (rättat efter T6 code-review). `Object.values()` returnerar `Workout[]` rent. Indexering `WORKOUTS[key]` returnerar `Workout | undefined` — konsumer i T14 använder `?? null`, T16 har explicit `if (!workout)` guard. Cardio/recovery/EMOM-pass kommer i fas 4-plan.
 - **Risk: actions saknar parent-data.** Fixat i T14 step 2 — använd `supabase.auth.getUser()` direkt i actions.
