@@ -97,10 +97,11 @@ const STRENGTH_A: Workout = {
   ]
 };
 
-export const WORKOUTS: Record<WorkoutKey, Workout> = {
-  strength_a: STRENGTH_A,
-  // strength_b, strength_c, cardio_z2, active_recovery, emom: kommer i senare tasks
-} as Record<WorkoutKey, Workout>;
+export const WORKOUTS: Partial<Record<WorkoutKey, Workout>> = {
+  strength_a: STRENGTH_A
+  // strength_b, strength_c kommer i nästa task
+  // cardio_z2, active_recovery, emom kommer i fas 4-plan
+};
 
 export const WEEKLY_SCHEDULE: Record<Weekday, WorkoutKey | null> = {
   monday: 'strength_a',
