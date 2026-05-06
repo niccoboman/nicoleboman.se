@@ -46,4 +46,19 @@ describe('strength workouts', () => {
       });
     });
   }
+
+  test('exercises with the same key have the same name across workouts', () => {
+    const keyToNames = new Map<string, Set<string>>();
+    for (const key of strengthKeys) {
+      const workout = WORKOUTS[key];
+      if (!workout) continue;
+      for (const ex of workout.exercises) {
+        if (!keyToNames.has(ex.key)) keyToNames.set(ex.key, new Set());
+        keyToNames.get(ex.key)!.add(ex.name);
+      }
+    }
+    for (const [exKey, names] of keyToNames) {
+      expect([...names], `${exKey} should have one canonical name`).toHaveLength(1);
+    }
+  });
 });
