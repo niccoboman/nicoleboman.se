@@ -1171,12 +1171,12 @@ export const load: LayoutServerLoad = async ({ url, cookies }) => {
   const { data: { user } } = await supabase.auth.getUser();
 
   // Tillåt /workout/login utan auth
-  if (!user && !url.pathname.startsWith('/workout/login')) {
+  if (!user && !url.pathname === '/workout/login') {
     throw redirect(303, '/workout/login');
   }
 
   // Om inloggad och försöker nå login → till startskärm
-  if (user && url.pathname.startsWith('/workout/login')) {
+  if (user && url.pathname === '/workout/login') {
     throw redirect(303, '/workout');
   }
 
@@ -1377,7 +1377,7 @@ Create `src/routes/workout/+layout.svelte`:
 
   let { data, children }: { data: LayoutData; children: any } = $props();
 
-  let isLogin = $derived(page.url.pathname.startsWith('/workout/login'));
+  let isLogin = $derived(page.url.pathname === '/workout/login');
 </script>
 
 <div class="min-h-screen bg-paper text-ink">
