@@ -22,7 +22,10 @@ export const load: PageServerLoad = async ({ params, cookies, parent }) => {
   if (session.user_id !== user.id) throw error(403, 'Inte ditt pass');
 
   const workout = WORKOUTS[session.workout_key];
-  if (!workout) throw error(500, `Okänt workout_key: ${session.workout_key}`);
+  if (!workout) {
+    console.error('Unknown workout_key on session', session.id, session.workout_key);
+    throw error(500, 'Pass-konfiguration saknas');
+  }
 
   const sets = await getSessionSets(supabase, session.id);
 
@@ -43,15 +46,32 @@ export const actions: Actions = {
     const exerciseKey = String(form.get('exercise_key'));
     const setNumber = Number(form.get('set_number'));
     const sideRaw = String(form.get('side') ?? '');
-    const side = (sideRaw === 'left' || sideRaw === 'right') ? sideRaw : null;
+    const side = sideRaw === 'left' || sideRaw === 'right' ? sideRaw : null;
     const value = Number(form.get('value'));
     const weightRaw = String(form.get('weight_kg') ?? '');
     const weight_kg = weightRaw === '' ? null : Number(weightRaw);
     const rirRaw = String(form.get('rir') ?? '');
     const rir = rirRaw === '' ? null : Number(rirRaw);
 
-    if (!Number.isFinite(value) || value <= 0) {
-      return { ok: false, error: 'value måste vara > 0' };
+    // Validera exercise_key mot kända övningar i alla pass
+    const allExerciseKeys = new Set<string>(
+      Object.values(WORKOUTS).flatMap((w) => w?.exercises.map((e) => e.key) ?? [])
+    );
+    if (!allExerciseKeys.has(exerciseKey)) {
+      return { ok: false, error: 'Okänd övning' };
+    }
+
+    if (!Number.isInteger(setNumber) || setNumber < 1 || setNumber > 20) {
+      return { ok: false, error: 'Ogiltigt set-nummer' };
+    }
+    if (!Number.isFinite(value) || value <= 0 || value > 600) {
+      return { ok: false, error: 'Ogiltigt värde' };
+    }
+    if (weight_kg !== null && (!Number.isFinite(weight_kg) || weight_kg < 0 || weight_kg > 500)) {
+      return { ok: false, error: 'Ogiltig vikt' };
+    }
+    if (rir !== null && (!Number.isInteger(rir) || rir < 0 || rir > 5)) {
+      return { ok: false, error: 'Ogiltig RIR (0–5)' };
     }
 
     const updated = await upsertSet(supabase, {
@@ -61,8 +81,8 @@ export const actions: Actions = {
       set_number: setNumber,
       side,
       value,
-      weight_kg: Number.isFinite(weight_kg as number) ? (weight_kg as number) : null,
-      rir: Number.isFinite(rir as number) ? (rir as number) : null
+      weight_kg,
+      rir
     });
 
     return { ok: true, set: updated };
