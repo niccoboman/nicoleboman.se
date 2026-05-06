@@ -1050,7 +1050,7 @@ export async function upsertSet(
   // Vi använder unique-key (session_id, exercise_key, set_number, side)
   // för dedup. Eftersom vi inte har en unique constraint i DB för det,
   // gör vi en manuell select-then-update-or-insert.
-  const { data: existing } = await client
+  const { data: existing, error: selectError } = await client
     .from('session_sets')
     .select('id')
     .eq('session_id', input.session_id)
@@ -1058,6 +1058,7 @@ export async function upsertSet(
     .eq('set_number', input.set_number)
     .is('side', input.side)   // null-safe equality
     .maybeSingle();
+  if (selectError) throw selectError;
 
   if (existing) {
     const { data, error } = await client
