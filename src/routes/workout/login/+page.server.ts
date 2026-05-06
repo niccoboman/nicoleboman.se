@@ -6,7 +6,7 @@ import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/publi
 export const actions: Actions = {
   default: async ({ request, cookies }) => {
     const formData = await request.formData();
-    const email = String(formData.get('email') ?? '');
+    const email = String(formData.get('email') ?? '').trim();
     const password = String(formData.get('password') ?? '');
 
     if (!email || !password) {

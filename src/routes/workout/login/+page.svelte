@@ -38,7 +38,7 @@
     </label>
 
     {#if form?.error}
-      <p class="text-sm text-wine">{form.error}</p>
+      <p class="text-sm text-wine" role="alert">{form.error}</p>
     {/if}
 
     <button
