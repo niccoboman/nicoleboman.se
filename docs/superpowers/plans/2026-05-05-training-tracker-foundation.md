@@ -33,7 +33,7 @@ projects/nicoleboman.se/
 │   │       ├── types.ts                                    (create: PlanExercise, Workout, etc.)
 │   │       ├── plan.ts                                     (create: WORKOUTS, WEEKLY_SCHEDULE)
 │   │       ├── plan.test.ts                                (create: konsistens-tester)
-│   │       ├── schedule.ts                                 (create: getTodaysWorkout)
+│   │       ├── schedule.ts                                 (create: getPlannedWorkout)
 │   │       ├── schedule.test.ts                            (create)
 │   │       └── sessions.ts                                 (create: createSession, saveSet, finishSession)
 │   └── routes/
