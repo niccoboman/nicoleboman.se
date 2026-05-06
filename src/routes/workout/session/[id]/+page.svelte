@@ -92,16 +92,7 @@
     }
   }
 
-  // Spara notes på input
-  let notesTimer: ReturnType<typeof setTimeout> | null = null;
-  function notesChanged() {
-    if (notesTimer) clearTimeout(notesTimer);
-    notesTimer = setTimeout(() => {
-      const formData = new FormData();
-      formData.set('notes', notes);
-      void fetch('?/saveNotes', { method: 'POST', body: formData });
-    }, 800);
-  }
+  // Notes sparas i finish-formuläret (hidden input). Ingen separat autosave behövs.
 </script>
 
 <svelte:head>
@@ -133,7 +124,6 @@
       <span class="block text-sm text-stone mb-2">Anteckning (frivillig)</span>
       <textarea
         bind:value={notes}
-        oninput={notesChanged}
         rows="3"
         placeholder="Hur kändes det idag?"
         class="w-full bg-sand border border-line rounded-lg px-3 py-2 text-ink"

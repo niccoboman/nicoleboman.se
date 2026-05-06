@@ -35,6 +35,10 @@ create index session_sets_session_idx
 create index session_sets_user_exercise_idx
   on public.session_sets(user_id, exercise_key, logged_at desc);
 
+-- Förhindra duplicerade set-rader vid race conditions i upsertSet
+create unique index session_sets_unique_setkey
+  on public.session_sets(session_id, exercise_key, set_number, coalesce(side, 'none'));
+
 -- RLS
 alter table public.sessions enable row level security;
 alter table public.session_sets enable row level security;
