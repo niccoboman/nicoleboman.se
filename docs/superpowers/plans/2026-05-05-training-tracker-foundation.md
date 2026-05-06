@@ -1513,18 +1513,21 @@ export const actions: Actions = {
     if (!user) throw redirect(303, '/workout/login');
 
     const formData = await request.formData();
-    const workoutKey = formData.get('workout_key') as WorkoutKey | null;
-    const plannedKeyForm = (formData.get('planned_key') ?? workoutKey) as WorkoutKey | null;
+    const workoutKey = formData.get('workout_key');
+    const plannedKeyForm = formData.get('planned_key') ?? workoutKey;
 
-    if (!workoutKey || !(workoutKey in WORKOUTS)) {
+    if (typeof workoutKey !== 'string' || !Object.hasOwn(WORKOUTS, workoutKey)) {
       throw error(400, 'Okänt pass');
+    }
+    if (typeof plannedKeyForm !== 'string' || !Object.hasOwn(WORKOUTS, plannedKeyForm)) {
+      throw error(400, 'Okänt planerat pass');
     }
 
     const session = await createSession(
       supabase,
       user.id,
-      workoutKey,
-      plannedKeyForm ?? workoutKey
+      workoutKey as WorkoutKey,
+      plannedKeyForm as WorkoutKey
     );
 
     throw redirect(303, `/workout/session/${session.id}`);
