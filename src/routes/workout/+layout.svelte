@@ -1,10 +1,11 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte';
   import type { LayoutData } from './$types';
   import { page } from '$app/state';
 
-  let { data, children }: { data: LayoutData; children: any } = $props();
+  let { data, children }: { data: LayoutData; children: Snippet } = $props();
 
-  let isLogin = $derived(page.url.pathname.startsWith('/workout/login'));
+  const isLogin = $derived(page.url.pathname === '/workout/login');
 </script>
 
 <div class="min-h-screen bg-paper text-ink">

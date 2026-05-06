@@ -1362,7 +1362,8 @@ export const POST: RequestHandler = async ({ cookies }) => {
     }
   );
 
-  await supabase.auth.signOut();
+  const { error } = await supabase.auth.signOut();
+  if (error) console.error('signOut failed', error);
   throw redirect(303, '/workout/login');
 };
 ```
