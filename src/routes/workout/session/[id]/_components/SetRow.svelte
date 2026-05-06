@@ -25,6 +25,7 @@
     }) => void;
   } = $props();
 
+  // initialValue/initialWeight/initialRir captured at mount; parent must remount via {#key} to reset
   let valueInput = $state<string>(initialValue?.toString() ?? '');
   let weightInput = $state<string>(initialWeight?.toString() ?? '');
   let rirInput = $state<string>(initialRir?.toString() ?? '');
@@ -60,7 +61,6 @@
       inputmode="numeric"
       placeholder={`${exercise.targetMin}${exercise.targetMin !== exercise.targetMax ? `-${exercise.targetMax}` : ''}`}
       bind:value={valueInput}
-      onchange={emit}
       onblur={emit}
       class="w-full bg-paper border border-line rounded px-2 py-1.5 text-center"
     />
@@ -94,7 +94,6 @@
       inputmode="numeric"
       placeholder="RIR"
       bind:value={rirInput}
-      onchange={emit}
       onblur={emit}
       class="w-full bg-paper border border-line rounded px-2 py-1.5 text-center"
     />
