@@ -74,7 +74,10 @@
       if (result.type !== 'success') throw new Error('Save failed');
 
       const parsed = JSON.parse(result.data);
-      const updated = parsed[0]?.set as SessionSetRow | undefined;
+      const payload = parsed[0] as { ok: boolean; set?: SessionSetRow; error?: string } | undefined;
+      if (!payload?.ok) throw new Error(payload?.error ?? 'Save rejected');
+
+      const updated = payload.set;
       if (updated) {
         const idx = sets.findIndex(s => s.id === updated.id);
         if (idx >= 0) sets[idx] = updated;
@@ -85,10 +88,11 @@
     } catch (e) {
       console.error(e);
       saveStatus = 'error';
+      setTimeout(() => { if (saveStatus === 'error') saveStatus = 'idle'; }, 4000);
     }
   }
 
-  // Spara notes på blur
+  // Spara notes på input
   let notesTimer: ReturnType<typeof setTimeout> | null = null;
   function notesChanged() {
     if (notesTimer) clearTimeout(notesTimer);
