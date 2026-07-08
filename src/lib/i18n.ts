@@ -22,7 +22,6 @@ export const translations = {
 			heroLines: ['Generativ AI', 'på mänskliga', 'villkor'],
 			intro:
 				'Jag hjälper organisationer att göra AI till något som faktiskt fungerar — för verksamheten, arbetsflödena och människorna i dem.',
-			manifestQuote: 'Folk följer människor, inte företag. Teknik blir verklig först när den känns.',
 			indexLabel: 'Index',
 			chapters: [
 				{ title: 'Om mig', desc: 'Människan bakom rösten. Från nyfikenhet till yrke.' },
@@ -107,7 +106,6 @@ export const translations = {
 			heroLines: ['Generative AI', 'on human', 'terms'],
 			intro:
 				'I help organizations make AI actually work — for the business, the workflows and the people in them.',
-			manifestQuote: "People follow people, not companies. Technology only becomes real when it's felt.",
 			indexLabel: 'Index',
 			chapters: [
 				{ title: 'About', desc: 'The person behind the voice. From curiosity to profession.' },

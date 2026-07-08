@@ -47,15 +47,8 @@
 	</div>
 </section>
 
-<!-- Manifestrad — sidans enda mjuka ögonblick -->
-<section class="py-[22vh]" use:reveal>
-	<p class="reveal font-soft max-w-[22ch] text-[clamp(1.8rem,4.4vw,3.6rem)] leading-[1.15] tracking-[-0.01em]">
-		{t.home.manifestQuote}
-	</p>
-</section>
-
 <!-- Index -->
-<section class="pb-[16vh]" use:reveal>
+<section class="pb-[16vh] pt-[14vh]" use:reveal>
 	<span class="mono-label reveal mb-[3vh] block text-betong">{t.home.indexLabel}</span>
 	{#each t.home.chapters as chapter, i}
 		<IndexRow nr={chapterNrs[i]} title={chapter.title} desc={chapter.desc} href={chapterHrefs[i]} />
