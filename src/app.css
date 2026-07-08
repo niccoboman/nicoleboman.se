@@ -129,8 +129,5 @@
 			opacity: 1;
 			transform: none;
 		}
-		.grain-anim {
-			animation: none !important;
-		}
 	}
 }

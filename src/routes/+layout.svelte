@@ -72,7 +72,7 @@
 		<p class="reveal font-display text-[clamp(2.8rem,9vw,8rem)] font-semibold uppercase leading-[0.92] tracking-[-0.025em] whitespace-pre-line">{t.footer.cta}
 			<a href="mailto:info@nicoleboman.se" class="inline-block text-gesso no-underline transition-colors hover:text-sienna">{t.footer.ctaLink}</a></p>
 		<div class="reveal mt-[10vh] flex flex-wrap items-baseline justify-between gap-6 border-t border-gesso/15 pt-6">
-			<span class="mono-label text-gesso/55">{t.footer.copyright}</span>
+			<span class="mono-label text-gesso/55">© {new Date().getFullYear()} Nicole Boman</span>
 			<a class="mono-label text-gesso/55 no-underline transition-colors hover:text-gesso" href="https://www.linkedin.com/in/nicoleboman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 			<a class="mono-label text-gesso/55 no-underline transition-colors hover:text-gesso" href="https://bomannicole.substack.com/" target="_blank" rel="noopener noreferrer">Substack</a>
 			<span class="mono-label text-gesso/55">{t.footer.place}</span>

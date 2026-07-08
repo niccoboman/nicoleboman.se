@@ -20,7 +20,7 @@
 			<p class="reveal max-w-[42ch] text-[1.05rem] leading-[1.6] text-carbon/80">{t.contact.body}</p>
 			<dl class="reveal mt-[8vh] flex max-w-[560px] flex-col">
 				{#each t.contact.channels as channel}
-					<div class="group flex items-baseline justify-between gap-6 border-t border-hairline py-4 last:border-b">
+					<div class="flex items-baseline justify-between gap-6 border-t border-hairline py-4 last:border-b">
 						<dt class="mono-label text-betong">{channel.label}</dt>
 						<dd>
 							<a

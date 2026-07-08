@@ -1,5 +1,3 @@
-import type { Lang } from './state.svelte';
-
 export const translations = {
 	sv: {
 		nav: {
@@ -20,7 +18,6 @@ export const translations = {
 		footer: {
 			cta: 'Ska vi\nprata?',
 			ctaLink: '→ Mejla mig',
-			copyright: '© 2026 Nicole Boman',
 			place: 'Stockholm, Sverige'
 		},
 		home: {
@@ -129,7 +126,6 @@ export const translations = {
 		footer: {
 			cta: 'Shall we\ntalk?',
 			ctaLink: '→ Email me',
-			copyright: '© 2026 Nicole Boman',
 			place: 'Stockholm, Sweden'
 		},
 		home: {
@@ -220,7 +216,3 @@ export const translations = {
 		}
 	}
 } as const;
-
-export function getT(lang: Lang) {
-	return translations[lang];
-}
