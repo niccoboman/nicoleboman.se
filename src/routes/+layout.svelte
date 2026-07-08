@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { ui } from '$lib/state.svelte';
 	import { translations } from '$lib/i18n';
+	import { reveal } from '$lib/reveal';
 
 	let { children } = $props();
 
@@ -21,70 +22,50 @@
 	<title>Nicole Boman</title>
 </svelte:head>
 
-<div class="relative mx-auto flex min-h-svh max-w-[1240px] flex-col px-6 md:px-12 lg:px-20">
-	<!-- Utility bar: language + theme -->
-	<div
-		class="font-mono flex justify-end gap-6 pt-4 text-[0.68rem] uppercase"
-		style="letter-spacing: 0.14em;"
-	>
-		<button
-			type="button"
-			onclick={() => ui.toggleLang()}
-			class="flex items-baseline gap-1.5 transition-colors hover:text-ink"
-			aria-label={t.common.langLabel}
-		>
-			<span class={ui.lang === 'sv' ? 'text-ink' : 'text-stone/60'}>SV</span>
-			<span class="text-line">/</span>
-			<span class={ui.lang === 'en' ? 'text-ink' : 'text-stone/60'}>EN</span>
-		</button>
-	</div>
-
-	<header class="flex items-baseline justify-between pt-4 md:pt-6">
-		<a
-			href="/"
-			class="font-display text-[1.15rem] leading-none tracking-tight text-ink transition-colors hover:text-sage"
-			style="font-weight: 500;"
-		>
+<div class="mx-auto max-w-[1440px] px-[clamp(20px,3.5vw,56px)]">
+	<header class="flex items-center justify-between pt-[26px]">
+		<a href="/" class="font-display text-[0.95rem] font-semibold tracking-[-0.01em] text-carbon no-underline">
 			Nicole Boman
 		</a>
-		<nav
-			class="font-mono flex items-center gap-6 text-[0.72rem] uppercase md:gap-8"
-			style="letter-spacing: 0.16em;"
-		>
-			{#each navLinks as link}
-				{@const active = page.url.pathname === link.href}
-				<a
-					href={link.href}
-					class="relative transition-colors hover:text-ink {active
-						? 'text-ink'
-						: 'text-stone'}"
-				>
-					{t.nav[link.key]}
-					{#if active}
-						<span
-							class="absolute -bottom-2 left-0 right-0 mx-auto block h-px w-3 bg-sage"
-						></span>
-					{/if}
-				</a>
-			{/each}
-		</nav>
+		<div class="flex items-center gap-[clamp(18px,3vw,40px)]">
+			<nav class="hidden gap-[clamp(18px,3vw,40px)] md:flex">
+				{#each navLinks as link}
+					{@const active = page.url.pathname === link.href}
+					<a
+						href={link.href}
+						class="text-[0.8rem] no-underline transition-colors hover:text-carbon {active
+							? 'text-carbon'
+							: 'text-betong'}"
+					>
+						{t.nav[link.key]}
+					</a>
+				{/each}
+			</nav>
+			<button
+				type="button"
+				onclick={() => ui.toggleLang()}
+				aria-label={t.common.langLabel}
+				class="mono-label cursor-pointer border-0 bg-transparent p-0 text-betong transition-colors hover:text-carbon"
+			>
+				{ui.lang === 'sv' ? 'EN' : 'SV'}
+			</button>
+		</div>
 	</header>
 
-	<main class="flex-1">
+	<main>
 		{@render children()}
 	</main>
-
-	<footer class="mt-16 pt-6 pb-10">
-		<div
-			class="font-mono flex flex-col gap-2 text-[0.7rem] uppercase text-stone md:flex-row md:items-center md:justify-between"
-			style="letter-spacing: 0.16em;"
-		>
-			<span>© {new Date().getFullYear()} Nicole Boman</span>
-			<span
-				class="font-display normal-case italic"
-				style="letter-spacing: 0.01em; font-size: 0.88rem;">info@nicoleboman.se</span
-			>
-			<span>{t.common.country}</span>
-		</div>
-	</footer>
 </div>
+
+<footer class="bg-carbon pb-9 pt-[16vh] text-gesso" use:reveal>
+	<div class="mx-auto max-w-[1440px] px-[clamp(20px,3.5vw,56px)]">
+		<p class="reveal font-display text-[clamp(2.8rem,9vw,8rem)] font-semibold uppercase leading-[0.92] tracking-[-0.025em] whitespace-pre-line">{t.footer.cta}
+			<a href="mailto:info@nicoleboman.se" class="inline-block text-gesso no-underline transition-colors hover:text-sienna">{t.footer.ctaLink}</a></p>
+		<div class="reveal mt-[10vh] flex flex-wrap items-baseline justify-between gap-6 border-t border-gesso/15 pt-6">
+			<span class="mono-label text-gesso/55">{t.footer.copyright}</span>
+			<a class="mono-label text-gesso/55 no-underline transition-colors hover:text-gesso" href="https://www.linkedin.com/in/nicoleboman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+			<a class="mono-label text-gesso/55 no-underline transition-colors hover:text-gesso" href="https://bomannicole.substack.com/" target="_blank" rel="noopener noreferrer">Substack</a>
+			<span class="mono-label text-gesso/55">{t.footer.place}</span>
+		</div>
+	</div>
+</footer>
