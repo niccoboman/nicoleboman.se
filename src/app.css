@@ -4,7 +4,7 @@
 	/* Galleriet-paletten */
 	--color-gesso: #f1f0ec;
 	--color-carbon: #141311;
-	--color-betong: #a09d95;
+	--color-betong: #8a8780;
 	--color-sienna: #b23a19;
 	--color-hairline: #d9d7d0;
 
@@ -36,6 +36,11 @@
 	button:focus-visible {
 		outline: 2px solid var(--color-sienna);
 		outline-offset: 4px;
+	}
+
+	footer a:focus-visible,
+	footer button:focus-visible {
+		outline-color: var(--color-gesso);
 	}
 
 	.font-soft {

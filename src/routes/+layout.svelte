@@ -18,10 +18,6 @@
 	];
 </script>
 
-<svelte:head>
-	<title>Nicole Boman</title>
-</svelte:head>
-
 <div class="mx-auto max-w-[1440px] px-[clamp(20px,3.5vw,56px)]">
 	<header class="flex items-center justify-between pt-[26px]">
 		<a href="/" class="font-display text-[0.95rem] font-semibold tracking-[-0.01em] text-carbon no-underline">
@@ -51,6 +47,20 @@
 			</button>
 		</div>
 	</header>
+
+	<nav class="mt-4 flex flex-wrap gap-x-5 gap-y-2 md:hidden">
+		{#each navLinks as link}
+			{@const active = page.url.pathname === link.href}
+			<a
+				href={link.href}
+				class="mono-label no-underline transition-colors hover:text-carbon {active
+					? 'text-carbon'
+					: 'text-betong'}"
+			>
+				{t.nav[link.key]}
+			</a>
+		{/each}
+	</nav>
 
 	<main>
 		{@render children()}
