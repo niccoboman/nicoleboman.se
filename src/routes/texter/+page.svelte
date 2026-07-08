@@ -26,10 +26,10 @@
 	<title>{t.nav.writing} · Nicole Boman</title>
 </svelte:head>
 
-<article class="pb-[16vh] pt-[10vh]">
+<article class="pb-[10vh] pt-[6vh] md:pb-[16vh] md:pt-[10vh]">
 	<PageTitle label={t.writing.label} lines={t.writing.titleLines} />
 
-	<div class="mt-[12vh]" use:reveal>
+	<div class="mt-[8vh] md:mt-[12vh]" use:reveal>
 		<span class="mono-label reveal mb-[3vh] block text-betong">{t.writing.subtitle}</span>
 		{#each texter as text, i}
 			<IndexRow nr={String(i + 1).padStart(2, '0')} title={text.title} meta={text.year} href={text.href} external />

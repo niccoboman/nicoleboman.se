@@ -11,10 +11,10 @@
 	<title>{t.nav.work} · Nicole Boman</title>
 </svelte:head>
 
-<article class="pb-[16vh] pt-[10vh]">
+<article class="pb-[10vh] pt-[6vh] md:pb-[16vh] md:pt-[10vh]">
 	<PageTitle label={t.work.label} lines={t.work.titleLines} />
 
-	<div class="mt-[12vh]" use:reveal>
+	<div class="mt-[8vh] md:mt-[12vh]" use:reveal>
 		{#each t.work.items as item}
 			<section class="reveal grid grid-cols-1 gap-4 border-t border-hairline py-[clamp(24px,4vw,48px)] md:grid-cols-12 md:gap-x-[clamp(24px,4vw,64px)]">
 				<span class="mono-label text-betong md:col-span-1">{item.nr}</span>
@@ -28,7 +28,7 @@
 		{/each}
 	</div>
 
-	<div class="mt-[10vh]" use:reveal>
+	<div class="mt-[8vh] md:mt-[10vh]" use:reveal>
 		<a
 			href="https://studiosten.se"
 			target="_blank"

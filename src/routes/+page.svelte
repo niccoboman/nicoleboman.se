@@ -16,7 +16,7 @@
 </svelte:head>
 
 <!-- Hero -->
-<section class="relative flex min-h-[92svh] flex-col justify-between pb-[6vh] pt-[10vh]">
+<section class="relative flex flex-col gap-12 pb-[6vh] pt-[6vh] md:min-h-[92svh] md:justify-between md:gap-0 md:pt-[10vh]">
 	<div class="mono-label">
 		<span>{t.common.role}</span>
 	</div>
@@ -40,13 +40,13 @@
 		<span class="hidden text-betong md:block">{t.common.scroll}</span>
 	</div>
 
-	<div class="mt-[8vh] md:hidden">
+	<div class="flex justify-end md:hidden">
 		<Artifact />
 	</div>
 </section>
 
 <!-- Index -->
-<section class="pb-[16vh] pt-[14vh]" use:reveal>
+<section class="pb-[10vh] pt-[6vh] md:pb-[16vh] md:pt-[14vh]" use:reveal>
 	<span class="mono-label reveal mb-[3vh] block text-betong">{t.home.indexLabel}</span>
 	{#each t.home.chapters as chapter, i}
 		<IndexRow nr={chapterNrs[i]} title={chapter.title} desc={chapter.desc} href={chapterHrefs[i]} />

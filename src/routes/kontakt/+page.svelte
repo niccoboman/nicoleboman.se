@@ -11,10 +11,10 @@
 	<title>{t.nav.contact} · Nicole Boman</title>
 </svelte:head>
 
-<article class="pb-[16vh] pt-[10vh]">
+<article class="pb-[10vh] pt-[6vh] md:pb-[16vh] md:pt-[10vh]">
 	<PageTitle label={t.contact.label} lines={t.contact.titleLines} punkt />
 
-	<div class="mt-[12vh]" use:reveal>
+	<div class="mt-[8vh] md:mt-[12vh]" use:reveal>
 		<p class="reveal max-w-[42ch] text-[1.05rem] leading-[1.6] text-carbon/80">{t.contact.body}</p>
 		<dl class="reveal mt-[8vh] flex max-w-[560px] flex-col">
 			{#each t.contact.channels as channel}

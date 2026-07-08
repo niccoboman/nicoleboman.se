@@ -1,4 +1,4 @@
-<figure class="w-[clamp(150px,19vw,270px)]">
+<figure class="w-[clamp(190px,19vw,270px)]">
 	<div class="artifact-img relative aspect-[3/3.9] overflow-hidden transition-[filter] duration-500 hover:contrast-[1.12] hover:saturate-[1.15]"></div>
 </figure>
 

@@ -11,10 +11,10 @@
 	<title>{t.nav.about} · Nicole Boman</title>
 </svelte:head>
 
-<article class="pb-[16vh] pt-[10vh]">
+<article class="pb-[10vh] pt-[6vh] md:pb-[16vh] md:pt-[10vh]">
 	<PageTitle label={t.about.label} lines={t.about.titleLines} />
 
-	<div class="mt-[12vh] grid grid-cols-1 gap-[8vh] md:grid-cols-12 md:gap-x-[clamp(24px,4vw,64px)]">
+	<div class="mt-[8vh] grid grid-cols-1 gap-[8vh] md:mt-[12vh] md:grid-cols-12 md:gap-x-[clamp(24px,4vw,64px)]">
 		<div class="md:col-span-7" use:reveal>
 			<!-- Sidans enda mjuka ögonblick -->
 			<p class="reveal font-soft max-w-[24ch] text-[clamp(1.7rem,3.8vw,3.2rem)] leading-[1.18] tracking-[-0.01em]">

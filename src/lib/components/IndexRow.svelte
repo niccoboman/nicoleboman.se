@@ -17,7 +17,7 @@
 	class="reveal group flex items-baseline gap-[clamp(16px,3vw,48px)] border-t border-hairline py-[clamp(14px,2.2vw,26px)] no-underline last:border-b"
 >
 	<span class="mono-label min-w-[2.4em] text-betong transition-colors group-hover:text-sienna">{nr}</span>
-	<h2 class="font-display text-[clamp(1.9rem,5vw,4.4rem)] font-semibold uppercase leading-none tracking-[-0.02em] text-betong transition-[color,transform] duration-300 group-hover:translate-x-[clamp(6px,1vw,16px)] group-hover:text-carbon">
+	<h2 class="font-display text-[clamp(1.9rem,5vw,4.4rem)] font-semibold uppercase leading-none tracking-[-0.02em] text-carbon transition-[color,transform] duration-300 group-hover:translate-x-[clamp(6px,1vw,16px)] md:text-betong md:group-hover:text-carbon">
 		{title}
 	</h2>
 	{#if meta}
