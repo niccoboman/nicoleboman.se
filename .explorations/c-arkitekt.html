@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="sv">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>C — Arkitekt / Brutal-Elegant · Nicole Boman</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Inter+Tight:wght@200;300;400&family=Newsreader:ital,wght@0,200..700;1,200..700&family=JetBrains+Mono:wght@300;400&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--paper: #eee6d3;
+				--sand: #e5dcc4;
+				--stone: #8b8273;
+				--ink: #1a1611;
+				--sage: #7a8b6b;
+				--wine: #7a2c2c;
+				--line: #cdc2a9;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			html,
+			body {
+				background: var(--paper);
+				color: var(--ink);
+				font-family: 'Inter', system-ui, sans-serif;
+				font-weight: 300;
+				-webkit-font-smoothing: antialiased;
+				min-height: 100vh;
+				position: relative;
+			}
+			body::before {
+				content: '';
+				position: fixed;
+				inset: 0;
+				pointer-events: none;
+				z-index: 50;
+				opacity: 0.04;
+				mix-blend-mode: multiply;
+				background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.14 0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+			}
+			.mono {
+				font-family: 'JetBrains Mono', monospace;
+				text-transform: uppercase;
+				font-size: 0.66rem;
+				letter-spacing: 0.22em;
+				color: var(--stone);
+				font-weight: 300;
+			}
+			.display {
+				font-family: 'Inter Tight', 'Inter', sans-serif;
+				font-weight: 300;
+				letter-spacing: -0.02em;
+			}
+
+			/* Architect frame: thin lines define a drawing field. Corners marked. */
+			.field {
+				position: fixed;
+				top: 2rem;
+				left: 2rem;
+				right: 2rem;
+				bottom: 2rem;
+				border: 1px solid var(--line);
+				pointer-events: none;
+				z-index: 10;
+			}
+			.field::before,
+			.field::after,
+			.tick-tl,
+			.tick-tr,
+			.tick-bl,
+			.tick-br {
+				content: '';
+				position: absolute;
+				width: 14px;
+				height: 14px;
+				border: 1px solid var(--ink);
+				background: var(--paper);
+			}
+			.field::before {
+				top: -7px;
+				left: -7px;
+			}
+			.field::after {
+				top: -7px;
+				right: -7px;
+			}
+			.tick-bl {
+				bottom: -7px;
+				left: -7px;
+			}
+			.tick-br {
+				bottom: -7px;
+				right: -7px;
+			}
+			@media (max-width: 800px) {
+				.field {
+					top: 1rem;
+					left: 1rem;
+					right: 1rem;
+					bottom: 1rem;
+				}
+			}
+
+			.wrap {
+				position: relative;
+				z-index: 5;
+				padding: 4rem 5rem;
+				max-width: 1280px;
+				margin: 0 auto;
+			}
+			@media (max-width: 800px) {
+				.wrap {
+					padding: 3rem 2rem;
+				}
+			}
+
+			/* Top label strip — like a drawing title block */
+			.titleblock {
+				display: grid;
+				grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+				border-top: 1px solid var(--ink);
+				border-bottom: 1px solid var(--ink);
+				padding: 0.4rem 0;
+			}
+			.titleblock div {
+				border-right: 1px solid var(--line);
+				padding: 0.2rem 0.8rem;
+				font-family: 'JetBrains Mono', monospace;
+				text-transform: uppercase;
+				font-size: 0.6rem;
+				letter-spacing: 0.2em;
+				color: var(--stone);
+				font-weight: 300;
+			}
+			.titleblock div:last-child {
+				border-right: none;
+			}
+			.titleblock div strong {
+				display: block;
+				color: var(--ink);
+				font-weight: 400;
+				margin-top: 0.2rem;
+				font-size: 0.7rem;
+			}
+
+			header.brand {
+				margin-top: 6rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+			}
+			header.brand .name {
+				font-family: 'Inter Tight', 'Inter', sans-serif;
+				font-size: 0.95rem;
+				letter-spacing: 0.04em;
+				color: var(--ink);
+				text-transform: uppercase;
+				font-weight: 400;
+			}
+			header.brand nav {
+				display: flex;
+				gap: 2.5rem;
+			}
+			header.brand nav a {
+				color: var(--stone);
+				text-decoration: none;
+				font-family: 'JetBrains Mono', monospace;
+				text-transform: uppercase;
+				font-size: 0.64rem;
+				letter-spacing: 0.22em;
+				font-weight: 300;
+			}
+
+			/* HERO — one statement, vast space, hairline anchors. Restrained, not loud. */
+			.hero {
+				min-height: 70svh;
+				display: grid;
+				grid-template-rows: auto 1fr auto;
+				padding: 8rem 0 0;
+				position: relative;
+			}
+			.hero .coord-top {
+				font-family: 'JetBrains Mono', monospace;
+				text-transform: uppercase;
+				font-size: 0.6rem;
+				letter-spacing: 0.24em;
+				color: var(--stone);
+				font-weight: 300;
+				display: flex;
+				justify-content: space-between;
+				border-bottom: 1px solid var(--line);
+				padding-bottom: 0.4rem;
+				margin-bottom: 4rem;
+			}
+			.hero h1 {
+				font-family: 'Inter Tight', 'Inter', sans-serif;
+				font-weight: 300;
+				font-size: clamp(2.4rem, 6.5vw, 5.6rem);
+				line-height: 1.02;
+				letter-spacing: -0.022em;
+				max-width: 14ch;
+			}
+			.hero h1 .row2 {
+				font-weight: 200;
+				color: var(--ink);
+			}
+			.hero h1 .amp {
+				font-weight: 200;
+				color: var(--stone);
+				margin-right: 0.18em;
+			}
+			.hero h1 .dot {
+				color: var(--ink);
+			}
+			.hero .footnote {
+				margin-top: 6rem;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 4rem;
+				border-top: 1px solid var(--line);
+				padding-top: 1.5rem;
+			}
+			.hero .footnote .label {
+				font-family: 'JetBrains Mono', monospace;
+				text-transform: uppercase;
+				font-size: 0.6rem;
+				letter-spacing: 0.22em;
+				color: var(--stone);
+				margin-bottom: 0.5rem;
+				font-weight: 300;
+			}
+			.hero .footnote .body {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.95rem;
+				line-height: 1.55;
+				color: var(--ink);
+				font-weight: 300;
+			}
+			.hero .footnote .body .ai {
+				font-family: 'Inter', sans-serif;
+				color: var(--ink);
+				font-weight: 500;
+			}
+
+			/* Index — tabular, ruled, like a building schedule */
+			.schedule {
+				margin-top: 8rem;
+				padding-top: 1rem;
+				border-top: 1px solid var(--ink);
+			}
+			.schedule .head {
+				display: grid;
+				grid-template-columns: 4rem 1fr 8rem 4rem;
+				gap: 2rem;
+				font-family: 'JetBrains Mono', monospace;
+				text-transform: uppercase;
+				font-size: 0.6rem;
+				letter-spacing: 0.22em;
+				color: var(--stone);
+				padding: 0.6rem 0;
+				border-bottom: 1px solid var(--line);
+				font-weight: 300;
+			}
+			.schedule ol {
+				list-style: none;
+			}
+			.schedule li {
+				display: grid;
+				grid-template-columns: 4rem 1fr 8rem 4rem;
+				gap: 2rem;
+				align-items: baseline;
+				padding: 1.7rem 0;
+				border-bottom: 1px solid var(--line);
+				transition: padding-left 0.3s ease;
+			}
+			.schedule li:hover {
+				padding-left: 0.8rem;
+			}
+			.schedule li:hover .title {
+				color: var(--ink);
+			}
+			.schedule li .num {
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 0.66rem;
+				color: var(--stone);
+				letter-spacing: 0.18em;
+				font-weight: 300;
+			}
+			.schedule li .title {
+				font-family: 'Inter Tight', 'Inter', sans-serif;
+				font-size: 1.4rem;
+				font-weight: 400;
+				color: var(--ink);
+				letter-spacing: 0.01em;
+			}
+			.schedule li .blurb {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.85rem;
+				color: var(--stone);
+				margin-top: 0.3rem;
+				font-weight: 300;
+			}
+			.schedule li .ref {
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 0.62rem;
+				color: var(--stone);
+				letter-spacing: 0.18em;
+				font-weight: 300;
+			}
+			.schedule li .arrow {
+				color: var(--stone);
+				justify-self: end;
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 0.66rem;
+			}
+
+			footer.bot {
+				margin-top: 5rem;
+				padding: 1rem 0;
+				border-top: 1px solid var(--ink);
+				display: flex;
+				justify-content: space-between;
+				font-family: 'JetBrains Mono', monospace;
+				text-transform: uppercase;
+				font-size: 0.6rem;
+				letter-spacing: 0.22em;
+				color: var(--stone);
+				font-weight: 300;
+			}
+			footer.bot .email {
+				font-family: 'Inter Tight', 'Inter', sans-serif;
+				font-style: italic;
+				text-transform: none;
+				letter-spacing: 0;
+				font-size: 0.95rem;
+				color: var(--ink);
+				font-weight: 400;
+			}
+			.label-pin {
+				position: fixed;
+				top: 0.8rem;
+				left: 0.8rem;
+				background: var(--ink);
+				color: var(--paper);
+				padding: 0.4rem 0.7rem;
+				font-family: 'JetBrains Mono', monospace;
+				text-transform: uppercase;
+				font-size: 0.62rem;
+				letter-spacing: 0.18em;
+				z-index: 100;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="label-pin">Mockup C · Arkitekt</div>
+		<div class="field">
+			<span class="tick-bl"></span>
+			<span class="tick-br"></span>
+		</div>
+		<div class="wrap">
+			<div class="titleblock">
+				<div>
+					Subjekt
+					<strong>Nicole Boman</strong>
+				</div>
+				<div>
+					Vol.
+					<strong>01 / MMXXVI</strong>
+				</div>
+				<div>
+					Skala
+					<strong>1 : 1</strong>
+				</div>
+				<div>
+					Plats
+					<strong>59°N · 18°E</strong>
+				</div>
+				<div>
+					Ark
+					<strong>01 / 05</strong>
+				</div>
+			</div>
+
+			<header class="brand">
+				<a class="name" href="#" style="text-decoration: none">Nicole Boman</a>
+				<nav>
+					<a href="#">Manifest</a>
+					<a href="#">Om mig</a>
+					<a href="#">Arbete</a>
+					<a href="#">Texter</a>
+					<a href="#">Kontakt</a>
+				</nav>
+			</header>
+
+			<section class="hero">
+				<div class="coord-top">
+					<span>A — Hem</span>
+					<span>—</span>
+					<span>2026.04.29</span>
+				</div>
+				<h1>
+					<span>Översättare</span><br />
+					<span class="row2">mellan teknik</span><br />
+					<span><span class="amp">och</span>människa<span class="dot">.</span></span>
+				</h1>
+				<div class="footnote">
+					<div>
+						<div class="label">Roller</div>
+						<div class="body">
+							Föreläsare. Utbildare. Konsult.
+						</div>
+					</div>
+					<div>
+						<div class="label">Beskrivning</div>
+						<div class="body">
+							Jag hjälper organisationer förstå var <span class="ai">AI</span> faktiskt
+							kan skapa värde — genom att börja med problemet, inte verktyget.
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="schedule">
+				<div class="head">
+					<span>Ref.</span>
+					<span>Kapitel</span>
+					<span>Sektion</span>
+					<span></span>
+				</div>
+				<ol>
+					<li>
+						<span class="num">A.01</span>
+						<div>
+							<div class="title">Manifest</div>
+							<div class="blurb">Vad jag tror om AI och människa</div>
+						</div>
+						<span class="ref">— Sek. I</span>
+						<span class="arrow">→</span>
+					</li>
+					<li>
+						<span class="num">A.02</span>
+						<div>
+							<div class="title">Om mig</div>
+							<div class="blurb">Bakgrund, roll och drivkraft</div>
+						</div>
+						<span class="ref">— Sek. II</span>
+						<span class="arrow">→</span>
+					</li>
+					<li>
+						<span class="num">A.03</span>
+						<div>
+							<div class="title">Arbete</div>
+							<div class="blurb">Föreläsning, utbildning, konsulting</div>
+						</div>
+						<span class="ref">— Sek. III</span>
+						<span class="arrow">→</span>
+					</li>
+					<li>
+						<span class="num">A.04</span>
+						<div>
+							<div class="title">Texter</div>
+							<div class="blurb">Boundaries of Mind och andra essäer</div>
+						</div>
+						<span class="ref">— Sek. IV</span>
+						<span class="arrow">→</span>
+					</li>
+					<li>
+						<span class="num">A.05</span>
+						<div>
+							<div class="title">Kontakt</div>
+							<div class="blurb">Hör av dig</div>
+						</div>
+						<span class="ref">— Sek. V</span>
+						<span class="arrow">→</span>
+					</li>
+				</ol>
+			</section>
+
+			<footer class="bot">
+				<span>© 2026 N.B.</span>
+				<span class="email">info@nicoleboman.se</span>
+				<span>SE · 59°N 18°E</span>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -19,8 +19,8 @@
 
 <div class="mx-auto max-w-[1440px] px-[clamp(20px,3.5vw,56px)]">
 	<header class="flex items-center justify-between pt-[26px]">
-		<a href="/" class="font-display text-[0.95rem] font-semibold tracking-[-0.01em] text-carbon no-underline">
-			Nicole Boman
+		<a href="/" aria-label="Nicole Boman — hem" class="font-display text-[1.35rem] font-semibold leading-none tracking-[-0.04em] text-carbon no-underline">
+			N<span class="text-sienna">.</span>
 		</a>
 		<div class="flex items-center gap-[clamp(18px,3vw,40px)]">
 			<nav class="hidden gap-[clamp(18px,3vw,40px)] md:flex">

@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="sv">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>B — Art Director / Publikation · Nicole Boman</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Newsreader:ital,wght@0,200..700;1,200..700&family=Inter:wght@300;400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--paper: #eee6d3;
+				--sand: #e5dcc4;
+				--stone: #8b8273;
+				--ink: #1a1611;
+				--sage: #7a8b6b;
+				--wine: #7a2c2c;
+				--line: #cdc2a9;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			html,
+			body {
+				background: var(--paper);
+				color: var(--ink);
+				font-family: 'Newsreader', Georgia, serif;
+				font-weight: 380;
+				-webkit-font-smoothing: antialiased;
+				min-height: 100vh;
+				position: relative;
+			}
+			body::before {
+				content: '';
+				position: fixed;
+				inset: 0;
+				pointer-events: none;
+				z-index: 50;
+				opacity: 0.05;
+				mix-blend-mode: multiply;
+				background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.14 0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+			}
+			.mono {
+				font-family: 'Inter', sans-serif;
+				text-transform: uppercase;
+				font-size: 0.68rem;
+				letter-spacing: 0.18em;
+				color: var(--stone);
+			}
+			.display {
+				font-family: 'Cormorant Garamond', Georgia, serif;
+			}
+
+			/* Page = facsimile of an issue. Folio bar across top, edge gutters with running text. */
+			.page {
+				min-height: 100vh;
+				padding: 0 5rem;
+				position: relative;
+			}
+			@media (max-width: 800px) {
+				.page {
+					padding: 0 1.5rem;
+				}
+			}
+
+			/* Folio bar — runs across the top like a magazine masthead */
+			.folio {
+				display: grid;
+				grid-template-columns: 1fr 2fr 1fr 1fr;
+				gap: 1.5rem;
+				padding: 1rem 0;
+				border-bottom: 1px solid var(--ink);
+				font-family: 'Inter', sans-serif;
+				text-transform: uppercase;
+				font-size: 0.62rem;
+				letter-spacing: 0.2em;
+			}
+			.folio .left {
+				color: var(--ink);
+			}
+			.folio .center {
+				text-align: center;
+				color: var(--ink);
+			}
+			.folio .right {
+				text-align: right;
+				color: var(--stone);
+			}
+			.folio .num {
+				text-align: right;
+				color: var(--ink);
+			}
+
+			/* Vertical running text in margins (like book gutter) */
+			.gutter-l,
+			.gutter-r {
+				position: absolute;
+				top: 7rem;
+				bottom: 3rem;
+				width: 3rem;
+				display: flex;
+				align-items: center;
+				font-family: 'Inter', sans-serif;
+				text-transform: uppercase;
+				font-size: 0.6rem;
+				letter-spacing: 0.32em;
+				color: var(--stone);
+			}
+			.gutter-l {
+				left: 1.5rem;
+				writing-mode: vertical-rl;
+				transform: rotate(180deg);
+			}
+			.gutter-r {
+				right: 1.5rem;
+				writing-mode: vertical-rl;
+			}
+			@media (max-width: 800px) {
+				.gutter-l,
+				.gutter-r {
+					display: none;
+				}
+			}
+
+			/* Header: brand + nav, but offset asymmetrically */
+			header.brand {
+				display: grid;
+				grid-template-columns: 1fr 5fr;
+				gap: 2rem;
+				padding: 1.6rem 0 0;
+				align-items: baseline;
+			}
+			header.brand .name {
+				font-family: 'Cormorant Garamond', Georgia, serif;
+				font-size: 1.05rem;
+				letter-spacing: -0.005em;
+				font-weight: 500;
+			}
+			header.brand nav {
+				display: flex;
+				gap: 2.5rem;
+				justify-content: flex-end;
+			}
+			header.brand nav a {
+				color: var(--stone);
+				text-decoration: none;
+				font-family: 'Inter', sans-serif;
+				text-transform: uppercase;
+				font-size: 0.66rem;
+				letter-spacing: 0.2em;
+			}
+
+			/* HERO: typography breaks the grid. Italic row offset right, last word breaks margin */
+			.hero {
+				padding: 7rem 0 2rem;
+				position: relative;
+			}
+			.hero .stamp {
+				position: absolute;
+				top: 4rem;
+				left: 0;
+				font-family: 'Inter', sans-serif;
+				font-size: 0.62rem;
+				letter-spacing: 0.22em;
+				text-transform: uppercase;
+				color: var(--wine);
+			}
+			.hero h1 {
+				font-family: 'Cormorant Garamond', Georgia, serif;
+				font-weight: 400;
+				font-size: clamp(3.4rem, 11vw, 9.5rem);
+				line-height: 0.88;
+				letter-spacing: -0.025em;
+				color: var(--ink);
+			}
+			.hero h1 .row1 {
+				display: block;
+			}
+			.hero h1 .row2 {
+				display: block;
+				font-style: italic;
+				margin-left: 18%;
+				color: var(--ink);
+			}
+			.hero h1 .row3 {
+				display: block;
+				margin-left: 6%;
+				margin-right: -3rem;
+			}
+			.hero h1 .amp {
+				color: var(--sage);
+				font-style: italic;
+				margin-right: 0.18em;
+			}
+			.hero h1 .dot {
+				color: var(--wine);
+			}
+
+			/* Asymmetric meta strip below hero */
+			.meta-strip {
+				display: grid;
+				grid-template-columns: 2fr 1fr 4fr 2fr;
+				gap: 2rem;
+				padding: 3rem 0 1rem;
+				border-top: 1px solid var(--line);
+				margin-top: 4rem;
+			}
+			.meta-strip .col h3 {
+				font-family: 'Inter', sans-serif;
+				text-transform: uppercase;
+				font-size: 0.6rem;
+				letter-spacing: 0.22em;
+				color: var(--stone);
+				margin-bottom: 0.6rem;
+				font-weight: 400;
+			}
+			.meta-strip .col p {
+				font-family: 'Newsreader', serif;
+				font-size: 0.95rem;
+				line-height: 1.4;
+			}
+			.meta-strip .col .roles {
+				font-family: 'Cormorant Garamond', Georgia, serif;
+				font-style: italic;
+				font-size: 1.05rem;
+				color: var(--ink);
+			}
+			.meta-strip .col .lede {
+				font-family: 'Newsreader', serif;
+				font-size: 1.15rem;
+				line-height: 1.45;
+				font-weight: 380;
+				max-width: 38ch;
+			}
+			.meta-strip .col .lede .ai {
+				font-family: 'Cormorant Garamond', Georgia, serif;
+				color: var(--sage);
+				font-weight: 500;
+			}
+
+			/* Index — magazine TOC, dense, asymmetric */
+			.index {
+				margin: 6rem 0 4rem;
+			}
+			.index .head {
+				display: grid;
+				grid-template-columns: 1fr auto;
+				align-items: end;
+				border-bottom: 2px solid var(--ink);
+				padding-bottom: 0.7rem;
+				margin-bottom: 0.5rem;
+			}
+			.index .head h2 {
+				font-family: 'Cormorant Garamond', Georgia, serif;
+				font-style: italic;
+				font-weight: 400;
+				font-size: 2.4rem;
+				line-height: 1;
+			}
+			.index .head .right {
+				font-family: 'Inter', sans-serif;
+				text-transform: uppercase;
+				font-size: 0.66rem;
+				letter-spacing: 0.2em;
+				color: var(--stone);
+			}
+			.index ol {
+				list-style: none;
+			}
+			.index li {
+				display: grid;
+				grid-template-columns: 4rem 6fr 5fr 4rem;
+				align-items: baseline;
+				gap: 1.5rem;
+				padding: 1.4rem 0;
+				border-bottom: 1px solid var(--line);
+				transition: background 0.2s;
+			}
+			.index li:hover {
+				background: rgba(122, 139, 107, 0.06);
+			}
+			.index li:nth-child(even) .title-wrap {
+				padding-left: 3rem;
+			}
+			.index li .num {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.66rem;
+				color: var(--stone);
+				letter-spacing: 0.18em;
+			}
+			.index li .title {
+				font-family: 'Cormorant Garamond', Georgia, serif;
+				font-size: 2.1rem;
+				font-weight: 400;
+				line-height: 1.05;
+			}
+			.index li:nth-child(even) .title {
+				font-style: italic;
+			}
+			.index li .blurb {
+				font-family: 'Newsreader', serif;
+				font-size: 0.95rem;
+				color: var(--stone);
+				line-height: 1.4;
+				font-style: italic;
+			}
+			.index li .pg {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.66rem;
+				color: var(--ink);
+				letter-spacing: 0.14em;
+				justify-self: end;
+			}
+
+			footer.bot {
+				margin-top: 5rem;
+				padding: 1rem 0 2rem;
+				border-top: 1px solid var(--ink);
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr 1fr;
+				gap: 1rem;
+				font-family: 'Inter', sans-serif;
+				text-transform: uppercase;
+				font-size: 0.62rem;
+				letter-spacing: 0.2em;
+				color: var(--stone);
+			}
+			footer.bot .center {
+				text-align: center;
+			}
+			footer.bot .right {
+				text-align: right;
+			}
+			footer.bot .center em {
+				font-family: 'Cormorant Garamond', Georgia, serif;
+				font-style: italic;
+				text-transform: none;
+				letter-spacing: 0;
+				font-size: 0.95rem;
+				color: var(--ink);
+			}
+
+			.label-pin {
+				position: fixed;
+				top: 1.5rem;
+				left: 1.5rem;
+				background: var(--ink);
+				color: var(--paper);
+				padding: 0.4rem 0.7rem;
+				font-family: 'Inter', sans-serif;
+				text-transform: uppercase;
+				font-size: 0.62rem;
+				letter-spacing: 0.18em;
+				z-index: 100;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="label-pin">Mockup B · Publikation</div>
+		<div class="page">
+			<div class="folio">
+				<div class="left">Nicole Boman</div>
+				<div class="center">Issue Nº 01 — MMXXVI</div>
+				<div class="right">Edited in Stockholm</div>
+				<div class="num">01 / 56</div>
+			</div>
+
+			<div class="gutter-l">Föreläsare · Utbildare · Konsult</div>
+			<div class="gutter-r">Boundaries of Mind · 2026</div>
+
+			<header class="brand">
+				<a class="name display" href="#" style="text-decoration: none; color: inherit"
+					>Nicole<br />Boman.</a
+				>
+				<nav>
+					<a href="#">Manifest</a>
+					<a href="#">Om mig</a>
+					<a href="#">Arbete</a>
+					<a href="#">Texter</a>
+					<a href="#">Kontakt</a>
+				</nav>
+			</header>
+
+			<section class="hero">
+				<span class="stamp">Vol. I — Cap. I</span>
+				<h1>
+					<span class="row1">Översättare</span>
+					<span class="row2">mellan teknik</span>
+					<span class="row3"
+						><span class="amp">och</span>människa<span class="dot">.</span></span
+					>
+				</h1>
+			</section>
+
+			<section class="meta-strip">
+				<div class="col">
+					<h3>Roller</h3>
+					<div class="roles">
+						i. Föreläsare<br />ii. Utbildare<br />iii. Konsult
+					</div>
+				</div>
+				<div class="col">
+					<h3>Plats</h3>
+					<p>Stockholm<br />59°20′N<br />18°04′E</p>
+				</div>
+				<div class="col">
+					<h3>Inledning</h3>
+					<p class="lede">
+						Jag hjälper organisationer förstå var <span class="ai">AI</span> faktiskt
+						kan skapa värde — genom att börja med problemet, inte verktyget.
+					</p>
+				</div>
+				<div class="col">
+					<h3>Senast</h3>
+					<p>
+						<span class="display" style="font-style: italic">Boundaries of Mind</span><br />Substack,
+						vol. 4
+					</p>
+				</div>
+			</section>
+
+			<section class="index">
+				<div class="head">
+					<h2>Innehåll</h2>
+					<div class="right">Fem kapitel · Vol. 01</div>
+				</div>
+				<ol>
+					<li>
+						<span class="num">Cap. 01</span>
+						<div class="title-wrap">
+							<div class="title">Manifest</div>
+							<div class="blurb">Vad jag tror om AI och människa</div>
+						</div>
+						<div></div>
+						<span class="pg">p. 04</span>
+					</li>
+					<li>
+						<span class="num">Cap. 02</span>
+						<div class="title-wrap">
+							<div class="title">Om mig</div>
+							<div class="blurb">Bakgrund, roll och drivkraft</div>
+						</div>
+						<div></div>
+						<span class="pg">p. 12</span>
+					</li>
+					<li>
+						<span class="num">Cap. 03</span>
+						<div class="title-wrap">
+							<div class="title">Arbete</div>
+							<div class="blurb">Föreläsning, utbildning, konsulting</div>
+						</div>
+						<div></div>
+						<span class="pg">p. 24</span>
+					</li>
+					<li>
+						<span class="num">Cap. 04</span>
+						<div class="title-wrap">
+							<div class="title">Texter</div>
+							<div class="blurb">Boundaries of Mind och andra essäer</div>
+						</div>
+						<div></div>
+						<span class="pg">p. 38</span>
+					</li>
+					<li>
+						<span class="num">Cap. 05</span>
+						<div class="title-wrap">
+							<div class="title">Kontakt</div>
+							<div class="blurb">Hör av dig</div>
+						</div>
+						<div></div>
+						<span class="pg">p. 56</span>
+					</li>
+				</ol>
+			</section>
+
+			<footer class="bot">
+				<span>© 2026</span>
+				<span class="center"><em>info@nicoleboman.se</em></span>
+				<span class="center">Sverige</span>
+				<span class="right">End · Vol. I</span>
+			</footer>
+		</div>
+	</body>
+</html>
