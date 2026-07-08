@@ -1,7 +1,6 @@
 export const translations = {
 	sv: {
 		nav: {
-			manifest: 'Manifest',
 			about: 'Om mig',
 			work: 'Arbete',
 			writing: 'Texter',
@@ -12,7 +11,6 @@ export const translations = {
 			city: 'Sthlm',
 			coords: '59.33°N',
 			langLabel: 'Switch to English',
-			artifactCaption: '[ Någonstans mellan Biarritz & Berlin ]',
 			scroll: 'Scrolla ↓'
 		},
 		footer: {
@@ -24,37 +22,17 @@ export const translations = {
 			heroLines: ['Generativ AI', 'på mänskliga', 'villkor'],
 			intro:
 				'Jag hjälper organisationer att göra AI till något som faktiskt fungerar — för verksamheten, arbetsflödena och människorna i dem.',
-			manifestLabel: 'Manifest / 01',
 			manifestQuote: 'Folk följer människor, inte företag. Teknik blir verklig först när den känns.',
 			indexLabel: 'Index',
 			chapters: [
-				{ title: 'Manifest', desc: 'Vad jag tror om AI och människor — och vad jag vägrar kompromissa med.' },
 				{ title: 'Om mig', desc: 'Människan bakom rösten. Från nyfikenhet till yrke.' },
 				{ title: 'Arbete', desc: 'Keynotes, utbildningar, rådgivning — så arbetar jag.' },
 				{ title: 'Texter', desc: 'Boundaries of Mind — essäer om AI och människor.' },
 				{ title: 'Kontakt', desc: 'Boka en scen, ett rum — eller bara säg hej.' }
 			]
 		},
-		manifest: {
-			label: 'Manifest / 01',
-			titleLines: ['AI är inte', 'trollkonst'],
-			theses: [
-				{
-					nr: '01',
-					text: 'AI är inte trollkonst. Det är språk, statistik och val — inslaget i teknik. Den som förstår det slutar vara rädd och börjar ställa krav.'
-				},
-				{
-					nr: '02',
-					text: 'Folk följer människor, inte företag. Teknik blir verklig först när den känns — i ett rum, i en röst, i ett arbetsflöde som plötsligt bär.'
-				},
-				{
-					nr: '03',
-					text: 'Det tekniska går att bevisa. Det mänskliga måste diskuteras. Det som intresserar mig är vilka frågor vi vågar ställa, vem vi lyssnar på och åt vem vi bygger.'
-				}
-			]
-		},
 		about: {
-			label: 'Om mig / 02',
+			label: 'Om mig / 01',
 			titleLines: ['Om mig'],
 			lede: 'Jag är en översättare. Inte av språk utan av teknik — mellan det maskinen kan och det människan behöver.',
 			p1: 'Till vardags AI-konsult, keynote speaker och utbildare. Baserad i Stockholm, arbetar genom Studio Stén — där klientarbete och bokningar landar.',
@@ -64,11 +42,10 @@ export const translations = {
 				{ label: 'Bas', value: 'Stockholm' },
 				{ label: 'Bolag', value: 'Studio Stén' },
 				{ label: 'Samarbeten', value: 'Bonnier Akademi m.fl.' }
-			],
-			portraitCaption: '[ Porträtt — kommer ]'
+			]
 		},
 		work: {
-			label: 'Arbete / 03',
+			label: 'Arbete / 02',
 			titleLines: ['Arbete'],
 			items: [
 				{
@@ -90,13 +67,13 @@ export const translations = {
 			bookingCta: 'För bokning — Studio Stén →'
 		},
 		writing: {
-			label: 'Texter / 04',
+			label: 'Texter / 03',
 			titleLines: ['Texter'],
 			subtitle: 'Boundaries of Mind',
 			allCta: 'Alla texter på Substack →'
 		},
 		contact: {
-			label: 'Kontakt / 05',
+			label: 'Kontakt / 04',
 			titleLines: ['Säg hej'],
 			body: 'Mejl är snabbast. För bokningar av keynotes, utbildningar eller rådgivning — gå via Studio Stén.',
 			channels: [
@@ -109,7 +86,6 @@ export const translations = {
 	},
 	en: {
 		nav: {
-			manifest: 'Manifesto',
 			about: 'About',
 			work: 'Work',
 			writing: 'Writing',
@@ -120,7 +96,6 @@ export const translations = {
 			city: 'Sthlm',
 			coords: '59.33°N',
 			langLabel: 'Byt till svenska',
-			artifactCaption: '[ Somewhere between Biarritz & Berlin ]',
 			scroll: 'Scroll ↓'
 		},
 		footer: {
@@ -132,37 +107,17 @@ export const translations = {
 			heroLines: ['Generative AI', 'on human', 'terms'],
 			intro:
 				'I help organizations make AI actually work — for the business, the workflows and the people in them.',
-			manifestLabel: 'Manifesto / 01',
 			manifestQuote: "People follow people, not companies. Technology only becomes real when it's felt.",
 			indexLabel: 'Index',
 			chapters: [
-				{ title: 'Manifesto', desc: "What I believe about AI and people — and what I refuse to compromise on." },
 				{ title: 'About', desc: 'The person behind the voice. From curiosity to profession.' },
 				{ title: 'Work', desc: 'Keynotes, teaching, advisory — how I work.' },
 				{ title: 'Writing', desc: 'Boundaries of Mind — essays on AI and people.' },
 				{ title: 'Contact', desc: 'Book a stage, a room — or just say hi.' }
 			]
 		},
-		manifest: {
-			label: 'Manifesto / 01',
-			titleLines: ['AI is not', 'sorcery'],
-			theses: [
-				{
-					nr: '01',
-					text: "AI is not sorcery. It's language, statistics and choice — wrapped in technology. Once you understand that, you stop being afraid and start making demands."
-				},
-				{
-					nr: '02',
-					text: "People follow people, not companies. Technology only becomes real when it's felt — in a room, in a voice, in a workflow that suddenly carries."
-				},
-				{
-					nr: '03',
-					text: 'The technical can be proven. The human must be discussed. What interests me is which questions we dare to ask, who we listen to, and for whom we build.'
-				}
-			]
-		},
 		about: {
-			label: 'About / 02',
+			label: 'About / 01',
 			titleLines: ['About'],
 			lede: 'I am a translator. Not of languages, but of technology — between what the machine can do and what the human needs.',
 			p1: 'AI consultant, keynote speaker and educator. Based in Stockholm, working through Studio Stén — where client work and bookings land.',
@@ -172,11 +127,10 @@ export const translations = {
 				{ label: 'Base', value: 'Stockholm' },
 				{ label: 'Studio', value: 'Studio Stén' },
 				{ label: 'Partners', value: 'Bonnier Akademi a.o.' }
-			],
-			portraitCaption: '[ Portrait — coming ]'
+			]
 		},
 		work: {
-			label: 'Work / 03',
+			label: 'Work / 02',
 			titleLines: ['Work'],
 			items: [
 				{
@@ -198,13 +152,13 @@ export const translations = {
 			bookingCta: 'For booking — Studio Stén →'
 		},
 		writing: {
-			label: 'Writing / 04',
+			label: 'Writing / 03',
 			titleLines: ['Writing'],
 			subtitle: 'Boundaries of Mind',
 			allCta: 'All writing on Substack →'
 		},
 		contact: {
-			label: 'Contact / 05',
+			label: 'Contact / 04',
 			titleLines: ['Say hi'],
 			body: 'Email is fastest. For bookings of keynotes, teaching or advisory — go via Studio Stén.',
 			channels: [

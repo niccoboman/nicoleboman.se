@@ -8,8 +8,8 @@
 
 	const t = $derived(translations[ui.lang]);
 
-	const chapterHrefs = ['/manifest', '/om-mig', '/arbete', '/texter', '/kontakt'];
-	const chapterNrs = ['01', '02', '03', '04', '05'];
+	const chapterHrefs = ['/om-mig', '/arbete', '/texter', '/kontakt'];
+	const chapterNrs = ['01', '02', '03', '04'];
 </script>
 
 <svelte:head>
@@ -24,7 +24,7 @@
 	</div>
 
 	<div class="absolute right-0 top-[16vh] hidden md:block">
-		<Artifact caption={t.common.artifactCaption} />
+		<Artifact />
 	</div>
 
 	<h1 class="font-display text-[clamp(2.6rem,11.4vw,10.6rem)] font-semibold uppercase leading-[0.9] tracking-[-0.025em]">
@@ -43,13 +43,12 @@
 	</div>
 
 	<div class="mt-[8vh] md:hidden">
-		<Artifact caption={t.common.artifactCaption} />
+		<Artifact />
 	</div>
 </section>
 
 <!-- Manifestrad — sidans enda mjuka ögonblick -->
 <section class="py-[22vh]" use:reveal>
-	<span class="mono-label mb-[4vh] block text-betong">{t.home.manifestLabel}</span>
 	<p class="reveal font-soft max-w-[22ch] text-[clamp(1.8rem,4.4vw,3.6rem)] leading-[1.15] tracking-[-0.01em]">
 		{t.home.manifestQuote}
 	</p>

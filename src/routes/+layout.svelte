@@ -10,7 +10,6 @@
 	const t = $derived(translations[ui.lang]);
 
 	const navLinks = [
-		{ href: '/manifest', key: 'manifest' as const },
 		{ href: '/om-mig', key: 'about' as const },
 		{ href: '/arbete', key: 'work' as const },
 		{ href: '/texter', key: 'writing' as const },

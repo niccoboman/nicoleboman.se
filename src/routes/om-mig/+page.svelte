@@ -28,12 +28,7 @@
 		</div>
 
 		<div class="md:col-span-4 md:col-start-9" use:reveal>
-			<!-- Porträttyta — förberedd, innehåll senare -->
-			<figure class="reveal">
-				<div class="aspect-[3/3.9] bg-carbon/[0.06]"></div>
-				<figcaption class="mono-label mt-2.5 !text-[0.6rem] text-betong">{t.about.portraitCaption}</figcaption>
-			</figure>
-			<dl class="reveal mt-[6vh] flex flex-col">
+			<dl class="reveal flex flex-col">
 				{#each t.about.facts as fact}
 					<div class="flex items-baseline justify-between border-t border-hairline py-3 last:border-b">
 						<dt class="mono-label text-betong">{fact.label}</dt>

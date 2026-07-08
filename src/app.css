@@ -56,14 +56,17 @@
 		text-transform: uppercase;
 	}
 
-	/* Maskad rad-reveal för rubriker (load) */
+	/* Maskad rad-reveal för rubriker (load).
+	   Padding + negativ margin ger masken luft nedåt så att underhäng (t.ex. J) inte klipps. */
 	.ln {
 		display: block;
 		overflow: hidden;
+		padding-bottom: 0.14em;
+		margin-bottom: -0.14em;
 	}
 	.ln > span {
 		display: block;
-		transform: translateY(112%);
+		transform: translateY(130%);
 		animation: rise 1s cubic-bezier(0.2, 1, 0.25, 1) forwards;
 	}
 	.ln:nth-child(2) > span {

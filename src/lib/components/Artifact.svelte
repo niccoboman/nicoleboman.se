@@ -1,10 +1,5 @@
-<script lang="ts">
-	let { caption, small = false }: { caption: string; small?: boolean } = $props();
-</script>
-
-<figure class={small ? 'w-[clamp(110px,13vw,180px)]' : 'w-[clamp(150px,19vw,270px)]'}>
+<figure class="w-[clamp(150px,19vw,270px)]">
 	<div class="artifact-img relative aspect-[3/3.9] overflow-hidden transition-[filter] duration-500 hover:contrast-[1.12] hover:saturate-[1.15]"></div>
-	<figcaption class="mono-label mt-2.5 !text-[0.6rem] text-betong">{caption}</figcaption>
 </figure>
 
 <style>
