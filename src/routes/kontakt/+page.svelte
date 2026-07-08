@@ -1,59 +1,46 @@
 <script lang="ts">
-	import ChapterPage from '$lib/components/ChapterPage.svelte';
 	import { ui } from '$lib/state.svelte';
 	import { translations } from '$lib/i18n';
+	import { reveal } from '$lib/reveal';
+	import PageTitle from '$lib/components/PageTitle.svelte';
+	import Artifact from '$lib/components/Artifact.svelte';
 
 	const t = $derived(translations[ui.lang]);
 </script>
 
 <svelte:head>
-	<title>{t.contact.title} · Nicole Boman</title>
+	<title>{t.nav.contact} · Nicole Boman</title>
 </svelte:head>
 
-<ChapterPage
-	number="05"
-	title={t.contact.title}
-	prev={{ href: '/texter', label: t.nav.writing }}
->
-	<a href="mailto:info@nicoleboman.se" class="group inline-block">
-		<span
-			class="font-display text-[2.1rem] leading-tight text-ink transition-colors group-hover:italic group-hover:text-sage md:text-[3.1rem]"
-			style="font-weight: 450;"
-		>
-			info@nicoleboman.se
-		</span>
-	</a>
+<article class="pb-[16vh] pt-[10vh]">
+	<PageTitle label={t.contact.label} lines={t.contact.titleLines} punkt />
 
-	<div
-		class="font-mono mt-10 flex flex-wrap gap-x-8 gap-y-3 text-[0.72rem] uppercase text-stone"
-		style="letter-spacing: 0.16em;"
-	>
-		<a
-			class="transition-colors hover:text-sage"
-			href="https://www.linkedin.com/in/nicoleboman/"
-			target="_blank"
-			rel="noopener noreferrer">LinkedIn ↗</a
-		>
-		<a
-			class="transition-colors hover:text-sage"
-			href="https://bomannicole.substack.com/"
-			target="_blank"
-			rel="noopener noreferrer">Substack ↗</a
-		>
-		<a
-			class="transition-colors hover:text-sage"
-			href="https://studiosten.se"
-			target="_blank"
-			rel="noopener noreferrer">Studio Stén ↗</a
-		>
+	<div class="mt-[12vh] grid grid-cols-1 gap-[8vh] md:grid-cols-12 md:gap-x-[clamp(24px,4vw,64px)]">
+		<div class="md:col-span-7" use:reveal>
+			<p class="reveal max-w-[42ch] text-[1.05rem] leading-[1.6] text-carbon/80">{t.contact.body}</p>
+			<dl class="reveal mt-[8vh] flex max-w-[560px] flex-col">
+				{#each t.contact.channels as channel}
+					<div class="group flex items-baseline justify-between gap-6 border-t border-hairline py-4 last:border-b">
+						<dt class="mono-label text-betong">{channel.label}</dt>
+						<dd>
+							<a
+								href={channel.href}
+								target={channel.href.startsWith('mailto:') ? undefined : '_blank'}
+								rel={channel.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+								class="text-[0.95rem] text-carbon no-underline transition-colors hover:text-sienna"
+							>
+								{channel.value}
+							</a>
+						</dd>
+					</div>
+				{/each}
+			</dl>
+		</div>
+
+		<div class="md:col-span-3 md:col-start-10" use:reveal>
+			<div class="reveal">
+				<Artifact caption={t.common.artifactCaption} small />
+			</div>
+		</div>
 	</div>
-
-	<p class="mt-12 max-w-2xl text-[1.05rem] leading-relaxed text-ink/80">
-		{t.contact.bodyPre}<a
-			class="text-sage underline decoration-line decoration-from-font underline-offset-4 transition hover:decoration-sage"
-			href="https://studiosten.se"
-			target="_blank"
-			rel="noopener noreferrer">{t.contact.bodyLink}</a
-		>{t.contact.bodyPost}
-	</p>
-</ChapterPage>
+</article>

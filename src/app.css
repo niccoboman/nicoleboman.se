@@ -8,15 +8,6 @@
 	--color-sienna: #b23a19;
 	--color-hairline: #d9d7d0;
 
-	/* Gamla tokens — behålls tills alla sidor skrivits om (tas bort i Task 11) */
-	--color-paper: #eee6d3;
-	--color-sand: #e5dcc4;
-	--color-stone: #8b8273;
-	--color-ink: #1a1611;
-	--color-sage: #7a8b6b;
-	--color-wine: #7a2c2c;
-	--color-line: #cdc2a9;
-
 	--font-display: 'Familjen Grotesk', system-ui, sans-serif;
 	--font-sans: 'Familjen Grotesk', system-ui, sans-serif;
 	--font-mono: 'Fragment Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -137,19 +128,4 @@
 			animation: none !important;
 		}
 	}
-
-	/* ==== Gammalt — tas bort i Task 11 ==== */
-	.font-serif { font-family: var(--font-sans); }
-	.rule { height: 1px; background-color: var(--color-line); }
-	.micro {
-		font-family: var(--font-mono);
-		font-size: 0.72rem;
-		text-transform: uppercase;
-		letter-spacing: 0.18em;
-		color: var(--color-stone);
-	}
-	@keyframes soften { from { opacity: 0; } to { opacity: 1; } }
-	.soften-in { animation: soften 1s ease both; }
-	@keyframes riseOld { from { opacity: 0; transform: translateY(0.8rem); } to { opacity: 1; transform: translateY(0); } }
-	.rise-in { animation: riseOld 1.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
 }
