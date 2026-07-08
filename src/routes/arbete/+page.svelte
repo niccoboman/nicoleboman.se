@@ -1,52 +1,41 @@
 <script lang="ts">
-	import ChapterPage from '$lib/components/ChapterPage.svelte';
 	import { ui } from '$lib/state.svelte';
 	import { translations } from '$lib/i18n';
+	import { reveal } from '$lib/reveal';
+	import PageTitle from '$lib/components/PageTitle.svelte';
 
 	const t = $derived(translations[ui.lang]);
 </script>
 
 <svelte:head>
-	<title>{t.work.title} · Nicole Boman</title>
+	<title>{t.nav.work} · Nicole Boman</title>
 </svelte:head>
 
-<ChapterPage
-	number="03"
-	title={t.work.title}
-	prev={{ href: '/om-mig', label: t.nav.about }}
-	next={{ href: '/texter', label: t.nav.writing }}
->
-	<div class="flex flex-col divide-y divide-line">
-		{#each t.work.items as item, i}
-			<div class="group flex items-baseline gap-8 py-7 first:pt-0">
-				<span class="font-mono text-[0.7rem] text-stone" style="letter-spacing: 0.14em;">
-					{String(i + 1).padStart(2, '0')}
-				</span>
-				<div class="flex-1">
-					<h3
-						class="font-display text-[1.75rem] leading-tight text-ink md:text-[2.1rem]"
-						style="font-weight: 450;"
-					>
-						{item.label}
-					</h3>
-					<p class="mt-2 max-w-xl text-[1.02rem] leading-relaxed text-ink/80">
-						{item.desc}
-					</p>
-				</div>
-			</div>
+<article class="pb-[16vh] pt-[10vh]">
+	<PageTitle label={t.work.label} lines={t.work.titleLines} />
+
+	<div class="mt-[12vh]" use:reveal>
+		{#each t.work.items as item}
+			<section class="reveal grid grid-cols-1 gap-4 border-t border-hairline py-[clamp(24px,4vw,48px)] md:grid-cols-12 md:gap-x-[clamp(24px,4vw,64px)]">
+				<span class="mono-label text-betong md:col-span-1">{item.nr}</span>
+				<h2 class="font-display text-[clamp(1.9rem,5vw,4.4rem)] font-semibold uppercase leading-none tracking-[-0.02em] md:col-span-6">
+					{item.title}
+				</h2>
+				<p class="max-w-[38ch] text-[0.95rem] leading-[1.55] text-carbon/75 md:col-span-5 md:justify-self-end md:text-right">
+					{item.desc}
+				</p>
+			</section>
 		{/each}
 	</div>
 
-	<div class="mt-10">
+	<div class="mt-[10vh]" use:reveal>
 		<a
 			href="https://studiosten.se"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="group font-mono inline-flex items-center gap-3 text-[0.72rem] uppercase text-stone transition-colors hover:text-sage"
-			style="letter-spacing: 0.16em;"
+			class="mono-label reveal inline-block text-carbon no-underline transition-colors hover:text-sienna"
 		>
-			<span>{t.work.bookingCta}</span>
-			<span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+			{t.work.bookingCta}
 		</a>
 	</div>
-</ChapterPage>
+</article>
