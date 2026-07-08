@@ -1,100 +1,64 @@
 <script lang="ts">
 	import { ui } from '$lib/state.svelte';
 	import { translations } from '$lib/i18n';
+	import { reveal } from '$lib/reveal';
+	import Clock from '$lib/components/Clock.svelte';
+	import Artifact from '$lib/components/Artifact.svelte';
+	import IndexRow from '$lib/components/IndexRow.svelte';
 
 	const t = $derived(translations[ui.lang]);
 
-	const chapterMeta = [
-		{ nr: '01', href: '/manifest' },
-		{ nr: '02', href: '/om-mig' },
-		{ nr: '03', href: '/arbete' },
-		{ nr: '04', href: '/texter' },
-		{ nr: '05', href: '/kontakt' }
-	];
-
-	const rosterNums = ['i.', 'ii.', 'iii.'];
+	const chapterHrefs = ['/manifest', '/om-mig', '/arbete', '/texter', '/kontakt'];
+	const chapterNrs = ['01', '02', '03', '04', '05'];
 </script>
 
 <svelte:head>
-	<title>Nicole Boman — {t.home.hero1} {t.home.hero2} & {t.home.hero3}</title>
+	<title>Nicole Boman — {t.common.role}</title>
 </svelte:head>
 
 <!-- Hero -->
-<section class="flex min-h-[82svh] flex-col justify-between pt-20 pb-12 md:pt-24 md:pb-16">
-	<h1
-		class="font-display soften-in text-[clamp(3rem,8.8vw,7.25rem)] leading-[0.96] tracking-[-0.015em] text-ink"
-		style="font-weight: 450;"
-	>
-		<span class="block">{t.home.hero1}</span>
-		<span class="block italic" style="font-weight: 450;">{t.home.hero2}</span>
-		<span class="block">
-			<span class="italic text-sage" style="margin-right: 0.2em;">{t.home.heroConnector}</span
-			>{t.home.hero3}<span class="text-sage">.</span>
-		</span>
+<section class="relative flex min-h-[92svh] flex-col justify-between pb-[6vh] pt-[10vh]">
+	<div class="mono-label flex items-baseline justify-between">
+		<span>{t.common.role}</span>
+		<span class="text-betong">{t.common.city} <Clock /> · {t.common.coords}</span>
+	</div>
+
+	<div class="absolute right-0 top-[16vh] hidden md:block">
+		<Artifact caption={t.common.artifactCaption} />
+	</div>
+
+	<h1 class="font-display text-[clamp(3.4rem,11.4vw,10.6rem)] font-semibold uppercase leading-[0.9] tracking-[-0.025em]">
+		{#each t.home.heroLines as line, i}
+			<span class="ln {i === 1 ? 'pl-[clamp(2rem,9vw,9rem)]' : i === 2 ? 'pl-[clamp(4rem,18vw,18rem)]' : ''}">
+				<span>{line}{#if i === t.home.heroLines.length - 1}<span class="text-sienna">.</span>{/if}</span>
+			</span>
+		{/each}
 	</h1>
 
-	<div class="mt-14 grid grid-cols-12 items-end gap-6 md:mt-20">
-		<p
-			class="rise-in col-span-12 max-w-[32ch] text-[1.05rem] leading-[1.42] text-ink md:col-span-6 md:text-[1.2rem]"
-			style="animation-delay: 0.9s; font-weight: 380;"
-		>
-			{t.home.paraPre}<span
-				class="font-display text-sage"
-				style="font-weight: 500; font-style: normal;">{t.home.paraHighlight}</span
-			>{t.home.paraPost}
+	<div class="mono-label fade-in flex items-end justify-between gap-8">
+		<p class="max-w-[38ch] font-sans text-[0.95rem] normal-case leading-[1.5] tracking-normal text-carbon/75">
+			{t.home.intro}
 		</p>
-		<div
-			class="rise-in font-mono col-span-12 flex flex-col gap-2 text-[0.72rem] uppercase text-ink md:col-span-6 md:items-end"
-			style="animation-delay: 1.1s; letter-spacing: 0.16em;"
-		>
-			{#each t.home.roster as role, i}
-				<div class="flex items-baseline gap-3 md:gap-4">
-					<span class="text-ink">{rosterNums[i]}</span>
-					<span class="select-none text-line">———</span>
-					<span>{role}</span>
-				</div>
-			{/each}
-		</div>
+		<span class="hidden text-betong md:block">{t.common.scroll}</span>
+	</div>
+
+	<div class="mt-[8vh] md:hidden">
+		<Artifact caption={t.common.artifactCaption} />
 	</div>
 </section>
 
-<div class="rule my-10 md:my-16"></div>
+<!-- Manifestrad — sidans enda mjuka ögonblick -->
+<section class="py-[22vh]" use:reveal>
+	<span class="mono-label mb-[4vh] block text-betong">{t.home.manifestLabel}</span>
+	<p class="reveal font-soft max-w-[22ch] text-[clamp(1.8rem,4.4vw,3.6rem)] leading-[1.15] tracking-[-0.01em]">
+		{t.home.manifestQuote}
+	</p>
+</section>
 
-<!-- Innehåll -->
-<section class="grid grid-cols-12 gap-x-6 pb-8">
-	<div class="col-span-12 md:col-span-3">
-		<span class="font-mono text-[0.7rem] uppercase text-stone" style="letter-spacing: 0.18em;">
-			{t.home.contents}
-		</span>
-	</div>
-	<div class="col-span-12 mt-6 flex flex-col divide-y divide-line md:col-span-9 md:mt-0">
-		{#each t.home.chapters as chapter, i}
-			<a
-				href={chapterMeta[i].href}
-				class="group flex items-baseline gap-6 py-6 first:pt-0 md:gap-8"
-			>
-				<span
-					class="font-mono text-[0.7rem] text-stone"
-					style="letter-spacing: 0.14em;"
-				>
-					{chapterMeta[i].nr}
-				</span>
-				<div class="flex-1">
-					<h2
-						class="font-display text-[1.7rem] leading-tight text-ink transition-colors group-hover:italic group-hover:text-sage md:text-[2rem]"
-						style="font-weight: 450;"
-					>
-						{chapter.title}
-					</h2>
-					<p class="mt-1 text-[0.98rem] leading-relaxed text-ink/70">
-						{chapter.blurb}
-					</p>
-				</div>
-				<span
-					class="shrink-0 text-stone transition-transform group-hover:translate-x-1 group-hover:text-sage"
-					>→</span
-				>
-			</a>
-		{/each}
-	</div>
+<!-- Index -->
+<section class="pb-[16vh]" use:reveal>
+	<span class="mono-label reveal mb-[3vh] block text-betong">{t.home.indexLabel}</span>
+	{#each t.home.chapters as chapter, i}
+		<IndexRow nr={chapterNrs[i]} title={chapter.title} desc={chapter.desc} href={chapterHrefs[i]} />
+	{/each}
 </section>
