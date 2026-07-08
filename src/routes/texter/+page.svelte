@@ -1,16 +1,14 @@
 <script lang="ts">
-	import ChapterPage from '$lib/components/ChapterPage.svelte';
 	import { ui } from '$lib/state.svelte';
 	import { translations } from '$lib/i18n';
+	import { reveal } from '$lib/reveal';
+	import PageTitle from '$lib/components/PageTitle.svelte';
+	import IndexRow from '$lib/components/IndexRow.svelte';
 
 	const t = $derived(translations[ui.lang]);
 
 	const texter = [
-		{
-			title: 'Time Out',
-			year: '2025',
-			href: 'https://bomannicole.substack.com/p/time-out'
-		},
+		{ title: 'Time Out', year: '2025', href: 'https://bomannicole.substack.com/p/time-out' },
 		{
 			title: 'Defining Artificial Intelligence',
 			year: '2025',
@@ -25,55 +23,27 @@
 </script>
 
 <svelte:head>
-	<title>{t.writing.title} · Nicole Boman</title>
+	<title>{t.nav.writing} · Nicole Boman</title>
 </svelte:head>
 
-<ChapterPage
-	number="04"
-	title={t.writing.title}
-	subtitle={t.writing.subtitle}
-	prev={{ href: '/arbete', label: t.nav.work }}
-	next={{ href: '/kontakt', label: t.nav.contact }}
->
-	<div class="flex flex-col divide-y divide-line">
-		{#each texter as text}
-			<a
-				class="group flex items-baseline justify-between gap-6 py-6 first:pt-0"
-				href={text.href}
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<h4
-					class="font-display text-[1.55rem] leading-tight text-ink transition-colors group-hover:italic group-hover:text-sage md:text-[1.9rem]"
-					style="font-weight: 450;"
-				>
-					{text.title}
-				</h4>
-				<div class="flex shrink-0 items-center gap-4">
-					<span
-						class="font-mono text-[0.7rem] uppercase text-stone"
-						style="letter-spacing: 0.16em;"
-					>
-						{text.year}
-					</span>
-					<span class="text-stone transition-transform group-hover:translate-x-1 group-hover:text-sage"
-						>→</span
-					>
-				</div>
-			</a>
+<article class="pb-[16vh] pt-[10vh]">
+	<PageTitle label={t.writing.label} lines={t.writing.titleLines} />
+
+	<div class="mt-[12vh]" use:reveal>
+		<span class="mono-label reveal mb-[3vh] block text-betong">{t.writing.subtitle}</span>
+		{#each texter as text, i}
+			<IndexRow nr={String(i + 1).padStart(2, '0')} title={text.title} meta={text.year} href={text.href} external />
 		{/each}
 	</div>
 
-	<div class="mt-10">
+	<div class="mt-[8vh]" use:reveal>
 		<a
 			href="https://bomannicole.substack.com/"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="group font-mono inline-flex items-center gap-3 text-[0.72rem] uppercase text-stone transition-colors hover:text-sage"
-			style="letter-spacing: 0.16em;"
+			class="mono-label reveal inline-block text-carbon no-underline transition-colors hover:text-sienna"
 		>
-			<span>{t.writing.allCta}</span>
-			<span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+			{t.writing.allCta}
 		</a>
 	</div>
-</ChapterPage>
+</article>
