@@ -37,17 +37,6 @@
 			<span class="text-line">/</span>
 			<span class={ui.lang === 'en' ? 'text-ink' : 'text-stone/60'}>EN</span>
 		</button>
-		<button
-			type="button"
-			onclick={() => ui.toggleTheme()}
-			class="flex items-baseline gap-1.5 transition-colors hover:text-ink"
-			style="font-size: 0.82rem;"
-			aria-label={t.common.themeLabel}
-		>
-			<span class={ui.theme === 'light' ? 'text-ink' : 'text-stone/60'}>☀</span>
-			<span class="text-line">/</span>
-			<span class={ui.theme === 'dark' ? 'text-ink' : 'text-stone/60'}>☾</span>
-		</button>
 	</div>
 
 	<header class="flex items-baseline justify-between pt-4 md:pt-6">
