@@ -1,6 +1,14 @@
 @import 'tailwindcss';
 
 @theme {
+	/* Galleriet-paletten */
+	--color-gesso: #f1f0ec;
+	--color-carbon: #141311;
+	--color-betong: #a09d95;
+	--color-sienna: #b23a19;
+	--color-hairline: #d9d7d0;
+
+	/* Gamla tokens — behålls tills alla sidor skrivits om (tas bort i Task 11) */
 	--color-paper: #eee6d3;
 	--color-sand: #e5dcc4;
 	--color-stone: #8b8273;
@@ -9,11 +17,10 @@
 	--color-wine: #7a2c2c;
 	--color-line: #cdc2a9;
 
-	--font-display: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
-	--font-serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
-	--font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-
-	--tracking-mono: 0.18em;
+	--font-display: 'Familjen Grotesk', system-ui, sans-serif;
+	--font-sans: 'Familjen Grotesk', system-ui, sans-serif;
+	--font-mono: 'Fragment Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+	--font-soft: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
 }
 
 @layer base {
@@ -21,110 +28,128 @@
 		color-scheme: light;
 	}
 
-	/* Dark theme tokens — warm ink on near-black warm paper */
-	[data-theme='dark'] {
-		color-scheme: dark;
-		--color-paper: #17120d;
-		--color-sand: #221b14;
-		--color-stone: #9a8e79;
-		--color-ink: #ede3cf;
-		--color-sage: #a1b391;
-		--color-wine: #c27875;
-		--color-line: #3a312a;
-	}
-
 	html {
-		background-color: var(--color-paper);
-		color: var(--color-ink);
-		font-family: var(--font-serif);
+		background-color: var(--color-gesso);
+		color: var(--color-carbon);
+		font-family: var(--font-sans);
 		-webkit-font-smoothing: antialiased;
 		text-rendering: optimizeLegibility;
-		transition:
-			background-color 0.4s ease,
-			color 0.4s ease;
-	}
-
-	body {
-		position: relative;
-		min-height: 100svh;
-	}
-
-	/* Warm paper grain — barely there, just enough to feel handmade */
-	body::before {
-		content: '';
-		position: fixed;
-		inset: 0;
-		pointer-events: none;
-		z-index: 50;
-		opacity: 0.05;
-		mix-blend-mode: multiply;
-		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.14 0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-	}
-
-	[data-theme='dark'] body::before {
-		opacity: 0.06;
-		mix-blend-mode: screen;
-		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0 0.78 0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 	}
 
 	::selection {
-		background-color: var(--color-sage);
-		color: var(--color-paper);
+		background-color: var(--color-carbon);
+		color: var(--color-gesso);
 	}
 
-	.font-display {
-		font-family: var(--font-display);
+	a:focus-visible,
+	button:focus-visible {
+		outline: 2px solid var(--color-sienna);
+		outline-offset: 4px;
 	}
 
-	.font-serif {
-		font-family: var(--font-serif);
+	.font-soft {
+		font-family: var(--font-soft);
+		font-style: italic;
 	}
 
-	.font-mono {
+	/* Teknisk metadata — Galleriets smycke */
+	.mono-label {
 		font-family: var(--font-mono);
+		font-size: 0.68rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
 	}
 
-	@keyframes soften {
-		from {
-			font-variation-settings: 'wght' 560;
-			opacity: 0;
-		}
-		to {
-			font-variation-settings: 'wght' 450;
-			opacity: 1;
-		}
+	/* Maskad rad-reveal för rubriker (load) */
+	.ln {
+		display: block;
+		overflow: hidden;
 	}
-
-	.soften-in {
-		font-family: var(--font-display);
-		animation: soften 2.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+	.ln > span {
+		display: block;
+		transform: translateY(112%);
+		animation: rise 1s cubic-bezier(0.2, 1, 0.25, 1) forwards;
 	}
-
+	.ln:nth-child(2) > span {
+		animation-delay: 0.12s;
+	}
+	.ln:nth-child(3) > span {
+		animation-delay: 0.24s;
+	}
 	@keyframes rise {
-		from {
-			opacity: 0;
-			transform: translateY(0.8rem);
-		}
 		to {
-			opacity: 1;
 			transform: translateY(0);
 		}
 	}
 
-	.rise-in {
-		animation: rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+	@keyframes fade {
+		to {
+			opacity: 1;
+		}
+	}
+	.fade-in {
+		opacity: 0;
+		animation: fade 0.9s ease 0.75s forwards;
 	}
 
-	.rule {
-		height: 1px;
-		background-color: var(--color-line);
+	/* Scroll-reveals — reveal-elementen aktiveras av reveal-action (Task 3) */
+	.reveal {
+		opacity: 0;
+		transform: translateY(20px);
+		transition:
+			opacity 0.8s ease,
+			transform 0.8s cubic-bezier(0.2, 1, 0.25, 1);
+	}
+	.inview .reveal,
+	.reveal.inview {
+		opacity: 1;
+		transform: none;
+	}
+	.inview .reveal:nth-child(2) { transition-delay: 0.06s; }
+	.inview .reveal:nth-child(3) { transition-delay: 0.12s; }
+	.inview .reveal:nth-child(4) { transition-delay: 0.18s; }
+	.inview .reveal:nth-child(5) { transition-delay: 0.24s; }
+	.inview .reveal:nth-child(6) { transition-delay: 0.3s; }
+
+	/* Artefaktets filmkorn */
+	@keyframes grain {
+		0% { transform: translate(0, 0); }
+		33% { transform: translate(-4%, 3%); }
+		66% { transform: translate(3%, -4%); }
+		100% { transform: translate(0, 0); }
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		.ln > span {
+			animation: none;
+			transform: none;
+		}
+		.fade-in {
+			animation: none;
+			opacity: 1;
+		}
+		.reveal {
+			transition: none;
+			opacity: 1;
+			transform: none;
+		}
+		.grain-anim {
+			animation: none !important;
+		}
+	}
+
+	/* ==== Gammalt — tas bort i Task 11 ==== */
+	.font-serif { font-family: var(--font-sans); }
+	.rule { height: 1px; background-color: var(--color-line); }
 	.micro {
 		font-family: var(--font-mono);
 		font-size: 0.72rem;
 		text-transform: uppercase;
-		letter-spacing: var(--tracking-mono);
+		letter-spacing: 0.18em;
 		color: var(--color-stone);
 	}
+	@keyframes soften { from { opacity: 0; } to { opacity: 1; } }
+	.soften-in { animation: soften 1s ease both; }
+	@keyframes riseOld { from { opacity: 0; transform: translateY(0.8rem); } to { opacity: 1; transform: translateY(0); } }
+	.rise-in { animation: riseOld 1.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
 }
