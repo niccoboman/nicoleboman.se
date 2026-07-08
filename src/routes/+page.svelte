@@ -2,7 +2,6 @@
 	import { ui } from '$lib/state.svelte';
 	import { translations } from '$lib/i18n';
 	import { reveal } from '$lib/reveal';
-	import Clock from '$lib/components/Clock.svelte';
 	import Artifact from '$lib/components/Artifact.svelte';
 	import IndexRow from '$lib/components/IndexRow.svelte';
 
@@ -18,9 +17,8 @@
 
 <!-- Hero -->
 <section class="relative flex min-h-[92svh] flex-col justify-between pb-[6vh] pt-[10vh]">
-	<div class="mono-label flex items-baseline justify-between">
+	<div class="mono-label">
 		<span>{t.common.role}</span>
-		<span class="text-betong">{t.common.city} <Clock /> · {t.common.coords}</span>
 	</div>
 
 	<div class="absolute right-0 top-[16vh] hidden md:block">

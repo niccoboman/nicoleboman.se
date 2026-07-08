@@ -8,8 +8,6 @@ export const translations = {
 		},
 		common: {
 			role: 'AI-konsult, keynote speaker & utbildare',
-			city: 'Sthlm',
-			coords: '59.33°N',
 			langLabel: 'Switch to English',
 			scroll: 'Scrolla ↓'
 		},
@@ -92,8 +90,6 @@ export const translations = {
 		},
 		common: {
 			role: 'AI consultant, keynote speaker & educator',
-			city: 'Sthlm',
-			coords: '59.33°N',
 			langLabel: 'Byt till svenska',
 			scroll: 'Scroll ↓'
 		},
