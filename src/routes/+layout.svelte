@@ -8,6 +8,7 @@
 	let { children } = $props();
 
 	const t = $derived(translations[ui.lang]);
+	const isAdmin = $derived(page.url.pathname.startsWith('/admin'));
 
 	const navLinks = [
 		{ href: '/om-mig', key: 'about' as const },
@@ -17,6 +18,9 @@
 	];
 </script>
 
+{#if isAdmin}
+	{@render children()}
+{:else}
 <div class="mx-auto max-w-[1440px] px-[clamp(20px,3.5vw,56px)]">
 	<header class="flex items-center justify-between pt-[26px]">
 		<a href="/" aria-label="Nicole Boman — hem" class="font-display text-[1.35rem] font-semibold leading-none tracking-[-0.04em] text-carbon no-underline">
@@ -78,3 +82,4 @@
 		</div>
 	</div>
 </footer>
+{/if}

@@ -1,0 +1,19 @@
+{
+	"name": "Nicole — Min ateljé",
+	"short_name": "Ateljén",
+	"description": "Nicoles privata second brain och personliga operativsystem.",
+	"lang": "sv",
+	"start_url": "/admin",
+	"scope": "/",
+	"display": "standalone",
+	"background_color": "#f1f0ec",
+	"theme_color": "#f1f0ec",
+	"icons": [
+		{
+			"src": "/favicon.svg",
+			"sizes": "any",
+			"type": "image/svg+xml",
+			"purpose": "any"
+		}
+	]
+}
