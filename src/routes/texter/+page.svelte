@@ -4,22 +4,10 @@
 	import { reveal } from '$lib/reveal';
 	import PageTitle from '$lib/components/PageTitle.svelte';
 	import IndexRow from '$lib/components/IndexRow.svelte';
+	import type { PageProps } from './$types';
 
+	let { data }: PageProps = $props();
 	const t = $derived(translations[ui.lang]);
-
-	const texter = [
-		{ title: 'Time Out', year: '2025', href: 'https://bomannicole.substack.com/p/time-out' },
-		{
-			title: 'Defining Artificial Intelligence',
-			year: '2025',
-			href: 'https://bomannicole.substack.com/p/defining-artificial-intelligence'
-		},
-		{
-			title: 'Is Marketing Ruining Art?',
-			year: '2024',
-			href: 'https://bomannicole.substack.com/p/is-marketing-ruining-art'
-		}
-	];
 </script>
 
 <svelte:head>
@@ -31,8 +19,14 @@
 
 	<div class="mt-[8vh] md:mt-[12vh]" use:reveal>
 		<span class="mono-label reveal mb-[3vh] block text-betong">{t.writing.subtitle}</span>
-		{#each texter as text, i}
-			<IndexRow nr={String(i + 1).padStart(2, '0')} title={text.title} meta={text.year} href={text.href} external />
+		{#each data.texter as text, i}
+			<IndexRow
+				nr={String(i + 1).padStart(2, '0')}
+				title={text.titel}
+				meta={text.ar}
+				href={text.extern ?? `/texter/${text.slug}`}
+				external={Boolean(text.extern)}
+			/>
 		{/each}
 	</div>
 
