@@ -188,12 +188,15 @@
 		authMessage = '';
 		const { error } = await supabase.auth.signInWithOtp({
 			email: email.trim(),
-			options: { emailRedirectTo: `${window.location.origin}/admin` }
+			options: {
+				emailRedirectTo: `${window.location.origin}/admin`,
+				shouldCreateUser: false
+			}
 		});
 		authBusy = false;
-		authMessage = error
-			? `Det gick inte att skicka länken: ${error.message}`
-			: 'Klart. En säker inloggningslänk är skickad till din mejl.';
+		if (error) console.error('Magic link failed:', error);
+		// Same message either way — a distinct error would reveal which addresses have accounts.
+		authMessage = 'Klart. Om adressen har åtkomst är en säker inloggningslänk skickad.';
 	}
 
 	async function signOut() {
