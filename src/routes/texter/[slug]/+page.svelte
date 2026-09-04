@@ -13,7 +13,7 @@
 
 <article class="pb-[10vh] pt-[6vh] md:pb-[16vh] md:pt-[10vh]">
 	<div class="mono-label flex flex-wrap items-baseline gap-x-6 gap-y-2 text-betong">
-		<a href="/texter" class="text-carbon no-underline transition-colors hover:text-sienna">{tillbaka}</a>
+		<a href="/texter" class="text-carbon no-underline transition-colors hover:text-kobolt">{tillbaka}</a>
 		<span class="ml-auto">[ {data.text.datum} ]</span>
 		<span>[ {data.text.sprak.toUpperCase()} ]</span>
 	</div>
@@ -63,7 +63,7 @@
 		transition: color 0.2s;
 	}
 	.prosa :global(a:hover) {
-		color: var(--color-sienna);
+		color: var(--color-kobolt);
 	}
 	.prosa :global(blockquote) {
 		margin: 2em 0;

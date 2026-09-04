@@ -33,7 +33,7 @@
 			href="https://studiosten.se"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="mono-label reveal inline-block text-carbon no-underline transition-colors hover:text-sienna"
+			class="mono-label reveal inline-block text-carbon no-underline transition-colors hover:text-kobolt"
 		>
 			{t.work.bookingCta}
 		</a>

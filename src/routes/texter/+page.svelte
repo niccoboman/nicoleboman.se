@@ -35,7 +35,7 @@
 			href="https://bomannicole.substack.com/"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="mono-label reveal inline-block text-carbon no-underline transition-colors hover:text-sienna"
+			class="mono-label reveal inline-block text-carbon no-underline transition-colors hover:text-kobolt"
 		>
 			{t.writing.allCta}
 		</a>

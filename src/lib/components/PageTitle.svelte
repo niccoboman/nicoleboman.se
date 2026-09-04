@@ -13,7 +13,7 @@
 <h1 class="mt-[4vh] font-display text-[clamp(2.6rem,11.4vw,10.6rem)] font-semibold uppercase leading-[0.9] tracking-[-0.025em]">
 	{#each lines as line, i}
 		<span class="ln {indents[i] ?? ''}">
-			<span>{line}{#if punkt && i === lines.length - 1}<span class="text-sienna">.</span>{/if}</span>
+			<span>{line}{#if punkt && i === lines.length - 1}<span class="text-kobolt">.</span>{/if}</span>
 		</span>
 	{/each}
 </h1>

@@ -25,7 +25,7 @@
 							href={channel.href}
 							target={channel.href.startsWith('mailto:') ? undefined : '_blank'}
 							rel={channel.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-							class="text-[0.95rem] text-carbon no-underline transition-colors hover:text-sienna"
+							class="text-[0.95rem] text-carbon no-underline transition-colors hover:text-kobolt"
 						>
 							{channel.value}
 						</a>

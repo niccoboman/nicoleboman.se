@@ -357,7 +357,7 @@
 				</div>
 
 				<div class="sidebar-bottom">
-					<img src="/admin-artifact.png" alt="Abstrakt blå och siennaröd ljusstudie" width="98" height="136" />
+					<img src="/admin-artifact.png" alt="Abstrakt blå och koboltröd ljusstudie" width="98" height="136" />
 					{#if session && !previewMode}
 						<button class="sign-out" type="button" onclick={signOut} title="Logga ut">
 							<SignOut size={16} weight="thin" aria-hidden="true" />
@@ -517,7 +517,7 @@
 
 	.brand span,
 	.module-panel h1 span {
-		color: var(--color-sienna);
+		color: var(--color-kobolt);
 	}
 
 	.auth-shell {
@@ -610,7 +610,7 @@
 
 	.auth-message {
 		margin: 18px 0 0;
-		color: var(--color-sienna);
+		color: var(--color-kobolt);
 		font-size: 0.9rem;
 	}
 
@@ -666,7 +666,7 @@
 		width: 8px;
 		height: 8px;
 		border-radius: 50%;
-		background: var(--color-sienna);
+		background: var(--color-kobolt);
 		transform: translateY(-50%) scale(0);
 		transition: transform 160ms ease;
 	}
@@ -779,7 +779,7 @@
 	}
 
 	.schedule-marker.focus {
-		background: var(--color-sienna);
+		background: var(--color-kobolt);
 	}
 
 	.schedule-item h2 {
@@ -906,7 +906,7 @@
 		height: 8px;
 		margin-top: 5px;
 		border-radius: 50%;
-		background: var(--color-sienna);
+		background: var(--color-kobolt);
 	}
 
 	.attention-copy strong,
@@ -971,7 +971,7 @@
 		grid-template-columns: minmax(0, 1fr) auto;
 		align-items: stretch;
 		min-height: 108px;
-		border: 1px solid var(--color-sienna);
+		border: 1px solid var(--color-kobolt);
 		background: color-mix(in srgb, white 22%, transparent);
 	}
 
@@ -1015,11 +1015,11 @@
 
 	.capture-actions > button:first-child {
 		border-left: 0;
-		color: var(--color-sienna);
+		color: var(--color-kobolt);
 	}
 
 	.capture-actions > button.listening {
-		background: var(--color-sienna);
+		background: var(--color-kobolt);
 		color: var(--color-gesso);
 	}
 
@@ -1028,7 +1028,7 @@
 	}
 
 	.capture-actions .send-button {
-		color: var(--color-sienna);
+		color: var(--color-kobolt);
 	}
 
 	.capture-actions .send-button:disabled {
@@ -1081,7 +1081,7 @@
 		height: 8px;
 		margin-right: 12px;
 		border-radius: 50%;
-		background: var(--color-sienna);
+		background: var(--color-kobolt);
 	}
 
 	@media (max-width: 1180px) {
@@ -1147,8 +1147,8 @@
 		}
 
 		.mobile-nav button.active {
-			border-color: var(--color-sienna);
-			color: var(--color-sienna);
+			border-color: var(--color-kobolt);
+			color: var(--color-kobolt);
 		}
 
 		.today-panel,

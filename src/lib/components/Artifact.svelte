@@ -5,11 +5,11 @@
 <style>
 	.artifact-img {
 		background:
-			radial-gradient(120% 70% at 20% 12%, #26454d 0%, transparent 55%),
-			radial-gradient(140% 90% at 80% 30%, #37535a 0%, transparent 60%),
-			radial-gradient(120% 80% at 50% 78%, #c3401f 0%, transparent 58%),
-			radial-gradient(100% 60% at 85% 96%, #e8c489 0%, transparent 55%),
-			linear-gradient(175deg, #1d3940 0%, #55494a 46%, #b23a19 72%, #d99a54 100%);
+			radial-gradient(120% 70% at 20% 12%, #1a070d 0%, transparent 55%),
+			radial-gradient(140% 90% at 80% 30%, #4a1220 0%, transparent 60%),
+			radial-gradient(120% 80% at 50% 78%, #35101a 0%, transparent 58%),
+			radial-gradient(100% 60% at 85% 96%, #0047ab 0%, transparent 50%),
+			linear-gradient(175deg, #1a070d 0%, #35101a 50%, #4a1220 78%, #101c3a 100%);
 	}
 	.artifact-img::after {
 		content: '';
