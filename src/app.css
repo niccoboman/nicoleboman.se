@@ -6,6 +6,7 @@
 	--color-carbon: #141311;
 	--color-betong: #8a8780;
 	--color-kobolt: #0047ab;
+	--color-vin: #4a1220;
 	--color-hairline: #d9d7d0;
 
 	--font-display: 'Familjen Grotesk', system-ui, sans-serif;
@@ -34,7 +35,7 @@
 
 	a:focus-visible,
 	button:focus-visible {
-		outline: 2px solid var(--color-kobolt);
+		outline: 2px solid var(--color-vin);
 		outline-offset: 4px;
 	}
 
