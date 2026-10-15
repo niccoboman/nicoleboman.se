@@ -15,7 +15,7 @@ export function lank(sprak: Sprak, sti: string) {
 
 export const text = {
 	en: {
-		nav: { om: 'About', arbete: 'Work', texter: 'Writing', kontakt: 'Contact' },
+		nav: { om: 'About', arbete: 'Work', kontakt: 'Contact' },
 		hoppa: 'Skip to content',
 		sprakbyte: { etikett: 'SV', namn: 'Svenska', lang: 'sv' },
 		tema: { tillMork: 'Dark mode', tillLjus: 'Light mode' },
@@ -67,15 +67,6 @@ export const text = {
 						text: 'Mapping and strategy work that starts with how the business really works and ends with priorities you can act on.'
 					}
 				]
-			},
-
-			texter: {
-				etikett: '03 — Writing',
-				rubrik: 'I write, too.',
-				ingress: 'On writing, creativity and life beside work. On Substack.',
-				senaste: 'Latest',
-				las: 'Read',
-				prenumerera: 'Subscribe on Substack'
 			}
 		},
 
@@ -132,7 +123,7 @@ export const text = {
 	},
 
 	sv: {
-		nav: { om: 'Om', arbete: 'Arbete', texter: 'Texter', kontakt: 'Kontakt' },
+		nav: { om: 'Om', arbete: 'Arbete', kontakt: 'Kontakt' },
 		hoppa: 'Hoppa till innehållet',
 		sprakbyte: { etikett: 'EN', namn: 'English', lang: 'en' },
 		tema: { tillMork: 'Mörkt läge', tillLjus: 'Ljust läge' },
@@ -184,15 +175,6 @@ export const text = {
 						text: 'Kartläggningar och strategiskt arbete som börjar i hur verksamheten faktiskt fungerar och slutar i prioriteringar som går att genomföra.'
 					}
 				]
-			},
-
-			texter: {
-				etikett: '03 — Texter',
-				rubrik: 'Jag skriver också.',
-				ingress: 'Om skrivande, kreativitet och livet bredvid jobbet. På engelska, på Substack.',
-				senaste: 'Senaste',
-				las: 'Läs texten',
-				prenumerera: 'Prenumerera på Substack'
 			}
 		},
 

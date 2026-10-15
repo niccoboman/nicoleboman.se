@@ -11,7 +11,7 @@
 
 <article class="px-[clamp(16px,3vw,40px)] pt-[10vh]">
 	<div class="etikett flex flex-wrap items-baseline gap-x-6 gap-y-2 text-grafit">
-		<a href="/#texter" class="streck text-svart">← Alla texter</a>
+		<a href="/" class="streck text-svart">← Nicole Boman</a>
 		<span class="ml-auto">{data.text.datum}</span>
 	</div>
 

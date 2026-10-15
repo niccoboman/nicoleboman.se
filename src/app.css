@@ -6,7 +6,6 @@
 	--color-svart: #0b0b0b;
 	--color-grafit: #5f5f5b;
 	--color-linje: #dcdcd8;
-	--color-papper: #efebe3;
 
 	--font-arkiv: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
 
@@ -29,7 +28,6 @@
 	--color-svart: #f2f1ed;
 	--color-grafit: #9a9893;
 	--color-linje: #2e2e2c;
-	--color-papper: #1a1917;
 	color-scheme: dark;
 }
 
@@ -64,12 +62,6 @@
 		font-weight: 400;
 		line-height: 1.15;
 		text-transform: uppercase;
-	}
-
-	/* Serif för skrivandet (Texter) */
-	.serif {
-		font-family: 'Newsreader', Georgia, serif;
-		font-weight: 400;
 	}
 
 	/* Små versaletiketter */

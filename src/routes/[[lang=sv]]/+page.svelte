@@ -3,9 +3,6 @@
 	import { page } from '$app/state';
 	import { reveal } from '$lib/reveal';
 	import { text, sprakFran, lank } from '$lib/i18n';
-	import type { PageProps } from './$types';
-
-	let { data }: PageProps = $props();
 
 	const sprak = $derived(sprakFran(page.params.lang));
 	const g = $derived(text[sprak]);
@@ -76,8 +73,6 @@
 		return () => clearTimeout(timer);
 	});
 
-	const senaste = $derived(data.texter[0]);
-	const tidigare = $derived(data.texter.slice(1));
 
 	// Fyll på med { citat, vem } när det finns citat att visa. Tom lista = avsnittet döljs.
 	const citat: { citat: string; vem: string }[] = [];
@@ -218,70 +213,6 @@
 		</div>
 	</section>
 {/if}
-
-<!-- 03 Texter: eget läge – papper och serif, uppslag som i ett magasin -->
-<section id="texter" class="mt-[16vh] scroll-mt-0 bg-papper py-[clamp(64px,12vh,140px)]" use:reveal>
-	<div class="px-[clamp(16px,3vw,40px)]">
-		<p class="etikett reveal">{t.texter.etikett}</p>
-		<h2 class="jatte reveal mt-4 text-[clamp(2.6rem,5.5vw,6rem)]">{t.texter.rubrik}</h2>
-		<p class="serif reveal mt-4 max-w-[44ch] text-[clamp(1.2rem,1.6vw,1.45rem)] italic leading-[1.4]">
-			{t.texter.ingress}
-		</p>
-
-		<div class="mt-14 grid gap-12 border-t border-svart pt-10 md:grid-cols-12 md:gap-8">
-			{#if senaste}
-				<a
-					href={senaste.extern ?? `/texter/${senaste.slug}`}
-					target={senaste.extern ? '_blank' : undefined}
-					rel={senaste.extern ? 'noopener noreferrer' : undefined}
-					class="group reveal block text-svart no-underline md:col-span-7"
-				>
-					<span class="etikett text-grafit">{t.texter.senaste} · {senaste.ar}</span>
-					<span class="serif mt-4 block text-[clamp(3rem,7vw,7rem)] italic leading-[0.95] tracking-[-0.02em]">
-						<span lang={senaste.sprak}>{senaste.titel}</span>
-					</span>
-					{#if senaste.undertitel}
-						<span class="serif mt-5 block text-[clamp(1.2rem,1.8vw,1.6rem)] leading-[1.35] text-svart/70">
-							<span lang={senaste.sprak}>{senaste.undertitel}</span>
-						</span>
-					{/if}
-					<span class="etikett mt-8 inline-block border-b-2 border-svart pb-1 transition-[border-width] group-hover:border-b-4"
-						>{t.texter.las}<span aria-hidden="true">&nbsp;↗</span>{#if senaste.extern}<span class="sr-only"> {g.nyFlik}</span>{/if}</span
-					>
-				</a>
-			{/if}
-
-			<ul class="reveal md:col-span-5 md:border-l md:border-svart/25 md:pl-8">
-				{#each tidigare as txt (txt.slug)}
-					<li class="border-b border-svart/25 first:pt-0 last:border-b-0">
-						<a
-							href={txt.extern ?? `/texter/${txt.slug}`}
-							target={txt.extern ? '_blank' : undefined}
-							rel={txt.extern ? 'noopener noreferrer' : undefined}
-							class="group block py-5 text-svart no-underline"
-						>
-							<span class="etikett text-grafit">{txt.ar}</span>
-							<span class="serif mt-1 block text-[clamp(1.4rem,2vw,1.9rem)] italic leading-[1.15] transition-transform duration-300 group-hover:translate-x-1">
-								<span lang={txt.sprak}>{txt.titel}</span>
-								<span class="not-italic" aria-hidden="true">↗</span>{#if txt.extern}<span class="sr-only"> {g.nyFlik}</span>{/if}
-							</span>
-							{#if txt.undertitel}
-								<span lang={txt.sprak} class="mt-1 block text-[0.98rem] leading-[1.45] text-svart/70">{txt.undertitel}</span>
-							{/if}
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</div>
-
-		<a
-			href="https://bomannicole.substack.com/"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="etikett streck mt-12 inline-block py-1.5 text-svart">{t.texter.prenumerera}<span aria-hidden="true">&nbsp;↗</span><span class="sr-only"> {g.nyFlik}</span></a
-		>
-	</div>
-</section>
 
 <style>
 	/* Startvärde för jättetexten; anpassa() räknar sedan fram exakt storlek. */

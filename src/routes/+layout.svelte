@@ -16,7 +16,6 @@
 	const nav = $derived([
 		{ href: lank(sprak, '/om'), label: t.nav.om },
 		{ href: lank(sprak, '/#arbete'), label: t.nav.arbete },
-		{ href: lank(sprak, '/#texter'), label: t.nav.texter },
 		{ href: lank(sprak, '/#kontakt'), label: t.nav.kontakt }
 	]);
 
@@ -92,7 +91,7 @@
 			{@render children()}
 		</main>
 
-		<footer id="kontakt" class="mt-[16vh] scroll-mt-0 bg-svart text-krita [main:has(#texter)+&]:mt-0" use:reveal>
+		<footer id="kontakt" class="mt-[16vh] scroll-mt-0 bg-svart text-krita" use:reveal>
 			<div class="px-[clamp(16px,3vw,40px)] pb-6 pt-[clamp(64px,12vh,140px)]">
 				<div class="grid gap-12 md:grid-cols-12">
 					<div class="md:col-span-5">
