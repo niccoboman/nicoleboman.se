@@ -1,18 +1,36 @@
 @import 'tailwindcss';
 
 @theme {
-	/* Galleriet-paletten */
+	/* Publika sidan: kritvitt och svart */
+	--color-krita: #fcfcfa;
+	--color-svart: #0b0b0b;
+	--color-grafit: #5f5f5b;
+	--color-linje: #dcdcd8;
+	--color-papper: #efebe3;
+
+	--font-arkiv: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+
+	/* Admin (Galleriet-paletten) – används av /admin, låt stå */
 	--color-gesso: #f1f0ec;
 	--color-carbon: #141311;
 	--color-betong: #8a8780;
 	--color-kobolt: #0047ab;
 	--color-vin: #4a1220;
 	--color-hairline: #d9d7d0;
-
-	--font-display: 'Familjen Grotesk', system-ui, sans-serif;
 	--font-sans: 'Familjen Grotesk', system-ui, sans-serif;
+	--font-display: 'Familjen Grotesk', system-ui, sans-serif;
 	--font-mono: 'Fragment Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 	--font-soft: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+}
+
+/* Mörkt läge: samma sida, inverterad. Sätts via data-tema="mork" på <html> (se app.html och layouten). */
+:root[data-tema='mork'] {
+	--color-krita: #0d0d0d;
+	--color-svart: #f2f1ed;
+	--color-grafit: #9a9893;
+	--color-linje: #2e2e2c;
+	--color-papper: #1a1917;
+	color-scheme: dark;
 }
 
 @layer base {
@@ -21,35 +39,66 @@
 	}
 
 	html {
-		background-color: var(--color-gesso);
-		color: var(--color-carbon);
+		background-color: var(--color-krita);
+		color: var(--color-svart);
 		font-family: var(--font-sans);
 		-webkit-font-smoothing: antialiased;
 		text-rendering: optimizeLegibility;
+		scroll-behavior: smooth;
 	}
 
 	::selection {
-		background-color: var(--color-carbon);
-		color: var(--color-gesso);
+		background-color: var(--color-svart);
+		color: var(--color-krita);
 	}
 
 	a:focus-visible,
 	button:focus-visible {
-		outline: 2px solid var(--color-vin);
+		outline: 2px solid currentColor;
 		outline-offset: 4px;
 	}
 
-	footer a:focus-visible,
-	footer button:focus-visible {
-		outline-color: var(--color-gesso);
+	/* Jättetypen: Anton, versaler. Extra radavstånd så att prickar och ringar på Å, Ä, Ö får plats. */
+	.jatte {
+		font-family: 'Anton', 'Archivo', sans-serif;
+		font-weight: 400;
+		line-height: 1.15;
+		text-transform: uppercase;
 	}
 
+	/* Serif för skrivandet (Texter) */
+	.serif {
+		font-family: 'Newsreader', Georgia, serif;
+		font-weight: 400;
+	}
+
+	/* Små versaletiketter */
+	.etikett {
+		font-family: var(--font-arkiv);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	/* Länk med understrykning som ritas in vid hover */
+	.streck {
+		background-image: linear-gradient(currentColor, currentColor);
+		background-size: 0% 1px;
+		background-position: 0 100%;
+		background-repeat: no-repeat;
+		text-decoration: none;
+		transition: background-size 0.45s cubic-bezier(0.2, 1, 0.25, 1);
+	}
+	.streck:hover {
+		background-size: 100% 1px;
+	}
+
+	/* Admin använder dessa två */
 	.font-soft {
 		font-family: var(--font-soft);
 		font-style: italic;
 	}
-
-	/* Teknisk metadata — Galleriets smycke */
 	.mono-label {
 		font-family: var(--font-mono);
 		font-size: 0.68rem;
@@ -57,78 +106,28 @@
 		text-transform: uppercase;
 	}
 
-	/* Maskad rad-reveal för rubriker (load).
-	   Padding + negativ margin ger masken luft nedåt så att underhäng (t.ex. J) inte klipps. */
-	.ln {
-		display: block;
-		overflow: hidden;
-		padding-bottom: 0.14em;
-		margin-bottom: -0.14em;
-	}
-	.ln > span {
-		display: block;
-		transform: translateY(130%);
-		animation: rise 1s cubic-bezier(0.2, 1, 0.25, 1) forwards;
-	}
-	.ln:nth-child(2) > span {
-		animation-delay: 0.12s;
-	}
-	.ln:nth-child(3) > span {
-		animation-delay: 0.24s;
-	}
-	@keyframes rise {
-		to {
-			transform: translateY(0);
-		}
-	}
-
-	@keyframes fade {
-		to {
-			opacity: 1;
-		}
-	}
-	.fade-in {
+	/* Scroll-reveals – use:reveal sätter data-inview */
+	.js .reveal {
 		opacity: 0;
-		animation: fade 0.9s ease 0.75s forwards;
-	}
-
-	/* Scroll-reveals — reveal-elementen aktiveras av reveal-action (Task 3) */
-	.reveal {
-		opacity: 0;
-		transform: translateY(20px);
+		transform: translateY(18px);
 		transition:
-			opacity 0.8s ease,
-			transform 0.8s cubic-bezier(0.2, 1, 0.25, 1);
+			opacity 0.9s ease,
+			transform 0.9s cubic-bezier(0.2, 1, 0.25, 1);
 	}
-	.inview .reveal,
-	.reveal.inview {
+	.js [data-inview] .reveal,
+	.js .reveal[data-inview] {
 		opacity: 1;
 		transform: none;
 	}
-	.inview .reveal:nth-child(2) { transition-delay: 0.06s; }
-	.inview .reveal:nth-child(3) { transition-delay: 0.12s; }
-	.inview .reveal:nth-child(4) { transition-delay: 0.18s; }
-	.inview .reveal:nth-child(5) { transition-delay: 0.24s; }
-	.inview .reveal:nth-child(6) { transition-delay: 0.3s; }
-
-	/* Artefaktets filmkorn */
-	@keyframes grain {
-		0% { transform: translate(0, 0); }
-		33% { transform: translate(-4%, 3%); }
-		66% { transform: translate(3%, -4%); }
-		100% { transform: translate(0, 0); }
-	}
+	[data-inview] .reveal:nth-child(2) { transition-delay: 0.08s; }
+	[data-inview] .reveal:nth-child(3) { transition-delay: 0.16s; }
+	[data-inview] .reveal:nth-child(4) { transition-delay: 0.24s; }
 
 	@media (prefers-reduced-motion: reduce) {
-		.ln > span {
-			animation: none;
-			transform: none;
+		html {
+			scroll-behavior: auto;
 		}
-		.fade-in {
-			animation: none;
-			opacity: 1;
-		}
-		.reveal {
+		.js .reveal {
 			transition: none;
 			opacity: 1;
 			transform: none;

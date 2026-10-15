@@ -1,166 +1,250 @@
-export const translations = {
-	sv: {
-		nav: {
-			about: 'Om mig',
-			work: 'Arbete',
-			writing: 'Texter',
-			contact: 'Kontakt'
+// All text på den publika sidan, på engelska (standard) och svenska (/sv).
+// Ändra text här – sidorna hämtar allt från den här filen.
+
+export type Sprak = 'en' | 'sv';
+
+export function sprakFran(param: string | undefined): Sprak {
+	return param === 'sv' ? 'sv' : 'en';
+}
+
+// Bygger en länk i rätt språk, t.ex. lank('sv', '/om') -> '/sv/om', lank('en', '/#arbete') -> '/#arbete'
+export function lank(sprak: Sprak, sti: string) {
+	if (sprak === 'en') return sti;
+	return sti === '/' ? '/sv' : sti.startsWith('/#') ? `/sv${sti.slice(1)}` : `/sv${sti}`;
+}
+
+export const text = {
+	en: {
+		nav: { om: 'About', arbete: 'Work', texter: 'Writing', kontakt: 'Contact' },
+		hoppa: 'Skip to content',
+		sprakbyte: { etikett: 'SV', namn: 'Svenska', lang: 'sv' },
+		tema: { tillMork: 'Dark mode', tillLjus: 'Light mode' },
+		huvudmeny: 'Main menu',
+		nyFlik: '(opens in a new tab)',
+		animation: { pausa: 'Pause animation', spela: 'Play animation' },
+
+		start: {
+			titel: 'Nicole Boman – AI consultant, AI educator and keynote speaker',
+			beskrivning: 'Nicole Boman – AI consultant, AI educator and keynote speaker. Generative AI that people actually use.',
+			jagAr: "I'm",
+			ord: ['Nicole Boman', 'an AI consultant', 'an AI educator', 'a keynote speaker'],
+			skarmlasare: "I'm Nicole Boman – AI consultant, AI educator and keynote speaker.",
+			ingress: 'I help organisations and people understand what generative AI actually does, and use it where it matters.',
+			lasVidare: 'Read on',
+			heroAlt: 'Nicole Boman on stage in a leather jacket, gesturing to the audience, black and white',
+
+			om: {
+				etikett: '01 — About',
+				rubrik: 'I get people to actually use AI.',
+				stycken: [
+					'I work with generative AI as a consultant, speaker and educator. I show where the technology makes a real difference, and make sure people feel confident using it with their own judgement.',
+					"If you can't use it the day after, I haven't done my job."
+				],
+				mer: 'More about me',
+				bildAlt: 'Nicole Boman speaking on a runway stage, surrounded by an audience'
+			},
+
+			arbete: {
+				etikett: '02 — Work',
+				rubrik: 'This is what I do.',
+				studioFore: 'I deliver talks, training and AI projects in collaboration with',
+				studioEfter: '.',
+				boka: 'Book via Studio Stén',
+				poster: [
+					{
+						nr: '01',
+						titel: 'Keynotes',
+						text: "Talks on generative AI for leadership teams, conferences and industry stages. Concrete examples, clear reasoning and an honest picture of what the technology can and can't do."
+					},
+					{
+						nr: '02',
+						titel: 'Training',
+						text: 'Courses, masterclasses and workshops where people actually work with the tools, from the first prompt to agents that carry out work in several steps.'
+					},
+					{
+						nr: '03',
+						titel: 'Advisory',
+						text: 'Mapping and strategy work that starts with how the business really works and ends with priorities you can act on.'
+					}
+				]
+			},
+
+			texter: {
+				etikett: '03 — Writing',
+				rubrik: 'I write, too.',
+				ingress: 'On writing, creativity and life beside work. On Substack.',
+				senaste: 'Latest',
+				las: 'Read',
+				prenumerera: 'Subscribe on Substack'
+			}
 		},
-		common: {
-			role: 'AI-konsult, keynote speaker & utbildare',
-			langLabel: 'Switch to English',
-			scroll: 'Scrolla ↓'
-		},
-		footer: {
-			cta: 'Ska vi\nprata?',
-			ctaLink: '→ Mejla mig',
-			place: 'Stockholm, Sverige'
-		},
-		home: {
-			heroLines: ['Generativ AI', 'på mänskliga', 'villkor'],
-			intro:
-				'Jag hjälper organisationer att göra AI till något som faktiskt fungerar — för verksamheten, arbetsflödena och människorna i dem.',
-			indexLabel: 'Index',
-			chapters: [
-				{ title: 'Om mig', desc: 'Människan bakom rösten. Från nyfikenhet till yrke.' },
-				{ title: 'Arbete', desc: 'Keynotes, utbildningar, rådgivning — så arbetar jag.' },
-				{ title: 'Texter', desc: 'Boundaries of Mind — essäer om AI och människor.' },
-				{ title: 'Kontakt', desc: 'Boka en scen, ett rum — eller bara säg hej.' }
-			]
-		},
-		about: {
-			label: 'Om mig / 01',
-			titleLines: ['Om mig'],
-			lede: 'Jag är en översättare. Inte av språk utan av teknik — mellan det maskinen kan och det människan behöver.',
-			p1: 'Till vardags AI-konsult, keynote speaker och utbildare. Baserad i Stockholm, arbetar genom Studio Stén — där klientarbete och bokningar landar.',
-			p2: 'Jag hjälper organisationer förstå var AI faktiskt kan skapa värde — genom keynotes, workshops och strategiskt arbete. Samarbetar bland annat med Bonnier Akademi kring kurser i generativ AI.',
-			p3: 'Det som driver mig är mellanrummen. Mellan hype och avfärdande. Mellan verktyg och mening. Mellan det tekniska som går att bevisa och det mänskliga som måste diskuteras.',
-			facts: [
-				{ label: 'Bas', value: 'Stockholm' },
-				{ label: 'Bolag', value: 'Studio Stén' },
-				{ label: 'Samarbeten', value: 'Bonnier Akademi m.fl.' }
-			]
-		},
-		work: {
-			label: 'Arbete / 02',
-			titleLines: ['Arbete'],
-			items: [
+
+		om: {
+			titel: 'About Nicole Boman',
+			etikett: 'About',
+			rubrik: ['Short', 'version.'],
+			bildAlt: 'Nicole Boman in profile on a dark stage',
+			pastaenden: [
 				{
-					nr: '01',
-					title: 'Keynotes',
-					desc: 'Föreläsningar om generativ AI — för ledningsgrupper, branscher och scener. Raka, konkreta och utan hype.'
+					rubrik: 'Ten years in tech and e-commerce.',
+					text: 'Project manager, Client Director, CEO of a digital agency. I know what it looks like when something has to work on Monday, not just in a demo.'
 				},
 				{
-					nr: '02',
-					title: 'Utbildning',
-					desc: 'Praktiska workshops och kurser som gör tekniken användbar i vardagen — för team som vill komma igång på riktigt.'
+					rubrik: 'No hype.',
+					text: "I show what AI can do, what it can't, and where it actually saves time. Someone else can do the selling."
 				},
 				{
-					nr: '03',
-					title: 'Rådgivning',
-					desc: 'Strategiskt arbete där AI möter verksamhet och människor. Från pilot till vardag.'
+					rubrik: "Sometimes the answer isn't AI.",
+					text: "Then I'll say so. A better routine often beats a new tool."
+				},
+				{
+					rubrik: 'Nobody gets left behind.',
+					text: "Leadership team, specialist or someone who's never opened ChatGPT. Same straight talk for everyone."
 				}
 			],
-			bookingCta: 'För bokning — Studio Stén →'
+			cta: 'Shall we?'
 		},
-		writing: {
-			label: 'Texter / 03',
-			titleLines: ['Texter'],
-			subtitle: 'Boundaries of Mind',
-			allCta: 'Alla texter på Substack →'
+
+		kontakt: {
+			etikett: 'Contact',
+			rubrik: ['Shall we', 'talk?'],
+			text: "A talk, a training, a project or an idea you want to bounce around. Drop me a few lines and I'll get back to you.",
+			sverige: 'Sweden',
+			foto: 'Photo: Glide Photos, Gustaf Kumlin'
 		},
-		contact: {
-			label: 'Kontakt / 04',
-			titleLines: ['Säg hej'],
-			body: 'Mejl är snabbast. För bokningar av keynotes, utbildningar eller rådgivning — gå via Studio Stén.',
-			channels: [
-				{ label: 'Mejl', value: 'info@nicoleboman.se', href: 'mailto:info@nicoleboman.se' },
-				{ label: 'LinkedIn', value: 'nicoleboman', href: 'https://www.linkedin.com/in/nicoleboman/' },
-				{ label: 'Substack', value: 'bomannicole', href: 'https://bomannicole.substack.com/' },
-				{ label: 'Bokning', value: 'studiosten.se', href: 'https://studiosten.se' }
-			]
+
+		formular: {
+			detGaller: "It's about",
+			amnen: ['A talk', 'Training', 'A project', 'Something else'],
+			namn: 'Name',
+			epost: 'Email',
+			organisation: 'Organisation',
+			valfritt: '(optional)',
+			meddelande: 'Message',
+			skicka: 'Send',
+			skickar: 'Sending …',
+			integritet: 'I only use your details to reply to you.',
+			tack: 'Thanks!',
+			tackText: "Your message is in. I'll get back to you as soon as I can.",
+			fel: "Something went wrong and the message wasn't sent. Try again in a moment, or reach out on LinkedIn.",
+			ejKopplat: "The form isn't connected yet. Reach out on LinkedIn for now."
 		}
 	},
-	en: {
-		nav: {
-			about: 'About',
-			work: 'Work',
-			writing: 'Writing',
-			contact: 'Contact'
+
+	sv: {
+		nav: { om: 'Om', arbete: 'Arbete', texter: 'Texter', kontakt: 'Kontakt' },
+		hoppa: 'Hoppa till innehållet',
+		sprakbyte: { etikett: 'EN', namn: 'English', lang: 'en' },
+		tema: { tillMork: 'Mörkt läge', tillLjus: 'Ljust läge' },
+		huvudmeny: 'Huvudmeny',
+		nyFlik: '(öppnas i en ny flik)',
+		animation: { pausa: 'Pausa animationen', spela: 'Spela animationen' },
+
+		start: {
+			titel: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker',
+			beskrivning: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker. Generativ AI som faktiskt används.',
+			jagAr: 'Jag är',
+			ord: ['Nicole Boman', 'AI-konsult', 'AI-utbildare', 'Keynote speaker'],
+			skarmlasare: 'Jag är Nicole Boman – AI-konsult, AI-utbildare och keynote speaker.',
+			ingress: 'Jag hjälper organisationer och människor att förstå vad generativ AI faktiskt gör, och att använda den där det spelar roll.',
+			lasVidare: 'Läs vidare',
+			heroAlt: 'Nicole Boman på scen i skinnjacka, gestikulerar mot publiken, svartvitt',
+
+			om: {
+				etikett: '01 — Om',
+				rubrik: 'Jag får folk att faktiskt använda AI.',
+				stycken: [
+					'Jag arbetar med generativ AI som konsult, föreläsare och utbildare. Jag visar var tekniken gör verklig nytta, och ser till att människor blir trygga nog att använda den med eget omdöme.',
+					'Det ska gå att använda dagen efter. Annars har jag inte gjort mitt jobb.'
+				],
+				mer: 'Mer om mig',
+				bildAlt: 'Nicole Boman föreläser på en catwalkscen, omgiven av publik'
+			},
+
+			arbete: {
+				etikett: '02 — Arbete',
+				rubrik: 'Det här gör jag.',
+				studioFore: 'Föreläsningar, utbildningar och uppdrag inom AI gör jag i samarbete med',
+				studioEfter: '.',
+				boka: 'Boka via Studio Stén',
+				poster: [
+					{
+						nr: '01',
+						titel: 'Keynotes',
+						text: 'Föreläsningar om generativ AI för ledningsgrupper, konferenser och branschscener. Konkreta exempel, tydliga resonemang och en ärlig bild av vad tekniken kan och inte kan.'
+					},
+					{
+						nr: '02',
+						titel: 'Utbildning',
+						text: 'Kurser, masterclasses och workshops där deltagarna arbetar med verktygen på riktigt, från den första prompten till agenter som utför arbete i flera steg.'
+					},
+					{
+						nr: '03',
+						titel: 'Rådgivning',
+						text: 'Kartläggningar och strategiskt arbete som börjar i hur verksamheten faktiskt fungerar och slutar i prioriteringar som går att genomföra.'
+					}
+				]
+			},
+
+			texter: {
+				etikett: '03 — Texter',
+				rubrik: 'Jag skriver också.',
+				ingress: 'Om skrivande, kreativitet och livet bredvid jobbet. På engelska, på Substack.',
+				senaste: 'Senaste',
+				las: 'Läs texten',
+				prenumerera: 'Prenumerera på Substack'
+			}
 		},
-		common: {
-			role: 'AI consultant, keynote speaker & educator',
-			langLabel: 'Byt till svenska',
-			scroll: 'Scroll ↓'
-		},
-		footer: {
-			cta: 'Shall we\ntalk?',
-			ctaLink: '→ Email me',
-			place: 'Stockholm, Sweden'
-		},
-		home: {
-			heroLines: ['Generative AI', 'on human', 'terms'],
-			intro:
-				'I help organizations make AI actually work — for the business, the workflows and the people in them.',
-			indexLabel: 'Index',
-			chapters: [
-				{ title: 'About', desc: 'The person behind the voice. From curiosity to profession.' },
-				{ title: 'Work', desc: 'Keynotes, teaching, advisory — how I work.' },
-				{ title: 'Writing', desc: 'Boundaries of Mind — essays on AI and people.' },
-				{ title: 'Contact', desc: 'Book a stage, a room — or just say hi.' }
-			]
-		},
-		about: {
-			label: 'About / 01',
-			titleLines: ['About'],
-			lede: 'I am a translator. Not of languages, but of technology — between what the machine can do and what the human needs.',
-			p1: 'AI consultant, keynote speaker and educator. Based in Stockholm, working through Studio Stén — where client work and bookings land.',
-			p2: 'I help organizations understand where AI can actually create value — through keynotes, workshops and strategic work. Collaborating, among others, with Bonnier Akademi on courses in generative AI.',
-			p3: "What drives me are the in-between spaces. Between hype and dismissal. Between tool and meaning. Between what's technical and provable, and what's human and must be discussed.",
-			facts: [
-				{ label: 'Base', value: 'Stockholm' },
-				{ label: 'Studio', value: 'Studio Stén' },
-				{ label: 'Partners', value: 'Bonnier Akademi a.o.' }
-			]
-		},
-		work: {
-			label: 'Work / 02',
-			titleLines: ['Work'],
-			items: [
+
+		om: {
+			titel: 'Om Nicole Boman',
+			etikett: 'Om',
+			rubrik: ['Kort', 'version.'],
+			bildAlt: 'Nicole Boman i profil på en mörk scen',
+			pastaenden: [
 				{
-					nr: '01',
-					title: 'Keynotes',
-					desc: 'Talks on generative AI — for leadership teams, industries and stages. Direct, concrete and hype-free.'
+					rubrik: 'Tio år i tech och e-handel.',
+					text: 'Projektledare, Client Director, vd för en digital byrå. Jag vet hur det ser ut när något måste funka på måndag, inte bara i en demo.'
 				},
 				{
-					nr: '02',
-					title: 'Teaching',
-					desc: 'Practical workshops and courses that make the technology useful in everyday work — for teams that want to get going for real.'
+					rubrik: 'Ingen hype.',
+					text: 'Jag visar vad AI kan, vad den inte kan och var den faktiskt sparar tid. Resten får någon annan sälja in.'
 				},
 				{
-					nr: '03',
-					title: 'Advisory',
-					desc: 'Strategic work where AI meets business and people. From pilot to everyday.'
+					rubrik: 'Ibland är svaret inte AI.',
+					text: 'Då säger jag det. En bättre rutin slår ofta ett nytt verktyg.'
+				},
+				{
+					rubrik: 'Alla ska hänga med.',
+					text: 'Ledningsgrupp, specialist eller någon som aldrig öppnat ChatGPT. Samma raka besked till alla.'
 				}
 			],
-			bookingCta: 'For booking — Studio Stén →'
+			cta: 'Ska vi köra?'
 		},
-		writing: {
-			label: 'Writing / 03',
-			titleLines: ['Writing'],
-			subtitle: 'Boundaries of Mind',
-			allCta: 'All writing on Substack →'
+
+		kontakt: {
+			etikett: 'Kontakt',
+			rubrik: ['Ska vi', 'prata?'],
+			text: 'Om en föreläsning, en utbildning, ett uppdrag eller en tanke du vill bolla. Skriv några rader så hör jag av mig.',
+			sverige: 'Sverige',
+			foto: 'Foto: Glide Photos, Gustaf Kumlin'
 		},
-		contact: {
-			label: 'Contact / 04',
-			titleLines: ['Say hi'],
-			body: 'Email is fastest. For bookings of keynotes, teaching or advisory — go via Studio Stén.',
-			channels: [
-				{ label: 'Email', value: 'info@nicoleboman.se', href: 'mailto:info@nicoleboman.se' },
-				{ label: 'LinkedIn', value: 'nicoleboman', href: 'https://www.linkedin.com/in/nicoleboman/' },
-				{ label: 'Substack', value: 'bomannicole', href: 'https://bomannicole.substack.com/' },
-				{ label: 'Booking', value: 'studiosten.se', href: 'https://studiosten.se' }
-			]
+
+		formular: {
+			detGaller: 'Det gäller',
+			amnen: ['Föreläsning', 'Utbildning', 'Uppdrag', 'Något annat'],
+			namn: 'Namn',
+			epost: 'E-post',
+			organisation: 'Organisation',
+			valfritt: '(valfritt)',
+			meddelande: 'Meddelande',
+			skicka: 'Skicka',
+			skickar: 'Skickar …',
+			integritet: 'Jag använder dina uppgifter bara för att svara dig.',
+			tack: 'Tack!',
+			tackText: 'Ditt meddelande har kommit fram. Jag hör av mig så snart jag kan.',
+			fel: 'Något gick fel och meddelandet skickades inte. Försök igen om en stund, eller hör av dig via LinkedIn.',
+			ejKopplat: 'Formuläret är inte kopplat ännu. Hör av dig via LinkedIn så länge.'
 		}
 	}
 } as const;

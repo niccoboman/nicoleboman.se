@@ -3,6 +3,7 @@ import { marked } from 'marked';
 export interface TextMeta {
 	slug: string;
 	titel: string;
+	undertitel?: string;
 	datum: string; // YYYY-MM-DD
 	ar: string;
 	sprak: 'sv' | 'en';
@@ -38,6 +39,7 @@ function tillMeta(path: string, src: string): TextMeta {
 	return {
 		slug,
 		titel: data.titel ?? slug,
+		undertitel: data.undertitel || undefined,
 		datum,
 		ar: datum.slice(0, 4),
 		sprak: data.sprak === 'en' ? 'en' : 'sv',

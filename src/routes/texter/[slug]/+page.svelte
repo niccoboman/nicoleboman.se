@@ -1,30 +1,27 @@
 <script lang="ts">
-	import { ui } from '$lib/state.svelte';
 	import { reveal } from '$lib/reveal';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-	const tillbaka = $derived(ui.lang === 'sv' ? '← Alla texter' : '← All writing');
 </script>
 
 <svelte:head>
 	<title>{data.text.titel} · Nicole Boman</title>
 </svelte:head>
 
-<article class="pb-[10vh] pt-[6vh] md:pb-[16vh] md:pt-[10vh]">
-	<div class="mono-label flex flex-wrap items-baseline gap-x-6 gap-y-2 text-betong">
-		<a href="/texter" class="text-carbon no-underline transition-colors hover:text-kobolt">{tillbaka}</a>
-		<span class="ml-auto">[ {data.text.datum} ]</span>
-		<span>[ {data.text.sprak.toUpperCase()} ]</span>
+<article class="px-[clamp(16px,3vw,40px)] pt-[10vh]">
+	<div class="etikett flex flex-wrap items-baseline gap-x-6 gap-y-2 text-grafit">
+		<a href="/#texter" class="streck text-svart">← Alla texter</a>
+		<span class="ml-auto">{data.text.datum}</span>
 	</div>
 
 	<h1
-		class="mt-[6vh] max-w-[16ch] font-display text-[clamp(2.2rem,7vw,5.6rem)] font-semibold uppercase leading-[0.95] tracking-[-0.02em] text-carbon"
+		class="jatte mt-[8vh] max-w-[14ch] text-[clamp(3rem,10vw,10rem)]"
 	>
 		{data.text.titel}
 	</h1>
 
-	<div class="prosa mt-[8vh] max-w-[68ch]" use:reveal>
+	<div class="prosa mx-auto mt-[10vh] max-w-[64ch]" use:reveal>
 		<!-- eslint-disable-next-line svelte/no-at-html-tags — HTML renderas från egna markdown-filer i repot -->
 		{@html data.text.html}
 	</div>
@@ -33,17 +30,17 @@
 <style>
 	.prosa :global(p) {
 		margin-bottom: 1.4em;
-		font-size: clamp(1rem, 1.15vw, 1.15rem);
-		line-height: 1.65;
-		color: var(--color-carbon);
+		font-family: var(--font-arkiv);
+		font-size: clamp(1.1rem, 1.25vw, 1.25rem);
+		line-height: 1.7;
+		color: var(--color-svart);
 	}
 	.prosa :global(h2),
 	.prosa :global(h3) {
 		margin: 2.4em 0 0.8em;
-		font-family: var(--font-display);
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: -0.01em;
+		font-family: var(--font-arkiv);
+		font-weight: 400;
+		letter-spacing: -0.015em;
 		line-height: 1.05;
 	}
 	.prosa :global(h2) {
@@ -52,24 +49,20 @@
 	.prosa :global(h3) {
 		font-size: clamp(1.1rem, 1.8vw, 1.4rem);
 	}
-	.prosa :global(em) {
-		font-family: var(--font-soft);
-		font-style: italic;
-	}
 	.prosa :global(a) {
-		color: var(--color-carbon);
+		color: var(--color-svart);
 		text-decoration: underline;
 		text-underline-offset: 3px;
 		transition: color 0.2s;
 	}
 	.prosa :global(a:hover) {
-		color: var(--color-kobolt);
+		color: var(--color-grafit);
 	}
 	.prosa :global(blockquote) {
 		margin: 2em 0;
-		border-left: 1px solid var(--color-hairline);
+		border-left: 1px solid var(--color-linje);
 		padding-left: 1.4em;
-		color: var(--color-betong);
+		color: var(--color-grafit);
 	}
 	.prosa :global(ul),
 	.prosa :global(ol) {
@@ -85,7 +78,7 @@
 	.prosa :global(hr) {
 		margin: 3em 0;
 		border: 0;
-		border-top: 1px solid var(--color-hairline);
+		border-top: 1px solid var(--color-linje);
 	}
 	.prosa :global(code) {
 		font-family: var(--font-mono);

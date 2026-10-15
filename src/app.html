@@ -3,27 +3,28 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Nicole Boman — generativ AI på mänskliga villkor. AI-konsult, keynote speaker och utbildare i Stockholm." />
-		<meta name="theme-color" content="#f1f0ec" />
+		<meta name="theme-color" content="#0d0d0d" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.svg" type="image/svg+xml" />
 		<link rel="manifest" href="%sveltekit.assets%/manifest.webmanifest" />
 		<link rel="apple-touch-icon" href="%sveltekit.assets%/favicon.svg" />
 
+		<!-- Scroll-animationer bara när JavaScript körs; annars syns allt direkt -->
 		<script>
-			(function () {
-				try {
-					var storedLang = localStorage.getItem('lang');
-					var lang = storedLang === 'en' || storedLang === 'sv' ? storedLang : 'sv';
-					document.documentElement.setAttribute('lang', lang);
-					document.documentElement.setAttribute('data-lang', lang);
-				} catch (e) {}
-			})();
+			document.documentElement.classList.add('js');
+			// Mörkt läge är standard. Sätts före första renderingen så att sidan inte blinkar vitt.
+			// Bara den som själv valt ljust läge (sparat i localStorage) får ljust.
+			var tema = 'mork';
+			try {
+				if (localStorage.getItem('tema') === 'ljus') tema = 'ljus';
+			} catch (e) {}
+			if (tema === 'mork' && location.pathname.indexOf('/admin') !== 0) document.documentElement.dataset.tema = 'mork';
 		</script>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- Archivo: brödtext. Anton: rubriker (alternativ jämförs i app.css) (väljs i app.css). Familjen Grotesk, Fragment Mono, Instrument Serif: admin. -->
 		<link
-			href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600&family=Fragment+Mono&family=Instrument+Serif:ital@1&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Anton&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Familjen+Grotesk:wght@400;500;600&family=Fragment+Mono&family=Instrument+Serif:ital@1&display=swap"
 			rel="stylesheet"
 		/>
 
