@@ -20,6 +20,7 @@ export const text = {
 		sprakbyte: { etikett: 'SV', namn: 'Svenska', lang: 'sv' },
 		tema: { tillMork: 'Dark mode', tillLjus: 'Light mode' },
 		huvudmeny: 'Main menu',
+		meny: { oppna: 'Menu', stang: 'Close' },
 		nyFlik: '(opens in a new tab)',
 		animation: { pausa: 'Pause animation', spela: 'Play animation' },
 
@@ -29,7 +30,6 @@ export const text = {
 			jagAr: "I'm",
 			ord: ['Nicole Boman', 'an AI consultant', 'an AI educator', 'a keynote speaker'],
 			skarmlasare: "I'm Nicole Boman – AI consultant, AI educator and keynote speaker.",
-			ingress: 'I help organisations and people understand what generative AI actually does, and use it where it matters.',
 			lasVidare: 'Read on',
 			heroAlt: 'Nicole Boman on stage in a leather jacket, gesturing to the audience, black and white',
 
@@ -128,6 +128,7 @@ export const text = {
 		sprakbyte: { etikett: 'EN', namn: 'English', lang: 'en' },
 		tema: { tillMork: 'Mörkt läge', tillLjus: 'Ljust läge' },
 		huvudmeny: 'Huvudmeny',
+		meny: { oppna: 'Meny', stang: 'Stäng' },
 		nyFlik: '(öppnas i en ny flik)',
 		animation: { pausa: 'Pausa animationen', spela: 'Spela animationen' },
 
@@ -137,7 +138,6 @@ export const text = {
 			jagAr: 'Jag är',
 			ord: ['Nicole Boman', 'AI-konsult', 'AI-utbildare', 'Keynote speaker'],
 			skarmlasare: 'Jag är Nicole Boman – AI-konsult, AI-utbildare och keynote speaker.',
-			ingress: 'Jag hjälper organisationer och människor att förstå vad generativ AI faktiskt gör, och att använda den där det spelar roll.',
 			lasVidare: 'Läs vidare',
 			heroAlt: 'Nicole Boman på scen i skinnjacka, gestikulerar mot publiken, svartvitt',
 

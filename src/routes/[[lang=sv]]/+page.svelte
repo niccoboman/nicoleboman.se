@@ -98,23 +98,18 @@
 			{/each}
 		</span>
 	</h1>
-	<div class="mt-8 flex flex-wrap items-end justify-between gap-6 border-t-2 border-svart pt-4">
-		<p class="max-w-[44ch] text-[clamp(1.05rem,1.4vw,1.3rem)] font-medium leading-[1.35]">
-			{t.ingress}
-		</p>
-		<div class="flex items-center gap-6">
-			{#if rorelseTillaten}
-				<button
-					type="button"
-					onclick={() => (pausad = !pausad)}
-					class="etikett streck inline-block cursor-pointer py-1.5 text-svart"
-				>
-					<span aria-hidden="true">{pausad ? '▶' : '❚❚'}</span>
-					{pausad ? g.animation.spela : g.animation.pausa}
-				</button>
-			{/if}
-			<a href="#om" class="etikett streck inline-block py-1.5 text-svart">{t.lasVidare}<span aria-hidden="true">&nbsp;↓</span></a>
-		</div>
+	<div class="mt-8 flex flex-wrap items-center justify-between gap-6 border-t-2 border-svart pt-4">
+		{#if rorelseTillaten}
+			<button
+				type="button"
+				onclick={() => (pausad = !pausad)}
+				class="etikett streck inline-block cursor-pointer py-1.5 text-svart"
+			>
+				<span aria-hidden="true">{pausad ? '▶' : '❚❚'}</span>
+				{pausad ? g.animation.spela : g.animation.pausa}
+			</button>
+		{/if}
+		<a href="#om" class="etikett streck ml-auto inline-block py-1.5 text-svart">{t.lasVidare}<span aria-hidden="true">&nbsp;↓</span></a>
 	</div>
 </section>
 
@@ -146,7 +141,7 @@
 			width="1600"
 			height="2000"
 			loading="lazy"
-			class="aspect-[4/3] w-full object-cover object-[50%_25%] md:aspect-[4/5] md:object-center"
+			class="aspect-[4/5] w-full object-cover"
 		/>
 	</figure>
 	<div class="reveal flex flex-col md:col-span-7 md:pl-[2vw]">

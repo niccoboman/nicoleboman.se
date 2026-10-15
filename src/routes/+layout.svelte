@@ -40,6 +40,21 @@
 		} catch {}
 	}
 
+	// Mobilmenyn: lås sidan bakom, flytta fokus in och tillbaka till knappen när den stängs.
+	let menyOppen = $state(false);
+	let menyKnapp = $state<HTMLButtonElement>();
+	let stangKnapp = $state<HTMLButtonElement>();
+	function stangMeny() {
+		menyOppen = false;
+		// Lås upp direkt, innan länkens hopp körs, annars scrollar sidan inte dit.
+		document.documentElement.style.overflow = '';
+		menyKnapp?.focus({ preventScroll: true });
+	}
+	$effect(() => {
+		document.documentElement.style.overflow = menyOppen ? 'hidden' : '';
+		if (menyOppen) stangKnapp?.focus();
+	});
+
 	// Lägg till TikTok, YouTube m.m. här när kanalerna finns.
 	const kanaler = [
 		{ href: 'https://www.linkedin.com/in/nicoleboman/', label: 'LinkedIn' },
@@ -57,18 +72,26 @@
 			>{t.hoppa}</a
 		>
 
-		<header class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-[clamp(16px,3vw,40px)] pt-5">
+		<header class="flex items-center justify-between gap-x-6 px-[clamp(16px,3vw,40px)] pt-5">
 			<a href={lank(sprak, '/')} class="etikett inline-block whitespace-nowrap py-1.5 text-svart no-underline">Nicole Boman</a>
-			<!-- Mobil: namn + knappar på första raden, menyn på egen rad. Desktop: allt på en rad. -->
-			<nav
-				aria-label={t.huvudmeny}
-				class="order-3 flex w-full flex-wrap gap-x-[clamp(14px,2.4vw,32px)] md:order-none md:ml-auto md:w-auto"
+
+			<!-- Mobil: en knapp som öppnar en helskärmsmeny -->
+			<button
+				bind:this={menyKnapp}
+				type="button"
+				onclick={() => (menyOppen = true)}
+				aria-expanded={menyOppen}
+				aria-controls="mobilmeny"
+				class="etikett streck inline-block cursor-pointer py-1.5 text-svart md:hidden">{t.meny.oppna}</button
 			>
+
+			<!-- Desktop: allt på en rad -->
+			<nav aria-label={t.huvudmeny} class="ml-auto hidden gap-x-[clamp(14px,2.4vw,32px)] md:flex">
 				{#each nav as l (l.href)}
 					<a href={l.href} class="etikett streck inline-block py-1.5 text-svart">{l.label}</a>
 				{/each}
 			</nav>
-			<div class="flex items-center gap-[clamp(14px,2.4vw,32px)]">
+			<div class="hidden items-center gap-[clamp(14px,2.4vw,32px)] md:flex">
 				<!-- Knappens text säger vad som händer, så att synlig text och uppläst namn är samma -->
 				<button
 					type="button"
@@ -86,6 +109,49 @@
 				>
 			</div>
 		</header>
+
+		{#if menyOppen}
+			<div
+				id="mobilmeny"
+				role="dialog"
+				aria-modal="true"
+				aria-label={t.huvudmeny}
+				tabindex="-1"
+				onkeydown={(e) => e.key === 'Escape' && stangMeny()}
+				class="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-krita px-[clamp(16px,3vw,40px)] pb-8 pt-5 md:hidden"
+			>
+				<div class="flex items-center justify-between">
+					<a href={lank(sprak, '/')} onclick={stangMeny} class="etikett inline-block py-1.5 text-svart no-underline">Nicole Boman</a>
+					<button bind:this={stangKnapp} type="button" onclick={stangMeny} class="etikett streck inline-block cursor-pointer py-1.5 text-svart"
+						>{t.meny.stang}</button
+					>
+				</div>
+				<nav aria-label={t.huvudmeny} class="mt-auto">
+					<ul>
+						{#each nav as l (l.href)}
+							<li>
+								<a href={l.href} onclick={stangMeny} class="jatte block py-1 text-[clamp(3.2rem,16vw,6rem)] leading-[1.05] text-svart no-underline"
+									>{l.label}</a
+								>
+							</li>
+						{/each}
+					</ul>
+				</nav>
+				<div class="mt-12 flex items-center justify-between border-t border-svart pt-5">
+					<button type="button" onclick={vaxlaTema} class="etikett streck inline-block cursor-pointer py-1.5 text-svart">
+						{mork ? t.tema.tillLjus : t.tema.tillMork}
+					</button>
+					<a
+						href={andraSprak}
+						onclick={stangMeny}
+						hreflang={t.sprakbyte.lang}
+						lang={t.sprakbyte.lang}
+						class="etikett inline-block border border-svart px-2 py-1 text-svart no-underline"
+						>{t.sprakbyte.etikett}<span class="sr-only"> – {t.sprakbyte.namn}</span></a
+					>
+				</div>
+			</div>
+		{/if}
 
 		<main id="innehall" tabindex="-1" class="outline-none">
 			{@render children()}
