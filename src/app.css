@@ -6,6 +6,7 @@
 	--color-svart: #0b0b0b;
 	--color-grafit: #5f5f5b;
 	--color-linje: #dcdcd8;
+	--color-oxblod: #6e1423;
 
 	--font-arkiv: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
 
@@ -45,9 +46,10 @@
 		scroll-behavior: smooth;
 	}
 
+	/* Markerad text: oxblod med ljus text, samma i båda lägena */
 	::selection {
-		background-color: var(--color-svart);
-		color: var(--color-krita);
+		background-color: var(--color-oxblod);
+		color: #fcfcfa;
 	}
 
 	a:focus-visible,
