@@ -52,6 +52,14 @@
 		color: #fcfcfa;
 	}
 
+	/* Jättetypens radlådor är högre och smalare än bokstäverna, så en markerad bakgrund
+	   blir trappstegig och missar kanter. Där färgas bokstäverna i stället. */
+	.jatte::selection,
+	.jatte *::selection {
+		background-color: transparent;
+		color: var(--color-oxblod);
+	}
+
 	a:focus-visible,
 	button:focus-visible {
 		outline: 2px solid currentColor;
