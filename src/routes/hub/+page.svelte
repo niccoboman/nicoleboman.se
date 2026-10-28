@@ -176,7 +176,6 @@
 		gap: 16px;
 		padding: 10px max(16px, env(safe-area-inset-left));
 		background: var(--color-krita);
-		border-bottom: 1px solid var(--color-linje);
 	}
 	.logo {
 		font-size: 24px;
@@ -232,12 +231,12 @@
 		border: 1px solid var(--color-oxblod);
 	}
 	.vy {
-		max-width: 1100px;
+		max-width: 880px;
 		margin: 0 auto;
-		padding: 24px max(16px, env(safe-area-inset-left)) 80px;
+		padding: 32px max(16px, env(safe-area-inset-left)) 96px;
 		display: flex;
 		flex-direction: column;
-		gap: 32px;
+		gap: 40px;
 	}
 	@media (max-width: 640px) {
 		header {
