@@ -3,19 +3,17 @@ import seed from './seed.json';
 import type { Tables } from './types';
 
 type Name = keyof Tables;
-const NAMES: Name[] = ['hub_pieces', 'hub_bank', 'hub_events', 'hub_todos', 'hub_stats'];
+const NAMES: Name[] = ['hub_pieces', 'hub_events', 'hub_todos'];
 
-// All hubbdata ligger i minnet (det är några hundra rader som mest). I förhandsläget
+// All hubbdata ligger i minnet (några hundra rader som mest). I förhandsläget
 // (?preview=1 lokalt) skrivs inget till Supabase; startdatan används i stället.
 export const hub = $state({
 	ready: false,
 	preview: false,
 	error: '',
 	hub_pieces: [] as Tables['hub_pieces'][],
-	hub_bank: [] as Tables['hub_bank'][],
 	hub_events: [] as Tables['hub_events'][],
-	hub_todos: [] as Tables['hub_todos'][],
-	hub_stats: [] as Tables['hub_stats'][]
+	hub_todos: [] as Tables['hub_todos'][]
 });
 
 const nyttId = () => crypto.randomUUID();

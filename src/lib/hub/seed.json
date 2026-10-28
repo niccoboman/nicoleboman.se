@@ -443,17 +443,11 @@
    "typ": "film",
    "format": "ratt",
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "",
    "anteckning": "Första filmen. Filmas mån 2 nov.",
    "fil": null,
-   "projekt": null,
    "planerad": "2026-11-03T17:00:00+01:00",
    "postad": null,
-   "siffror": {},
    "titel": "Varför jag startar det här kontot"
   },
   {
@@ -461,17 +455,11 @@
    "typ": "film",
    "format": "klippt",
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "",
    "anteckning": "Säger \"länk i kommentarerna\" – på TikTok behövs studiosten.se. Datumet 10 nov: kolla Bonnier-krocken.",
    "fil": "~/Desktop/workshop_djupet_utan_online_v1.mp4",
-   "projekt": "2026-10-21-ai-agenter-pa-djupet",
    "planerad": "2026-11-04T17:00:00+01:00",
    "postad": null,
-   "siffror": {},
    "titel": "AI-agenter på djupet: följ med på workshopen"
   },
   {
@@ -479,17 +467,11 @@
    "typ": "film",
    "format": "folj_med",
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": "2026-11-10T17:00:00+01:00",
    "postad": null,
-   "siffror": {},
    "titel": "Jag reser till New York för en AI-konferens"
   },
   {
@@ -497,17 +479,11 @@
    "typ": "film",
    "format": "ratt",
    "pelare": "omdome",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": "2026-11-11T17:00:00+01:00",
    "postad": null,
-   "siffror": {},
    "titel": "Det de pratade om på Thesis som ingen pratar om i Sverige"
   },
   {
@@ -515,17 +491,11 @@
    "typ": "film",
    "format": "ratt",
    "pelare": "agenter",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": "2026-11-12T17:00:00+01:00",
    "postad": null,
-   "siffror": {},
    "titel": "Den här filmen klipptes på planet av min AI-anställda"
   },
   {
@@ -533,17 +503,11 @@
    "typ": "film",
    "format": "ratt",
    "pelare": "omdome",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Det jag inte höll med om på Thesis"
   },
   {
@@ -551,18 +515,11 @@
    "typ": "film",
    "format": "klippt",
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels",
-    "linkedin"
-   ],
    "text": "",
    "anteckning": "B-roll filmas 18 nov.",
    "fil": null,
-   "projekt": null,
    "planerad": "2026-11-25T17:00:00+01:00",
    "postad": null,
-   "siffror": {},
    "titel": "Kursfilm: Djupet Del 2"
   },
   {
@@ -570,18 +527,11 @@
    "typ": "film",
    "format": "klippt",
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels",
-    "linkedin"
-   ],
    "text": "",
    "anteckning": "Fråga arrangören innan du filmar.",
    "fil": null,
-   "projekt": null,
    "planerad": "2026-12-09T17:00:00+01:00",
    "postad": null,
-   "siffror": {},
    "titel": "Kursfilm: AI-agenter 1 dec eller Business Women 2 dec"
   },
   {
@@ -589,18 +539,11 @@
    "typ": "film",
    "format": "klippt",
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels",
-    "linkedin"
-   ],
    "text": "",
    "anteckning": "B-roll 17 dec, ut första veckan i januari.",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Kursfilm: Djupet Del 2 i december"
   },
   {
@@ -608,16 +551,11 @@
    "typ": "inlagg",
    "format": "text",
    "pelare": null,
-   "kanaler": [
-    "linkedin"
-   ],
    "text": "",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": "2026-11-10T07:30:00+01:00",
    "postad": null,
-   "siffror": {},
    "titel": "LinkedIn: Thesis i New York"
   },
   {
@@ -625,17 +563,11 @@
    "typ": "film",
    "format": null,
    "pelare": "omdome",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "",
    "anteckning": "Krok i serien Frågan före verktyget",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "En vd frågade vilken AI de skulle köpa. Jag svarade med en annan fråga."
   },
   {
@@ -643,17 +575,11 @@
    "typ": "film",
    "format": null,
    "pelare": "omdome",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "",
    "anteckning": "Krok i serien Frågan före verktyget",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Det första en ledningsgrupp frågar mig är aldrig vilket verktyg. Det är vem som får säga nej."
   },
   {
@@ -661,17 +587,11 @@
    "typ": "film",
    "format": null,
    "pelare": "omdome",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "",
    "anteckning": "Krok i serien Frågan före verktyget",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "En ledningsgrupp frågade mig: ska vi förbjuda ChatGPT? Här är vad jag svarade."
   },
   {
@@ -679,17 +599,11 @@
    "typ": "film",
    "format": null,
    "pelare": "omdome",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "\"Myt: en AI-agent är bara en chattbot.\" Koppla varje myt till ett beslut.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Agent-myter"
   },
   {
@@ -697,17 +611,11 @@
    "typ": "film",
    "format": null,
    "pelare": "omdome",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "\"Er AI-policy förbjuder förmodligen det som era medarbetare redan gör varje dag.\"",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Er AI-policy"
   },
   {
@@ -715,17 +623,11 @@
    "typ": "film",
    "format": null,
    "pelare": "omdome",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "\"Sluta köpa AI-licenser om ni vill att folk ska använda AI.\"",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Tvärtom"
   },
   {
@@ -733,17 +635,11 @@
    "typ": "film",
    "format": null,
    "pelare": "omdome",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "Vad andra AI-röster missar eller har fel om (stitcha gärna).",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Det ingen i Sverige säger om AI"
   },
   {
@@ -751,17 +647,11 @@
    "typ": "film",
    "format": null,
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "(klippt film). Händer, skärmar, ryggar, hennes röst.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Kursdag bakom kulisserna"
   },
   {
@@ -769,17 +659,11 @@
    "typ": "film",
    "format": null,
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "\"Mitt jobb fanns inte för tre år sen. Så här ser en vecka ut.\"",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Vad en AI-rådgivare faktiskt gör"
   },
   {
@@ -787,17 +671,11 @@
    "typ": "film",
    "format": null,
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "\"Så här ser de första 20 minuterna ut när jag kommer till ett företag som inte vet var de ska börja med AI.\"",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "De första 20 minuterna"
   },
   {
@@ -805,17 +683,11 @@
    "typ": "film",
    "format": null,
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "Efter varje kurs: den vanligaste frågan, besvarad i bilen hem.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Frågan alla deltagare ställer"
   },
   {
@@ -823,17 +695,11 @@
    "typ": "film",
    "format": null,
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "30–60 s från scen. Kräver att någon filmar.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Keynote-utdrag"
   },
   {
@@ -841,17 +707,11 @@
    "typ": "film",
    "format": null,
    "pelare": "jobbet",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "\"Klockan nio trodde hon att agenter var magi. Klockan tre hade hon byggt en.\" Kräver samtycke.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Från magi till byggt"
   },
   {
@@ -859,17 +719,11 @@
    "typ": "film",
    "format": null,
    "pelare": "agenter",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "\"Det här mejlet skrev en AI-agent åt mig i morse, och jag har inte rört det.\"",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Mejlet agenten skrev"
   },
   {
@@ -877,17 +731,11 @@
    "typ": "film",
    "format": null,
    "pelare": "agenter",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "Var det gick fel och var hon satte stopp.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Jag gav en agent min inkorg"
   },
   {
@@ -895,17 +743,11 @@
    "typ": "film",
    "format": null,
    "pelare": "agenter",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "Hur hon låter AI ta det hennes hjärna inte vill hålla i.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "ADHD och agenter"
   },
   {
@@ -913,17 +755,11 @@
    "typ": "film",
    "format": null,
    "pelare": "agenter",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "Röstverktygen.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Jag skriver inte längre, jag pratar"
   },
   {
@@ -931,17 +767,11 @@
    "typ": "film",
    "format": null,
    "pelare": "skarm",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "\"Jag automatiserar åt företag. Här är tre saker jag vägrar automatisera.\"",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Det jag vägrar automatisera"
   },
   {
@@ -949,17 +779,11 @@
    "typ": "film",
    "format": null,
    "pelare": "skarm",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "Promenaden där jobbet blir gjort.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "En arbetsdag utan skärm"
   },
   {
@@ -967,17 +791,11 @@
    "typ": "film",
    "format": null,
    "pelare": "skarm",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "Före och efter, och var gränsen går.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Låt AI skriva som du"
   },
   {
@@ -985,104 +803,48 @@
    "typ": "film",
    "format": null,
    "pelare": "skarm",
-   "kanaler": [
-    "tiktok",
-    "reels"
-   ],
    "text": "Ett råt samtal på promenad om det som inte ska optimeras.",
    "anteckning": "",
    "fil": null,
-   "projekt": null,
    "planerad": null,
    "postad": null,
-   "siffror": {},
    "titel": "Det som måste få ta tid"
   },
   {
    "status": "schemalagd",
    "typ": "inlagg",
-   "format": "video",
+   "format": "text",
    "pelare": null,
-   "kanaler": [
-    "linkedin"
-   ],
    "text": "Vi på Studio Stén är äntligen igång igen med AI-agenter på Djupet! 🙌\n\nFörra veckan körde vi första tillfället, på Djupet hos Knackeriet Coworking på Södermalm. Så här såg dagen ut: ner för trappan, in i det rosa ljuset och sen byggde alla sina egna verktyg och lösningar.\n\nTUMMI stod för drycken, så det fanns alltid något att smutta på medan agenterna jobbade.\n\nNästa tillfälle i Stockholm är 10 november. Och dagen efter, 11 november, kör vi Del 1 online för första gången - SÅ TAGGAD! Länk i kommentarerna.\n\nKarin Hamberg Stén Cronja Hultin, vad ser ni mest fram emot till nästa gång?",
    "anteckning": "Bygga själv · Bevis · Byt stycket om online 11 nov innan det går ut",
    "fil": null,
-   "projekt": null,
    "planerad": "2026-10-28T07:30:00+01:00",
    "postad": null,
-   "siffror": {},
    "titel": "Workshopvideo AI-agenter på djupet"
   },
   {
    "status": "ute",
    "typ": "inlagg",
-   "format": "bild",
+   "format": "text",
    "pelare": null,
-   "kanaler": [
-    "linkedin"
-   ],
    "text": "För ett par veckor sedan stod jag på catwalken i Kulturhuset och undrade: hur hamnade jag här? Jag jobbar ju med AI. Och är inte direkt lång som en modell...\n\nJag pratade AI med Sveriges frisörer på Redken On Tour. Hårshow, DJ, champagne. Och mitt på catwalken: en föreläsning om hur AI ger dem mer tid i stolen och mindre tid i telefonen.\n\nFrisörer är experter på det AI aldrig kommer att göra. Händerna i håret, samtalet med kunden. Men de är inte bara frisörer längre. De flesta är content creators också, och sköter bokningar, planering och inlägg till Instagram vid sidan av kunden i stolen.\n\nAllt det runtomkring kan lämnas över, eller i alla fall automatiseras med AI och agenter.\n\nDet är så jag ser på AI: den ska ta skärmtiden, så att vi får tillbaka tiden med människor.\n\n10 oktober fortsätter catwalkkarriären i Oslo. 🖤\n\nStudio Stén L'Oréal\n\nFoto: GLIDEPHOTOS och Gustaf Kumlin",
    "anteckning": "Från skärm till samtal · Bevis",
    "fil": null,
-   "projekt": null,
    "planerad": "2026-10-01T07:30:00+02:00",
    "postad": "2026-10-01T07:30:00+02:00",
-   "siffror": {},
    "titel": "Redken On Tour, frisörer"
   },
   {
    "status": "ute",
    "typ": "inlagg",
-   "format": "bild",
+   "format": "text",
    "pelare": null,
-   "kanaler": [
-    "linkedin"
-   ],
    "text": "\"Fail-fika.\" ☕\n\nDet föreslog en deltagare på den senaste kursen i AI-driven transformation, som jag tillsammans med Studio Stén håller med Bonnier Akademi. En fika där man bara pratar om misstagen man har gjort.\n\nJag blev så glad. För det sätter fingret på något jag möter på nästan varje kurs.\n\nVi svenskar har (generellt) en tendens att tycka att om någon annan gör jobbet åt oss så har vi fuskat. Jag har grävt, jag har plockat upp min potatis och jag har sköljt av den själv. Först då räknas den. Få av oss plockar potatis i dag. Men stoltheten i att ha gjort det själv sitter kvar.\n\nSamma känsla dyker upp med AI. Folk vet att de skulle kunna använda det till en uppgift, men vågar inte säga det högt. Kommer någon tro att jag fuskar? Så man sitter tyst med sin privata ChatGPT, Claude eller dylikt under bordet.\n\nJag känner igen mig själv i det, från när jag var yngre. Jag avskydde att räcka upp handen och be om hjälp. Jag ville inte behöva någon, eller något.\n\nDet som får folk att våga är när någon börjar prata om det högt. Gärna om det som inte funkade. Ett misstag som delas över en fika gör mer för en AI-satsning än ännu en policy.",
-   "anteckning": "AI i verkligheten · Från klassrummet",
+   "anteckning": "AI i verkligheten · Från klassrummet · 158 visningar, 10 reaktioner, 1 kommentarer",
    "fil": null,
-   "projekt": null,
    "planerad": "2026-09-29T07:30:00+02:00",
    "postad": "2026-09-29T07:30:00+02:00",
-   "siffror": {
-    "visningar": 158,
-    "reaktioner": 10,
-    "kommentarer": 1
-   },
    "titel": "Fail-fika och tyst AI-användning"
-  }
- ],
- "hub_bank": [
-  {
-   "beskrivning": "B-roll från Djupet Del 1: trappan, rosa rummet, händer vid tangentbord",
-   "plats": "~/Downloads/IMG_1021–1026",
-   "projekt": "2026-10-21-ai-agenter-pa-djupet",
-   "filmad": "2026-10-21",
-   "taggar": [
-    "broll",
-    "djupet"
-   ],
-   "anvand": true
-  },
-  {
-   "beskrivning": "Tagningar från Djupet Del 1, inklusive oanvända repliker",
-   "plats": "~/Downloads/IMG_1083–1109",
-   "projekt": "2026-10-21-ai-agenter-pa-djupet",
-   "filmad": "2026-10-21",
-   "taggar": [
-    "tagningar",
-    "djupet"
-   ],
-   "anvand": false
-  }
- ],
- "hub_stats": [
-  {
-   "datum": "2026-10-28",
-   "kanal": "tiktok",
-   "foljare": 0
   }
  ]
 }

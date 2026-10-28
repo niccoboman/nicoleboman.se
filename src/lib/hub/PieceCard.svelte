@@ -1,29 +1,24 @@
 <script lang="ts">
 	import type { Piece } from './types';
-	import { STATUS, PELARE, FORMAT, KANALER, namnFor } from './types';
+	import { PELARE, namnFor, nastaSteg } from './types';
 	import { tidpunkt } from './datum';
 	import { andra } from './store.svelte';
 
 	let { piece, oppna }: { piece: Piece; oppna: (p: Piece) => void } = $props();
 
-	// Inlägg filmas och klipps inte, så de hoppar direkt till schemalagd.
-	const steg = $derived(
-		STATUS.filter((s) => piece.typ === 'film' || !['filmad', 'klippt'].includes(s.id))
+	const nasta = $derived(nastaSteg(piece));
+	const meta = $derived(
+		[piece.planerad && tidpunkt(piece.planerad), piece.typ === 'inlagg' ? 'LinkedIn' : namnFor(PELARE, piece.pelare)]
+			.filter(Boolean)
+			.join(' · ')
 	);
-	const nasta = $derived(steg[steg.findIndex((s) => s.id === piece.status) + 1]);
 </script>
 
 <article class="kort" class:ute={piece.status === 'ute'}>
 	<button class="titel" type="button" onclick={() => oppna(piece)}>{piece.titel}</button>
-	<div class="meta">
-		{#if piece.planerad}<span class="chip smor">{tidpunkt(piece.planerad)}</span>{/if}
-		{#if piece.pelare}<span class="chip">{namnFor(PELARE, piece.pelare)}</span>{/if}
-		{#if piece.format}<span class="chip">{namnFor(FORMAT, piece.format)}</span>{/if}
-		{#each piece.kanaler as k (k)}<span class="chip">{namnFor(KANALER, k)}</span>{/each}
-	</div>
-	{#if piece.anteckning}<p class="ant">{piece.anteckning}</p>{/if}
+	{#if meta}<p class="meta">{meta}</p>{/if}
 	{#if nasta}
-		<button class="knapp liten" type="button" onclick={() => andra('hub_pieces', piece.id, { status: nasta.id })}>
+		<button class="steg" type="button" onclick={() => andra('hub_pieces', piece.id, { status: nasta.id, ...(nasta.id === 'ute' ? { postad: new Date().toISOString() } : {}) })}>
 			{nasta.namn} <span aria-hidden="true">→</span>
 		</button>
 	{/if}
@@ -33,13 +28,14 @@
 	.kort {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-		padding: 12px;
+		gap: 6px;
+		padding: 14px;
 		background: var(--kort);
-		border: 1px solid var(--color-linje);
+		border-left: 3px solid var(--smor-linje);
 	}
 	.kort.ute {
-		opacity: 0.75;
+		border-left-color: var(--color-linje);
+		opacity: 0.6;
 	}
 	.titel {
 		all: unset;
@@ -50,17 +46,28 @@
 	.titel:hover {
 		text-decoration: underline;
 	}
-	.meta {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 4px;
+	.titel:focus-visible,
+	.steg:focus-visible {
+		outline: 2px solid var(--color-oxblod);
+		outline-offset: 2px;
 	}
-	.ant {
+	.meta {
 		margin: 0;
 		font-size: 14px;
 		color: var(--color-grafit);
 	}
-	.knapp {
+	.steg {
 		align-self: flex-start;
+		margin-top: 2px;
+		background: none;
+		border: 0;
+		padding: 4px 0;
+		font-size: 14px;
+		font-weight: 700;
+		cursor: pointer;
+		color: var(--color-svart);
+	}
+	.steg:hover {
+		text-decoration: underline;
 	}
 </style>

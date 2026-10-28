@@ -9,18 +9,12 @@
 	import Nu from '$lib/hub/Nu.svelte';
 	import Ideer from '$lib/hub/Ideer.svelte';
 	import Pipeline from '$lib/hub/Pipeline.svelte';
-	import Bank from '$lib/hub/Bank.svelte';
-	import Siffror from '$lib/hub/Siffror.svelte';
-	import Guide from '$lib/hub/Guide.svelte';
 	import PieceEditor from '$lib/hub/PieceEditor.svelte';
 
 	const VYER = [
 		{ id: 'nu', namn: 'Nu' },
 		{ id: 'ideer', namn: 'Idéer' },
-		{ id: 'pipeline', namn: 'Pipeline' },
-		{ id: 'bank', namn: 'Bank' },
-		{ id: 'siffror', namn: 'Siffror' },
-		{ id: 'guide', namn: 'Guide' }
+		{ id: 'pipeline', namn: 'Pipeline' }
 	] as const;
 	type Vy = (typeof VYER)[number]['id'];
 
@@ -141,17 +135,11 @@
 			{#if !hub.ready}
 				<p class="tom">Laddar…</p>
 			{:else if vy === 'nu'}
-				<Nu oppna={(p) => (oppen = p)} />
+				<Nu oppna={(p) => (oppen = p)} tillIdeer={() => byt('ideer')} />
 			{:else if vy === 'ideer'}
 				<Ideer oppna={(p) => (oppen = p)} />
-			{:else if vy === 'pipeline'}
-				<Pipeline oppna={(p) => (oppen = p)} />
-			{:else if vy === 'bank'}
-				<Bank />
-			{:else if vy === 'siffror'}
-				<Siffror oppna={(p) => (oppen = p)} />
 			{:else}
-				<Guide />
+				<Pipeline oppna={(p) => (oppen = p)} />
 			{/if}
 		</main>
 

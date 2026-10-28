@@ -2,6 +2,8 @@
 .hub {
 	--smor: #f8e4a0;
 	--smor-text: #17150f;
+	/* Gult som linje/kant: mörkare i ljust läge så att det syns mot kritvitt */
+	--smor-linje: #c9a227;
 	--kort: color-mix(in srgb, var(--color-svart) 4%, var(--color-krita));
 	min-height: 100dvh;
 	background: var(--color-krita);
@@ -99,4 +101,8 @@
 	overflow: hidden;
 	clip: rect(0 0 0 0);
 	white-space: nowrap;
+}
+
+:root[data-tema='mork'] .hub {
+	--smor-linje: var(--smor);
 }
