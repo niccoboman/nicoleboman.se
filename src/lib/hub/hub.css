@@ -1,0 +1,102 @@
+/* Hubben: samma kritvita/svarta palett som sajten (följer mörkt läge), plus smörgult för "nu". */
+.hub {
+	--smor: #f8e4a0;
+	--smor-text: #17150f;
+	--kort: color-mix(in srgb, var(--color-svart) 4%, var(--color-krita));
+	min-height: 100dvh;
+	background: var(--color-krita);
+	color: var(--color-svart);
+	font-family: var(--font-arkiv);
+	font-size: 17px;
+	line-height: 1.5;
+}
+.hub h1,
+.hub h2,
+.hub h3 {
+	margin: 0;
+	text-wrap: balance;
+}
+.hub .rubrik {
+	font-family: 'Anton', 'Archivo', sans-serif;
+	font-weight: 400;
+	text-transform: uppercase;
+	line-height: 1.05;
+}
+.hub .etikett {
+	color: var(--color-grafit);
+}
+.hub .dampad {
+	color: var(--color-grafit);
+}
+.hub button,
+.hub input,
+.hub textarea,
+.hub select {
+	font: inherit;
+	color: inherit;
+}
+.hub .knapp {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 40px;
+	padding: 6px 14px;
+	border: 1px solid var(--color-svart);
+	background: transparent;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 15px;
+}
+.hub .knapp:hover {
+	background: var(--color-svart);
+	color: var(--color-krita);
+}
+.hub .knapp.fylld {
+	background: var(--color-svart);
+	color: var(--color-krita);
+}
+.hub .knapp.liten {
+	min-height: 32px;
+	padding: 2px 10px;
+	font-size: 14px;
+}
+.hub .falt {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid var(--color-linje);
+	background: var(--kort);
+	border-radius: 0;
+}
+.hub .falt:focus-visible,
+.hub .knapp:focus-visible,
+.hub button:focus-visible,
+.hub a:focus-visible {
+	outline: 2px solid var(--color-oxblod);
+	outline-offset: 2px;
+}
+.hub .chip {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 600;
+	padding: 1px 7px;
+	border: 1px solid var(--color-linje);
+	white-space: nowrap;
+}
+.hub .chip.smor {
+	background: var(--smor);
+	border-color: var(--smor);
+	color: var(--smor-text);
+}
+.hub .tom {
+	color: var(--color-grafit);
+	font-size: 15px;
+	padding: 8px 0;
+}
+.hub .sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}

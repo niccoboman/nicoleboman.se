@@ -10,17 +10,9 @@
 
 	--font-arkiv: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
 
-	/* Admin (Galleriet-paletten) – används av /admin, låt stå */
-	--color-gesso: #f1f0ec;
-	--color-carbon: #141311;
-	--color-betong: #8a8780;
-	--color-kobolt: #0047ab;
-	--color-vin: #4a1220;
-	--color-hairline: #d9d7d0;
-	--font-sans: 'Familjen Grotesk', system-ui, sans-serif;
-	--font-display: 'Familjen Grotesk', system-ui, sans-serif;
+	--font-sans: var(--font-arkiv);
+	/* Kodblocken i /texter */
 	--font-mono: 'Fragment Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-	--font-soft: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
 }
 
 /* Mörkt läge: samma sida, inverterad. Sätts via data-tema="mork" på <html> (se app.html och layouten). */
@@ -94,18 +86,6 @@
 	}
 	.streck:hover {
 		background-size: 100% 1px;
-	}
-
-	/* Admin använder dessa två */
-	.font-soft {
-		font-family: var(--font-soft);
-		font-style: italic;
-	}
-	.mono-label {
-		font-family: var(--font-mono);
-		font-size: 0.68rem;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
 	}
 
 	/* Scroll-reveals – use:reveal sätter data-inview */

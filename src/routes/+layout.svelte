@@ -8,7 +8,7 @@
 
 	let { children } = $props();
 
-	const isAdmin = $derived(page.url.pathname.startsWith('/admin'));
+	const isHub = $derived(page.url.pathname.startsWith('/hub'));
 
 	const sprak = $derived(sprakFran(page.params.lang));
 	const t = $derived(text[sprak]);
@@ -62,7 +62,7 @@
 	];
 </script>
 
-{#if isAdmin}
+{#if isHub}
 	{@render children()}
 {:else}
 	<div class="font-arkiv">

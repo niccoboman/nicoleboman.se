@@ -17,14 +17,14 @@
 			try {
 				if (localStorage.getItem('tema') === 'ljus') tema = 'ljus';
 			} catch (e) {}
-			if (tema === 'mork' && location.pathname.indexOf('/admin') !== 0) document.documentElement.dataset.tema = 'mork';
+			if (tema === 'mork') document.documentElement.dataset.tema = 'mork';
 		</script>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<!-- Archivo: brödtext. Anton: rubriker (alternativ jämförs i app.css) (väljs i app.css). Familjen Grotesk, Fragment Mono, Instrument Serif: admin. -->
+		<!-- Archivo: brödtext. Anton: rubriker. -->
 		<link
-			href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Anton&family=Familjen+Grotesk:wght@400;500;600&family=Fragment+Mono&family=Instrument+Serif:ital@1&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Anton&family=Fragment+Mono&display=swap"
 			rel="stylesheet"
 		/>
 
