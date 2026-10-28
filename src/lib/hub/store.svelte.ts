@@ -16,6 +16,29 @@ export const hub = $state({
 	hub_todos: [] as Tables['hub_todos'][]
 });
 
+// Senaste stegändringen, så att den går att ångra en stund efteråt
+export const angra = $state({ text: '', gor: null as null | (() => Promise<void>) });
+let angraTimer: ReturnType<typeof setTimeout> | undefined;
+
+/** Flytta en film eller ett inlägg ett steg, med möjlighet att ångra. */
+export async function stega(id: string, status: Tables['hub_pieces']['status'], namn: string) {
+	const rad = hub.hub_pieces.find((r) => r.id === id);
+	if (!rad) return;
+	const fore = { status: rad.status, postad: rad.postad };
+	await andra('hub_pieces', id, { status, ...(status === 'ute' ? { postad: new Date().toISOString() } : {}) });
+	clearTimeout(angraTimer);
+	angra.text = `Markerad som ${namn.toLowerCase()}.`;
+	angra.gor = async () => {
+		angra.gor = null;
+		angra.text = '';
+		await andra('hub_pieces', id, fore);
+	};
+	angraTimer = setTimeout(() => {
+		angra.gor = null;
+		angra.text = '';
+	}, 8000);
+}
+
 const nyttId = () => crypto.randomUUID();
 const nu = () => new Date().toISOString();
 

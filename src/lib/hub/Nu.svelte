@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Piece } from './types';
 	import { MAL, nastaSteg } from './types';
-	import { hub, lagg, andra } from './store.svelte';
+	import { hub, lagg, andra, stega } from './store.svelte';
 	import { iso, fran, mandag, plusDagar, kort, dagnamn, iVeckan, tidpunkt } from './datum';
 
 	let { oppna, tillIdeer }: { oppna: (p: Piece) => void; tillIdeer: () => void } = $props();
@@ -70,7 +70,7 @@
 				<button
 					type="button"
 					class="hero-knapp"
-					onclick={() => andra('hub_pieces', nasta.id, { status: steg.id, ...(steg.id === 'ute' ? { postad: new Date().toISOString() } : {}) })}
+					onclick={() => stega(nasta.id, steg.id, steg.namn)}
 					>Markera som {steg.namn.toLowerCase()}</button
 				>
 			{/if}

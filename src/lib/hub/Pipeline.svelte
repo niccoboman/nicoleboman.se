@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Piece } from './types';
 	import { STATUS, namnFor, nastaSteg } from './types';
-	import { hub, andra } from './store.svelte';
+	import { hub, stega } from './store.svelte';
 	import { dagnamn, kort } from './datum';
 
 	let { oppna }: { oppna: (p: Piece) => void } = $props();
@@ -37,7 +37,7 @@
 			<span class="status">
 				<span class="pill" data-status={p.status}>{p.status === 'ide' ? 'Ej filmad' : namnFor(STATUS, p.status)}</span>
 				{#if nasta}
-					<button type="button" class="steg" onclick={() => andra('hub_pieces', p.id, { status: nasta.id, ...(nasta.id === 'ute' ? { postad: new Date().toISOString() } : {}) })}
+					<button type="button" class="steg" onclick={() => stega(p.id, nasta.id, nasta.namn)}
 						>→ {nasta.namn.toLowerCase()}</button
 					>
 				{/if}

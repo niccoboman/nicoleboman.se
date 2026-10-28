@@ -4,7 +4,7 @@
 	import { dev } from '$app/environment';
 	import type { Session } from '@supabase/supabase-js';
 	import { supabase } from '$lib/hub/supabase';
-	import { hub, ladda } from '$lib/hub/store.svelte';
+	import { hub, ladda, angra } from '$lib/hub/store.svelte';
 	import type { Piece } from '$lib/hub/types';
 	import Nu from '$lib/hub/Nu.svelte';
 	import Ideer from '$lib/hub/Ideer.svelte';
@@ -144,6 +144,13 @@
 		</main>
 
 		<PieceEditor piece={oppen} stang={() => (oppen = null)} />
+
+		<div class="angra" aria-live="polite">
+			{#if angra.gor}
+				<span>{angra.text}</span>
+				<button type="button" onclick={() => angra.gor?.()}>Ångra</button>
+			{/if}
+		</div>
 	{/if}
 </div>
 
@@ -237,6 +244,32 @@
 		display: flex;
 		flex-direction: column;
 		gap: 40px;
+	}
+	.angra {
+		position: fixed;
+		left: 50%;
+		bottom: max(20px, env(safe-area-inset-bottom));
+		transform: translateX(-50%);
+		z-index: 20;
+	}
+	.angra:not(:empty) {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding: 12px 18px;
+		background: #17150f;
+		color: #f6f3ea;
+		box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
+		white-space: nowrap;
+	}
+	.angra button {
+		background: var(--smor);
+		color: #17150f;
+		border: 0;
+		padding: 6px 14px;
+		min-height: 36px;
+		font-weight: 700;
+		cursor: pointer;
 	}
 	@media (max-width: 640px) {
 		header {
