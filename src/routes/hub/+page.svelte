@@ -9,10 +9,12 @@
 	import Nu from '$lib/hub/Nu.svelte';
 	import Ideer from '$lib/hub/Ideer.svelte';
 	import Pipeline from '$lib/hub/Pipeline.svelte';
+	import AttGora from '$lib/hub/AttGora.svelte';
 	import PieceEditor from '$lib/hub/PieceEditor.svelte';
 
 	const VYER = [
 		{ id: 'nu', namn: 'Nu' },
+		{ id: 'gora', namn: 'Att göra' },
 		{ id: 'ideer', namn: 'Idéer' },
 		{ id: 'pipeline', namn: 'Pipeline' }
 	] as const;
@@ -123,7 +125,7 @@
 				{/each}
 			</nav>
 			{#if hub.preview}
-				<span class="chip smor">Förhandsläge</span>
+				<span class="chip accent">Förhandsläge</span>
 			{:else}
 				<button type="button" class="ut" onclick={loggaUt}>Logga ut</button>
 			{/if}
@@ -135,7 +137,9 @@
 			{#if !hub.ready}
 				<p class="tom">Laddar…</p>
 			{:else if vy === 'nu'}
-				<Nu oppna={(p) => (oppen = p)} tillIdeer={() => byt('ideer')} />
+				<Nu oppna={(p) => (oppen = p)} tillIdeer={() => byt('ideer')} tillAttGora={() => byt('gora')} />
+			{:else if vy === 'gora'}
+				<AttGora oppna={(p) => (oppen = p)} />
 			{:else if vy === 'ideer'}
 				<Ideer oppna={(p) => (oppen = p)} />
 			{:else}
@@ -218,8 +222,8 @@
 		margin-left: 6px;
 		min-width: 20px;
 		padding: 0 5px;
-		background: var(--smor);
-		color: var(--smor-text);
+		background: var(--accent);
+		color: var(--accent-text);
 		font-size: 12px;
 		font-weight: 800;
 		text-align: center;
@@ -266,7 +270,7 @@
 		white-space: nowrap;
 	}
 	.angra button {
-		background: var(--smor);
+		background: var(--accent);
 		color: #17150f;
 		border: 0;
 		padding: 6px 14px;

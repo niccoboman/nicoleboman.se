@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { Piece } from './types';
 	import { MAL, MANIFEST, PELARE, namnFor, nastaSteg, pelarFarg, plattform } from './types';
-	import { hub, lagg, andra, stega } from './store.svelte';
+	import { hub, stega } from './store.svelte';
 	import { iso, fran, mandag, plusDagar, kort, dagnamn, iVeckan, tidpunkt } from './datum';
 
-	let { oppna, tillIdeer }: { oppna: (p: Piece) => void; tillIdeer: () => void } = $props();
+	let { oppna, tillIdeer, tillAttGora }: { oppna: (p: Piece) => void; tillIdeer: () => void; tillAttGora: () => void } = $props();
 
 	const DAGAR = ['söndag', 'måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag'];
 	const MANADER = ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december'];
@@ -25,12 +25,12 @@
 	const paVag = $derived(filmer.filter((p) => p.status !== 'ute' && p.planerad).length);
 	const dagarKvar = Math.max(0, Math.ceil((fran(MAL.datum).getTime() - Date.now()) / 86400000));
 
-	// Veckans att göra: bara de tre närmaste som inte är klara syns
-	const todos = $derived(hub.hub_todos.filter((t) => t.vecka === iso(vecka)).sort((a, b) => a.sort - b.sort));
-	const kvar = $derived(todos.filter((t) => !t.klar));
-	const klara = $derived(todos.length - kvar.length);
-	let visaAlla = $state(false);
-	const synliga = $derived(visaAlla ? kvar : kvar.slice(0, 3));
+	// Hur mycket som väntar i Att göra: egna punkter kvar + innehåll som ska ut inom två veckor och väntar på ett steg
+	const grans = iso(plusDagar(nu, 14));
+	const attGora = $derived(
+		hub.hub_todos.filter((t) => t.vecka === iso(vecka) && !t.klar).length +
+			hub.hub_pieces.filter((p) => p.planerad && p.planerad.slice(0, 10) <= grans && ['ide', 'filmad', 'klippt'].includes(p.status)).length
+	);
 
 	const veckan = $derived(
 		hub.hub_events.filter((e) => iVeckan(vecka, e.datum, e.slut) && e.typ !== 'kontroll').sort((a, b) => a.datum.localeCompare(b.datum))
@@ -43,14 +43,6 @@
 			.map((e) => (e.typ === 'filmblock' ? `filmblock ${dagnamn(fran(e.datum))}` : e.titel.split(',')[0]))
 			.join(', ')
 	);
-
-	let ny = $state('');
-	async function laggTill(e: SubmitEvent) {
-		e.preventDefault();
-		if (!ny.trim()) return;
-		await lagg('hub_todos', { vecka: iso(vecka), dag: '', text: ny.trim(), klar: false, sort: todos.length });
-		ny = '';
-	}
 
 	const dagText = (e: { datum: string; slut: string | null }) =>
 		e.slut && e.slut !== e.datum ? `${dagnamn(fran(e.datum))}–${dagnamn(fran(e.slut))}` : `${dagnamn(fran(e.datum))} ${fran(e.datum).getDate()}`;
@@ -65,7 +57,7 @@
 	{#each MANIFEST as stycke, i (i)}<p class:forsta={i === 0}>{stycke}</p>{/each}
 </section>
 
-<section class="hero" aria-labelledby="nasta" style:--pf={nasta ? pelarFarg(nasta.pelare) : 'var(--smor-linje)'}>
+<section class="hero" aria-labelledby="nasta" style:--pf={nasta ? pelarFarg(nasta.pelare) : 'var(--accent-linje)'}>
 	<div class="hero-inner">
 		{#if nasta}
 			<p class="eyebrow">Nästa ut · {tidpunkt(nasta.planerad)}</p>
@@ -106,27 +98,9 @@
 	{/if}
 	{#if ledig}<p class="mjuk">Ledigt. Vila räknas också.</p>{/if}
 
-	<ul class="todo">
-		{#each synliga as t (t.id)}
-			<li>
-				<label>
-					<input type="checkbox" checked={t.klar} onchange={(e) => andra('hub_todos', t.id, { klar: e.currentTarget.checked })} />
-					<span>{t.text}{#if t.dag}<small> · {t.dag.toLowerCase()}</small>{/if}</span>
-				</label>
-			</li>
-		{/each}
-	</ul>
-	{#if kvar.length > 3}
-		<button type="button" class="lank" onclick={() => (visaAlla = !visaAlla)}>{visaAlla ? 'Visa färre' : `Visa alla ${kvar.length}`}</button>
-	{/if}
-	{#if todos.length && !kvar.length}
-		<p class="klart serif">Klart för <em>veckan.</em></p>
-	{:else if klara}
-		<p class="mjuk">{klara} klara.</p>
-	{/if}
-	<form onsubmit={laggTill}>
-		<input bind:value={ny} placeholder="+ Lägg till" aria-label="Lägg till något att göra" />
-	</form>
+	<button type="button" class="till-gora" onclick={tillAttGora}>
+		{attGora ? `${attGora} saker att göra` : 'Inget att göra just nu'} <span>→</span>
+	</button>
 </section>
 
 {#if nastaVecka}
@@ -213,7 +187,7 @@
 		outline-offset: 4px;
 	}
 	.hero-knapp {
-		background: var(--smor);
+		background: var(--accent);
 		color: #17150f;
 		border: 0;
 		padding: 12px 20px;
@@ -320,71 +294,26 @@
 	.dag::first-letter {
 		text-transform: uppercase;
 	}
-	.todo {
-		list-style: none;
-		margin: 8px 0 0;
-		padding: 0;
-		display: flex;
-		flex-direction: column;
-		gap: 2px;
-	}
-	.todo label {
-		display: grid;
-		grid-template-columns: 34px minmax(0, 1fr);
-		gap: 8px;
-		padding: 10px 0;
-		cursor: pointer;
-		font-size: 19px;
-		line-height: 1.35;
-	}
-	.todo input {
-		width: 26px;
-		height: 26px;
-		margin: 0;
-		accent-color: #c9a227;
-		cursor: pointer;
-	}
-	.todo small {
-		color: var(--color-grafit);
-		font-size: 15px;
-	}
-	.lank {
+	.till-gora {
 		align-self: flex-start;
-		background: none;
+		background: var(--accent);
 		border: 0;
-		padding: 4px 0;
-		color: var(--color-grafit);
-		text-decoration: underline;
+		padding: 12px 18px;
+		font-size: 18px;
+		font-weight: 700;
 		cursor: pointer;
-		font-size: 15px;
+	}
+	.till-gora span {
+		color: var(--color-oxblod);
+	}
+	.till-gora:hover {
+		background: var(--color-svart);
+		color: var(--color-krita);
 	}
 	.mjuk {
 		margin: 0;
 		color: var(--color-grafit);
 		font-size: 15px;
-	}
-	.klart {
-		margin: 0;
-		font-size: 30px;
-		background: var(--smor);
-		color: #17150f;
-		padding: 6px 14px;
-		align-self: flex-start;
-	}
-	form input {
-		width: 100%;
-		background: none;
-		border: 0;
-		padding: 10px 0;
-		font-size: 17px;
-		color: var(--color-svart);
-	}
-	form input::placeholder {
-		color: var(--color-grafit);
-	}
-	form input:focus-visible {
-		outline: none;
-		box-shadow: inset 0 -1px 0 var(--color-svart);
 	}
 	.framat {
 		margin: 0;

@@ -128,7 +128,7 @@
 		flex-direction: column;
 		gap: 16px;
 		padding: 20px 22px 22px;
-		border-top: 6px solid var(--smor);
+		border-top: 6px solid var(--accent);
 	}
 	.topp,
 	.botten {

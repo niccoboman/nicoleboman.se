@@ -15,6 +15,14 @@
 	const lista = $derived(vald === 'inkorg' ? inkorg : ideer.filter((p) => p.status === 'ide' && p.pelare === vald));
 
 	let tanke = $state('');
+	let falt: HTMLTextAreaElement;
+
+	// En inspirationsfråga blir början på en ny tanke
+	function borja(fraga: string) {
+		tanke = `${fraga}\n`;
+		falt.focus();
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
 	let sparad = $state(false);
 	async function fanga(e: SubmitEvent) {
 		e.preventDefault();
@@ -45,6 +53,7 @@
 		id="tanke"
 		rows="3"
 		bind:value={tanke}
+		bind:this={falt}
 		placeholder="Säg det som du skulle säga det i kameran."
 		onkeydown={(e) => (e.metaKey || e.ctrlKey) && e.key === 'Enter' && e.currentTarget.form?.requestSubmit()}
 	></textarea>
@@ -63,7 +72,16 @@
 	{/each}
 </div>
 
-{#if vald !== 'inkorg'}<p class="om">{PELARE.find((x) => x.id === vald)?.om}</p>{/if}
+{#if vald !== 'inkorg'}
+	{@const pe = PELARE.find((x) => x.id === vald)!}
+	<div class="inspo" style:--pf={pelarFarg(pe.id)}>
+		<p class="om">{pe.om}</p>
+		<p class="etikett">Inspo – tryck för att börja</p>
+		<ul>
+			{#each pe.fragor as f (f)}<li><button type="button" onclick={() => borja(f)}>{f}</button></li>{/each}
+		</ul>
+	</div>
+{/if}
 
 <ul class="lista">
 	{#each lista as p (p.id)}
@@ -79,7 +97,7 @@
 		flex-direction: column;
 		gap: 14px;
 		padding: clamp(20px, 4vw, 36px);
-		background: var(--smor);
+		background: var(--accent);
 		color: #17150f;
 	}
 	.fanga label {
@@ -184,11 +202,52 @@
 	.lista li + li {
 		border-top: 1px solid var(--color-linje);
 	}
+	.inspo {
+		margin-top: -14px;
+		padding: 16px 18px;
+		background: var(--kort);
+		border-left: 5px solid var(--pf);
+		max-width: 680px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
 	.om {
-		margin: -14px 0 0;
+		margin: 0;
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-size: 24px;
+		line-height: 1.2;
+	}
+	.inspo .etikett {
+		margin: 4px 0 0;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+	.inspo ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+	.inspo button {
+		background: none;
+		border: 0;
+		padding: 4px 0;
+		text-align: left;
 		font-size: 17px;
-		color: var(--color-grafit);
-		max-width: 620px;
+		cursor: pointer;
+		color: var(--color-svart);
+	}
+	.inspo button::before {
+		content: '→ ';
+		color: var(--pf);
+	}
+	.inspo button:hover {
+		text-decoration: underline;
 	}
 	.tom {
 		color: var(--color-grafit);

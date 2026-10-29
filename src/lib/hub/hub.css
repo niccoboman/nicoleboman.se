@@ -1,20 +1,21 @@
-/* Hubben: alltid ljust papper och mörkt bläck, oavsett sajtens mörka läge. Smörgult för "nu". */
+/* Hubben: Nicoles egna färger. Krämvitt papper, bläck och körsbär (samma som i filmerna), aldrig gult.
+   Pelarna är en familj: körsbär, kakao, mossa och rosé. */
 .hub {
 	--color-krita: #f4efe5;
 	--color-svart: #1b1814;
 	--color-grafit: #6a6358;
 	--color-linje: #ddd4c4;
+	--color-oxblod: #8a1c2b;
 	color-scheme: light;
-	--smor: #f8e4a0;
-	--smor-text: #17150f;
-	/* Gult som linje/kant: mörkare i ljust läge så att det syns mot kritvitt */
-	--smor-linje: #c9a227;
+	/* Accent: rosé bakgrund med bläcktext, körsbär som linje */
+	--accent: #efdcd5;
+	--accent-text: #1b1814;
+	--accent-linje: #8a1c2b;
 	--kort: #fffcf6;
-	/* Pelarfärger mot krämvitt papper */
-	--p-omdome: #b3304a;
-	--p-jobbet: #bf8a1c;
-	--p-agenter: #4c8660;
-	--p-skarm: #4775b0;
+	--p-omdome: #8a1c2b;
+	--p-jobbet: #7a5541;
+	--p-agenter: #66704a;
+	--p-skarm: #c4868a;
 	min-height: 100dvh;
 	background: var(--color-krita);
 	color: var(--color-svart);
@@ -105,10 +106,10 @@
 	border: 1px solid var(--color-linje);
 	white-space: nowrap;
 }
-.hub .chip.smor {
-	background: var(--smor);
-	border-color: var(--smor);
-	color: var(--smor-text);
+.hub .chip.accent {
+	background: var(--accent);
+	border-color: var(--accent);
+	color: var(--accent-text);
 }
 .hub .tom {
 	color: var(--color-grafit);
@@ -124,6 +125,3 @@
 	white-space: nowrap;
 }
 
-:root[data-tema='mork'] .hub {
-	--smor-linje: var(--smor);
-}

@@ -54,11 +54,47 @@ export const STATUS: { id: Status; namn: string }[] = [
 ];
 
 /** Varje pelare har en egen färg (variablerna ligger i hub.css) så att man ser kategorin direkt. */
-export const PELARE: { id: Pelare; namn: string; om: string }[] = [
-	{ id: 'omdome', namn: 'Omdöme', om: 'Vad jag tycker om AI på jobbet. Frågan före verktyget, myter, åsikter.' },
-	{ id: 'jobbet', namn: 'Jobbet', om: 'Ett jobb som inte fanns för tre år sen: kursdagar, scener, vad folk frågar.' },
-	{ id: 'agenter', namn: 'Mina agenter', om: 'Hur jag själv jobbar med AI: rösten, inkorgen, min AI-anställda.' },
-	{ id: 'skarm', namn: 'Skärm till samtal', om: 'Livet runt omkring: promenader, fokus, tempo, huset, språken.' }
+export const PELARE: { id: Pelare; namn: string; om: string; fragor: string[] }[] = [
+	{
+		id: 'omdome',
+		namn: 'Omdöme',
+		om: 'Vad jag tycker om AI på jobbet. Frågan före verktyget, myter, åsikter.',
+		fragor: [
+			'Vilken AI-myt hörde du senast på en kurs?',
+			'Vad tycker du som de flesta inte håller med om?',
+			'Vilken fråga borde en ledningsgrupp ställa innan de köper något?'
+		]
+	},
+	{
+		id: 'jobbet',
+		namn: 'Jobbet',
+		om: 'Ett jobb som inte fanns för tre år sen: kursdagar, scener, vad folk frågar.',
+		fragor: [
+			'Vad hände på senaste kursdagen som ingen skulle tro?',
+			'Vad frågar folk dig alltid i pausen?',
+			'Hur ser en vanlig tisdag ut för dig?'
+		]
+	},
+	{
+		id: 'agenter',
+		namn: 'Mina agenter',
+		om: 'Hur jag själv jobbar med AI: rösten, inkorgen, min AI-anställda.',
+		fragor: [
+			'Vad gjorde din AI-anställda åt dig i dag?',
+			'Vilket ADHD-system har AI fixat åt dig?',
+			'Vilken prompt använder du varje vecka?'
+		]
+	},
+	{
+		id: 'skarm',
+		namn: 'Skärm till samtal',
+		om: 'Livet runt omkring: promenader, fokus, tempo, huset, språken.',
+		fragor: [
+			'Vad tänkte du på under senaste promenaden?',
+			'När la du bort mobilen senast, och vad hände?',
+			'Vad håller du på att lära dig utanför jobbet?'
+		]
+	}
 ];
 
 /** Varför hubben och kontot finns. Ett utkast i Nicoles anda, som hon skriver om med egna ord. */
@@ -102,4 +138,26 @@ export const namnFor = <T extends { id: string; namn: string }>(lista: T[], id: 
 export function nastaSteg(p: Pick<Piece, 'status' | 'typ'>) {
 	const steg = STATUS.filter((s) => p.typ === 'film' || (s.id !== 'filmad' && s.id !== 'klippt'));
 	return steg[steg.findIndex((s) => s.id === p.status) + 1];
+}
+
+/** Ett tips och en prompt till Claude för steget en bit står i. */
+export function hjalp(p: Pick<Piece, 'status' | 'typ' | 'titel'>): { tips: string; prompt: string } | null {
+	const t = `"${p.titel}"`;
+	if (p.typ === 'inlagg') {
+		if (p.status === 'ide') return { tips: 'Prata in det som du skulle säga det till en kund. En scen eller replik först.', prompt: `/linkedin ${p.titel}` };
+		if (p.status === 'schemalagd') return { tips: 'Svara på kommentarerna första timmen.', prompt: '/linkedin postat' };
+		return null;
+	}
+	switch (p.status) {
+		case 'ide':
+			return { tips: 'En tagning, 1–3 min. Säg kroken först och titta in i kameran på slutet.', prompt: `/tiktok ge mig tre krokar till ${t}` };
+		case 'filmad':
+			return { tips: 'AirDroppa till Macen. Säg vilka ord du vill betona.', prompt: `/klipp ${t}` };
+		case 'klippt':
+			return { tips: 'TikTok Studio schemalägger max 10 dagar fram.', prompt: `/tiktok caption till ${t}` };
+		case 'schemalagd':
+			return { tips: 'Svara på kommentarerna första timmen efter att den gått ut.', prompt: '/tiktok nu postar jag' };
+		default:
+			return null;
+	}
 }

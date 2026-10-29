@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Piece, Status } from './types';
-	import { PELARE, namnFor, nastaSteg, pelarFarg, plattform } from './types';
+	import { PELARE, namnFor, nastaSteg, pelarFarg, plattform, hjalp } from './types';
 	import { hub, stega } from './store.svelte';
 	import { dagnamn, kort, iso, fran } from './datum';
 
@@ -8,12 +8,20 @@
 
 	// Kanban efter vad som ska göras härnäst. Brickans form visar typen (film = stående skärm,
 	// inlägg = linjerat papper) och fyllningen visar hur långt den kommit.
-	const KOLUMNER: { id: string; namn: string; status: Status[] }[] = [
-		{ id: 'gora', namn: 'Att filma & skriva', status: ['ide'] },
-		{ id: 'klippa', namn: 'Att klippa', status: ['filmad'] },
-		{ id: 'schema', namn: 'Att schemalägga', status: ['klippt'] },
-		{ id: 'klar', namn: 'Klar', status: ['schemalagd'] }
+	const KOLUMNER: { id: string; namn: string; status: Status[]; tips: string }[] = [
+		{ id: 'gora', namn: 'Att filma & skriva', status: ['ide'], tips: 'Filma i död tid: på promenaden, vid fönstret, i rosa rummet.' },
+		{ id: 'klippa', namn: 'Att klippa', status: ['filmad'], tips: 'AirDroppa och säg /klipp. Din AI-anställda tar resten.' },
+		{ id: 'schema', namn: 'Att schemalägga', status: ['klippt'], tips: 'Schemalägg allt på en gång, en gång i veckan.' },
+		{ id: 'klar', namn: 'Klar', status: ['schemalagd'], tips: 'Första timmen efter publicering: svara på kommentarer.' }
 	];
+
+	// Kopiera en prompt till urklipp, med en kort bekräftelse på knappen
+	let kopierad = $state('');
+	async function kopiera(id: string, text: string) {
+		await navigator.clipboard.writeText(text);
+		kopierad = id;
+		setTimeout(() => (kopierad = ''), 1500);
+	}
 
 	const planerade = $derived(
 		hub.hub_pieces.filter((p) => p.planerad && p.status !== 'ute' && p.status !== 'inkorg').sort((a, b) => a.planerad!.localeCompare(b.planerad!))
@@ -50,10 +58,12 @@
 		{@const bitar = planerade.filter((p) => k.status.includes(p.status))}
 		<section class="kolumn" aria-label={k.namn}>
 			<h2 class="serif">{k.namn}<span>{bitar.length}</span></h2>
+			<p class="koltips">{k.tips}</p>
 			{#each bitar as p (p.id)}
 				{@const d = new Date(p.planerad!)}
 				{@const nasta = nastaSteg(p)}
 				{@const hint = filmas(p)}
+				{@const h = hjalp(p)}
 				{@const sen = p.planerad!.slice(0, 10) < idag}
 				<article class="bricka" class:klar={p.status === 'schemalagd'} style:--pf={pelarFarg(p.pelare)}>
 					<p class="kat">{p.pelare ? namnFor(PELARE, p.pelare) : 'Utan pelare'} · {p.typ === 'film' ? 'Film' : 'Inlägg'}</p>
@@ -64,6 +74,15 @@
 					<p class="var">{plattform(p)}</p>
 					{#if hint}<p class="hint">{hint}</p>{/if}
 					{#if p.status === 'schemalagd'}<span class="stampel">Klar</span>{/if}
+					{#if h}
+						<details class="hjalp">
+							<summary>Tips & prompt</summary>
+							<p>{h.tips}</p>
+							<button type="button" class="prompt" onclick={() => kopiera(p.id, h.prompt)}>
+								<code>{h.prompt}</code><span>{kopierad === p.id ? 'Kopierad' : 'Kopiera'}</span>
+							</button>
+						</details>
+					{/if}
 					{#if nasta}
 						<button type="button" class="nasta" onclick={() => stega(p.id, nasta.id, nasta.namn)}>→ {nasta.namn.toLowerCase()}</button>
 					{/if}
@@ -224,13 +243,58 @@
 		font-family: 'Instrument Serif', Georgia, serif;
 		font-size: 19px;
 	}
+	.koltips {
+		margin: -4px 0 2px;
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-style: italic;
+		font-size: 18px;
+		line-height: 1.25;
+		color: var(--color-grafit);
+	}
+	.hjalp {
+		border-top: 1px solid var(--color-linje);
+		padding-top: 8px;
+		font-size: 15px;
+	}
+	.hjalp summary {
+		cursor: pointer;
+		font-weight: 600;
+		color: var(--color-oxblod);
+	}
+	.hjalp p {
+		margin: 6px 0;
+		color: var(--color-grafit);
+	}
+	.prompt {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 10px;
+		width: 100%;
+		padding: 8px 10px;
+		background: var(--accent);
+		border: 0;
+		text-align: left;
+		cursor: pointer;
+	}
+	.prompt code {
+		font-family: var(--font-mono);
+		font-size: 13px;
+		overflow-wrap: anywhere;
+	}
+	.prompt span {
+		font-size: 13px;
+		font-weight: 700;
+		color: var(--color-oxblod);
+		white-space: nowrap;
+	}
 	.stampel {
 		position: absolute;
 		top: 14px;
 		right: 10px;
 		transform: rotate(-8deg);
-		border: 2px solid #801220;
-		color: #801220;
+		border: 2px solid var(--color-oxblod);
+		color: var(--color-oxblod);
 		font-size: 11px;
 		font-weight: 800;
 		letter-spacing: 0.16em;
