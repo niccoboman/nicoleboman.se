@@ -32,12 +32,6 @@
 		ny = '';
 	}
 
-	let kopierad = $state('');
-	async function kopiera(id: string, text: string) {
-		await navigator.clipboard.writeText(text);
-		kopierad = id;
-		setTimeout(() => (kopierad = ''), 1500);
-	}
 </script>
 
 <h1 class="serif">Att <em>göra</em></h1>
@@ -53,12 +47,8 @@
 				<div>
 					<button type="button" class="titel" onclick={() => oppna(p)}>{p.titel}</button>
 					<p class="nar" class:sen={p.planerad!.slice(0, 10) < idag}>Ska ut {dagnamn(d)} {kort(d)}</p>
+					{#if h}<p class="tips">{h.tips}</p>{/if}
 				</div>
-				{#if h}
-					<button type="button" class="prompt" title={h.tips} onclick={() => kopiera(p.id, h.prompt)}>
-						{kopierad === p.id ? 'Kopierad' : 'Kopiera prompt'}
-					</button>
-				{/if}
 			</li>
 		{:else}
 			<li class="tom">Inget väntar på dig. Njut.</li>
@@ -130,7 +120,7 @@
 	}
 	.lista li {
 		display: grid;
-		grid-template-columns: 7.5em minmax(0, 1fr) auto;
+		grid-template-columns: 7.5em minmax(0, 1fr);
 		gap: 4px 16px;
 		align-items: center;
 		padding: 14px 16px;
@@ -164,14 +154,12 @@
 	.nar.sen {
 		color: var(--color-oxblod);
 	}
-	.prompt {
-		background: var(--accent);
-		border: 0;
-		padding: 8px 12px;
-		font-size: 14px;
-		font-weight: 700;
-		cursor: pointer;
-		white-space: nowrap;
+	.tips {
+		margin: 4px 0 0;
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-style: italic;
+		font-size: 17px;
+		color: var(--color-grafit);
 	}
 	.tom {
 		display: block !important;
@@ -233,7 +221,7 @@
 	}
 	@media (max-width: 560px) {
 		.lista li {
-			grid-template-columns: minmax(0, 1fr) auto;
+			grid-template-columns: minmax(0, 1fr);
 		}
 		.verb {
 			grid-column: 1 / -1;

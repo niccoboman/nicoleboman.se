@@ -140,21 +140,21 @@ export function nastaSteg(p: Pick<Piece, 'status' | 'typ'>) {
 	return steg[steg.findIndex((s) => s.id === p.status) + 1];
 }
 
-/** Ett tips och en prompt till Claude för steget en bit står i. */
+/** Ett tips och vad hon kan säga till Claude för steget en bit står i. Claude läser hubben, så inget behöver kopieras. */
 export function hjalp(p: Pick<Piece, 'status' | 'typ' | 'titel'>): { tips: string; prompt: string } | null {
 	const t = `"${p.titel}"`;
 	if (p.typ === 'inlagg') {
-		if (p.status === 'ide') return { tips: 'Prata in det som du skulle säga det till en kund. En scen eller replik först.', prompt: `/linkedin ${p.titel}` };
+		if (p.status === 'ide') return { tips: 'Prata in det som du skulle säga det till en kund. En scen eller replik först.', prompt: '/linkedin och prata in tanken' };
 		if (p.status === 'schemalagd') return { tips: 'Svara på kommentarerna första timmen.', prompt: '/linkedin postat' };
 		return null;
 	}
 	switch (p.status) {
 		case 'ide':
-			return { tips: 'En tagning, 1–3 min. Säg kroken först och titta in i kameran på slutet.', prompt: `/tiktok ge mig tre krokar till ${t}` };
+			return { tips: 'En tagning, 1–3 min. Säg kroken först och titta in i kameran på slutet.', prompt: `ge mig krokar till ${t}` };
 		case 'filmad':
 			return { tips: 'AirDroppa till Macen. Säg vilka ord du vill betona.', prompt: `/klipp ${t}` };
 		case 'klippt':
-			return { tips: 'TikTok Studio schemalägger max 10 dagar fram.', prompt: `/tiktok caption till ${t}` };
+			return { tips: 'TikTok Studio schemalägger max 10 dagar fram.', prompt: `caption till ${t}` };
 		case 'schemalagd':
 			return { tips: 'Svara på kommentarerna första timmen efter att den gått ut.', prompt: '/tiktok nu postar jag' };
 		default:

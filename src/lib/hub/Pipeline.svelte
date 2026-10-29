@@ -15,13 +15,7 @@
 		{ id: 'klar', namn: 'Klar', status: ['schemalagd'], tips: 'Första timmen efter publicering: svara på kommentarer.' }
 	];
 
-	// Kopiera en prompt till urklipp, med en kort bekräftelse på knappen
-	let kopierad = $state('');
-	async function kopiera(id: string, text: string) {
-		await navigator.clipboard.writeText(text);
-		kopierad = id;
-		setTimeout(() => (kopierad = ''), 1500);
-	}
+
 
 	const planerade = $derived(
 		hub.hub_pieces.filter((p) => p.planerad && p.status !== 'ute' && p.status !== 'inkorg').sort((a, b) => a.planerad!.localeCompare(b.planerad!))
@@ -76,11 +70,9 @@
 					{#if p.status === 'schemalagd'}<span class="stampel">Klar</span>{/if}
 					{#if h}
 						<details class="hjalp">
-							<summary>Tips & prompt</summary>
+							<summary>Tips</summary>
 							<p>{h.tips}</p>
-							<button type="button" class="prompt" onclick={() => kopiera(p.id, h.prompt)}>
-								<code>{h.prompt}</code><span>{kopierad === p.id ? 'Kopierad' : 'Kopiera'}</span>
-							</button>
+							<p class="saga">Säg till Claude: <em>”{h.prompt}”</em></p>
 						</details>
 					{/if}
 					{#if nasta}
@@ -265,28 +257,12 @@
 		margin: 6px 0;
 		color: var(--color-grafit);
 	}
-	.prompt {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 10px;
-		width: 100%;
-		padding: 8px 10px;
-		background: var(--accent);
-		border: 0;
-		text-align: left;
-		cursor: pointer;
+	.hjalp .saga {
+		color: var(--color-svart);
 	}
-	.prompt code {
-		font-family: var(--font-mono);
-		font-size: 13px;
-		overflow-wrap: anywhere;
-	}
-	.prompt span {
-		font-size: 13px;
-		font-weight: 700;
-		color: var(--color-oxblod);
-		white-space: nowrap;
+	.saga em {
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-size: 18px;
 	}
 	.stampel {
 		position: absolute;
