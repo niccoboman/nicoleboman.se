@@ -131,7 +131,7 @@
 
 		{#if hub.error}<p class="fel" role="alert">{hub.error}</p>{/if}
 
-		<main class="vy">
+		<main class="vy" class:bred={vy === 'pipeline'}>
 			{#if !hub.ready}
 				<p class="tom">Laddar…</p>
 			{:else if vy === 'nu'}
@@ -244,6 +244,9 @@
 		display: flex;
 		flex-direction: column;
 		gap: 40px;
+	}
+	.vy.bred {
+		max-width: 1240px;
 	}
 	.angra {
 		position: fixed;
