@@ -29,6 +29,17 @@
 	text-transform: uppercase;
 	line-height: 1.05;
 }
+/* Redaktionell rubrik, samma serif som i filmerna */
+.hub .serif {
+	font-family: 'Instrument Serif', Georgia, serif;
+	font-weight: 400;
+	text-transform: none;
+	letter-spacing: 0;
+	line-height: 1.05;
+}
+.hub .serif em {
+	font-style: italic;
+}
 .hub .etikett {
 	color: var(--color-grafit);
 }

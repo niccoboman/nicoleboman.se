@@ -40,7 +40,7 @@
 </script>
 
 <form class="fanga" onsubmit={fanga}>
-	<label for="tanke" class="rubrik">Vad väcker ett ja i dig idag?</label>
+	<label for="tanke" class="serif">Vad väcker ett <em>ja</em> i dig idag?</label>
 	<textarea
 		id="tanke"
 		rows="3"
@@ -81,8 +81,8 @@
 		color: #17150f;
 	}
 	.fanga label {
-		font-size: clamp(30px, 5vw, 48px);
-		line-height: 1.05;
+		font-size: clamp(40px, 6vw, 64px);
+		line-height: 1;
 	}
 	.fanga textarea {
 		width: 100%;
@@ -124,8 +124,9 @@
 	.flikar button {
 		background: none;
 		border: 1px solid var(--color-linje);
-		padding: 8px 14px;
-		min-height: 40px;
+		padding: 8px 16px;
+		min-height: 44px;
+		font-size: 16px;
 		font-weight: 600;
 		cursor: pointer;
 		color: var(--color-grafit);
@@ -157,15 +158,19 @@
 		box-sizing: border-box;
 		display: block;
 		width: 100%;
-		padding: 14px 0 14px 14px;
-		border-left: 4px solid var(--pf);
-		font-size: 19px;
-		line-height: 1.35;
+		padding: 16px 0 16px 18px;
+		border-left: 5px solid var(--pf);
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-size: 27px;
+		line-height: 1.12;
 		cursor: pointer;
 	}
 	.lista small {
 		display: block;
+		margin-top: 6px;
+		font-family: var(--font-arkiv);
 		font-size: 14px;
+		font-weight: 600;
 		color: var(--color-grafit);
 	}
 	.lista button:hover {

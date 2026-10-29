@@ -58,7 +58,7 @@
 
 <header class="halsning">
 	<p class="datum">{datumrad}</p>
-	<h1 class="rubrik">Hej Nicole.</h1>
+	<h1 class="serif">Hej <em>Nicole.</em></h1>
 </header>
 
 <section class="hero" aria-labelledby="nasta">
@@ -69,7 +69,7 @@
 				{#if nasta.pelare}<span><i style:background={pelarFarg(nasta.pelare)}></i>{namnFor(PELARE, nasta.pelare)}</span>{/if}
 				<span>{plattform(nasta)}</span>
 			</p>
-			<h2 id="nasta" class="rubrik"><button type="button" onclick={() => oppna(nasta)}>{nasta.titel}</button></h2>
+			<h2 id="nasta" class="serif"><button type="button" onclick={() => oppna(nasta)}>{nasta.titel}</button></h2>
 			{#if steg}
 				<button
 					type="button"
@@ -80,7 +80,7 @@
 			{/if}
 		{:else}
 			<p class="eyebrow">Nästa ut</p>
-			<h2 id="nasta" class="rubrik">Din nästa film börjar som en tanke.</h2>
+			<h2 id="nasta" class="serif">Din nästa film börjar som <em>en tanke.</em></h2>
 			<button type="button" class="hero-knapp" onclick={tillIdeer}>Fånga en tanke</button>
 		{/if}
 	</div>
@@ -91,7 +91,7 @@
 </p>
 
 <section class="block" aria-labelledby="gora">
-	<h2 id="gora" class="rubrik liten">Den här veckan</h2>
+	<h2 id="gora" class="serif liten">Den här <em>veckan</em></h2>
 
 	{#if veckan.length}
 		<ul class="handelser">
@@ -116,7 +116,7 @@
 		<button type="button" class="lank" onclick={() => (visaAlla = !visaAlla)}>{visaAlla ? 'Visa färre' : `Visa alla ${kvar.length}`}</button>
 	{/if}
 	{#if todos.length && !kvar.length}
-		<p class="klart rubrik">Klart för veckan.</p>
+		<p class="klart serif">Klart för <em>veckan.</em></p>
 	{:else if klara}
 		<p class="mjuk">{klara} klara.</p>
 	{/if}
@@ -144,7 +144,8 @@
 		text-transform: uppercase;
 	}
 	.halsning h1 {
-		font-size: clamp(40px, 7vw, 64px);
+		font-size: clamp(52px, 9vw, 96px);
+		line-height: 0.95;
 	}
 
 	/* Scenbilden, alltid mörk */
@@ -188,9 +189,9 @@
 		margin-right: 7px;
 	}
 	.hero h2 {
-		font-size: clamp(40px, 7.5vw, 88px);
-		line-height: 1;
-		max-width: 13ch;
+		font-size: clamp(46px, 8vw, 96px);
+		line-height: 0.98;
+		max-width: 14ch;
 	}
 	.hero h2 button {
 		all: unset;
@@ -216,7 +217,7 @@
 
 	.mal {
 		margin: -12px 0 0;
-		font-size: 17px;
+		font-size: 19px;
 		color: var(--color-grafit);
 	}
 	.mal b {
@@ -230,7 +231,9 @@
 		max-width: 640px;
 	}
 	.liten {
-		font-size: 32px;
+		font-size: 44px;
+		padding-bottom: 8px;
+		border-bottom: 1px solid var(--color-svart);
 	}
 	.handelser {
 		list-style: none;
@@ -239,7 +242,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 6px;
-		font-size: 17px;
+		font-size: 18px;
 		color: var(--color-grafit);
 	}
 	.handelser li {

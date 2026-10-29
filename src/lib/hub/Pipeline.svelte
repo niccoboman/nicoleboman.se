@@ -122,7 +122,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 10px 22px;
-		font-size: 13px;
+		font-size: 15px;
 		color: var(--color-grafit);
 	}
 	.legend div {
@@ -146,7 +146,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 6px 20px;
-		font-size: 12px;
+		font-size: 13px;
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
@@ -163,7 +163,7 @@
 
 	.tavla {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(220px, 1fr));
+		grid-template-columns: repeat(4, minmax(250px, 1fr));
 		gap: 18px;
 		overflow-x: auto;
 		padding-bottom: 8px;
@@ -176,7 +176,7 @@
 		scroll-snap-align: start;
 	}
 	.kolumn h2 {
-		font-size: 30px;
+		font-size: 34px;
 		line-height: 1.1;
 		padding-bottom: 8px;
 		border-bottom: 1px solid var(--color-svart);
@@ -186,7 +186,7 @@
 	}
 	.kolumn h2 span {
 		font-family: 'Fragment Mono', monospace;
-		font-size: 13px;
+		font-size: 15px;
 		color: var(--color-grafit);
 	}
 
@@ -195,9 +195,9 @@
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
-		padding: 0 14px 12px;
-		min-height: 200px;
+		gap: 8px;
+		padding: 0 18px 16px;
+		min-height: 220px;
 		border-top: 5px solid var(--pf);
 		color: var(--color-svart);
 	}
@@ -231,6 +231,10 @@
 	.mini.klippt {
 		background: color-mix(in srgb, var(--color-svart) 26%, var(--color-krita));
 	}
+	.bricka.filmad,
+	.bricka.klippt {
+		--color-grafit: color-mix(in srgb, var(--color-svart) 78%, var(--color-krita));
+	}
 	.bricka.schemalagd,
 	.mini.klar {
 		background: #f3ecdf;
@@ -251,7 +255,7 @@
 
 	.kat {
 		margin: 10px 0 0;
-		font-size: 11px;
+		font-size: 12px;
 		font-weight: 700;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
@@ -264,8 +268,8 @@
 		all: unset;
 		cursor: pointer;
 		font-family: 'Instrument Serif', Georgia, serif;
-		font-size: 25px;
-		line-height: 1.1;
+		font-size: 29px;
+		line-height: 1.08;
 		flex: 1;
 	}
 	.titel:hover {
@@ -280,7 +284,7 @@
 	.var,
 	.hint {
 		margin: 0;
-		font-size: 13px;
+		font-size: 15px;
 		color: var(--color-grafit);
 	}
 	.nar b {
@@ -294,13 +298,13 @@
 		color: var(--p-omdome);
 	}
 	.var {
-		font-family: 'Fragment Mono', monospace;
-		font-size: 12px;
+		font-weight: 600;
+		color: inherit;
 	}
 	.hint {
 		font-style: italic;
 		font-family: 'Instrument Serif', Georgia, serif;
-		font-size: 16px;
+		font-size: 19px;
 	}
 	.stampel {
 		position: absolute;
@@ -322,7 +326,7 @@
 		border: 0;
 		border-bottom: 1px solid currentColor;
 		padding: 2px 0;
-		font-size: 13px;
+		font-size: 15px;
 		font-weight: 600;
 		color: inherit;
 		cursor: pointer;
