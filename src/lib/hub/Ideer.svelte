@@ -63,6 +63,8 @@
 	{/each}
 </div>
 
+{#if vald !== 'inkorg'}<p class="om">{PELARE.find((x) => x.id === vald)?.om}</p>{/if}
+
 <ul class="lista">
 	{#each lista as p (p.id)}
 		<li style:--pf={pelarFarg(p.pelare)}><button type="button" onclick={() => oppna(p)}>{p.titel}<small>{plattform(p)}</small></button></li>
@@ -181,6 +183,12 @@
 	}
 	.lista li + li {
 		border-top: 1px solid var(--color-linje);
+	}
+	.om {
+		margin: -14px 0 0;
+		font-size: 17px;
+		color: var(--color-grafit);
+		max-width: 620px;
 	}
 	.tom {
 		color: var(--color-grafit);

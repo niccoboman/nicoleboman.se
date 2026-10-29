@@ -114,7 +114,7 @@
 		</main>
 	{:else}
 		<header>
-			<a href="/hub#nu" class="logo rubrik" onclick={(e) => { e.preventDefault(); byt('nu'); }}>Hubben</a>
+			<a href="/hub#nu" class="logo serif" onclick={(e) => { e.preventDefault(); byt('nu'); }}>Hubben</a>
 			<nav aria-label="Vyer">
 				{#each VYER as v (v.id)}
 					<button type="button" class:aktiv={vy === v.id} aria-current={vy === v.id ? 'page' : undefined} onclick={() => byt(v.id)}>

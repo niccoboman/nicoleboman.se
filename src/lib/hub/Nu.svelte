@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Piece } from './types';
-	import { MAL, PELARE, namnFor, nastaSteg, pelarFarg, plattform } from './types';
+	import { MAL, MANIFEST, PELARE, namnFor, nastaSteg, pelarFarg, plattform } from './types';
 	import { hub, lagg, andra, stega } from './store.svelte';
 	import { iso, fran, mandag, plusDagar, kort, dagnamn, iVeckan, tidpunkt } from './datum';
 
@@ -61,7 +61,11 @@
 	<h1 class="serif">Hej <em>Nicole.</em></h1>
 </header>
 
-<section class="hero" aria-labelledby="nasta">
+<section class="manifest" aria-label="Varför">
+	{#each MANIFEST as stycke, i (i)}<p class:forsta={i === 0}>{stycke}</p>{/each}
+</section>
+
+<section class="hero" aria-labelledby="nasta" style:--pf={nasta ? pelarFarg(nasta.pelare) : 'var(--smor-linje)'}>
 	<div class="hero-inner">
 		{#if nasta}
 			<p class="eyebrow">Nästa ut · {tidpunkt(nasta.planerad)}</p>
@@ -129,6 +133,18 @@
 	<p class="framat"><span>Nästa vecka</span> {nastaVecka}</p>
 {/if}
 
+<section class="pelarna" aria-labelledby="pelarna">
+	<h2 id="pelarna" class="serif liten">Mina fyra <em>pelare</em></h2>
+	<dl>
+		{#each PELARE as pe (pe.id)}
+			<div style:--pf={pelarFarg(pe.id)}>
+				<dt>{pe.namn}</dt>
+				<dd>{pe.om}</dd>
+			</div>
+		{/each}
+	</dl>
+</section>
+
 <style>
 	.halsning {
 		display: flex;
@@ -148,16 +164,11 @@
 		line-height: 0.95;
 	}
 
-	/* Scenbilden, alltid mörk */
+	/* Nästa ut: ett ljust kort med pelarens färg överst */
 	.hero {
-		color: #f6f3ea;
-		background:
-			linear-gradient(90deg, rgb(10 10 10 / 0.9) 0%, rgb(10 10 10 / 0.65) 50%, rgb(10 10 10 / 0.1) 100%),
-			linear-gradient(0deg, rgb(10 10 10 / 0.8) 0%, transparent 60%),
-			url('/bilder/scen-bw-1200.webp') 72% 28% / cover no-repeat #0b0b0b;
-		min-height: min(56vh, 460px);
-		display: flex;
-		align-items: flex-end;
+		background: var(--kort);
+		border-top: 6px solid var(--pf);
+		box-shadow: 0 1px 0 var(--color-linje);
 	}
 	.hero-inner {
 		padding: 32px clamp(20px, 4vw, 40px);
@@ -172,7 +183,7 @@
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
-		color: var(--smor);
+		color: var(--color-grafit);
 	}
 	.vad {
 		margin: -8px 0 0;
@@ -198,7 +209,7 @@
 		cursor: pointer;
 	}
 	.hero h2 button:focus-visible {
-		outline: 2px solid var(--smor);
+		outline: 2px solid var(--color-oxblod);
 		outline-offset: 4px;
 	}
 	.hero-knapp {
@@ -212,7 +223,54 @@
 		cursor: pointer;
 	}
 	.hero-knapp:hover {
-		background: #fff;
+		background: var(--color-svart);
+		color: var(--color-krita);
+	}
+	.manifest {
+		max-width: 620px;
+		margin-top: -16px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+	.manifest p {
+		margin: 0;
+		font-size: 18px;
+		line-height: 1.55;
+		color: var(--color-grafit);
+	}
+	.manifest .forsta {
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-size: 28px;
+		line-height: 1.2;
+		color: var(--color-svart);
+	}
+	.pelarna {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		max-width: 760px;
+	}
+	.pelarna dl {
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 14px;
+	}
+	.pelarna div {
+		padding: 14px 16px;
+		background: var(--kort);
+		border-left: 5px solid var(--pf);
+	}
+	.pelarna dt {
+		font-family: 'Instrument Serif', Georgia, serif;
+		font-size: 26px;
+		line-height: 1.1;
+	}
+	.pelarna dd {
+		margin: 4px 0 0;
+		font-size: 16px;
+		color: var(--color-grafit);
 	}
 
 	.mal {

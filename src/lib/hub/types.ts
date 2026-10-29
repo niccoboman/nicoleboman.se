@@ -54,14 +54,21 @@ export const STATUS: { id: Status; namn: string }[] = [
 ];
 
 /** Varje pelare har en egen färg (variablerna ligger i hub.css) så att man ser kategorin direkt. */
-export const PELARE: { id: Pelare; namn: string }[] = [
-	{ id: 'omdome', namn: 'Omdöme' },
-	{ id: 'jobbet', namn: 'Jobbet' },
-	{ id: 'agenter', namn: 'Mina agenter' },
-	{ id: 'skarm', namn: 'Skärm till samtal' }
+export const PELARE: { id: Pelare; namn: string; om: string }[] = [
+	{ id: 'omdome', namn: 'Omdöme', om: 'Vad jag tycker om AI på jobbet. Frågan före verktyget, myter, åsikter.' },
+	{ id: 'jobbet', namn: 'Jobbet', om: 'Ett jobb som inte fanns för tre år sen: kursdagar, scener, vad folk frågar.' },
+	{ id: 'agenter', namn: 'Mina agenter', om: 'Hur jag själv jobbar med AI: rösten, inkorgen, min AI-anställda.' },
+	{ id: 'skarm', namn: 'Skärm till samtal', om: 'Livet runt omkring: promenader, fokus, tempo, huset, språken.' }
 ];
 
-export const pelarFarg = (id: Pelare | null) => (id ? `var(--p-${id})` : 'var(--color-linje)');
+/** Varför hubben och kontot finns. Ett utkast i Nicoles anda, som hon skriver om med egna ord. */
+export const MANIFEST = [
+	'Jag står i klassrum och på scener varje vecka och ser vad som händer när vanliga människor möter AI. Det är det jag vill visa, på svenska och med omdöme.',
+	'Det här är mitt: mina tankar, mitt jobb, mina agenter och livet runt omkring. Tekniken ska ge oss tillbaka tid och närvaro, och jag visar hur det går till.',
+	'Om någon ser en film och tänker att de också kan, har den gjort sitt jobb.'
+];
+
+export const pelarFarg = (id: Pelare | null) => (id ? `var(--p-${id})` : 'var(--color-grafit)');
 
 /** Var det ska ut. Inlägg = LinkedIn, filmer = TikTok och Reels (LinkedIn när det är en klippt film eller följ med). */
 export function plattform(p: Pick<Piece, 'typ' | 'format'>) {

@@ -38,13 +38,6 @@
 
 <header class="topp">
 	<h1 class="serif">Det som <em>ska ut</em></h1>
-	<dl class="legend" aria-label="Så läser du brickorna">
-		<div><dt><span class="mini film ide"></span></dt><dd>Film, ej filmad</dd></div>
-		<div><dt><span class="mini film filmad"></span></dt><dd>Filmad</dd></div>
-		<div><dt><span class="mini film klippt"></span></dt><dd>Klippt</dd></div>
-		<div><dt><span class="mini inlagg"></span></dt><dd>LinkedIn-inlägg</dd></div>
-		<div><dt><span class="mini klar"></span></dt><dd>Klar</dd></div>
-	</dl>
 	<ul class="pelare" aria-label="Pelare">
 		{#each PELARE as pe (pe.id)}
 			<li><span style:background={pelarFarg(pe.id)}></span>{pe.namn}</li>
@@ -62,8 +55,8 @@
 				{@const nasta = nastaSteg(p)}
 				{@const hint = filmas(p)}
 				{@const sen = p.planerad!.slice(0, 10) < idag}
-				<article class="bricka {p.typ} {p.status}" style:--pf={pelarFarg(p.pelare)}>
-					<p class="kat">{p.pelare ? namnFor(PELARE, p.pelare) : p.typ === 'inlagg' ? 'LinkedIn' : 'Utan pelare'}</p>
+				<article class="bricka" class:klar={p.status === 'schemalagd'} style:--pf={pelarFarg(p.pelare)}>
+					<p class="kat">{p.pelare ? namnFor(PELARE, p.pelare) : 'Utan pelare'} · {p.typ === 'film' ? 'Film' : 'Inlägg'}</p>
 					<button type="button" class="titel serif" onclick={() => oppna(p)}>{p.titel}</button>
 					<p class="nar" class:sen>
 						<b>{dagnamn(d)} {kort(d)}</b> · {klocka(d)}{sen ? ' · försenad' : ''}
@@ -117,28 +110,6 @@
 	h1 em {
 		font-style: italic;
 	}
-	.legend {
-		margin: 0;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px 22px;
-		font-size: 15px;
-		color: var(--color-grafit);
-	}
-	.legend div {
-		display: flex;
-		align-items: center;
-		gap: 8px;
-	}
-	.legend dt,
-	.legend dd {
-		margin: 0;
-	}
-	.mini {
-		display: block;
-		width: 16px;
-		height: 22px;
-	}
 	.pelare {
 		list-style: none;
 		margin: 0;
@@ -185,72 +156,22 @@
 		align-items: baseline;
 	}
 	.kolumn h2 span {
-		font-family: 'Fragment Mono', monospace;
 		font-size: 15px;
+		font-weight: 600;
 		color: var(--color-grafit);
 	}
 
-	/* Brickan. Film = stående skärm med inre ram, inlägg = linjerat papper. */
+	/* Brickan: ett vitt kort med pelarens färg överst. Kolumnen visar redan status. */
 	.bricka {
 		position: relative;
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
 		padding: 0 18px 16px;
-		min-height: 220px;
+		background: var(--kort);
 		border-top: 5px solid var(--pf);
+		box-shadow: 0 1px 2px rgb(27 24 20 / 0.08);
 		color: var(--color-svart);
-	}
-	.bricka.film {
-		box-shadow: inset 0 0 0 1px var(--color-linje);
-		outline: 1px solid var(--color-linje);
-		outline-offset: 4px;
-		margin: 5px;
-	}
-	.bricka.inlagg:not(.schemalagd) .kat {
-		color: var(--color-grafit);
-	}
-	.bricka.inlagg {
-		background: repeating-linear-gradient(transparent 0 25px, color-mix(in srgb, var(--color-linje) 45%, transparent) 25px 26px);
-		box-shadow: inset 0 0 0 1px var(--color-linje);
-	}
-	/* Fyllningen visar hur långt den kommit */
-	.bricka.ide.film,
-	.mini.film.ide {
-		box-shadow: none;
-		border-left: 1.5px dashed var(--color-grafit);
-		border-right: 1.5px dashed var(--color-grafit);
-		border-bottom: 1.5px dashed var(--color-grafit);
-		background: transparent;
-	}
-	.bricka.filmad,
-	.mini.filmad {
-		background: color-mix(in srgb, var(--color-svart) 12%, var(--color-krita));
-	}
-	.bricka.klippt,
-	.mini.klippt {
-		background: color-mix(in srgb, var(--color-svart) 26%, var(--color-krita));
-	}
-	.bricka.filmad,
-	.bricka.klippt {
-		--color-grafit: color-mix(in srgb, var(--color-svart) 78%, var(--color-krita));
-	}
-	.bricka.schemalagd,
-	.mini.klar {
-		background: #f3ecdf;
-		color: #17150f;
-		--color-grafit: #6b645a;
-	}
-	.mini.film.ide {
-		border-top: 1.5px dashed var(--color-grafit);
-	}
-	.mini.inlagg {
-		background: repeating-linear-gradient(transparent 0 4px, var(--color-grafit) 4px 5px);
-		box-shadow: inset 0 0 0 1px var(--color-grafit);
-	}
-	.mini.filmad,
-	.mini.klippt {
-		box-shadow: inset 0 0 0 1px var(--color-linje);
 	}
 
 	.kat {
@@ -260,9 +181,6 @@
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		color: var(--pf);
-	}
-	.schemalagd .kat {
-		color: #17150f;
 	}
 	.titel {
 		all: unset;

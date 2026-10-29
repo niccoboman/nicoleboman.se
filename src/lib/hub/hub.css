@@ -1,15 +1,20 @@
-/* Hubben: samma kritvita/svarta palett som sajten (följer mörkt läge), plus smörgult för "nu". */
+/* Hubben: alltid ljust papper och mörkt bläck, oavsett sajtens mörka läge. Smörgult för "nu". */
 .hub {
+	--color-krita: #f4efe5;
+	--color-svart: #1b1814;
+	--color-grafit: #6a6358;
+	--color-linje: #ddd4c4;
+	color-scheme: light;
 	--smor: #f8e4a0;
 	--smor-text: #17150f;
 	/* Gult som linje/kant: mörkare i ljust läge så att det syns mot kritvitt */
 	--smor-linje: #c9a227;
-	--kort: color-mix(in srgb, var(--color-svart) 4%, var(--color-krita));
-	/* Pelarfärger: mellantoner som syns både mot kritvitt och svart */
-	--p-omdome: #d0465a;
-	--p-jobbet: #d9b443;
-	--p-agenter: #6fa47e;
-	--p-skarm: #6c98cf;
+	--kort: #fffcf6;
+	/* Pelarfärger mot krämvitt papper */
+	--p-omdome: #b3304a;
+	--p-jobbet: #bf8a1c;
+	--p-agenter: #4c8660;
+	--p-skarm: #4775b0;
 	min-height: 100dvh;
 	background: var(--color-krita);
 	color: var(--color-svart);
