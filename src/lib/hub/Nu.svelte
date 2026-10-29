@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Piece } from './types';
-	import { MAL, nastaSteg } from './types';
+	import { MAL, PELARE, namnFor, nastaSteg, pelarFarg, plattform } from './types';
 	import { hub, lagg, andra, stega } from './store.svelte';
 	import { iso, fran, mandag, plusDagar, kort, dagnamn, iVeckan, tidpunkt } from './datum';
 
@@ -65,6 +65,10 @@
 	<div class="hero-inner">
 		{#if nasta}
 			<p class="eyebrow">Nästa ut · {tidpunkt(nasta.planerad)}</p>
+			<p class="vad">
+				{#if nasta.pelare}<span><i style:background={pelarFarg(nasta.pelare)}></i>{namnFor(PELARE, nasta.pelare)}</span>{/if}
+				<span>{plattform(nasta)}</span>
+			</p>
 			<h2 id="nasta" class="rubrik"><button type="button" onclick={() => oppna(nasta)}>{nasta.titel}</button></h2>
 			{#if steg}
 				<button
@@ -168,6 +172,20 @@
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		color: var(--smor);
+	}
+	.vad {
+		margin: -8px 0 0;
+		display: flex;
+		gap: 16px;
+		font-size: 15px;
+		font-weight: 600;
+	}
+	.vad i {
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		margin-right: 7px;
 	}
 	.hero h2 {
 		font-size: clamp(40px, 7.5vw, 88px);

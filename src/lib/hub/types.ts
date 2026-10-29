@@ -53,12 +53,33 @@ export const STATUS: { id: Status; namn: string }[] = [
 	{ id: 'ute', namn: 'Ute' }
 ];
 
+/** Varje pelare har en egen färg (variablerna ligger i hub.css) så att man ser kategorin direkt. */
 export const PELARE: { id: Pelare; namn: string }[] = [
 	{ id: 'omdome', namn: 'Omdöme' },
 	{ id: 'jobbet', namn: 'Jobbet' },
 	{ id: 'agenter', namn: 'Mina agenter' },
 	{ id: 'skarm', namn: 'Skärm till samtal' }
 ];
+
+export const pelarFarg = (id: Pelare | null) => (id ? `var(--p-${id})` : 'var(--color-linje)');
+
+/** Var det ska ut. Inlägg = LinkedIn, filmer = TikTok och Reels (LinkedIn när det är en klippt film eller följ med). */
+export function plattform(p: Pick<Piece, 'typ' | 'format'>) {
+	if (p.typ === 'inlagg') return 'LinkedIn';
+	return p.format === 'klippt' ? 'Reels · LinkedIn' : 'TikTok · Reels';
+}
+
+/** Det som ska göras härnäst, i klartext. */
+export function attGora(p: Pick<Piece, 'status' | 'typ'>) {
+	if (p.status === 'ute') return 'Ute';
+	if (p.status === 'schemalagd') return 'Klar';
+	if (p.typ === 'inlagg') return 'Att skriva';
+	return { inkorg: 'Att sortera', ide: 'Att filma', filmad: 'Att klippa', klippt: 'Att schemalägga' }[p.status];
+}
+
+/** Stegen en bit går igenom, utan inkorgen. */
+export const stegFor = (p: Pick<Piece, 'typ'>) =>
+	STATUS.filter((s) => s.id !== 'inkorg' && (p.typ === 'film' || (s.id !== 'filmad' && s.id !== 'klippt')));
 
 export const FORMAT: { id: Format; namn: string }[] = [
 	{ id: 'ratt', namn: 'Rått samtal' },

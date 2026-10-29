@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Piece, Pelare } from './types';
-	import { PELARE } from './types';
+	import { PELARE, pelarFarg, plattform } from './types';
 	import { hub, lagg } from './store.svelte';
 
 	let { oppna }: { oppna: (p: Piece) => void } = $props();
@@ -59,13 +59,13 @@
 		<button type="button" aria-pressed={vald === 'inkorg'} class:aktiv={vald === 'inkorg'} onclick={() => (vald = 'inkorg')}>Inkorg <span>{inkorg.length}</span></button>
 	{/if}
 	{#each PELARE as p (p.id)}
-		<button type="button" aria-pressed={vald === p.id} class:aktiv={vald === p.id} onclick={() => (vald = p.id)}>{p.namn} <span>{antal(p.id)}</span></button>
+		<button type="button" aria-pressed={vald === p.id} class:aktiv={vald === p.id} onclick={() => (vald = p.id)}><i class="prick" style:background={pelarFarg(p.id)}></i>{p.namn} <span>{antal(p.id)}</span></button>
 	{/each}
 </div>
 
 <ul class="lista">
 	{#each lista as p (p.id)}
-		<li><button type="button" onclick={() => oppna(p)}>{p.titel}</button></li>
+		<li style:--pf={pelarFarg(p.pelare)}><button type="button" onclick={() => oppna(p)}>{p.titel}<small>{plattform(p)}</small></button></li>
 	{:else}
 		<li class="tom">Inget här än.</li>
 	{/each}
@@ -130,6 +130,13 @@
 		cursor: pointer;
 		color: var(--color-grafit);
 	}
+	.prick {
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		margin-right: 7px;
+	}
 	.flikar button span {
 		margin-left: 4px;
 		opacity: 0.7;
@@ -150,10 +157,16 @@
 		box-sizing: border-box;
 		display: block;
 		width: 100%;
-		padding: 14px 0;
+		padding: 14px 0 14px 14px;
+		border-left: 4px solid var(--pf);
 		font-size: 19px;
 		line-height: 1.35;
 		cursor: pointer;
+	}
+	.lista small {
+		display: block;
+		font-size: 14px;
+		color: var(--color-grafit);
 	}
 	.lista button:hover {
 		text-decoration: underline;

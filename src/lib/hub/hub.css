@@ -5,6 +5,11 @@
 	/* Gult som linje/kant: mörkare i ljust läge så att det syns mot kritvitt */
 	--smor-linje: #c9a227;
 	--kort: color-mix(in srgb, var(--color-svart) 4%, var(--color-krita));
+	/* Pelarfärger: mellantoner som syns både mot kritvitt och svart */
+	--p-omdome: #d0465a;
+	--p-jobbet: #d9b443;
+	--p-agenter: #6fa47e;
+	--p-skarm: #6c98cf;
 	min-height: 100dvh;
 	background: var(--color-krita);
 	color: var(--color-svart);
