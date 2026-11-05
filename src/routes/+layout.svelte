@@ -7,8 +7,7 @@
 
 	let { children } = $props();
 
-	// /hub och /alt2 (designförslag för granskning) har egen layout utan sajtens meny och fot.
-	const isHub = $derived(page.url.pathname.startsWith('/hub') || page.url.pathname.startsWith('/alt2'));
+	const isHub = $derived(page.url.pathname.startsWith('/hub'));
 
 	const sprak = $derived(sprakFran(page.params.lang));
 	const t = $derived(text[sprak]);
