@@ -26,7 +26,7 @@ export const text = {
 
 		start: {
 			titel: 'Nicole Boman – AI consultant, AI educator and keynote speaker',
-			beskrivning: 'Nicole Boman – AI consultant, AI educator and keynote speaker. Generative AI that people actually use.',
+			beskrivning: 'Nicole Boman – AI consultant, AI educator and keynote speaker. I help organisations start using generative AI in everyday work.',
 			jagAr: "I'm",
 			ord: ['Nicole Boman', 'an AI consultant', 'an AI educator', 'a keynote speaker'],
 			skarmlasare: "I'm Nicole Boman – AI consultant, AI educator and keynote speaker.",
@@ -37,8 +37,8 @@ export const text = {
 				etikett: '01 — About',
 				rubrik: 'I get people to actually use AI.',
 				stycken: [
-					'I work with generative AI as a consultant, speaker and educator. I show where the technology makes a real difference, and make sure people feel confident using it with their own judgement.',
-					"If you can't use it the day after, I haven't done my job."
+					'I work with generative AI as a consultant, speaker and educator. I show where the technology helps in the work you already do, and we practise until you feel confident using it on your own.',
+					'What you learn should be usable the day after.'
 				],
 				mer: 'More about me',
 				bildAlt: 'Nicole Boman speaking on a runway stage, surrounded by an audience'
@@ -54,24 +54,24 @@ export const text = {
 					{
 						nr: '01',
 						titel: 'Keynotes',
-						text: "Talks on generative AI for leadership teams, conferences and industry stages. Concrete examples, clear reasoning and an honest picture of what the technology can and can't do."
+						text: "Talks on generative AI for leadership teams, conferences and industry stages. With concrete examples and an honest picture of what the technology can handle today."
 					},
 					{
 						nr: '02',
 						titel: 'Training',
-						text: 'Courses, masterclasses and workshops where people actually work with the tools, from the first prompt to agents that carry out work in several steps.'
+						text: "Courses, masterclasses and workshops where participants work in the tools during the session, whether they're writing their first prompt or building agents."
 					},
 					{
 						nr: '03',
 						titel: 'Advisory',
-						text: 'Mapping and strategy work that starts with how the business really works and ends with priorities you can act on.'
+						text: 'Mapping and strategy work. I go through how you work today and suggest what to tackle first.'
 					}
 				]
 			},
 			coachning: {
 				etikett: '03 — 1:1 coaching',
 				rubrik: 'One to one, in your own project.',
-				text: "Personal help with Claude Code or Codex, online. We build something you'll actually use, it stays with you, and you get notes afterwards.",
+				text: "Personal help with Claude Code or Codex, online. We build something for your own work. Everything we make stays with you, and you get notes afterwards.",
 				pass: [
 					{ tid: '1.5 hours', titel: 'Kickstart', text: 'Get started, or move forward with something that is stuck. No preparation needed.', pris: '5 500 SEK' },
 					{ tid: '3 hours', titel: 'Deep dive', text: 'Build something bigger, from scratch or on top of what you have.', pris: '11 000 SEK' }
@@ -90,19 +90,19 @@ export const text = {
 			pastaenden: [
 				{
 					rubrik: 'Ten years in tech and e-commerce.',
-					text: 'Project manager, Client Director, CEO of a digital agency. I know what it looks like when something has to work on Monday, not just in a demo.'
+					text: "Project manager, Client Director, CEO of a digital agency. I know what it's like when something has to be ready and working on Monday."
 				},
 				{
 					rubrik: 'No hype.',
-					text: "I show what AI can do, what it can't, and where it actually saves time. Someone else can do the selling."
+					text: "I show where AI saves time in your work and where it falls short, with examples you'll recognise."
 				},
 				{
 					rubrik: "Sometimes the answer isn't AI.",
-					text: "Then I'll say so. A better routine often beats a new tool."
+					text: "Then I'll say so. Often a change of routine is enough."
 				},
 				{
 					rubrik: 'Nobody gets left behind.',
-					text: "Leadership team, specialist or someone who's never opened ChatGPT. Same straight talk for everyone."
+					text: "I talk the same way to a leadership team, a specialist and someone who has never opened ChatGPT."
 				}
 			],
 			cta: 'Shall we?'
@@ -130,7 +130,7 @@ export const text = {
 
 		start: {
 			titel: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker',
-			beskrivning: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker. Generativ AI som faktiskt används.',
+			beskrivning: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker. Jag hjälper organisationer att börja använda generativ AI i vardagen.',
 			jagAr: 'Jag är',
 			ord: ['Nicole Boman', 'AI-konsult', 'AI-utbildare', 'Keynote speaker'],
 			skarmlasare: 'Jag är Nicole Boman – AI-konsult, AI-utbildare och keynote speaker.',
@@ -141,8 +141,8 @@ export const text = {
 				etikett: '01 — Om',
 				rubrik: 'Jag får folk att faktiskt använda AI.',
 				stycken: [
-					'Jag arbetar med generativ AI som konsult, föreläsare och utbildare. Jag visar var tekniken gör verklig nytta, och ser till att människor blir trygga nog att använda den med eget omdöme.',
-					'Det ska gå att använda dagen efter. Annars har jag inte gjort mitt jobb.'
+					'Jag arbetar med generativ AI som konsult, föreläsare och utbildare. Jag visar var tekniken hjälper i det jobb ni redan gör, och vi övar tills ni känner er trygga att använda den själva.',
+					'Det ni lär er ska gå att använda dagen efter.'
 				],
 				mer: 'Mer om mig',
 				bildAlt: 'Nicole Boman föreläser på en catwalkscen, omgiven av publik'
@@ -158,24 +158,24 @@ export const text = {
 					{
 						nr: '01',
 						titel: 'Keynotes',
-						text: 'Föreläsningar om generativ AI för ledningsgrupper, konferenser och branschscener. Konkreta exempel, tydliga resonemang och en ärlig bild av vad tekniken kan och inte kan.'
+						text: 'Föreläsningar om generativ AI för ledningsgrupper, konferenser och branschscener. Med konkreta exempel och en ärlig bild av vad tekniken klarar i dag.'
 					},
 					{
 						nr: '02',
 						titel: 'Utbildning',
-						text: 'Kurser, masterclasses och workshops där deltagarna arbetar med verktygen på riktigt, från den första prompten till agenter som utför arbete i flera steg.'
+						text: 'Kurser, masterclasses och workshops där deltagarna jobbar i verktygen under passet, oavsett om de skriver sin första prompt eller bygger agenter.'
 					},
 					{
 						nr: '03',
 						titel: 'Rådgivning',
-						text: 'Kartläggningar och strategiskt arbete som börjar i hur verksamheten faktiskt fungerar och slutar i prioriteringar som går att genomföra.'
+						text: 'Kartläggningar och strategiarbete. Jag går igenom hur ni arbetar i dag och föreslår vad ni ska ta tag i först.'
 					}
 				]
 			},
 			coachning: {
 				etikett: '03 — Coachning 1:1',
 				rubrik: 'En och en, i ditt eget projekt.',
-				text: 'Personlig hjälp med Claude Code eller Codex, online. Vi bygger något du faktiskt använder, det stannar hos dig och du får anteckningar efteråt.',
+				text: 'Personlig hjälp med Claude Code eller Codex, online. Vi bygger något för ditt eget arbete. Allt vi gör stannar hos dig, och du får anteckningar efteråt.',
 				pass: [
 					{ tid: '1,5 h', titel: 'Kickstart', text: 'Kom igång från början, eller kom vidare med något som har kört fast. Du behöver inte förbereda något.', pris: '5 500 kr' },
 					{ tid: '3 h', titel: 'Fördjupning', text: 'Tid att bygga något större, från början eller vidare på det du redan har.', pris: '11 000 kr' }
@@ -194,19 +194,19 @@ export const text = {
 			pastaenden: [
 				{
 					rubrik: 'Tio år i tech och e-handel.',
-					text: 'Projektledare, Client Director, vd för en digital byrå. Jag vet hur det ser ut när något måste funka på måndag, inte bara i en demo.'
+					text: 'Projektledare, Client Director, vd för en digital byrå. Jag vet hur det är när något ska vara klart och fungera på måndag.'
 				},
 				{
 					rubrik: 'Ingen hype.',
-					text: 'Jag visar vad AI kan, vad den inte kan och var den faktiskt sparar tid. Resten får någon annan sälja in.'
+					text: 'Jag visar var AI sparar tid i ert arbete och var den brister, med exempel ni känner igen.'
 				},
 				{
 					rubrik: 'Ibland är svaret inte AI.',
-					text: 'Då säger jag det. En bättre rutin slår ofta ett nytt verktyg.'
+					text: 'Då säger jag det. Ofta räcker det att ändra en rutin.'
 				},
 				{
 					rubrik: 'Alla ska hänga med.',
-					text: 'Ledningsgrupp, specialist eller någon som aldrig öppnat ChatGPT. Samma raka besked till alla.'
+					text: 'Jag pratar likadant med en ledningsgrupp, en specialist och någon som aldrig har öppnat ChatGPT.'
 				}
 			],
 			cta: 'Ska vi köra?'
