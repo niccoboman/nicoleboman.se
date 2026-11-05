@@ -56,7 +56,7 @@
 
 	// Lägg till TikTok, YouTube m.m. här när kanalerna finns.
 	const kanaler = [
-		{ href: 'https://www.linkedin.com/in/nicoleboman/', label: 'LinkedIn' },
+		{ href: 'https://www.linkedin.com/in/nicole-boman/', label: 'LinkedIn' },
 		{ href: 'https://bomannicole.substack.com/', label: 'Substack' }
 	];
 </script>
@@ -166,7 +166,7 @@
 							{t.kontakt.text}
 						</p>
 						<a
-							href="https://www.linkedin.com/in/nicoleboman/"
+							href="https://www.linkedin.com/in/nicole-boman/"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="jatte reveal mt-10 inline-block bg-krita px-8 py-4 text-[clamp(1.4rem,2.4vw,2rem)] text-svart no-underline transition-transform hover:-translate-y-0.5"
