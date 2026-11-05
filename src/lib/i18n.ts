@@ -71,14 +71,9 @@ export const text = {
 			coachning: {
 				etikett: '03 — 1:1 coaching',
 				rubrik: 'One to one, in your own project.',
-				text: "Personal help with Claude Code or Codex, online. We build something for your own work. Everything we make stays with you, and you get notes afterwards.",
-				pass: [
-					{ tid: '1.5 hours', titel: 'Kickstart', text: 'Get started, or move forward with something that is stuck. No preparation needed.', pris: '5 500 SEK' },
-					{ tid: '3 hours', titel: 'Deep dive', text: 'Build something bigger, from scratch or on top of what you have.', pris: '11 000 SEK' }
-				],
-				moms: 'Excl. VAT for companies, incl. VAT for individuals.',
-				boka: 'See times and book',
-				bokaNot: 'Booked via Studio Stén. The booking page is in Swedish.'
+				text: 'Personal help with Claude Code or Codex. We build something for your own work, and you get notes afterwards.',
+				kort: '1.5 or 3 hours · Online · Booked via Studio Stén, in Swedish',
+				boka: 'See times and book'
 			}
 		},
 
@@ -175,14 +170,9 @@ export const text = {
 			coachning: {
 				etikett: '03 — Coachning 1:1',
 				rubrik: 'En och en, i ditt eget projekt.',
-				text: 'Personlig hjälp med Claude Code eller Codex, online. Vi bygger något för ditt eget arbete. Allt vi gör stannar hos dig, och du får anteckningar efteråt.',
-				pass: [
-					{ tid: '1,5 h', titel: 'Kickstart', text: 'Kom igång från början, eller kom vidare med något som har kört fast. Du behöver inte förbereda något.', pris: '5 500 kr' },
-					{ tid: '3 h', titel: 'Fördjupning', text: 'Tid att bygga något större, från början eller vidare på det du redan har.', pris: '11 000 kr' }
-				],
-				moms: 'Exkl. moms för företag, inkl. moms för privatpersoner.',
-				boka: 'Se tider och boka',
-				bokaNot: 'Bokas via Studio Stén.'
+				text: 'Personlig hjälp med Claude Code eller Codex. Vi bygger något för ditt eget arbete, och du får anteckningar efteråt.',
+				kort: '1,5 eller 3 timmar · Online · Bokas via Studio Stén',
+				boka: 'Se tider och boka'
 			}
 		},
 
