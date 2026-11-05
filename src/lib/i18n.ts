@@ -67,6 +67,18 @@ export const text = {
 						text: 'Mapping and strategy work that starts with how the business really works and ends with priorities you can act on.'
 					}
 				]
+			},
+			coachning: {
+				etikett: '03 — 1:1 coaching',
+				rubrik: 'One to one, in your own project.',
+				text: "Personal help with Claude Code or Codex, online. We build something you'll actually use, it stays with you, and you get notes afterwards.",
+				pass: [
+					{ tid: '1.5 hours', titel: 'Kickstart', text: 'Get started, or move forward with something that is stuck. No preparation needed.', pris: '5 500 SEK' },
+					{ tid: '3 hours', titel: 'Deep dive', text: 'Build something bigger, from scratch or on top of what you have.', pris: '11 000 SEK' }
+				],
+				moms: 'Excl. VAT for companies, incl. VAT for individuals.',
+				boka: 'See times and book',
+				bokaNot: 'Booked via Studio Stén. The booking page is in Swedish.'
 			}
 		},
 
@@ -99,27 +111,11 @@ export const text = {
 		kontakt: {
 			etikett: 'Contact',
 			rubrik: ['Shall we', 'talk?'],
-			text: "A talk, a training, a project or an idea you want to bounce around. Drop me a few lines and I'll get back to you.",
+			text: "A talk, a training, coaching, a project or an idea you want to bounce around. Send me a message on LinkedIn and I'll get back to you.",
+			linkedin: 'Message me on LinkedIn',
 			sverige: 'Sweden',
 			foto: 'Photo: Glide Photos, Gustaf Kumlin'
 		},
-
-		formular: {
-			detGaller: "It's about",
-			amnen: ['A talk', 'Training', 'A project', 'Something else'],
-			namn: 'Name',
-			epost: 'Email',
-			organisation: 'Organisation',
-			valfritt: '(optional)',
-			meddelande: 'Message',
-			skicka: 'Send',
-			skickar: 'Sending …',
-			integritet: 'I only use your details to reply to you.',
-			tack: 'Thanks!',
-			tackText: "Your message is in. I'll get back to you as soon as I can.",
-			fel: "Something went wrong and the message wasn't sent. Try again in a moment, or reach out on LinkedIn.",
-			ejKopplat: "The form isn't connected yet. Reach out on LinkedIn for now."
-		}
 	},
 
 	sv: {
@@ -175,6 +171,18 @@ export const text = {
 						text: 'Kartläggningar och strategiskt arbete som börjar i hur verksamheten faktiskt fungerar och slutar i prioriteringar som går att genomföra.'
 					}
 				]
+			},
+			coachning: {
+				etikett: '03 — Coachning 1:1',
+				rubrik: 'En och en, i ditt eget projekt.',
+				text: 'Personlig hjälp med Claude Code eller Codex, online. Vi bygger något du faktiskt använder, det stannar hos dig och du får anteckningar efteråt.',
+				pass: [
+					{ tid: '1,5 h', titel: 'Kickstart', text: 'Kom igång från början, eller kom vidare med något som har kört fast. Du behöver inte förbereda något.', pris: '5 500 kr' },
+					{ tid: '3 h', titel: 'Fördjupning', text: 'Tid att bygga något större, från början eller vidare på det du redan har.', pris: '11 000 kr' }
+				],
+				moms: 'Exkl. moms för företag, inkl. moms för privatpersoner.',
+				boka: 'Se tider och boka',
+				bokaNot: 'Bokas via Studio Stén.'
 			}
 		},
 
@@ -207,26 +215,10 @@ export const text = {
 		kontakt: {
 			etikett: 'Kontakt',
 			rubrik: ['Ska vi', 'prata?'],
-			text: 'Om en föreläsning, en utbildning, ett uppdrag eller en tanke du vill bolla. Skriv några rader så hör jag av mig.',
+			text: 'Om en föreläsning, en utbildning, coachning, ett uppdrag eller en tanke du vill bolla. Skicka ett meddelande på LinkedIn så hör jag av mig.',
+			linkedin: 'Skriv till mig på LinkedIn',
 			sverige: 'Sverige',
 			foto: 'Foto: Glide Photos, Gustaf Kumlin'
 		},
-
-		formular: {
-			detGaller: 'Det gäller',
-			amnen: ['Föreläsning', 'Utbildning', 'Uppdrag', 'Något annat'],
-			namn: 'Namn',
-			epost: 'E-post',
-			organisation: 'Organisation',
-			valfritt: '(valfritt)',
-			meddelande: 'Meddelande',
-			skicka: 'Skicka',
-			skickar: 'Skickar …',
-			integritet: 'Jag använder dina uppgifter bara för att svara dig.',
-			tack: 'Tack!',
-			tackText: 'Ditt meddelande har kommit fram. Jag hör av mig så snart jag kan.',
-			fel: 'Något gick fel och meddelandet skickades inte. Försök igen om en stund, eller hör av dig via LinkedIn.',
-			ejKopplat: 'Formuläret är inte kopplat ännu. Hör av dig via LinkedIn så länge.'
-		}
 	}
 } as const;

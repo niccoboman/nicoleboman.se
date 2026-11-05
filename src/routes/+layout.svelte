@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import { reveal } from '$lib/reveal';
-	import Kontakt from '$lib/components/Kontakt.svelte';
 	import { text, sprakFran, lank } from '$lib/i18n';
 
 	let { children } = $props();
@@ -160,14 +159,21 @@
 		<footer id="kontakt" class="mt-[16vh] scroll-mt-0 bg-svart text-krita" use:reveal>
 			<div class="px-[clamp(16px,3vw,40px)] pb-6 pt-[clamp(64px,12vh,140px)]">
 				<div class="grid gap-12 md:grid-cols-12">
-					<div class="md:col-span-5">
+					<div class="md:col-span-9">
 						<p class="etikett reveal text-krita/75">{t.kontakt.etikett}</p>
 						<h2 class="jatte reveal mt-6 text-[clamp(3.2rem,7vw,8rem)]">{t.kontakt.rubrik[0]}{' '}<br />{t.kontakt.rubrik[1]}</h2>
-						<p class="reveal mt-8 max-w-[34ch] text-[1.15rem] leading-[1.5] text-krita/85">
+						<p class="reveal mt-8 max-w-[44ch] text-[1.15rem] leading-[1.5] text-krita/85">
 							{t.kontakt.text}
 						</p>
+						<a
+							href="https://www.linkedin.com/in/nicoleboman/"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="jatte reveal mt-10 inline-block bg-krita px-8 py-4 text-[clamp(1.4rem,2.4vw,2rem)] text-svart no-underline transition-transform hover:-translate-y-0.5"
+							>{t.kontakt.linkedin}<span aria-hidden="true">&nbsp;↗</span><span class="sr-only"> {t.nyFlik}</span></a
+						>
 						<ul class="reveal mt-8 flex flex-wrap gap-x-8 gap-y-3">
-							{#each kanaler as k (k.href)}
+							{#each kanaler.filter((k) => k.label !== 'LinkedIn') as k (k.href)}
 								<li>
 									<a href={k.href} target="_blank" rel="noopener noreferrer" class="etikett streck inline-block py-1.5 text-krita"
 										>{k.label}<span aria-hidden="true">&nbsp;↗</span><span class="sr-only"> {t.nyFlik}</span></a
@@ -175,9 +181,6 @@
 								</li>
 							{/each}
 						</ul>
-					</div>
-					<div class="reveal md:col-span-6 md:col-start-7 md:pt-12">
-						<Kontakt {sprak} />
 					</div>
 				</div>
 				<div class="mt-[12vh] flex flex-wrap justify-between gap-4 border-t border-krita/30 pt-5">

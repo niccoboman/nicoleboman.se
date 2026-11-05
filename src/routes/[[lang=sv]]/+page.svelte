@@ -193,6 +193,33 @@
 	>
 </section>
 
+<!-- 03 Coachning 1:1 (bokas via Studio Stén) -->
+<section id="coachning" class="mt-[16vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
+	<p class="etikett reveal">{t.coachning.etikett}</p>
+	<h2 class="jatte reveal mt-4 max-w-[18ch] text-[clamp(2.6rem,5.5vw,6rem)]">{t.coachning.rubrik}</h2>
+	<p class="reveal mt-5 max-w-[52ch] text-[clamp(1.1rem,1.4vw,1.3rem)] font-semibold leading-[1.4]">{t.coachning.text}</p>
+
+	<ul class="mt-12 grid border-t-2 border-svart md:grid-cols-2">
+		{#each t.coachning.pass as p, n (p.titel)}
+			<li class="reveal flex flex-col gap-4 border-b border-svart py-8 md:border-b-0 md:px-6 md:py-10 {n > 0 ? 'md:border-l' : 'md:pl-0'}">
+				<span class="etikett">{p.tid}</span>
+				<h3 class="jatte text-[clamp(2.2rem,3.2vw,3.4rem)]">{p.titel}</h3>
+				<p class="max-w-[38ch] text-[1.05rem] leading-[1.55]">{p.text}</p>
+				<p class="etikett mt-auto pt-2">{p.pris}</p>
+			</li>
+		{/each}
+	</ul>
+	<p class="mt-6 text-[0.95rem]">{t.coachning.moms}</p>
+	<a
+		href="https://studiosten.se/coachning"
+		target="_blank"
+		rel="noopener noreferrer"
+		class="jatte mt-8 inline-block bg-svart px-8 py-4 text-[clamp(1.4rem,2.4vw,2rem)] text-krita no-underline transition-transform hover:-translate-y-0.5"
+		>{t.coachning.boka}<span aria-hidden="true">&nbsp;↗</span><span class="sr-only"> {g.nyFlik}</span></a
+	>
+	<p class="mt-3 text-[0.95rem]">{t.coachning.bokaNot}</p>
+</section>
+
 {#if citat.length}
 	<section class="mt-[16vh] px-[clamp(16px,3vw,40px)]" use:reveal>
 		<p class="etikett reveal">Röster</p>
