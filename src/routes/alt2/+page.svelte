@@ -93,9 +93,21 @@
 			// Bara den del som flyttas upp får ett eget namn. Allt annat tonar lugnt över.
 			if (el) el.style.viewTransitionName = 'leder';
 			const vt = document.startViewTransition(uppdatera);
+			await vt.updateCallbackDone;
 			vt.finished.finally(() => el && (el.style.viewTransitionName = ''));
 		} else {
 			await uppdatera();
+		}
+
+		// Ta besökaren till det hon valde: glid ner till delen och flytta fokus till rubriken.
+		if (forsta) {
+			const mal = document.getElementById(forsta);
+			mal?.scrollIntoView({ behavior: reducerad ? 'auto' : 'smooth', block: 'start' });
+			const rubrik = mal?.querySelector<HTMLElement>('h2');
+			if (rubrik) {
+				rubrik.tabIndex = -1;
+				rubrik.focus({ preventScroll: true });
+			}
 		}
 
 		replaceState(hrefFor(nytt), {});
@@ -499,6 +511,10 @@
 		margin-right: 0.35em;
 	}
 
+	h2:focus {
+		outline: none;
+	}
+
 	button:focus-visible,
 	a:focus-visible {
 		border-radius: 6px;
@@ -508,6 +524,7 @@
 
 	.del {
 		padding: 0 0 3.5rem;
+		scroll-margin-top: 1.5rem;
 	}
 
 	.foto {
