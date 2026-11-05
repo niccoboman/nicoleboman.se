@@ -71,7 +71,7 @@ export const text = {
 			coachning: {
 				etikett: '03 — 1:1 coaching',
 				rubrik: 'One to one, in your own project.',
-				text: 'Personal help with Claude Code or Codex. We build something for your own work, and you get notes afterwards.',
+				text: 'Personal help with Claude Code or Codex. We build something for your own work.',
 				kort: '1.5 or 3 hours · Online · Booked via Studio Stén, in Swedish',
 				boka: 'See times and book'
 			}
@@ -170,7 +170,7 @@ export const text = {
 			coachning: {
 				etikett: '03 — Coachning 1:1',
 				rubrik: 'En och en, i ditt eget projekt.',
-				text: 'Personlig hjälp med Claude Code eller Codex. Vi bygger något för ditt eget arbete, och du får anteckningar efteråt.',
+				text: 'Personlig hjälp med Claude Code eller Codex. Vi bygger något för ditt eget arbete.',
 				kort: '1,5 eller 3 timmar · Online · Bokas via Studio Stén',
 				boka: 'Se tider och boka'
 			}
