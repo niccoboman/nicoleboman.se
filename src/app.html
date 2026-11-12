@@ -11,11 +11,11 @@
 		<!-- Scroll-animationer bara när JavaScript körs; annars syns allt direkt -->
 		<script>
 			document.documentElement.classList.add('js');
-			// Mörkt läge är standard. Sätts före första renderingen så att sidan inte blinkar vitt.
-			// Bara den som själv valt ljust läge (sparat i localStorage) får ljust.
-			var tema = 'mork';
+			// Ljust läge är standard. Sätts före första renderingen så att sidan inte blinkar.
+			// Bara den som själv valt mörkt läge (sparat i localStorage) får mörkt.
+			var tema = 'ljus';
 			try {
-				if (localStorage.getItem('tema') === 'ljus') tema = 'ljus';
+				if (localStorage.getItem('tema') === 'mork') tema = 'mork';
 			} catch (e) {}
 			if (tema === 'mork') document.documentElement.dataset.tema = 'mork';
 		</script>
