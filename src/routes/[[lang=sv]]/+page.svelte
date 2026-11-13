@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { reveal } from '$lib/reveal';
-	import { parallax, vaxa } from '$lib/parallax';
+	import { parallax, vaxa, flyg } from '$lib/parallax';
 	import { text, sprakFran, lank } from '$lib/i18n';
 
 	const sprak = $derived(sprakFran(page.params.lang));
@@ -19,8 +19,8 @@
 	<link rel="alternate" hreflang="sv" href="https://www.nicoleboman.com/sv" />
 </svelte:head>
 
-<!-- Inledning: namnet i två delar, två bilder och en roterande ring -->
-<section class="relative flex min-h-[calc(100svh-56px)] flex-col overflow-hidden px-[clamp(16px,3vw,40px)] pb-6">
+<!-- Inledning: namnet i två delar och två bilder -->
+<section class="relative flex min-h-[calc(100svh-56px)] flex-col overflow-x-clip px-[clamp(16px,3vw,40px)] pb-6">
 	<div class="flex items-end justify-end gap-[clamp(10px,1.4vw,20px)] pt-[clamp(32px,7vh,90px)]">
 		<figure class="w-[clamp(120px,15vw,230px)]" use:parallax={{ y: -0.18, scroll: true }}>
 			<p class="ingress mb-3 text-[1.15rem]">{t.hej}</p>
@@ -49,8 +49,8 @@
 		</figure>
 	</div>
 
-	<h1 class="jatte relative mt-[clamp(-14vw,-11vw,-40px)] text-[clamp(5.5rem,19vw,20rem)] leading-[0.82] max-md:mt-8">
-		<span class="namn block" use:parallax={{ x: -0.12, y: 0.25, scroll: true }}>Nicole</span>
+	<h1 class="jatte relative z-20 mt-[clamp(-14vw,-11vw,-40px)] text-[clamp(5.5rem,19vw,20rem)] leading-[0.82] max-md:mt-8">
+		<span class="namn block"><span class="inline-block" use:flyg>Nicole</span></span>
 		<span class="namn block pl-[38%] max-md:pl-[22%]" use:parallax={{ x: 0.1, y: -0.05, scroll: true }}>Boman</span>
 		<span class="sr-only"> – {t.titlar}</span>
 	</h1>
@@ -60,15 +60,6 @@
 			<li><a href="https://www.linkedin.com/in/nicole-boman/" target="_blank" rel="noopener noreferrer" class="etikett streck inline-block py-1.5 text-svart">LinkedIn<span class="sr-only"> {g.nyFlik}</span></a></li>
 			<li><a href="https://bomannicole.substack.com/" target="_blank" rel="noopener noreferrer" class="etikett streck inline-block py-1.5 text-svart">Substack<span class="sr-only"> {g.nyFlik}</span></a></li>
 		</ul>
-		<a href="#om" class="snurrring block h-[92px] w-[92px] shrink-0 text-svart no-underline" aria-label={t.utforska}>
-			<svg viewBox="0 0 100 100" aria-hidden="true" class="h-full w-full">
-				<defs><path id="ringbana" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
-				<text class="fill-current text-[10.5px] uppercase tracking-[0.32em]"
-					><textPath href="#ringbana">{t.utforska} · {t.utforska} · </textPath></text
-				>
-				<circle cx="50" cy="50" r="1.6" class="fill-current" />
-			</svg>
-		</a>
 	</div>
 </section>
 
@@ -76,22 +67,27 @@
 <section id="om" class="relative mt-[16vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<p class="etikett reveal text-right">{t.om.etikett}</p>
 	<div class="relative mt-4" use:vaxa>
-		<figure class="vaxbild relative z-10 float-left mr-6 w-[32%] max-md:mb-4 max-md:float-none max-md:w-full">
-			<img
-				src="/bilder/scen-bw-1200.webp"
-				srcset="/bilder/scen-bw-1200.webp 1200w, /bilder/scen-bw-2160.webp 2160w"
-				sizes="(min-width: 768px) 70vw, 100vw"
-				alt={t.heroAlt}
-				width="1200"
-				height="800"
-				loading="lazy"
-				class="aspect-[3/2] w-full object-cover object-[50%_30%]"
-			/>
+		<!-- Figuren är en platshållare i liten storlek (texten flyter runt den). Bilden i .vaxlager
+		     ligger i full bredd och skalas ner med transform, så att den inte behöver ritas om när den växer. -->
+		<figure class="vaxbild relative z-10 float-left mr-6 aspect-[3/2] w-[32%] max-md:mb-4 max-md:float-none max-md:w-full">
+			<div class="vaxlager">
+				<img
+					src="/bilder/scen-bw-2160.webp"
+					srcset="/bilder/scen-bw-1200.webp 1200w, /bilder/scen-bw-2160.webp 2160w"
+					sizes="100vw"
+					alt={t.heroAlt}
+					width="1200"
+					height="800"
+					loading="lazy"
+					decoding="async"
+					class="aspect-[3/2] w-full object-cover object-[50%_30%]"
+				/>
+			</div>
 		</figure>
 		<p class="ingress intro pt-[calc(32%*0.6667-1.05em)] indent-[calc(19%+1rem)] text-[clamp(2rem,4.2vw,4.4rem)] leading-[1.08] max-md:indent-0 max-md:pt-0">
 			<span class="sr-only">{t.intro}</span>
 			<span aria-hidden="true" class="ord-in"
-				>{#each t.intro.split(' ') as o, n (n)}<span style="--i:{n}">{o}</span>{' '}{/each}</span
+				>{#each t.intro.split(' ') as o, n (n)}<span style="--i:{n}" data-namn-mal={o === 'Nicole' ? '' : undefined}>{o}</span>{' '}{/each}</span
 			>
 		</p>
 		<div class="clear-both grid gap-8 pt-10 md:grid-cols-12">
@@ -175,16 +171,6 @@
 {/if}
 
 <style>
-	/* Ringen snurrar långsamt */
-	.snurrring svg {
-		animation: snurra 18s linear infinite;
-	}
-	@keyframes snurra {
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
 	/* Bilderna i inledningen rullas fram när sidan laddas */
 	:global(.js) .bild-start {
 		animation: bild-in 1.4s cubic-bezier(0.7, 0, 0.2, 1) 0.2s both;
@@ -200,7 +186,8 @@
 
 	/* Namnet glider upp när sidan laddas */
 	:global(.js) .namn {
-		animation: namn-in 1.3s cubic-bezier(0.7, 0, 0.2, 1) both;
+		/* backwards: klippningen släpps när animationen är klar, annars klipps namnet när det flyger ner */
+		animation: namn-in 1.3s cubic-bezier(0.7, 0, 0.2, 1) backwards;
 	}
 	:global(.js) .namn + .namn {
 		animation-delay: 0.12s;
@@ -221,16 +208,21 @@
 		text-indent: 0;
 	}
 
-	/* Bilden i om-delen växer över texten med scrollen (--p sätts av vaxa) */
+	/* Bilden i om-delen växer över texten med scrollen. Lagret är lika brett som avsnittet
+	   (32 % × 3,125 = 100 %) och vaxa skalar ner det med transform. */
 	@media (min-width: 768px) {
-		.vaxbild {
-			transform-origin: 0 100%;
-			scale: calc(1 + var(--p, 0) * 0.6);
+		.vaxlager {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 312.5%;
+			transform-origin: 0 0;
+			transform: scale(0.32);
+			will-change: transform;
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.snurrring svg,
 		:global(.js) .bild-start,
 		:global(.js) .namn {
 			animation: none;
