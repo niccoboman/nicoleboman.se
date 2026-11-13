@@ -7,7 +7,7 @@ export function sprakFran(param: string | undefined): Sprak {
 	return param === 'sv' ? 'sv' : 'en';
 }
 
-// Bygger en länk i rätt språk, t.ex. lank('sv', '/om') -> '/sv/om', lank('en', '/#arbete') -> '/#arbete'
+// Bygger en länk i rätt språk, t.ex. lank('sv', '/#om') -> '/sv#om', lank('en', '/#arbete') -> '/#arbete'
 export function lank(sprak: Sprak, sti: string) {
 	if (sprak === 'en') return sti;
 	return sti === '/' ? '/sv' : sti.startsWith('/#') ? `/sv${sti.slice(1)}` : `/sv${sti}`;
@@ -38,10 +38,8 @@ export const text = {
 					'I work with generative AI as a consultant, speaker and educator. I show where the technology helps in your day-to-day work. Then we practise until you can use it on your own.',
 					'What you learn should be usable the day after.'
 				],
-				mer: 'More about me',
 				bildAlt: 'Nicole Boman speaking on a runway stage, surrounded by an audience',
-				portrattAlt: 'Portrait of Nicole Boman in a pink striped shirt against a woven wall hanging',
-				studioAlt: 'Nicole Boman in a TV studio, a camera operator filming in the foreground'
+				portrattAlt: 'Portrait of Nicole Boman in a pink striped shirt against a woven wall hanging'
 			},
 
 			arbete: {
@@ -70,37 +68,10 @@ export const text = {
 			},
 			coachning: {
 				etikett: '1:1 coaching',
-				rubrik: 'One to one, in your own project.',
 				text: 'Personal help with Claude Code or Codex. We build something for your own work.',
 				kort: '1.5 or 3 hours · Online · Booked via Studio Stén, in Swedish',
 				boka: 'See times and book'
 			}
-		},
-
-		om: {
-			titel: 'About Nicole Boman',
-			etikett: 'About',
-			rubrik: ['Short', 'version.'],
-			bildAlt: 'Nicole Boman in profile on a dark stage',
-			pastaenden: [
-				{
-					rubrik: 'Ten years in tech and e-commerce.',
-					text: "Project manager, Client Director, CEO of a digital agency. I know what it's like when something has to be ready and working on Monday."
-				},
-				{
-					rubrik: 'No hype.',
-					text: "I show where AI saves time in your work and where it falls short, with examples you'll recognise."
-				},
-				{
-					rubrik: "Sometimes the answer isn't AI.",
-					text: "Then I'll say so. Often a change of routine is enough."
-				},
-				{
-					rubrik: 'Nobody gets left behind.',
-					text: "I talk the same way to a leadership team, a specialist and someone who has never opened ChatGPT."
-				}
-			],
-			cta: 'Shall we?'
 		},
 
 		kontakt: {
@@ -138,10 +109,8 @@ export const text = {
 					'Jag arbetar med generativ AI som konsult, föreläsare och utbildare. Jag visar var tekniken hjälper i ert vardagsarbete. Sedan övar vi tills ni kan använda den själva.',
 					'Det ni lär er ska gå att använda dagen efter.'
 				],
-				mer: 'Mer om mig',
 				bildAlt: 'Nicole Boman föreläser på en catwalkscen, omgiven av publik',
-				portrattAlt: 'Porträtt av Nicole Boman i rosa randig skjorta framför en vävd bonad',
-				studioAlt: 'Nicole Boman i en tv-studio, en kameraman filmar i förgrunden'
+				portrattAlt: 'Porträtt av Nicole Boman i rosa randig skjorta framför en vävd bonad'
 			},
 
 			arbete: {
@@ -170,37 +139,10 @@ export const text = {
 			},
 			coachning: {
 				etikett: 'Coachning 1:1',
-				rubrik: 'En och en, i ditt eget projekt.',
 				text: 'Personlig hjälp med Claude Code eller Codex. Vi bygger något för ditt eget arbete.',
 				kort: '1,5 eller 3 timmar · Online · Bokas via Studio Stén',
 				boka: 'Se tider och boka'
 			}
-		},
-
-		om: {
-			titel: 'Om Nicole Boman',
-			etikett: 'Om',
-			rubrik: ['Kort', 'version.'],
-			bildAlt: 'Nicole Boman i profil på en mörk scen',
-			pastaenden: [
-				{
-					rubrik: 'Tio år i tech och e-handel.',
-					text: 'Projektledare, Client Director, vd för en digital byrå. Jag vet hur det är när något ska vara klart och fungera på måndag.'
-				},
-				{
-					rubrik: 'Ingen hype.',
-					text: 'Jag visar var AI sparar tid i ert arbete och var den brister, med exempel ni känner igen.'
-				},
-				{
-					rubrik: 'Ibland är svaret inte AI.',
-					text: 'Då säger jag det. Ofta räcker det att ändra en rutin.'
-				},
-				{
-					rubrik: 'Alla ska hänga med.',
-					text: 'Jag pratar likadant med en ledningsgrupp, en specialist och någon som aldrig har öppnat ChatGPT.'
-				}
-			],
-			cta: 'Ska vi köra?'
 		},
 
 		kontakt: {

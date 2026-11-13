@@ -13,12 +13,12 @@
 	const t = $derived(text[sprak]);
 
 	const nav = $derived([
-		{ href: lank(sprak, '/om'), label: t.nav.om },
+		{ href: lank(sprak, '/#om'), label: t.nav.om },
 		{ href: lank(sprak, '/#arbete'), label: t.nav.arbete },
 		{ href: lank(sprak, '/#kontakt'), label: t.nav.kontakt }
 	]);
 
-	// Samma sida på det andra språket: /om <-> /sv/om
+	// Samma sida på det andra språket: / <-> /sv
 	const andraSprak = $derived.by(() => {
 		const sti = page.url.pathname;
 		if (sprak === 'sv') return sti.replace(/^\/sv/, '') || '/';
@@ -187,7 +187,7 @@
 					<div class="md:col-span-6 md:col-start-5">
 						<p class="etikett reveal text-krita/75">{t.kontakt.etikett}</p>
 						<h2 class="jatte upp mt-4 text-[clamp(2.8rem,5vw,5.5rem)]">{t.kontakt.rubrik[0]} <em>{t.kontakt.rubrik[1]}</em></h2>
-						<p class="ingress reveal mt-6 max-w-[34ch] text-krita/85">
+						<p class="reveal mt-6 max-w-[42ch] text-[1.125rem] leading-[1.65] text-krita/90">
 							{t.kontakt.text}
 						</p>
 						<p class="etikett reveal mt-6 text-krita/75">{t.kontakt.sprakResor}</p>

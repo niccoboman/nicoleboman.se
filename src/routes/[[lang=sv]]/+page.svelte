@@ -36,40 +36,39 @@
 	</div>
 	<figure class="start-in md:col-span-5 md:col-start-8" style="animation-delay:0.15s">
 		<img
-			src="/bilder/portratt-900.webp"
-			srcset="/bilder/portratt-900.webp 900w, /bilder/portratt-1600.webp 1600w"
+			src="/bilder/scen-bw-1200.webp"
+			srcset="/bilder/scen-bw-1200.webp 1200w, /bilder/scen-bw-2160.webp 2160w"
 			sizes="(min-width: 768px) 40vw, 100vw"
-			alt={t.om.portrattAlt}
-			width="900"
-			height="1350"
+			alt={t.heroAlt}
+			width="1200"
+			height="800"
 			fetchpriority="high"
-			class="aspect-[4/5] w-full object-cover object-[50%_20%] md:aspect-auto md:h-[calc(100svh-64px-clamp(24px,6vh,72px)-2rem)]"
+			class="aspect-[4/5] w-full object-cover object-[50%_30%] md:aspect-auto md:h-[calc(100svh-64px-clamp(24px,6vh,72px)-2rem)]"
 		/>
 	</figure>
 </section>
 
-<!-- Om: scenbilden och introt -->
+<!-- Om: porträttet och introt -->
 <section id="om" class="mt-[18vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<p class="etikett reveal text-grafit">{t.om.etikett}</p>
 	<div class="mt-8 grid gap-10 md:grid-cols-12 md:gap-8">
 		<figure class="bild md:col-span-5">
 			<img
-				src="/bilder/scen-bw-1200.webp"
-				srcset="/bilder/scen-bw-1200.webp 1200w, /bilder/scen-bw-2160.webp 2160w"
+				src="/bilder/portratt-900.webp"
+				srcset="/bilder/portratt-900.webp 900w, /bilder/portratt-1600.webp 1600w"
 				sizes="(min-width: 768px) 40vw, 100vw"
-				alt={t.heroAlt}
-				width="1200"
-				height="800"
+				alt={t.om.portrattAlt}
+				width="900"
+				height="1350"
 				loading="lazy"
 				decoding="async"
-				class="aspect-[4/5] w-full object-cover object-[50%_30%]"
+				class="aspect-[4/5] w-full object-cover object-[50%_20%]"
 			/>
 		</figure>
 		<div class="flex flex-col md:col-span-6 md:col-start-7">
 			<p class="jatte ord-in text-[clamp(2rem,3.4vw,3.4rem)] leading-[1.12]">{t.intro}</p>
 			<p class="ingress reveal mt-12">{t.om.stycken[0]}</p>
 			<p class="ingress reveal mt-5 text-grafit"><em>{t.om.stycken[1]}</em></p>
-			<p class="reveal mt-8"><a href={lank(sprak, '/om')} class="ingress lank">{t.om.mer}</a></p>
 		</div>
 	</div>
 </section>
@@ -85,44 +84,26 @@
 		</p>
 	</div>
 
-	<figure class="bild mt-14">
-		<img
-			src="/bilder/tvstudio-1280.webp"
-			alt={t.om.studioAlt}
-			width="1280"
-			height="763"
-			loading="lazy"
-			decoding="async"
-			class="aspect-[21/9] w-full object-cover object-[40%_45%]"
-		/>
-	</figure>
-
-	<ul class="mt-4 grid md:grid-cols-3">
-		{#each t.arbete.poster as a, n (a.nr)}
-			<li class="reveal flex flex-col gap-3 border-b border-linje py-8 md:border-b-0 md:py-10 {n > 0 ? 'md:border-l md:pl-8' : ''} {n < 2 ? 'md:pr-8' : ''}">
+	<ul class="mt-10 grid gap-x-8 md:grid-cols-2 lg:grid-cols-4">
+		{#each t.arbete.poster as a (a.nr)}
+			<li class="reveal flex flex-col gap-3 border-t border-linje pb-10 pt-6">
 				<h3 class="jatte text-[clamp(1.9rem,2.4vw,2.6rem)]">{a.titel}</h3>
 				<p class="max-w-[40ch] text-[0.98rem] leading-[1.7] text-grafit">{a.text}</p>
 			</li>
 		{/each}
+		<!-- Coachning 1:1 bokas direkt, därför en egen länk -->
+		<li id="coachning" class="reveal flex scroll-mt-6 flex-col gap-3 border-t border-linje pb-10 pt-6">
+			<h3 class="jatte text-[clamp(1.9rem,2.4vw,2.6rem)]">{t.coachning.etikett}</h3>
+			<p class="max-w-[40ch] text-[0.98rem] leading-[1.7] text-grafit">{t.coachning.text}</p>
+			<p class="etikett text-grafit">{t.coachning.kort}</p>
+			<p class="mt-auto pt-2">
+				<a href="https://studiosten.se/coachning" target="_blank" rel="noopener noreferrer" class="lank">{t.coachning.boka}<span class="sr-only"> {g.nyFlik}</span></a>
+			</p>
+		</li>
 	</ul>
-	<p class="reveal mt-6">
+	<p class="reveal mt-2">
 		<a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="ingress lank">{t.arbete.boka}<span class="sr-only"> {g.nyFlik}</span></a>
 	</p>
-</section>
-
-<!-- Coachning 1:1 (bokas via Studio Stén) -->
-<section id="coachning" class="mt-[22vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
-	<div class="grid gap-6 border-t border-linje pt-10 md:grid-cols-12 md:gap-8">
-		<p class="etikett reveal text-grafit md:col-span-3">{t.coachning.etikett}</p>
-		<div class="md:col-span-8 md:col-start-5">
-			<h2 class="jatte upp text-[clamp(2.6rem,5vw,5.5rem)]">{t.coachning.rubrik}</h2>
-			<p class="ingress reveal mt-6 max-w-[42ch]">{t.coachning.text}</p>
-			<p class="etikett reveal mt-6 text-grafit">{t.coachning.kort}</p>
-			<p class="reveal mt-8">
-				<a href="https://studiosten.se/coachning" target="_blank" rel="noopener noreferrer" class="ingress lank">{t.coachning.boka}<span class="sr-only"> {g.nyFlik}</span></a>
-			</p>
-		</div>
-	</div>
 </section>
 
 {#if citat.length}
