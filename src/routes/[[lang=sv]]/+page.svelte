@@ -84,12 +84,9 @@
 <section id="arbete" class="mt-[22vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<p class="etikett reveal text-grafit">{t.arbete.etikett}</p>
 	<h2 class="jatte upp mt-6 text-[clamp(2.6rem,5vw,5.5rem)]">{t.arbete.rubrik}</h2>
-	<p class="ingress reveal mt-4 text-grafit">
-		{t.arbete.studioFore}
-		<a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="lank text-svart">Studio Stén<span class="sr-only"> {g.nyFlik}</span></a>{t.arbete.studioEfter}
-	</p>
 
-	<!-- Fyra lika kort: rubrik, text och en bokningslänk längst ner -->
+	<!-- Fyra lika kort: rubrik, text, bokningslänk och att det sker med Studio Stén.
+	     Står per kort, så att det inte ser ut som att allt måste bokas via dem. -->
 	<ul class="mt-14 grid gap-x-8 md:grid-cols-2 lg:grid-cols-4">
 		{#each t.arbete.poster as a (a.nr)}
 			<li class="reveal flex flex-col gap-3 border-t border-linje pb-12 pt-6">
@@ -98,6 +95,7 @@
 				<p class="mt-auto pt-4">
 					<a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="lank">{a.lank}<span class="sr-only"> {g.nyFlik}</span></a>
 				</p>
+				<p class="text-[0.9rem] text-grafit">{t.arbete.samarbete} <a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="streck text-grafit">Studio Stén<span class="sr-only"> {g.nyFlik}</span></a></p>
 			</li>
 		{/each}
 		<li id="coachning" class="reveal flex scroll-mt-6 flex-col gap-3 border-t border-linje pb-12 pt-6">
@@ -106,6 +104,7 @@
 			<p class="mt-auto pt-4">
 				<a href="https://studiosten.se/coachning" target="_blank" rel="noopener noreferrer" class="lank">{t.coachning.boka}<span class="sr-only"> {g.nyFlik}</span></a>
 			</p>
+			<p class="text-[0.9rem] text-grafit">{t.arbete.samarbete} <a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="streck text-grafit">Studio Stén<span class="sr-only"> {g.nyFlik}</span></a></p>
 		</li>
 	</ul>
 </section>

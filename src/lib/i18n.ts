@@ -45,8 +45,7 @@ export const text = {
 			arbete: {
 				etikett: 'Work',
 				rubrik: 'This is what I do.',
-				studioFore: 'I do it together with',
-				studioEfter: '.',
+				samarbete: 'In collaboration with',
 				poster: [
 					{
 						nr: '01',
@@ -118,8 +117,7 @@ export const text = {
 			arbete: {
 				etikett: 'Arbete',
 				rubrik: 'Det här gör jag.',
-				studioFore: 'Jag gör det tillsammans med',
-				studioEfter: '.',
+				samarbete: 'I samarbete med',
 				poster: [
 					{
 						nr: '01',
