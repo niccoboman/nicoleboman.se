@@ -47,21 +47,23 @@ export const text = {
 				rubrik: 'This is what I do.',
 				studioFore: 'I do it together with',
 				studioEfter: '.',
-				boka: 'Book via Studio Stén',
 				poster: [
 					{
 						nr: '01',
 						titel: 'Keynotes',
+						lank: 'Book a talk',
 						text: 'Talks on generative AI for leadership teams and conferences, with concrete examples of what the technology can do today and where it falls short.'
 					},
 					{
 						nr: '02',
 						titel: 'Training',
+						lank: 'Book a training',
 						text: "Courses and workshops where participants work in the tools during the session, whether they're writing their first prompt or building agents."
 					},
 					{
 						nr: '03',
 						titel: 'Advisory',
+						lank: 'Book a call',
 						text: 'Mapping and strategy work. I go through how you work today and suggest what to tackle first.'
 					}
 				]
@@ -69,7 +71,7 @@ export const text = {
 			coachning: {
 				etikett: '1:1 coaching',
 				text: 'Personal help with Claude Code or Codex. We build something for your own work.',
-				kort: '1.5 or 3 hours · Online · Booked via Studio Stén, in Swedish',
+				kort: '1.5 or 3 hours, online, in Swedish.',
 				boka: 'See times and book'
 			}
 		},
@@ -118,21 +120,23 @@ export const text = {
 				rubrik: 'Det här gör jag.',
 				studioFore: 'Jag gör det tillsammans med',
 				studioEfter: '.',
-				boka: 'Boka via Studio Stén',
 				poster: [
 					{
 						nr: '01',
 						titel: 'Keynotes',
+						lank: 'Boka en föreläsning',
 						text: 'Föreläsningar om generativ AI för ledningsgrupper och konferenser, med konkreta exempel på vad tekniken klarar i dag och var den brister.'
 					},
 					{
 						nr: '02',
 						titel: 'Utbildning',
+						lank: 'Boka en utbildning',
 						text: 'Kurser och workshops där deltagarna jobbar i verktygen under passet, oavsett om de skriver sin första prompt eller bygger agenter.'
 					},
 					{
 						nr: '03',
 						titel: 'Rådgivning',
+						lank: 'Boka ett samtal',
 						text: 'Kartläggningar och strategiarbete. Jag går igenom hur ni arbetar i dag och föreslår vad ni ska ta tag i först.'
 					}
 				]
@@ -140,7 +144,7 @@ export const text = {
 			coachning: {
 				etikett: 'Coachning 1:1',
 				text: 'Personlig hjälp med Claude Code eller Codex. Vi bygger något för ditt eget arbete.',
-				kort: '1,5 eller 3 timmar · Online · Bokas via Studio Stén',
+				kort: '1,5 eller 3 timmar, online.',
 				boka: 'Se tider och boka'
 			}
 		},

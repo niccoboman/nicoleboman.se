@@ -83,34 +83,31 @@
 <!-- Arbete -->
 <section id="arbete" class="mt-[22vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<p class="etikett reveal text-grafit">{t.arbete.etikett}</p>
-	<div class="mt-6 grid gap-6 md:grid-cols-12 md:items-end md:gap-8">
-		<h2 class="jatte upp text-[clamp(2.6rem,5vw,5.5rem)] md:col-span-7">{t.arbete.rubrik}</h2>
-		<p class="ingress reveal md:col-span-4 md:col-start-9">
-			{t.arbete.studioFore}
-			<a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="lank">Studio Stén<span class="sr-only"> {g.nyFlik}</span></a>{t.arbete.studioEfter}
-		</p>
-	</div>
+	<h2 class="jatte upp mt-6 text-[clamp(2.6rem,5vw,5.5rem)]">{t.arbete.rubrik}</h2>
+	<p class="ingress reveal mt-4 text-grafit">
+		{t.arbete.studioFore}
+		<a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="lank text-svart">Studio Stén<span class="sr-only"> {g.nyFlik}</span></a>{t.arbete.studioEfter}
+	</p>
 
-	<ul class="mt-10 grid gap-x-8 md:grid-cols-2 lg:grid-cols-4">
+	<!-- Fyra lika kort: rubrik, text och en bokningslänk längst ner -->
+	<ul class="mt-14 grid gap-x-8 md:grid-cols-2 lg:grid-cols-4">
 		{#each t.arbete.poster as a (a.nr)}
-			<li class="reveal flex flex-col gap-3 border-t border-linje pb-10 pt-6">
+			<li class="reveal flex flex-col gap-3 border-t border-linje pb-12 pt-6">
 				<h3 class="jatte text-[clamp(1.9rem,2.4vw,2.6rem)]">{a.titel}</h3>
 				<p class="max-w-[40ch] text-[1.05rem] leading-[1.65] text-grafit">{a.text}</p>
+				<p class="mt-auto pt-4">
+					<a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="lank">{a.lank}<span class="sr-only"> {g.nyFlik}</span></a>
+				</p>
 			</li>
 		{/each}
-		<!-- Coachning 1:1 bokas direkt, därför en egen länk -->
-		<li id="coachning" class="reveal flex scroll-mt-6 flex-col gap-3 border-t border-linje pb-10 pt-6">
+		<li id="coachning" class="reveal flex scroll-mt-6 flex-col gap-3 border-t border-linje pb-12 pt-6">
 			<h3 class="jatte text-[clamp(1.9rem,2.4vw,2.6rem)]">{t.coachning.etikett}</h3>
-			<p class="max-w-[40ch] text-[1.05rem] leading-[1.65] text-grafit">{t.coachning.text}</p>
-			<p class="etikett text-grafit">{t.coachning.kort}</p>
-			<p class="mt-auto pt-2">
+			<p class="max-w-[40ch] text-[1.05rem] leading-[1.65] text-grafit">{t.coachning.text} {t.coachning.kort}</p>
+			<p class="mt-auto pt-4">
 				<a href="https://studiosten.se/coachning" target="_blank" rel="noopener noreferrer" class="lank">{t.coachning.boka}<span class="sr-only"> {g.nyFlik}</span></a>
 			</p>
 		</li>
 	</ul>
-	<p class="reveal mt-2">
-		<a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="ingress lank">{t.arbete.boka}<span class="sr-only"> {g.nyFlik}</span></a>
-	</p>
 </section>
 
 {#if citat.length}
