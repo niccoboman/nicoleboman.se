@@ -28,6 +28,10 @@ export const text = {
 			beskrivning: 'Nicole Boman – AI consultant, AI educator and keynote speaker. I help organisations start using generative AI in everyday work.',
 			skarmlasare: "I'm Nicole Boman – AI consultant, AI educator and keynote speaker.",
 			heroAlt: 'Nicole Boman on stage in a leather jacket, gesturing to the audience, black and white',
+			titlar: 'AI consultant, AI educator and keynote speaker',
+			hej: 'Hey,',
+			utforska: 'Explore',
+			intro: "I'm Nicole – I get people to actually use AI, in the work they already do.",
 
 			om: {
 				etikett: '01 — About',
@@ -123,6 +127,10 @@ export const text = {
 			beskrivning: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker. Jag hjälper organisationer att börja använda generativ AI i vardagen.',
 			skarmlasare: 'Jag är Nicole Boman – AI-konsult, AI-utbildare och keynote speaker.',
 			heroAlt: 'Nicole Boman på scen i skinnjacka, gestikulerar mot publiken, svartvitt',
+			titlar: 'AI-konsult, AI-utbildare och keynote speaker',
+			hej: 'Hej,',
+			utforska: 'Utforska',
+			intro: 'Jag är Nicole – jag får folk att faktiskt använda AI, i jobbet de redan gör.',
 
 			om: {
 				etikett: '01 — Om',

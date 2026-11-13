@@ -1,7 +1,7 @@
 <script lang="ts">
-		import { page } from '$app/state';
+	import { page } from '$app/state';
 	import { reveal } from '$lib/reveal';
-	import { parallax } from '$lib/parallax';
+	import { parallax, vaxa } from '$lib/parallax';
 	import { text, sprakFran, lank } from '$lib/i18n';
 
 	const sprak = $derived(sprakFran(page.params.lang));
@@ -19,71 +19,90 @@
 	<link rel="alternate" hreflang="sv" href="https://www.nicoleboman.com/sv" />
 </svelte:head>
 
-<!-- Rubriken finns för skärmläsare och sökmotorer; sidan börjar visuellt med bilden. -->
-<h1 class="sr-only">{t.skarmlasare}</h1>
-
-<!-- Helbild, med marginal som på en tidningssida -->
-<figure class="mt-6 px-[clamp(16px,3vw,40px)]">
-	<div class="overflow-hidden">
-	<img
-		use:parallax={{ y: 0.12, skala: 1.14 }}
-		src="/bilder/scen-bw-2160.webp"
-		srcset="/bilder/scen-bw-1200.webp 1200w, /bilder/scen-bw-2160.webp 2160w"
-		sizes="100vw"
-		alt={t.heroAlt}
-		width="2160"
-		height="1440"
-		class="h-[min(86svh,62vw)] w-full object-cover object-[50%_30%] max-md:h-[56svh]"
-	/>
-	</div>
-</figure>
-
-<!-- 01 Om: text i mitten, bilder utspridda runt -->
-<section id="om" class="relative mt-[18vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
-	<div class="flex items-baseline gap-8">
-		<p class="etikett reveal shrink-0">{t.om.etikett}</p>
-		<h2 class="jatte upp text-[clamp(2.8rem,5.6vw,6.5rem)]">{t.om.rubrik}</h2>
-	</div>
-
-	<div class="mt-[10vh] grid gap-10 md:grid-cols-12 md:gap-6">
-		<figure class="md:col-span-3 md:mt-[22vh]" use:parallax={{ y: 0.1 }}>
-			<div class="bild">
-			<img
-				src="/bilder/profil-900.webp"
-				alt={g.om.bildAlt}
-				width="900"
-				height="600"
-				loading="lazy"
-				class="aspect-[4/5] w-full object-cover object-[60%_40%]"
-			/>
+<!-- Inledning: namnet i två delar, två bilder och en roterande ring -->
+<section class="relative flex min-h-[calc(100svh-56px)] flex-col overflow-hidden px-[clamp(16px,3vw,40px)] pb-6">
+	<div class="flex items-end justify-end gap-[clamp(10px,1.4vw,20px)] pt-[clamp(32px,7vh,90px)]">
+		<figure class="w-[clamp(120px,15vw,230px)]" use:parallax={{ y: -0.18, scroll: true }}>
+			<p class="ingress mb-3 text-[1.15rem]">{t.hej}</p>
+			<div class="bild-start overflow-hidden">
+				<img
+					src="/bilder/profil-900.webp"
+					alt={g.om.bildAlt}
+					width="900"
+					height="600"
+					class="aspect-[4/5] w-full object-cover object-[60%_40%]"
+				/>
 			</div>
 		</figure>
-		<div class="reveal md:col-span-6 md:px-[2vw]">
-			<p class="ingress text-[clamp(1.7rem,2.7vw,2.6rem)] leading-[1.18]">
-				<span class="sr-only">{t.om.stycken[0]}</span>
-				<span aria-hidden="true" class="ord-in"
-					><span style="--i:0" class="mr-2 text-grafit">“</span>{#each t.om.stycken[0].split(' ') as o, n (n)}<span style="--i:{n + 1}">{o}</span>{' '}{/each}</span
+		<figure class="w-[clamp(150px,21vw,330px)]" use:parallax={{ y: -0.32, scroll: true }}>
+			<div class="bild-start overflow-hidden" style="animation-delay:0.15s">
+				<img
+					src="/bilder/publik-900.webp"
+					srcset="/bilder/publik-900.webp 900w, /bilder/publik-1600.webp 1600w"
+					sizes="21vw"
+					alt={t.om.bildAlt}
+					width="900"
+					height="1125"
+					class="aspect-[2/3] w-full object-cover"
+				/>
+			</div>
+		</figure>
+	</div>
+
+	<h1 class="jatte relative mt-[clamp(-14vw,-11vw,-40px)] text-[clamp(5.5rem,19vw,20rem)] leading-[0.82] max-md:mt-8">
+		<span class="namn block" use:parallax={{ x: -0.12, y: 0.25, scroll: true }}>Nicole</span>
+		<span class="namn block pl-[38%] max-md:pl-[22%]" use:parallax={{ x: 0.1, y: -0.05, scroll: true }}>Boman</span>
+		<span class="sr-only"> – {t.titlar}</span>
+	</h1>
+
+	<div class="mt-auto flex items-end justify-between gap-6 pt-8">
+		<ul class="flex flex-wrap gap-x-5 gap-y-1">
+			<li><a href="https://www.linkedin.com/in/nicole-boman/" target="_blank" rel="noopener noreferrer" class="etikett streck inline-block py-1.5 text-svart">LinkedIn<span class="sr-only"> {g.nyFlik}</span></a></li>
+			<li><a href="https://bomannicole.substack.com/" target="_blank" rel="noopener noreferrer" class="etikett streck inline-block py-1.5 text-svart">Substack<span class="sr-only"> {g.nyFlik}</span></a></li>
+		</ul>
+		<a href="#om" class="snurrring block h-[92px] w-[92px] shrink-0 text-svart no-underline" aria-label={t.utforska}>
+			<svg viewBox="0 0 100 100" aria-hidden="true" class="h-full w-full">
+				<defs><path id="ringbana" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
+				<text class="fill-current text-[10.5px] uppercase tracking-[0.32em]"
+					><textPath href="#ringbana">{t.utforska} · {t.utforska} · </textPath></text
 				>
-			</p>
-			<p class="ingress mt-8 text-grafit">{t.om.stycken[1]}</p>
-			<a href={lank(sprak, '/om')} class="ingress mt-10 inline-block border-b border-svart text-svart no-underline transition-transform hover:translate-x-1"
-				><span aria-hidden="true">→&nbsp;</span>{t.om.mer}</a
-			>
-		</div>
-		<figure class="md:col-span-3 max-md:ml-auto max-md:w-3/4" use:parallax={{ y: -0.08 }}>
-			<div class="bild">
+				<circle cx="50" cy="50" r="1.6" class="fill-current" />
+			</svg>
+		</a>
+	</div>
+</section>
+
+<!-- 01 Om: bilden växer över texten när man scrollar -->
+<section id="om" class="relative mt-[16vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
+	<p class="etikett reveal text-right">{t.om.etikett}</p>
+	<div class="relative mt-4" use:vaxa>
+		<figure class="vaxbild relative z-10 float-left mr-6 w-[32%] max-md:mb-4 max-md:float-none max-md:w-full">
 			<img
-				src="/bilder/publik-900.webp"
-				srcset="/bilder/publik-900.webp 900w, /bilder/publik-1600.webp 1600w"
-				sizes="(min-width: 768px) 24vw, 75vw"
-				alt={t.om.bildAlt}
-				width="900"
-				height="1125"
+				src="/bilder/scen-bw-1200.webp"
+				srcset="/bilder/scen-bw-1200.webp 1200w, /bilder/scen-bw-2160.webp 2160w"
+				sizes="(min-width: 768px) 70vw, 100vw"
+				alt={t.heroAlt}
+				width="1200"
+				height="800"
 				loading="lazy"
-				class="aspect-[4/5] w-full object-cover"
+				class="aspect-[3/2] w-full object-cover object-[50%_30%]"
 			/>
-			</div>
 		</figure>
+		<p class="ingress intro pt-[calc(32%*0.6667-1.05em)] indent-[calc(19%+1rem)] text-[clamp(2rem,4.2vw,4.4rem)] leading-[1.08] max-md:indent-0 max-md:pt-0">
+			<span class="sr-only">{t.intro}</span>
+			<span aria-hidden="true" class="ord-in"
+				>{#each t.intro.split(' ') as o, n (n)}<span style="--i:{n}">{o}</span>{' '}{/each}</span
+			>
+		</p>
+		<div class="clear-both grid gap-8 pt-10 md:grid-cols-12">
+			<p class="ingress reveal md:col-span-5">{t.om.stycken[0]}</p>
+			<div class="md:col-span-6 md:col-start-7">
+				<p class="ingress reveal text-grafit">{t.om.stycken[1]}</p>
+				<a href={lank(sprak, '/om')} class="ingress reveal mt-8 inline-block border-b border-svart text-svart no-underline transition-transform hover:translate-x-1"
+					><span aria-hidden="true">→&nbsp;</span>{t.om.mer}</a
+				>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -154,3 +173,67 @@
 		</div>
 	</section>
 {/if}
+
+<style>
+	/* Ringen snurrar långsamt */
+	.snurrring svg {
+		animation: snurra 18s linear infinite;
+	}
+	@keyframes snurra {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	/* Bilderna i inledningen rullas fram när sidan laddas */
+	:global(.js) .bild-start {
+		animation: bild-in 1.4s cubic-bezier(0.7, 0, 0.2, 1) 0.2s both;
+	}
+	@keyframes bild-in {
+		from {
+			clip-path: inset(100% 0 0 0);
+		}
+		to {
+			clip-path: inset(0);
+		}
+	}
+
+	/* Namnet glider upp när sidan laddas */
+	:global(.js) .namn {
+		animation: namn-in 1.3s cubic-bezier(0.7, 0, 0.2, 1) both;
+	}
+	:global(.js) .namn + .namn {
+		animation-delay: 0.12s;
+	}
+	@keyframes namn-in {
+		from {
+			clip-path: inset(100% -0.2em -0.35em -0.2em);
+			translate: 0 0.4em;
+		}
+		to {
+			clip-path: inset(-0.35em -0.2em -0.35em -0.2em);
+			translate: 0 0;
+		}
+	}
+
+	/* Indraget gäller bara första raden, inte varje ord */
+	.intro :global(.ord-in > span) {
+		text-indent: 0;
+	}
+
+	/* Bilden i om-delen växer över texten med scrollen (--p sätts av vaxa) */
+	@media (min-width: 768px) {
+		.vaxbild {
+			transform-origin: 0 100%;
+			scale: calc(1 + var(--p, 0) * 0.6);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.snurrring svg,
+		:global(.js) .bild-start,
+		:global(.js) .namn {
+			animation: none;
+		}
+	}
+</style>
