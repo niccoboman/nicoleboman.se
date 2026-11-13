@@ -2,13 +2,14 @@
 
 @theme {
 	/* Publika sidan: kritvitt och svart */
-	--color-krita: #fcfcfa;
-	--color-svart: #0b0b0b;
-	--color-grafit: #5f5f5b;
-	--color-linje: #dcdcd8;
+	--color-krita: #fbfaf7;
+	--color-svart: #111110;
+	--color-grafit: #5f5e5a;
+	--color-linje: #dddbd5;
 	--color-oxblod: #6e1423;
 
 	--font-arkiv: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+	--font-serif: 'Instrument Serif', 'Times New Roman', serif;
 
 	--font-sans: var(--font-arkiv);
 	/* Kodblocken i /texter */
@@ -58,21 +59,27 @@
 		outline-offset: 4px;
 	}
 
-	/* Jättetypen: Anton, versaler. Extra radavstånd så att prickar och ringar på Å, Ä, Ö får plats. */
+	/* Jättetypen: Instrument Serif, tunn och hög, vanliga gemener. */
 	.jatte {
-		font-family: 'Anton', 'Archivo', sans-serif;
+		font-family: var(--font-serif);
 		font-weight: 400;
-		line-height: 1.15;
-		text-transform: uppercase;
+		line-height: 1.02;
+		letter-spacing: -0.015em;
 	}
 
-	/* Små versaletiketter */
+	/* Ingress och större löptext i serif */
+	.ingress {
+		font-family: var(--font-serif);
+		font-size: clamp(1.45rem, 2.1vw, 2rem);
+		line-height: 1.22;
+	}
+
+	/* Små etiketter: lugna, inga versaler */
 	.etikett {
 		font-family: var(--font-arkiv);
-		font-size: 0.75rem;
-		font-weight: 600;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+		font-size: 0.8125rem;
+		font-weight: 450;
+		letter-spacing: 0.01em;
 	}
 
 	/* Länk med understrykning som ritas in vid hover */

@@ -156,21 +156,32 @@
 			{@render children()}
 		</main>
 
-		<footer id="kontakt" class="mt-[16vh] scroll-mt-0 bg-svart text-krita" use:reveal>
-			<div class="px-[clamp(16px,3vw,40px)] pb-6 pt-[clamp(64px,12vh,140px)]">
-				<div class="grid gap-12 md:grid-cols-12">
-					<div class="md:col-span-9">
+		<!-- Kontakt: svart fot med en jättestor blek rubrik i bakgrunden -->
+		<footer id="kontakt" class="relative mt-[20vh] scroll-mt-0 overflow-hidden bg-svart text-krita" use:reveal>
+			<div class="relative z-10 px-[clamp(16px,3vw,40px)] pt-[clamp(64px,12vh,140px)]">
+				<div class="grid gap-10 md:grid-cols-12 md:gap-8">
+					<figure class="reveal md:col-span-3">
+						<img
+							src="/bilder/publik-900.webp"
+							alt=""
+							width="900"
+							height="1125"
+							loading="lazy"
+							class="aspect-[3/4] w-full object-cover max-md:w-1/2"
+						/>
+					</figure>
+					<div class="md:col-span-6 md:col-start-5">
 						<p class="etikett reveal text-krita/75">{t.kontakt.etikett}</p>
-						<h2 class="jatte reveal mt-6 text-[clamp(3.2rem,7vw,8rem)]">{t.kontakt.rubrik[0]}{' '}<br />{t.kontakt.rubrik[1]}</h2>
-						<p class="reveal mt-8 max-w-[44ch] text-[1.15rem] leading-[1.5] text-krita/85">
+						<h2 class="jatte reveal mt-4 text-[clamp(2.8rem,5vw,5.5rem)]">{t.kontakt.rubrik[0]} {t.kontakt.rubrik[1]}</h2>
+						<p class="ingress reveal mt-6 max-w-[34ch] text-krita/85">
 							{t.kontakt.text}
 						</p>
 						<a
 							href="https://www.linkedin.com/in/nicole-boman/"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="jatte reveal mt-10 inline-block bg-krita px-8 py-4 text-[clamp(1.4rem,2.4vw,2rem)] text-svart no-underline transition-transform hover:-translate-y-0.5"
-							>{t.kontakt.linkedin}<span aria-hidden="true">&nbsp;↗</span><span class="sr-only"> {t.nyFlik}</span></a
+							class="ingress reveal mt-10 inline-block border-b border-krita text-krita no-underline transition-transform hover:translate-x-1"
+							><span aria-hidden="true">→&nbsp;</span>{t.kontakt.linkedin}<span class="sr-only"> {t.nyFlik}</span></a
 						>
 						<ul class="reveal mt-8 flex flex-wrap gap-x-8 gap-y-3">
 							{#each kanaler.filter((k) => k.label !== 'LinkedIn') as k (k.href)}
@@ -183,10 +194,14 @@
 						</ul>
 					</div>
 				</div>
-				<div class="mt-[12vh] flex flex-wrap justify-between gap-4 border-t border-krita/30 pt-5">
-					<span class="etikett text-krita/75">© {new Date().getFullYear()} Nicole Boman · {t.kontakt.sverige}</span>
-					<span class="etikett text-krita/75">{t.kontakt.foto}</span>
-				</div>
+			</div>
+			<!-- Dekor: samma rubrik, jättestor och blek. Döljs för skärmläsare. -->
+			<p aria-hidden="true" class="jatte pointer-events-none mt-[6vh] select-none whitespace-nowrap px-[clamp(8px,1vw,16px)] text-[clamp(5rem,19vw,22rem)] leading-[0.8] text-krita/[0.07]">
+				{t.kontakt.rubrik[0]} {t.kontakt.rubrik[1]}
+			</p>
+			<div class="relative z-10 flex flex-wrap justify-between gap-4 px-[clamp(16px,3vw,40px)] pb-6 pt-5">
+				<span class="etikett text-krita/75">© {new Date().getFullYear()} Nicole Boman · {t.kontakt.sverige}</span>
+				<span class="etikett text-krita/75">{t.kontakt.foto}</span>
 			</div>
 		</footer>
 	</div>
