@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import { reveal } from '$lib/reveal';
+	import { parallax } from '$lib/parallax';
 	import { text, sprakFran, lank } from '$lib/i18n';
 
 	let { children } = $props();
@@ -160,19 +161,19 @@
 		<footer id="kontakt" class="relative mt-[20vh] scroll-mt-0 overflow-hidden bg-svart text-krita" use:reveal>
 			<div class="relative z-10 px-[clamp(16px,3vw,40px)] pt-[clamp(64px,12vh,140px)]">
 				<div class="grid gap-10 md:grid-cols-12 md:gap-8">
-					<figure class="reveal md:col-span-3">
+					<figure class="bild md:col-span-3 max-md:w-1/2">
 						<img
 							src="/bilder/publik-900.webp"
 							alt=""
 							width="900"
 							height="1125"
 							loading="lazy"
-							class="aspect-[3/4] w-full object-cover max-md:w-1/2"
+							class="aspect-[3/4] w-full object-cover"
 						/>
 					</figure>
 					<div class="md:col-span-6 md:col-start-5">
 						<p class="etikett reveal text-krita/75">{t.kontakt.etikett}</p>
-						<h2 class="jatte reveal mt-4 text-[clamp(2.8rem,5vw,5.5rem)]">{t.kontakt.rubrik[0]} {t.kontakt.rubrik[1]}</h2>
+						<h2 class="jatte upp mt-4 text-[clamp(2.8rem,5vw,5.5rem)]">{t.kontakt.rubrik[0]} {t.kontakt.rubrik[1]}</h2>
 						<p class="ingress reveal mt-6 max-w-[34ch] text-krita/85">
 							{t.kontakt.text}
 						</p>
@@ -196,7 +197,7 @@
 				</div>
 			</div>
 			<!-- Dekor: samma rubrik, jättestor och blek. Döljs för skärmläsare. -->
-			<p aria-hidden="true" class="jatte pointer-events-none mt-[6vh] select-none whitespace-nowrap px-[clamp(8px,1vw,16px)] text-[clamp(5rem,19vw,22rem)] leading-[0.8] text-krita/[0.07]">
+			<p aria-hidden="true" use:parallax={{ x: -0.3, noll: 0.8 }} class="jatte pointer-events-none mt-[6vh] select-none whitespace-nowrap px-[clamp(8px,1vw,16px)] text-[clamp(5rem,19vw,22rem)] leading-[0.8] text-krita/[0.07]">
 				{t.kontakt.rubrik[0]} {t.kontakt.rubrik[1]}
 			</p>
 			<div class="relative z-10 flex flex-wrap justify-between gap-4 px-[clamp(16px,3vw,40px)] pb-6 pt-5">

@@ -2,6 +2,7 @@
 	import { onMount, tick } from 'svelte';
 	import { page } from '$app/state';
 	import { reveal } from '$lib/reveal';
+	import { parallax } from '$lib/parallax';
 	import { text, sprakFran, lank } from '$lib/i18n';
 
 	const sprak = $derived(sprakFran(page.params.lang));
@@ -115,7 +116,9 @@
 
 <!-- Helbild, med marginal som på en tidningssida -->
 <figure class="mt-2 px-[clamp(16px,3vw,40px)]">
+	<div class="overflow-hidden">
 	<img
+		use:parallax={{ y: 0.12, skala: 1.14 }}
 		src="/bilder/scen-bw-2160.webp"
 		srcset="/bilder/scen-bw-1200.webp 1200w, /bilder/scen-bw-2160.webp 2160w"
 		sizes="100vw"
@@ -124,36 +127,43 @@
 		height="1440"
 		class="h-[min(86svh,62vw)] w-full object-cover object-[50%_30%] max-md:h-[56svh]"
 	/>
+	</div>
 </figure>
 
 <!-- 01 Om: text i mitten, bilder utspridda runt -->
 <section id="om" class="relative mt-[18vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<div class="flex items-baseline gap-8">
 		<p class="etikett reveal shrink-0">{t.om.etikett}</p>
-		<h2 class="jatte reveal text-[clamp(2.8rem,5.6vw,6.5rem)]">{t.om.rubrik}</h2>
+		<h2 class="jatte upp text-[clamp(2.8rem,5.6vw,6.5rem)]">{t.om.rubrik}</h2>
 	</div>
 
 	<div class="mt-[10vh] grid gap-10 md:grid-cols-12 md:gap-6">
-		<figure class="reveal md:col-span-3 md:mt-[22vh]">
+		<figure class="md:col-span-3 md:mt-[22vh]" use:parallax={{ y: 0.1 }}>
+			<div class="bild">
 			<img
 				src="/bilder/profil-900.webp"
 				alt={g.om.bildAlt}
 				width="900"
 				height="600"
 				loading="lazy"
-				class="aspect-[4/5] w-full object-cover object-[60%_40%] max-md:w-2/3"
+				class="aspect-[4/5] w-full object-cover object-[60%_40%]"
 			/>
+			</div>
 		</figure>
 		<div class="reveal md:col-span-6 md:px-[2vw]">
 			<p class="ingress text-[clamp(1.7rem,2.7vw,2.6rem)] leading-[1.18]">
-				<span aria-hidden="true" class="mr-2 text-grafit">“</span>{t.om.stycken[0]}
+				<span class="sr-only">{t.om.stycken[0]}</span>
+				<span aria-hidden="true" class="ord-in"
+					><span style="--i:0" class="mr-2 text-grafit">“</span>{#each t.om.stycken[0].split(' ') as o, n (n)}<span style="--i:{n + 1}">{o}</span>{' '}{/each}</span
+				>
 			</p>
 			<p class="ingress mt-8 text-grafit">{t.om.stycken[1]}</p>
 			<a href={lank(sprak, '/om')} class="ingress mt-10 inline-block border-b border-svart text-svart no-underline transition-transform hover:translate-x-1"
 				><span aria-hidden="true">→&nbsp;</span>{t.om.mer}</a
 			>
 		</div>
-		<figure class="reveal md:col-span-3 max-md:ml-auto max-md:w-3/4">
+		<figure class="md:col-span-3 max-md:ml-auto max-md:w-3/4" use:parallax={{ y: -0.08 }}>
+			<div class="bild">
 			<img
 				src="/bilder/publik-900.webp"
 				srcset="/bilder/publik-900.webp 900w, /bilder/publik-1600.webp 1600w"
@@ -164,6 +174,7 @@
 				loading="lazy"
 				class="aspect-[4/5] w-full object-cover"
 			/>
+			</div>
 		</figure>
 	</div>
 </section>
@@ -172,7 +183,7 @@
 <section id="arbete" class="mt-[20vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<div class="flex items-baseline gap-8">
 		<p class="etikett reveal shrink-0">{t.arbete.etikett}</p>
-		<h2 class="jatte reveal text-[clamp(2.8rem,5.6vw,6.5rem)]">{t.arbete.rubrik}</h2>
+		<h2 class="jatte upp text-[clamp(2.8rem,5.6vw,6.5rem)]">{t.arbete.rubrik}</h2>
 	</div>
 	<p class="ingress reveal mt-6 max-w-[40ch]">
 		{t.arbete.studioFore}
@@ -206,7 +217,7 @@
 	<div class="grid gap-8 md:grid-cols-12">
 		<p class="etikett reveal md:col-span-3">{t.coachning.etikett}</p>
 		<div class="md:col-span-9">
-			<h2 class="jatte reveal max-w-[16ch] text-[clamp(2.8rem,5.6vw,6.5rem)]">{t.coachning.rubrik}</h2>
+			<h2 class="jatte upp max-w-[16ch] text-[clamp(2.8rem,5.6vw,6.5rem)]">{t.coachning.rubrik}</h2>
 			<p class="ingress reveal mt-6 max-w-[40ch]">{t.coachning.text}</p>
 			<p class="etikett reveal mt-6 text-grafit">{t.coachning.kort}</p>
 			<a
