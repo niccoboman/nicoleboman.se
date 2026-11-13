@@ -95,13 +95,13 @@
 		{#each t.arbete.poster as a (a.nr)}
 			<li class="reveal flex flex-col gap-3 border-t border-linje pb-10 pt-6">
 				<h3 class="jatte text-[clamp(1.9rem,2.4vw,2.6rem)]">{a.titel}</h3>
-				<p class="max-w-[40ch] text-[0.98rem] leading-[1.7] text-grafit">{a.text}</p>
+				<p class="max-w-[40ch] text-[1.05rem] leading-[1.65] text-grafit">{a.text}</p>
 			</li>
 		{/each}
 		<!-- Coachning 1:1 bokas direkt, därför en egen länk -->
 		<li id="coachning" class="reveal flex scroll-mt-6 flex-col gap-3 border-t border-linje pb-10 pt-6">
 			<h3 class="jatte text-[clamp(1.9rem,2.4vw,2.6rem)]">{t.coachning.etikett}</h3>
-			<p class="max-w-[40ch] text-[0.98rem] leading-[1.7] text-grafit">{t.coachning.text}</p>
+			<p class="max-w-[40ch] text-[1.05rem] leading-[1.65] text-grafit">{t.coachning.text}</p>
 			<p class="etikett text-grafit">{t.coachning.kort}</p>
 			<p class="mt-auto pt-2">
 				<a href="https://studiosten.se/coachning" target="_blank" rel="noopener noreferrer" class="lank">{t.coachning.boka}<span class="sr-only"> {g.nyFlik}</span></a>

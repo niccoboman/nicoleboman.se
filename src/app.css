@@ -26,6 +26,7 @@
 	--color-grafit: #5f5a55;
 	--color-linje: #e2ded6;
 	--font-serif: 'Bodoni Moda', 'Didot', 'Times New Roman', serif;
+	--font-arkiv: 'Jost', 'Futura', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* Mörkt läge: samma sida, inverterad. Sätts via data-tema="mork" på <html> (se app.html och layouten). */
@@ -84,12 +85,11 @@
 		font-style: italic;
 	}
 
-	/* Ingress och större löptext i serif */
+	/* Ingress och större löptext i sans; Bodoni bara i rubriker och stor text, där den går att läsa */
 	.ingress {
-		font-family: var(--font-serif);
-		font-size: clamp(1.25rem, 1.7vw, 1.6rem);
-		line-height: 1.38;
-		letter-spacing: -0.005em;
+		font-family: var(--font-arkiv);
+		font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+		line-height: 1.65;
 	}
 
 	/* Små etiketter: små versaler, luftigt spärrade */
