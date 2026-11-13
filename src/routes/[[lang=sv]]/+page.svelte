@@ -15,6 +15,8 @@
 <svelte:head>
 	<title>{t.titel}</title>
 	<meta name="description" content={t.beskrivning} />
+	<meta property="og:title" content={t.titel} />
+	<meta property="og:description" content={t.beskrivning} />
 	<link rel="alternate" hreflang="en" href="https://www.nicoleboman.com/" />
 	<link rel="alternate" hreflang="sv" href="https://www.nicoleboman.com/sv" />
 </svelte:head>

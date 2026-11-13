@@ -62,6 +62,20 @@
 	];
 </script>
 
+<svelte:head>
+	{#if !isHub}
+		<!-- Delningsbild för LinkedIn, Slack m.m. Titel och beskrivning sätts per sida. -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Nicole Boman" />
+		<meta property="og:url" content={`https://www.nicoleboman.com${page.url.pathname}`} />
+		<meta property="og:image" content="https://www.nicoleboman.com/og.jpg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={t.ogAlt} />
+		<meta name="twitter:card" content="summary_large_image" />
+	{/if}
+</svelte:head>
+
 {#if isHub}
 	{@render children()}
 {:else}
@@ -177,6 +191,7 @@
 						<p class="ingress reveal mt-6 max-w-[34ch] text-krita/85">
 							{t.kontakt.text}
 						</p>
+						<p class="etikett reveal mt-6 text-krita/75">{t.kontakt.sprakResor}</p>
 						<a
 							href="https://www.linkedin.com/in/nicole-boman/"
 							target="_blank"

@@ -9,6 +9,7 @@
 
 <svelte:head>
 	<title>{t.titel}</title>
+	<meta property="og:title" content={t.titel} />
 	<link rel="alternate" hreflang="en" href="https://www.nicoleboman.com/om" />
 	<link rel="alternate" hreflang="sv" href="https://www.nicoleboman.com/sv/om" />
 </svelte:head>

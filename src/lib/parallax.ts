@@ -134,9 +134,10 @@ export function flyg(node: HTMLElement) {
 	if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 	const mal = document.querySelector<HTMLElement>('[data-namn-mal]');
 	if (!mal) return;
-	mal.style.visibility = 'hidden';
+	// Bara på bred skärm. På mobil ligger bilden i full bredd mellan namnet och meningen,
+	// så namnet hinner inte landa; där står ordet kvar i meningen och namnet ligger still.
+	const bred = matchMedia('(min-width: 768px)');
 	node.style.transformOrigin = '0 0';
-	node.style.willChange = 'transform';
 
 	let sy = scrollY;
 	let m: { tx: number; ty: number; s: number; slut: number } | null = null;
@@ -165,6 +166,14 @@ export function flyg(node: HTMLElement) {
 
 	const rita = (my: number) => {
 		sy = my;
+		if (!bred.matches) {
+			node.style.transform = '';
+			node.style.willChange = '';
+			mal.style.visibility = '';
+			return;
+		}
+		mal.style.visibility = 'hidden';
+		node.style.willChange = 'transform';
 		if (!m) mat();
 		if (!m) return;
 		const r = Math.min(1, Math.max(0, my / m.slut));
@@ -182,10 +191,12 @@ export function flyg(node: HTMLElement) {
 	const timer = setTimeout(om, 1600);
 	addEventListener('resize', om);
 	addEventListener('load', om);
+	bred.addEventListener('change', om);
 	return {
 		destroy() {
 			sluta();
 			clearTimeout(timer);
+			bred.removeEventListener('change', om);
 			removeEventListener('resize', om);
 			removeEventListener('load', om);
 			mal.style.visibility = '';

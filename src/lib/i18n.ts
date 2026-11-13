@@ -22,6 +22,7 @@ export const text = {
 		huvudmeny: 'Main menu',
 		meny: { oppna: 'Menu', stang: 'Close' },
 		nyFlik: '(opens in a new tab)',
+		ogAlt: 'Nicole Boman on stage, black and white',
 
 		start: {
 			titel: 'Nicole Boman – AI consultant, AI educator and keynote speaker',
@@ -109,6 +110,7 @@ export const text = {
 			text: "A talk, a training, coaching, a project or an idea you want to bounce around. Send me a message on LinkedIn and I'll get back to you.",
 			linkedin: 'Message me on LinkedIn',
 			sverige: 'Sweden',
+			sprakResor: 'Talks in English and Swedish · Based in Sweden, available worldwide',
 			foto: 'Photo: Glide Photos, Gustaf Kumlin'
 		},
 	},
@@ -121,6 +123,7 @@ export const text = {
 		huvudmeny: 'Huvudmeny',
 		meny: { oppna: 'Meny', stang: 'Stäng' },
 		nyFlik: '(öppnas i en ny flik)',
+		ogAlt: 'Nicole Boman på scen, svartvitt',
 
 		start: {
 			titel: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker',
@@ -208,6 +211,7 @@ export const text = {
 			text: 'Om en föreläsning, en utbildning, coachning, ett uppdrag eller en tanke du vill bolla. Skicka ett meddelande på LinkedIn så hör jag av mig.',
 			linkedin: 'Skriv till mig på LinkedIn',
 			sverige: 'Sverige',
+			sprakResor: 'Föreläser på svenska och engelska · Bor i Sverige, reser gärna',
 			foto: 'Foto: Glide Photos, Gustaf Kumlin'
 		},
 	}
