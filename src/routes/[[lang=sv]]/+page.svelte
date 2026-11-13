@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { reveal } from '$lib/reveal';
+	import { flyg } from '$lib/flyg';
 	import { text, sprakFran, lank } from '$lib/i18n';
 
 	const sprak = $derived(sprakFran(page.params.lang));
@@ -27,7 +28,8 @@
 			{#each t.roller as r, n (r)}{#if n > 0}<span class="mx-2 text-rod" aria-hidden="true">·</span>{/if}{r}{/each}
 		</p>
 		<h1 class="jatte start-in mt-auto pt-16 text-[clamp(4.2rem,10.5vw,11.5rem)] leading-[0.92]" style="animation-delay:0.1s">
-			Nicole<br /><em>Boman</em><span class="sr-only"> – {t.titlar}</span>
+			<!-- Namnet glider ner i meningen "Jag är Nicole …" när man scrollar -->
+			<span class="relative z-20 inline-block" use:flyg={sprak}>Nicole</span><br /><em>Boman</em><span class="sr-only"> – {t.titlar}</span>
 		</h1>
 		<ul class="start-in mt-10 flex gap-x-6" style="animation-delay:0.2s">
 			<li><a href="https://www.linkedin.com/in/nicole-boman/" target="_blank" rel="noopener noreferrer" class="etikett streck inline-block py-1.5 text-svart">LinkedIn<span class="sr-only"> {g.nyFlik}</span></a></li>
@@ -66,7 +68,12 @@
 			/>
 		</figure>
 		<div class="flex flex-col md:col-span-6 md:col-start-7">
-			<p class="jatte ord-in text-[clamp(2rem,3.4vw,3.4rem)] leading-[1.12]">{t.intro}</p>
+			<p class="jatte ord-in text-[clamp(2rem,3.4vw,3.4rem)] leading-[1.12]">
+				<span class="sr-only">{t.intro}</span>
+				<span aria-hidden="true"
+					>{#each t.intro.split(' ') as o, n (n)}<span data-namn-mal={o === 'Nicole' ? '' : undefined}>{o}</span>{' '}{/each}</span
+				>
+			</p>
 			<p class="ingress reveal mt-12">{t.om.stycken[0]}</p>
 			<p class="ingress reveal mt-5 text-grafit"><em>{t.om.stycken[1]}</em></p>
 		</div>
