@@ -52,7 +52,7 @@
 	</div>
 
 	<h1 class="jatte relative z-20 mt-[clamp(-14vw,-11vw,-40px)] text-[clamp(5.5rem,19vw,20rem)] leading-[0.82] max-md:mt-8">
-		<span class="namn block"><span class="inline-block" use:flyg>Nicole</span></span>
+		<span class="namn block"><span class="inline-block" use:flyg={sprak}>Nicole</span></span>
 		<span class="namn block pl-[38%] max-md:pl-[22%]">Boman</span>
 		<span class="sr-only"> – {t.titlar}</span>
 	</h1>

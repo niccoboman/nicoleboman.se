@@ -44,10 +44,21 @@ function folj(f: (y: number) => void) {
 // Flyg: namnet i inledningen glider ner och krymper med scrollen tills det ligger exakt på
 // målordet (elementet med [data-namn-mal]). Målordet döljs, så det är namnet som landar där.
 // Noden ska vara inline-block och bara innehålla ordet. Gör ingenting vid minskad rörelse.
-export function flyg(node: HTMLElement) {
+// Parametern (t.ex. språket) gör att namnet mäter om när meningen byts ut.
+export function flyg(node: HTMLElement, _nyckel?: unknown) {
 	if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-	const mal = document.querySelector<HTMLElement>('[data-namn-mal]');
-	if (!mal) return;
+	// Målordet letas upp på nytt varje gång: vid språkbyte återanvänder Svelte orden i meningen,
+	// så det gamla elementet kan ha blivit ett annat ord.
+	let mal: HTMLElement | null = null;
+	const hamta = () => {
+		const ny = document.querySelector<HTMLElement>('[data-namn-mal]');
+		if (ny !== mal) {
+			if (mal) mal.style.visibility = '';
+			mal = ny;
+			m = null;
+		}
+		return mal;
+	};
 	// Bara på bred skärm. På mobil ligger bilden i full bredd mellan namnet och meningen,
 	// så namnet hinner inte landa; där står ordet kvar i meningen och namnet ligger still.
 	const bred = matchMedia('(min-width: 768px)');
@@ -57,7 +68,7 @@ export function flyg(node: HTMLElement) {
 	let m: { tx: number; ty: number; s: number; slut: number } | null = null;
 
 	// Läs ut båda ordens plats i dokumentet utan egna transformer
-	const mat = () => {
+	const mat = (mal: HTMLElement) => {
 		const spar = node.style.transform;
 		node.style.transform = 'none';
 		const h = node.getBoundingClientRect();
@@ -80,15 +91,16 @@ export function flyg(node: HTMLElement) {
 
 	const rita = (my: number) => {
 		sy = my;
-		if (!bred.matches) {
+		const mal = hamta();
+		if (!mal || !bred.matches) {
 			node.style.transform = '';
 			node.style.willChange = '';
-			mal.style.visibility = '';
+			if (mal) mal.style.visibility = '';
 			return;
 		}
 		mal.style.visibility = 'hidden';
 		node.style.willChange = 'transform';
-		if (!m) mat();
+		if (!m) mat(mal);
 		if (!m) return;
 		const r = Math.min(1, Math.max(0, my / m.slut));
 		const p = r * r * (3 - 2 * r);
@@ -107,13 +119,17 @@ export function flyg(node: HTMLElement) {
 	addEventListener('load', om);
 	bred.addEventListener('change', om);
 	return {
+		// Språket bytt: vänta tills Svelte har skrivit om meningen, mät sedan igen
+		update() {
+			requestAnimationFrame(om);
+		},
 		destroy() {
 			sluta();
 			clearTimeout(timer);
 			bred.removeEventListener('change', om);
 			removeEventListener('resize', om);
 			removeEventListener('load', om);
-			mal.style.visibility = '';
+			if (mal) mal.style.visibility = '';
 		}
 	};
 }

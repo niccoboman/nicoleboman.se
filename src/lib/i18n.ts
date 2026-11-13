@@ -27,18 +27,15 @@ export const text = {
 		start: {
 			titel: 'Nicole Boman – AI consultant, AI educator and keynote speaker',
 			beskrivning: 'Nicole Boman – AI consultant, AI educator and keynote speaker. I help organisations start using generative AI in everyday work.',
-			skarmlasare: "I'm Nicole Boman – AI consultant, AI educator and keynote speaker.",
 			heroAlt: 'Nicole Boman on stage in a leather jacket, gesturing to the audience, black and white',
 			titlar: 'AI consultant, AI educator and keynote speaker',
 			hej: 'Hey,',
-			utforska: 'Explore',
 			intro: "I'm Nicole – I get people to actually use AI, in the work they already do.",
 
 			om: {
 				etikett: '01 — About',
-				rubrik: 'I get people to actually use AI.',
 				stycken: [
-					'I work with generative AI as a consultant, speaker and educator. I show where the technology helps in the work you already do, and we practise until you feel confident using it on your own.',
+					'I work with generative AI as a consultant, speaker and educator. I show where the technology helps in your day-to-day work. Then we practise until you can use it on your own.',
 					'What you learn should be usable the day after.'
 				],
 				mer: 'More about me',
@@ -48,19 +45,19 @@ export const text = {
 			arbete: {
 				etikett: '02 — Work',
 				rubrik: 'This is what I do.',
-				studioFore: 'I deliver talks, training and AI projects in collaboration with',
+				studioFore: 'I do it together with',
 				studioEfter: '.',
 				boka: 'Book via Studio Stén',
 				poster: [
 					{
 						nr: '01',
 						titel: 'Keynotes',
-						text: "Talks on generative AI for leadership teams, conferences and industry stages. With concrete examples and an honest picture of what the technology can handle today."
+						text: 'Talks on generative AI for leadership teams and conferences, with concrete examples of what the technology can do today and where it falls short.'
 					},
 					{
 						nr: '02',
 						titel: 'Training',
-						text: "Courses, masterclasses and workshops where participants work in the tools during the session, whether they're writing their first prompt or building agents."
+						text: "Courses and workshops where participants work in the tools during the session, whether they're writing their first prompt or building agents."
 					},
 					{
 						nr: '03',
@@ -107,7 +104,7 @@ export const text = {
 		kontakt: {
 			etikett: 'Contact',
 			rubrik: ['Shall we', 'talk?'],
-			text: "A talk, a training, coaching, a project or an idea you want to bounce around. Send me a message on LinkedIn and I'll get back to you.",
+			text: "Get in touch if you want to book a talk or training, or just bounce an idea around. Send me a message on LinkedIn and I'll get back to you.",
 			linkedin: 'Message me on LinkedIn',
 			sverige: 'Sweden',
 			sprakResor: 'Talks in English and Swedish · Based in Sweden, available worldwide',
@@ -128,18 +125,15 @@ export const text = {
 		start: {
 			titel: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker',
 			beskrivning: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker. Jag hjälper organisationer att börja använda generativ AI i vardagen.',
-			skarmlasare: 'Jag är Nicole Boman – AI-konsult, AI-utbildare och keynote speaker.',
 			heroAlt: 'Nicole Boman på scen i skinnjacka, gestikulerar mot publiken, svartvitt',
 			titlar: 'AI-konsult, AI-utbildare och keynote speaker',
 			hej: 'Hej,',
-			utforska: 'Utforska',
 			intro: 'Jag är Nicole – jag får folk att faktiskt använda AI, i jobbet de redan gör.',
 
 			om: {
 				etikett: '01 — Om',
-				rubrik: 'Jag får folk att faktiskt använda AI.',
 				stycken: [
-					'Jag arbetar med generativ AI som konsult, föreläsare och utbildare. Jag visar var tekniken hjälper i det jobb ni redan gör, och vi övar tills ni känner er trygga att använda den själva.',
+					'Jag arbetar med generativ AI som konsult, föreläsare och utbildare. Jag visar var tekniken hjälper i ert vardagsarbete. Sedan övar vi tills ni kan använda den själva.',
 					'Det ni lär er ska gå att använda dagen efter.'
 				],
 				mer: 'Mer om mig',
@@ -149,19 +143,19 @@ export const text = {
 			arbete: {
 				etikett: '02 — Arbete',
 				rubrik: 'Det här gör jag.',
-				studioFore: 'Föreläsningar, utbildningar och uppdrag inom AI gör jag i samarbete med',
+				studioFore: 'Jag gör det tillsammans med',
 				studioEfter: '.',
 				boka: 'Boka via Studio Stén',
 				poster: [
 					{
 						nr: '01',
 						titel: 'Keynotes',
-						text: 'Föreläsningar om generativ AI för ledningsgrupper, konferenser och branschscener. Med konkreta exempel och en ärlig bild av vad tekniken klarar i dag.'
+						text: 'Föreläsningar om generativ AI för ledningsgrupper och konferenser, med konkreta exempel på vad tekniken klarar i dag och var den brister.'
 					},
 					{
 						nr: '02',
 						titel: 'Utbildning',
-						text: 'Kurser, masterclasses och workshops där deltagarna jobbar i verktygen under passet, oavsett om de skriver sin första prompt eller bygger agenter.'
+						text: 'Kurser och workshops där deltagarna jobbar i verktygen under passet, oavsett om de skriver sin första prompt eller bygger agenter.'
 					},
 					{
 						nr: '03',
@@ -208,7 +202,7 @@ export const text = {
 		kontakt: {
 			etikett: 'Kontakt',
 			rubrik: ['Ska vi', 'prata?'],
-			text: 'Om en föreläsning, en utbildning, coachning, ett uppdrag eller en tanke du vill bolla. Skicka ett meddelande på LinkedIn så hör jag av mig.',
+			text: 'Hör av dig om du vill boka en föreläsning eller utbildning, eller bara bolla en idé. Skicka ett meddelande på LinkedIn så svarar jag.',
 			linkedin: 'Skriv till mig på LinkedIn',
 			sverige: 'Sverige',
 			sprakResor: 'Föreläser på svenska och engelska · Bor i Sverige, reser gärna',
