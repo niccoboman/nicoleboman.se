@@ -190,7 +190,9 @@
 						<p class="reveal mt-6 max-w-[42ch] text-[1.125rem] leading-[1.65] text-krita/90">
 							{t.kontakt.text}
 						</p>
-						<p class="etikett reveal mt-6 text-krita/75">{t.kontakt.sprakResor}</p>
+						<ul class="reveal mt-6 text-[1rem] leading-[1.65] text-krita/70">
+								{#each t.kontakt.sprakResor.split(' · ') as rad (rad)}<li>{rad}</li>{/each}
+							</ul>
 						<a
 							href="https://www.linkedin.com/in/nicole-boman/"
 							target="_blank"
