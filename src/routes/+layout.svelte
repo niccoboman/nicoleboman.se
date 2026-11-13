@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import { reveal } from '$lib/reveal';
-	import { parallax } from '$lib/parallax';
 	import { text, sprakFran, lank } from '$lib/i18n';
 
 	let { children } = $props();
@@ -212,7 +211,7 @@
 				</div>
 			</div>
 			<!-- Dekor: samma rubrik, jättestor och blek. Döljs för skärmläsare. -->
-			<p aria-hidden="true" use:parallax={{ x: -0.3, noll: 0.8 }} class="jatte pointer-events-none mt-[6vh] select-none whitespace-nowrap px-[clamp(8px,1vw,16px)] text-[clamp(5rem,19vw,22rem)] leading-[0.8] text-krita/[0.07]">
+			<p aria-hidden="true" class="jatte pointer-events-none mt-[6vh] select-none whitespace-nowrap px-[clamp(8px,1vw,16px)] text-[clamp(5rem,19vw,22rem)] leading-[0.8] text-krita/[0.07]">
 				{t.kontakt.rubrik[0]} {t.kontakt.rubrik[1]}
 			</p>
 			<div class="relative z-10 flex flex-wrap justify-between gap-4 px-[clamp(16px,3vw,40px)] pb-6 pt-5">

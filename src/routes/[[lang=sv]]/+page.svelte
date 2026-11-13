@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { reveal } from '$lib/reveal';
-	import { parallax, vaxa, flyg } from '$lib/parallax';
+	import { flyg } from '$lib/flyg';
 	import { text, sprakFran, lank } from '$lib/i18n';
 
 	const sprak = $derived(sprakFran(page.params.lang));
@@ -24,7 +24,7 @@
 <!-- Inledning: namnet i två delar och två bilder -->
 <section class="relative flex min-h-[calc(100svh-56px)] flex-col overflow-x-clip px-[clamp(16px,3vw,40px)] pb-6">
 	<div class="flex items-end justify-end gap-[clamp(10px,1.4vw,20px)] pt-[clamp(32px,7vh,90px)]">
-		<figure class="w-[clamp(120px,15vw,230px)]" use:parallax={{ y: -0.18, scroll: true }}>
+		<figure class="w-[clamp(120px,15vw,230px)]">
 			<p class="ingress mb-3 text-[1.15rem]">{t.hej}</p>
 			<div class="bild-start overflow-hidden">
 				<img
@@ -36,7 +36,7 @@
 				/>
 			</div>
 		</figure>
-		<figure class="w-[clamp(150px,21vw,330px)]" use:parallax={{ y: -0.32, scroll: true }}>
+		<figure class="w-[clamp(150px,21vw,330px)]">
 			<div class="bild-start overflow-hidden" style="animation-delay:0.15s">
 				<img
 					src="/bilder/publik-900.webp"
@@ -53,7 +53,7 @@
 
 	<h1 class="jatte relative z-20 mt-[clamp(-14vw,-11vw,-40px)] text-[clamp(5.5rem,19vw,20rem)] leading-[0.82] max-md:mt-8">
 		<span class="namn block"><span class="inline-block" use:flyg>Nicole</span></span>
-		<span class="namn block pl-[38%] max-md:pl-[22%]" use:parallax={{ x: 0.1, y: -0.05, scroll: true }}>Boman</span>
+		<span class="namn block pl-[38%] max-md:pl-[22%]">Boman</span>
 		<span class="sr-only"> – {t.titlar}</span>
 	</h1>
 
@@ -65,18 +65,16 @@
 	</div>
 </section>
 
-<!-- 01 Om: bilden växer över texten när man scrollar -->
+<!-- 01 Om: scenbilden till vänster, namnet landar i meningen bredvid -->
 <section id="om" class="relative mt-[16vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<p class="etikett reveal text-right">{t.om.etikett}</p>
-	<div class="relative mt-4" use:vaxa>
-		<!-- Figuren är en platshållare i liten storlek (texten flyter runt den). Bilden i .vaxlager
-		     ligger i full bredd och skalas ner med transform, så att den inte behöver ritas om när den växer. -->
-		<figure class="vaxbild relative z-10 float-left mr-6 aspect-[3/2] w-[32%] max-md:mb-4 max-md:float-none max-md:w-full">
-			<div class="vaxlager">
+	<div class="relative mt-4">
+		<figure class="relative z-10 float-left mr-6 aspect-[3/2] w-[32%] max-md:mb-4 max-md:float-none max-md:w-full">
+			<div>
 				<img
 					src="/bilder/scen-bw-2160.webp"
 					srcset="/bilder/scen-bw-1200.webp 1200w, /bilder/scen-bw-2160.webp 2160w"
-					sizes="100vw"
+					sizes="(min-width: 768px) 32vw, 100vw"
 					alt={t.heroAlt}
 					width="1200"
 					height="800"
@@ -208,20 +206,6 @@
 	/* Indraget gäller bara första raden, inte varje ord */
 	.intro :global(.ord-in > span) {
 		text-indent: 0;
-	}
-
-	/* Bilden i om-delen växer över texten med scrollen. Lagret är lika brett som avsnittet
-	   (32 % × 3,125 = 100 %) och vaxa skalar ner det med transform. */
-	@media (min-width: 768px) {
-		.vaxlager {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 312.5%;
-			transform-origin: 0 0;
-			transform: scale(0.32);
-			will-change: transform;
-		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
