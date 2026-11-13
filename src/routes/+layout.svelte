@@ -78,7 +78,7 @@
 {#if isHub}
 	{@render children()}
 {:else}
-	<div class="font-arkiv">
+	<div class="publik font-arkiv">
 		<a
 			href="#innehall"
 			class="etikett sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-svart focus:px-3 focus:py-2 focus:text-krita"
@@ -117,7 +117,7 @@
 					href={andraSprak}
 					hreflang={t.sprakbyte.lang}
 					lang={t.sprakbyte.lang}
-					class="etikett inline-block border border-svart px-2 py-1 text-svart no-underline transition-colors hover:bg-svart hover:text-krita"
+					class="etikett streck inline-block py-1.5 text-svart"
 					>{t.sprakbyte.etikett}<span class="sr-only"> – {t.sprakbyte.namn}</span></a
 				>
 			</div>
@@ -159,7 +159,7 @@
 						onclick={stangMeny}
 						hreflang={t.sprakbyte.lang}
 						lang={t.sprakbyte.lang}
-						class="etikett inline-block border border-svart px-2 py-1 text-svart no-underline"
+						class="etikett streck inline-block py-1.5 text-svart"
 						>{t.sprakbyte.etikett}<span class="sr-only"> – {t.sprakbyte.namn}</span></a
 					>
 				</div>
@@ -186,7 +186,7 @@
 					</figure>
 					<div class="md:col-span-6 md:col-start-5">
 						<p class="etikett reveal text-krita/75">{t.kontakt.etikett}</p>
-						<h2 class="jatte upp mt-4 text-[clamp(2.8rem,5vw,5.5rem)]">{t.kontakt.rubrik[0]} {t.kontakt.rubrik[1]}</h2>
+						<h2 class="jatte upp mt-4 text-[clamp(2.8rem,5vw,5.5rem)]">{t.kontakt.rubrik[0]} <em>{t.kontakt.rubrik[1]}</em></h2>
 						<p class="ingress reveal mt-6 max-w-[34ch] text-krita/85">
 							{t.kontakt.text}
 						</p>
@@ -195,14 +195,14 @@
 							href="https://www.linkedin.com/in/nicole-boman/"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="ingress reveal mt-10 inline-block border-b border-krita text-krita no-underline transition-transform hover:translate-x-1"
-							><span aria-hidden="true">→&nbsp;</span>{t.kontakt.linkedin}<span class="sr-only"> {t.nyFlik}</span></a
+							class="ingress lank reveal mt-10 inline-block !text-krita hover:!text-rod"
+							>{t.kontakt.linkedin}<span class="sr-only"> {t.nyFlik}</span></a
 						>
 						<ul class="reveal mt-8 flex flex-wrap gap-x-8 gap-y-3">
 							{#each kanaler.filter((k) => k.label !== 'LinkedIn') as k (k.href)}
 								<li>
 									<a href={k.href} target="_blank" rel="noopener noreferrer" class="etikett streck inline-block py-1.5 text-krita"
-										>{k.label}<span aria-hidden="true">&nbsp;↗</span><span class="sr-only"> {t.nyFlik}</span></a
+										>{k.label}<span class="sr-only"> {t.nyFlik}</span></a
 									>
 								</li>
 							{/each}
@@ -212,7 +212,7 @@
 			</div>
 			<!-- Dekor: samma rubrik, jättestor och blek. Döljs för skärmläsare. -->
 			<p aria-hidden="true" class="jatte pointer-events-none mt-[6vh] select-none whitespace-nowrap px-[clamp(8px,1vw,16px)] text-[clamp(5rem,19vw,22rem)] leading-[0.8] text-krita/[0.07]">
-				{t.kontakt.rubrik[0]} {t.kontakt.rubrik[1]}
+				{t.kontakt.rubrik[0]} <em>{t.kontakt.rubrik[1]}</em>
 			</p>
 			<div class="relative z-10 flex flex-wrap justify-between gap-4 px-[clamp(16px,3vw,40px)] pb-6 pt-5">
 				<span class="etikett text-krita/75">© {new Date().getFullYear()} Nicole Boman · {t.kontakt.sverige}</span>

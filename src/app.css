@@ -7,7 +7,8 @@
 	--color-svart: #2b2622;
 	--color-grafit: #6e665e;
 	--color-linje: #e2dbd0;
-	--color-oxblod: #6e1423;
+	--color-oxblod: #6e1423; /* hubben */
+	--color-rod: #d22b2b;
 
 	--font-arkiv: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
 	--font-serif: 'Instrument Serif', 'Times New Roman', serif;
@@ -15,6 +16,16 @@
 	--font-sans: var(--font-arkiv);
 	/* Kodblocken i /texter */
 	--font-mono: 'Fragment Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+/* Publika sidan (allt utom hubben): svalare elfenben, nästan svart, rött som enda accent, Bodoni.
+   Sätts via klassen .publik i layouten, så att hubben behåller sina egna färger och typsnitt. */
+:root:has(.publik) {
+	--color-krita: #f6f4ef;
+	--color-svart: #1a1817;
+	--color-grafit: #5f5a55;
+	--color-linje: #e2ded6;
+	--font-serif: 'Bodoni Moda', 'Didot', 'Times New Roman', serif;
 }
 
 /* Mörkt läge: samma sida, inverterad. Sätts via data-tema="mork" på <html> (se app.html och layouten). */
@@ -40,9 +51,9 @@
 		scroll-behavior: smooth;
 	}
 
-	/* Markerad text: oxblod med ljus text, samma i båda lägena */
+	/* Markerad text: rött med ljus text, samma i båda lägena */
 	::selection {
-		background-color: var(--color-oxblod);
+		background-color: var(--color-rod);
 		color: #fcfcfa;
 	}
 
@@ -51,7 +62,7 @@
 	.jatte::selection,
 	.jatte *::selection {
 		background-color: transparent;
-		color: var(--color-oxblod);
+		color: var(--color-rod);
 	}
 
 	a:focus-visible,
@@ -64,23 +75,43 @@
 	.jatte {
 		font-family: var(--font-serif);
 		font-weight: 400;
+		font-optical-sizing: auto;
 		line-height: 1.02;
-		letter-spacing: -0.015em;
+		letter-spacing: -0.02em;
+	}
+	.jatte em,
+	.ingress em {
+		font-style: italic;
 	}
 
 	/* Ingress och större löptext i serif */
 	.ingress {
 		font-family: var(--font-serif);
-		font-size: clamp(1.45rem, 2.1vw, 2rem);
-		line-height: 1.22;
+		font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+		line-height: 1.38;
+		letter-spacing: -0.005em;
 	}
 
-	/* Små etiketter: lugna, inga versaler */
+	/* Små etiketter: små versaler, luftigt spärrade */
 	.etikett {
 		font-family: var(--font-arkiv);
-		font-size: 0.8125rem;
-		font-weight: 450;
-		letter-spacing: 0.01em;
+		font-size: 0.6875rem;
+		font-weight: 500;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	/* Länk i löptext: tunn röd understrykning, texten blir röd vid hover */
+	.lank {
+		color: var(--color-svart);
+		text-decoration: underline;
+		text-decoration-color: var(--color-rod);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.3em;
+		transition: color 0.3s ease;
+	}
+	.lank:hover {
+		color: var(--color-rod);
 	}
 
 	/* Länk med understrykning som ritas in vid hover */
@@ -94,6 +125,7 @@
 	}
 	.streck:hover {
 		background-size: 100% 1px;
+		color: var(--color-rod);
 	}
 
 	/* Scroll-reveals – use:reveal sätter data-inview. Allt tonar bara in, lugnt och utan hopp. */

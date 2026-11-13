@@ -29,21 +29,23 @@ export const text = {
 			beskrivning: 'Nicole Boman – AI consultant, AI educator and keynote speaker. I help organisations start using generative AI in everyday work.',
 			heroAlt: 'Nicole Boman on stage in a leather jacket, gesturing to the audience, black and white',
 			titlar: 'AI consultant, AI educator and keynote speaker',
-			hej: 'Hey,',
+			roller: ['AI consultant', 'AI educator', 'Keynote speaker'],
 			intro: "I'm Nicole – I get people to actually use AI, in the work they already do.",
 
 			om: {
-				etikett: '01 — About',
+				etikett: 'About',
 				stycken: [
 					'I work with generative AI as a consultant, speaker and educator. I show where the technology helps in your day-to-day work. Then we practise until you can use it on your own.',
 					'What you learn should be usable the day after.'
 				],
 				mer: 'More about me',
-				bildAlt: 'Nicole Boman speaking on a runway stage, surrounded by an audience'
+				bildAlt: 'Nicole Boman speaking on a runway stage, surrounded by an audience',
+				portrattAlt: 'Portrait of Nicole Boman in a pink striped shirt against a woven wall hanging',
+				studioAlt: 'Nicole Boman in a TV studio, a camera operator filming in the foreground'
 			},
 
 			arbete: {
-				etikett: '02 — Work',
+				etikett: 'Work',
 				rubrik: 'This is what I do.',
 				studioFore: 'I do it together with',
 				studioEfter: '.',
@@ -67,7 +69,7 @@ export const text = {
 				]
 			},
 			coachning: {
-				etikett: '03 — 1:1 coaching',
+				etikett: '1:1 coaching',
 				rubrik: 'One to one, in your own project.',
 				text: 'Personal help with Claude Code or Codex. We build something for your own work.',
 				kort: '1.5 or 3 hours · Online · Booked via Studio Stén, in Swedish',
@@ -127,21 +129,23 @@ export const text = {
 			beskrivning: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker. Jag hjälper organisationer att börja använda generativ AI i vardagen.',
 			heroAlt: 'Nicole Boman på scen i skinnjacka, gestikulerar mot publiken, svartvitt',
 			titlar: 'AI-konsult, AI-utbildare och keynote speaker',
-			hej: 'Hej,',
+			roller: ['AI-konsult', 'AI-utbildare', 'Keynote speaker'],
 			intro: 'Jag är Nicole – jag får folk att faktiskt använda AI, i jobbet de redan gör.',
 
 			om: {
-				etikett: '01 — Om',
+				etikett: 'Om',
 				stycken: [
 					'Jag arbetar med generativ AI som konsult, föreläsare och utbildare. Jag visar var tekniken hjälper i ert vardagsarbete. Sedan övar vi tills ni kan använda den själva.',
 					'Det ni lär er ska gå att använda dagen efter.'
 				],
 				mer: 'Mer om mig',
-				bildAlt: 'Nicole Boman föreläser på en catwalkscen, omgiven av publik'
+				bildAlt: 'Nicole Boman föreläser på en catwalkscen, omgiven av publik',
+				portrattAlt: 'Porträtt av Nicole Boman i rosa randig skjorta framför en vävd bonad',
+				studioAlt: 'Nicole Boman i en tv-studio, en kameraman filmar i förgrunden'
 			},
 
 			arbete: {
-				etikett: '02 — Arbete',
+				etikett: 'Arbete',
 				rubrik: 'Det här gör jag.',
 				studioFore: 'Jag gör det tillsammans med',
 				studioEfter: '.',
@@ -165,7 +169,7 @@ export const text = {
 				]
 			},
 			coachning: {
-				etikett: '03 — Coachning 1:1',
+				etikett: 'Coachning 1:1',
 				rubrik: 'En och en, i ditt eget projekt.',
 				text: 'Personlig hjälp med Claude Code eller Codex. Vi bygger något för ditt eget arbete.',
 				kort: '1,5 eller 3 timmar · Online · Bokas via Studio Stén',

@@ -49,7 +49,7 @@
 <section class="mt-[14vh] px-[clamp(16px,3vw,40px)]">
 	<a
 		href="#kontakt"
-		class="jatte inline-block border-b border-svart text-[clamp(2.2rem,4.5vw,4.5rem)] text-svart no-underline transition-transform hover:translate-x-2"
-		>{t.cta}<span aria-hidden="true">&nbsp;→</span></a
+		class="jatte lank inline-block text-[clamp(2.2rem,4.5vw,4.5rem)]"
+		><em>{t.cta}</em></a
 	>
 </section>
