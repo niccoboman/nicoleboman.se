@@ -22,15 +22,11 @@ export const text = {
 		huvudmeny: 'Main menu',
 		meny: { oppna: 'Menu', stang: 'Close' },
 		nyFlik: '(opens in a new tab)',
-		animation: { pausa: 'Pause animation', spela: 'Play animation' },
 
 		start: {
 			titel: 'Nicole Boman – AI consultant, AI educator and keynote speaker',
 			beskrivning: 'Nicole Boman – AI consultant, AI educator and keynote speaker. I help organisations start using generative AI in everyday work.',
-			jagAr: "I'm",
-			ord: ['Nicole Boman', 'an AI consultant', 'an AI educator', 'a keynote speaker'],
 			skarmlasare: "I'm Nicole Boman – AI consultant, AI educator and keynote speaker.",
-			lasVidare: 'Read on',
 			heroAlt: 'Nicole Boman on stage in a leather jacket, gesturing to the audience, black and white',
 
 			om: {
@@ -121,15 +117,11 @@ export const text = {
 		huvudmeny: 'Huvudmeny',
 		meny: { oppna: 'Meny', stang: 'Stäng' },
 		nyFlik: '(öppnas i en ny flik)',
-		animation: { pausa: 'Pausa animationen', spela: 'Spela animationen' },
 
 		start: {
 			titel: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker',
 			beskrivning: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker. Jag hjälper organisationer att börja använda generativ AI i vardagen.',
-			jagAr: 'Jag är',
-			ord: ['Nicole Boman', 'AI-konsult', 'AI-utbildare', 'Keynote speaker'],
 			skarmlasare: 'Jag är Nicole Boman – AI-konsult, AI-utbildare och keynote speaker.',
-			lasVidare: 'Läs vidare',
 			heroAlt: 'Nicole Boman på scen i skinnjacka, gestikulerar mot publiken, svartvitt',
 
 			om: {

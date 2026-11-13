@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { onMount, tick } from 'svelte';
-	import { page } from '$app/state';
+		import { page } from '$app/state';
 	import { reveal } from '$lib/reveal';
 	import { parallax } from '$lib/parallax';
 	import { text, sprakFran, lank } from '$lib/i18n';
@@ -8,72 +7,6 @@
 	const sprak = $derived(sprakFran(page.params.lang));
 	const g = $derived(text[sprak]);
 	const t = $derived(g.start);
-
-	// Orden som växlar efter "Jag är"/"I'm". Det första visas längst.
-	const ord = $derived(t.ord);
-	let i = $state(0);
-	let forra = $state(-1);
-	// Animationen kan pausas (WCAG 2.2.2). Står den still visas det första ordet.
-	let pausad = $state(false);
-	let rorelseTillaten = $state(false);
-	let rotator: HTMLElement;
-	let hero: HTMLElement;
-
-	// Skala jättetexten så att det längsta ordet fyller hela bredden.
-	// På smala skärmar får "Keynote speaker" bryta till två rader, så där räknas varje ord för sig.
-	function bredd(text: string) {
-		const s = document.createElement('span');
-		s.textContent = text;
-		s.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap';
-		rotator.append(s);
-		const b = s.scrollWidth;
-		s.remove();
-		return b;
-	}
-	function anpassa() {
-		const smal = rotator.clientWidth < 700;
-		const delar = smal ? ord.flatMap((o) => o.split(' ')) : ord;
-		const langst = Math.max(...delar.map(bredd));
-		const nu = parseFloat(getComputedStyle(rotator).fontSize);
-		if (langst > 0) hero.style.setProperty('--hero', `${(0.99 * nu * rotator.clientWidth) / langst}px`);
-	}
-
-	// Byts språket: börja om på första ordet och räkna om storleken.
-	$effect(() => {
-		void sprak;
-		i = 0;
-		forra = -1;
-		tick().then(anpassa);
-	});
-
-	onMount(() => {
-		document.fonts.ready.then(anpassa);
-		const ro = new ResizeObserver(anpassa);
-		ro.observe(hero);
-		return () => ro.disconnect();
-	});
-
-	onMount(() => {
-		if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-		rorelseTillaten = true;
-		let timer: ReturnType<typeof setTimeout>;
-		const nasta = () => {
-			timer = setTimeout(
-				() => {
-					// Byt inte ord när fliken är dold; animationen pausas ändå av webbläsaren.
-					if (!document.hidden && !pausad) {
-						forra = i;
-						i = (i + 1) % ord.length;
-					}
-					nasta();
-				},
-				i === 0 ? 2800 : 1700
-			);
-		};
-		nasta();
-		return () => clearTimeout(timer);
-	});
-
 
 	// Fyll på med { citat, vem } när det finns citat att visa. Tom lista = avsnittet döljs.
 	const citat: { citat: string; vem: string }[] = [];
@@ -86,36 +19,11 @@
 	<link rel="alternate" hreflang="sv" href="https://www.nicoleboman.com/sv" />
 </svelte:head>
 
-<!-- Inledning -->
-<section bind:this={hero} class="hero flex min-h-[52svh] md:min-h-[64svh] flex-col [justify-content:safe_end] px-[clamp(16px,3vw,40px)] pb-6 pt-12">
-	<h1 class="jatte text-svart leading-[0.95]">
-		<span class="sr-only">{t.skarmlasare}</span>
-		<span aria-hidden="true" class="block text-[length:calc(var(--hero)*0.42)] italic text-grafit">{t.jagAr}</span>
-		<span bind:this={rotator} aria-hidden="true" class="rotator block text-[length:var(--hero)]">
-			{#each ord as o, n (o)}
-				<span class="ord" class:aktiv={n === i} class:ut={n === forra}
-					>{#each o.split(' ') as del, d (d)}{#if d > 0}{' '}{/if}<span class="whitespace-nowrap">{del}</span>{/each}</span
-				>
-			{/each}
-		</span>
-	</h1>
-	<div class="mt-8 flex flex-wrap items-center justify-between gap-6 border-t border-linje pt-4">
-		{#if rorelseTillaten}
-			<button
-				type="button"
-				onclick={() => (pausad = !pausad)}
-				class="etikett streck inline-block cursor-pointer py-1.5 text-svart"
-			>
-				<span aria-hidden="true">{pausad ? '▶' : '❚❚'}</span>
-				{pausad ? g.animation.spela : g.animation.pausa}
-			</button>
-		{/if}
-		<a href="#om" class="etikett streck ml-auto inline-block py-1.5 text-svart">{t.lasVidare}<span aria-hidden="true">&nbsp;↓</span></a>
-	</div>
-</section>
+<!-- Rubriken finns för skärmläsare och sökmotorer; sidan börjar visuellt med bilden. -->
+<h1 class="sr-only">{t.skarmlasare}</h1>
 
 <!-- Helbild, med marginal som på en tidningssida -->
-<figure class="mt-2 px-[clamp(16px,3vw,40px)]">
+<figure class="mt-6 px-[clamp(16px,3vw,40px)]">
 	<div class="overflow-hidden">
 	<img
 		use:parallax={{ y: 0.12, skala: 1.14 }}
@@ -246,45 +154,3 @@
 		</div>
 	</section>
 {/if}
-
-<style>
-	/* Startvärde för jättetexten; anpassa() räknar sedan fram exakt storlek. */
-	.hero {
-		--hero: 12vw;
-	}
-
-	/* Alla ord ligger på samma plats. Det aktiva glider upp, det förra glider ut uppåt. */
-	.rotator {
-		position: relative;
-		display: grid;
-		overflow: hidden;
-	}
-	.ord {
-		grid-area: 1 / 1;
-		justify-self: start;
-		white-space: nowrap;
-		transform: translateY(105%);
-	}
-	@media (max-width: 767px) {
-		.ord {
-			white-space: normal;
-		}
-	}
-	.ord.aktiv,
-	.ord.ut {
-		transition: transform 0.75s cubic-bezier(0.7, 0, 0.2, 1);
-	}
-	.ord.aktiv {
-		transform: none;
-	}
-	.ord.ut {
-		transform: translateY(-105%);
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.ord.aktiv,
-		.ord.ut {
-			transition: none;
-		}
-	}
-</style>
