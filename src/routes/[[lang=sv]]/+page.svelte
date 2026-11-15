@@ -24,10 +24,10 @@
 <!-- Inledning: namnet och titlarna till vänster, porträttet till höger -->
 <section class="grid min-h-[calc(100svh-64px)] gap-10 px-[clamp(16px,3vw,40px)] pb-8 pt-[clamp(24px,6vh,72px)] md:grid-cols-12 md:gap-8">
 	<div class="flex flex-col md:col-span-7">
-		<p class="etikett text-grafit start-in">
+		<p class="roller etikett text-grafit start-in">
 			{#each t.roller as r, n (r)}{#if n > 0}<span class="mx-2 text-rod" aria-hidden="true">·</span>{/if}{r}{/each}
 		</p>
-		<h1 class="jatte start-in mt-auto pt-16 text-[clamp(4.2rem,10.5vw,11.5rem)] leading-[0.92]" style="animation-delay:0.1s">
+		<h1 class="hero-namn jatte start-in mt-auto pt-16 text-[clamp(4.2rem,10.5vw,11.5rem)] leading-[0.92]" style="animation-delay:0.1s">
 			<!-- Namnet glider ner i meningen "Jag är Nicole …" när man scrollar -->
 			<span class="relative z-20 inline-block" use:flyg={sprak}>Nicole</span><br /><em>Boman</em><span class="sr-only"> – {t.titlar}</span>
 		</h1>
@@ -36,7 +36,7 @@
 			<li><a href="https://bomannicole.substack.com/" target="_blank" rel="noopener noreferrer" class="etikett streck inline-block py-1.5 text-svart">Substack<span class="sr-only"> {g.nyFlik}</span></a></li>
 		</ul>
 	</div>
-	<figure class="start-in md:col-span-5 md:col-start-8" style="animation-delay:0.15s">
+	<figure class="hero-bild korn start-in md:col-span-5 md:col-start-8" style="animation-delay:0.15s">
 		<img
 			src="/bilder/scen-bw-1200.webp"
 			srcset="/bilder/scen-bw-1200.webp 1200w, /bilder/scen-bw-2160.webp 2160w"
@@ -51,10 +51,10 @@
 </section>
 
 <!-- Om: porträttet och introt -->
-<section id="om" class="mt-[18vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
+<section id="om" class="om mt-[18vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<p class="etikett reveal text-grafit">{t.om.etikett}</p>
 	<div class="mt-8 grid gap-10 md:grid-cols-12 md:gap-8">
-		<figure class="bild md:col-span-5">
+		<figure class="bild korn md:col-span-5">
 			<img
 				src="/bilder/portratt-900.webp"
 				srcset="/bilder/portratt-900.webp 900w, /bilder/portratt-1600.webp 1600w"
@@ -89,7 +89,7 @@
 	     Står per kort, så att det inte ser ut som att allt måste bokas via dem. -->
 	<ul class="mt-14 grid gap-x-8 md:grid-cols-2 lg:grid-cols-4">
 		{#each t.arbete.poster as a (a.nr)}
-			<li class="reveal flex flex-col gap-3 border-t border-linje pb-12 pt-6">
+			<li class="kort reveal flex flex-col gap-3 border-t border-linje pb-12 pt-6">
 				<h3 class="jatte text-[clamp(1.9rem,2.4vw,2.6rem)]">{a.titel}</h3>
 				<p class="max-w-[40ch] text-[1.05rem] leading-[1.65] text-grafit">{a.text}</p>
 				<p class="mt-auto pt-4">
@@ -98,7 +98,7 @@
 				<p class="text-[0.9rem] text-grafit">{t.arbete.samarbete} <a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="streck text-grafit">Studio Stén<span class="sr-only"> {g.nyFlik}</span></a></p>
 			</li>
 		{/each}
-		<li id="coachning" class="reveal flex scroll-mt-6 flex-col gap-3 border-t border-linje pb-12 pt-6">
+		<li id="coachning" class="kort reveal flex scroll-mt-6 flex-col gap-3 border-t border-linje pb-12 pt-6">
 			<h3 class="jatte text-[clamp(1.9rem,2.4vw,2.6rem)]">{t.coachning.etikett}</h3>
 			<p class="max-w-[40ch] text-[1.05rem] leading-[1.65] text-grafit">{t.coachning.text} {t.coachning.kort}</p>
 			<p class="mt-auto pt-4">

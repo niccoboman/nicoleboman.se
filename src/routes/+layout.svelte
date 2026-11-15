@@ -79,6 +79,12 @@
 	{@render children()}
 {:else}
 	<div class="publik font-arkiv">
+		<!-- Prototyp: byt version. Laddar om sidan så att valet i app.html slår igenom. -->
+		<nav aria-label="Prototypversioner" class="versioner fixed bottom-4 left-4 z-50 flex flex-wrap gap-x-4 gap-y-1 bg-svart px-4 py-2.5 text-krita">
+			{#each [['0', 'Nuvarande'], ['1', '1 · Ett stänk'], ['2', '2 · Halva vägen'], ['3', '3 · Hela vägen']] as [v, namn] (v)}
+				<a href={`${page.url.pathname}?v=${v}`} data-sveltekit-reload data-version={v} class="etikett streck inline-block py-1 text-krita">{namn}</a>
+			{/each}
+		</nav>
 		<a
 			href="#innehall"
 			class="etikett sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-svart focus:px-3 focus:py-2 focus:text-krita"
@@ -165,6 +171,9 @@
 				</div>
 			</div>
 		{/if}
+
+		<!-- Version 3: svart remsa med röd text under menyn -->
+		<p class="remsa" aria-hidden="true">{t.remsa}</p>
 
 		<main id="innehall" tabindex="-1" class="outline-none">
 			{@render children()}

@@ -18,13 +18,20 @@
 				if (localStorage.getItem('tema') === 'mork') tema = 'mork';
 			} catch (e) {}
 			if (tema === 'mork') document.documentElement.dataset.tema = 'mork';
+			// Prototyp: ?v=1, 2 eller 3 väljer Soundcheck-version, ?v=0 nuvarande. Minns valet under besöket.
+			try {
+				var v = new URLSearchParams(location.search).get('v');
+				if (v !== null) sessionStorage.setItem('v', v);
+				v = sessionStorage.getItem('v');
+				if (v === '1' || v === '2' || v === '3') document.documentElement.dataset.v = v;
+			} catch (e) {}
 		</script>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<!-- Jost: text och etiketter på den publika sidan. Bodoni Moda: rubriker och stor text. Archivo, Anton och Instrument Serif: hubben. -->
 		<link
-			href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Anton&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Fragment+Mono&family=Jost:ital,wght@0,300..600;1,300..600&family=Instrument+Serif:ital@0;1&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Anton&family=Antonio:wght@400..700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Fragment+Mono&family=Jost:ital,wght@0,300..600;1,300..600&family=Instrument+Serif:ital@0;1&display=swap"
 			rel="stylesheet"
 		/>
 
