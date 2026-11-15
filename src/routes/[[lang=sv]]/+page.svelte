@@ -71,7 +71,7 @@
 			<p class="jatte ord-in text-[clamp(2rem,3.4vw,3.4rem)] leading-[1.12]">
 				<span class="sr-only">{t.intro}</span>
 				<span aria-hidden="true"
-					>{#each t.intro.split(' ') as o, n (n)}<span data-namn-mal={o === 'Nicole' ? '' : undefined}>{o}</span>{' '}{/each}</span
+					>{#each t.intro.split(' ') as o, n (n)}{#if o.startsWith('Nicole')}<span data-namn-mal>Nicole</span>{o.slice(6)}{:else}<span>{o}</span>{/if}{' '}{/each}</span
 				>
 			</p>
 			<p class="ingress reveal mt-12">{t.om.stycken[0]}</p>

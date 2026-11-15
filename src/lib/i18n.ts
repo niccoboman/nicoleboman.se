@@ -26,16 +26,16 @@ export const text = {
 
 		start: {
 			titel: 'Nicole Boman – AI consultant, AI educator and keynote speaker',
-			beskrivning: 'Nicole Boman – AI consultant, AI educator and keynote speaker. I help organisations start using generative AI in everyday work.',
+			beskrivning: 'Nicole Boman – AI consultant, AI educator and keynote speaker. I help organisations put AI and agents to work in everyday tasks.',
 			heroAlt: 'Nicole Boman on stage in a leather jacket, gesturing to the audience, black and white',
 			titlar: 'AI consultant, AI educator and keynote speaker',
 			roller: ['AI consultant', 'AI educator', 'Keynote speaker'],
-			intro: "I'm Nicole – I get people to actually use AI, in the work they already do.",
+			intro: "I'm Nicole. I talk AI on stage and build with it at home.",
 
 			om: {
 				etikett: 'About',
 				stycken: [
-					'I work with generative AI as a consultant, speaker and educator. I show where the technology helps in your day-to-day work. Then we practise until you can use it on your own.',
+					'I translate AI into your everyday work. From the first prompt to agents that do the work for you. On stage, in the classroom or at your office.',
 					'What you learn should be usable the day after.'
 				],
 				bildAlt: 'Nicole Boman speaking on a runway stage, surrounded by an audience',
@@ -51,13 +51,13 @@ export const text = {
 						nr: '01',
 						titel: 'Keynotes',
 						lank: 'Book a talk',
-						text: 'Talks on generative AI for leadership teams and conferences, with concrete examples of what the technology can do today and where it falls short.'
+						text: 'For the leadership team, the whole organisation, the conference. On AI and agents, what the technology can do today and what it means for you.'
 					},
 					{
 						nr: '02',
 						titel: 'Training',
 						lank: 'Book a training',
-						text: "Courses and workshops where participants work in the tools during the session, whether they're writing their first prompt or building agents."
+						text: 'Courses and workshops in AI, for beginners and for those who want to build their own agents.'
 					},
 					{
 						nr: '03',
@@ -98,16 +98,16 @@ export const text = {
 
 		start: {
 			titel: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker',
-			beskrivning: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker. Jag hjälper organisationer att börja använda generativ AI i vardagen.',
+			beskrivning: 'Nicole Boman – AI-konsult, AI-utbildare och keynote speaker. Jag hjälper organisationer att använda AI och agenter i vardagen.',
 			heroAlt: 'Nicole Boman på scen i skinnjacka, gestikulerar mot publiken, svartvitt',
 			titlar: 'AI-konsult, AI-utbildare och keynote speaker',
 			roller: ['AI-konsult', 'AI-utbildare', 'Keynote speaker'],
-			intro: 'Jag är Nicole – jag får folk att faktiskt använda AI, i jobbet de redan gör.',
+			intro: 'Jag är Nicole. Jag pratar AI på scen och bygger med den hemma.',
 
 			om: {
 				etikett: 'Om',
 				stycken: [
-					'Jag arbetar med generativ AI som konsult, föreläsare och utbildare. Jag visar var tekniken hjälper i ert vardagsarbete. Sedan övar vi tills ni kan använda den själva.',
+					'Jag översätter AI till ert vardagsjobb. Från första prompten till agenter som gör jobbet åt er. På scen, i utbildningssalen eller på ert kontor.',
 					'Det ni lär er ska gå att använda dagen efter.'
 				],
 				bildAlt: 'Nicole Boman föreläser på en catwalkscen, omgiven av publik',
@@ -123,13 +123,13 @@ export const text = {
 						nr: '01',
 						titel: 'Keynotes',
 						lank: 'Boka en föreläsning',
-						text: 'Föreläsningar om generativ AI för ledningsgrupper och konferenser, med konkreta exempel på vad tekniken klarar i dag och var den brister.'
+						text: 'För ledningsgruppen, för hela organisationen, på konferensen. Om AI och agenter, vad tekniken klarar i dag och vad det betyder för er.'
 					},
 					{
 						nr: '02',
 						titel: 'Utbildning',
 						lank: 'Boka en utbildning',
-						text: 'Kurser och workshops där deltagarna jobbar i verktygen under passet, oavsett om de skriver sin första prompt eller bygger agenter.'
+						text: 'Kurser och workshops i AI för nybörjare och för dem som vill bygga egna agenter.'
 					},
 					{
 						nr: '03',
