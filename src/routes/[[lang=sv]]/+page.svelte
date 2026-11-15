@@ -54,7 +54,7 @@
 <section id="om" class="om mt-[clamp(96px,14vh,168px)] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<p class="etikett reveal text-grafit">{t.om.etikett}</p>
 	<div class="mt-8 grid gap-10 md:grid-cols-12 md:gap-8">
-		<figure class="bild md:col-span-5">
+		<figure class="bild max-md:order-2 max-md:w-[82%] max-md:justify-self-end md:col-span-5">
 			<img
 				src="/bilder/portratt-900.webp"
 				srcset="/bilder/portratt-900.webp 900w, /bilder/portratt-1600.webp 1600w"
@@ -67,15 +67,16 @@
 				class="aspect-[4/5] w-full object-cover object-[50%_20%]"
 			/>
 		</figure>
-		<!-- Meningen överst, brödtexten i höjd med bildens underkant -->
-		<div class="flex flex-col gap-12 md:col-span-6 md:col-start-7 md:justify-between">
-			<p class="jatte ord-in text-[clamp(2rem,3.4vw,3.4rem)] leading-[1.12]">
+		<!-- Meningen överst, brödtexten i höjd med bildens underkant.
+		     Mobil: meningen, sedan porträttet, sedan brödtexten, så att två bilder inte hamnar i rad. -->
+		<div class="flex flex-col gap-12 max-md:contents md:col-span-6 md:col-start-7 md:justify-between">
+			<p class="jatte ord-in max-md:order-1 text-[clamp(2rem,3.4vw,3.4rem)] leading-[1.12]">
 				<span class="sr-only">{t.intro}</span>
 				<span aria-hidden="true"
 					>{#each t.intro.split(' ') as o, n (n)}{#if o.startsWith('Nicole')}<span data-namn-mal>Nicole</span>{o.slice(6)}{:else}<span>{o}</span>{/if}{' '}{/each}</span
 				>
 			</p>
-			<div class="max-w-[46ch] text-[clamp(1.1rem,1.45vw,1.35rem)]">
+			<div class="max-w-[46ch] max-md:order-3 text-[clamp(1.1rem,1.45vw,1.35rem)]">
 				<p class="ingress reveal !text-[length:inherit]">{t.om.stycken[0]}</p>
 				<p class="ingress reveal mt-5 !text-[length:inherit] text-grafit"><em>{t.om.stycken[1]}</em></p>
 			</div>
