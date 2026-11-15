@@ -18,13 +18,6 @@
 				if (localStorage.getItem('tema') === 'mork') tema = 'mork';
 			} catch (e) {}
 			if (tema === 'mork') document.documentElement.dataset.tema = 'mork';
-			// Prototyp: ?v=1, 2 eller 3 väljer Soundcheck-version, ?v=0 nuvarande. Minns valet under besöket.
-			try {
-				var v = new URLSearchParams(location.search).get('v');
-				if (v !== null) sessionStorage.setItem('v', v);
-				v = sessionStorage.getItem('v');
-				if (v === '1' || v === '2' || v === '3') document.documentElement.dataset.v = v;
-			} catch (e) {}
 		</script>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />

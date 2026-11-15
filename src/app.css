@@ -171,53 +171,19 @@
 	}
 }
 
-/* ============================================================
-   PROTOTYP Soundcheck: tre versioner via data-v på <html> (?v=1, 2, 3).
-   Utanför @layer, så att det går före Tailwinds klasser.
-   ============================================================ */
-.remsa { display: none; }
-.versioner { box-shadow: 0 6px 24px rgb(0 0 0 / 0.18); }
-:root:not([data-v]) .versioner [data-version='0'],
-:root[data-v='1'] .versioner [data-version='1'],
-:root[data-v='2'] .versioner [data-version='2'],
-:root[data-v='3'] .versioner [data-version='3'] { color: var(--color-rod); background-size: 100% 1px; }
-:root[data-tema='mork'] .versioner { background: #f2f1ed; }
-
-/* 1 · Ett stänk: tung Bodoni i namnet, rött Boman, Antonio i etiketter, svart linje överst */
-:root[data-v] .publik { border-top: 6px solid var(--color-svart); }
-:root[data-v] .hero-namn { font-weight: 800; letter-spacing: -0.035em; line-height: 0.86; }
-:root[data-v] .hero-namn em { color: var(--color-rod); font-weight: 500; }
-:root[data-v] [data-namn-mal] { font-weight: 800; }
-:root[data-v] .publik .etikett { font-family: 'Antonio', 'Arial Narrow', sans-serif; font-size: 0.8rem; letter-spacing: 0.12em; }
-:root[data-v] .versioner .etikett { font-size: 0.75rem; }
-
-/* 2 · Halva vägen: + alla bilder svartvita med blixtkontrast och korn, tunga rubriker, tjocka linjer på korten */
-:root[data-v='2'] .publik h2.jatte, :root[data-v='3'] .publik h2.jatte,
-:root[data-v='2'] .kort h3, :root[data-v='3'] .kort h3 { font-weight: 800; letter-spacing: -0.03em; }
-:root[data-v='2'] .publik h2.jatte em, :root[data-v='3'] .publik h2.jatte em { color: var(--color-rod); font-weight: 500; }
-:root[data-v='2'] .publik figure img, :root[data-v='3'] .publik figure img { filter: grayscale(1) contrast(1.4) brightness(1.04); }
-:root[data-v='2'] .kort, :root[data-v='3'] .kort { border-top: 6px solid var(--color-svart); }
-:root[data-v='2'] .roller, :root[data-v='3'] .roller { color: var(--color-rod); }
-:root[data-v='2'] .lank, :root[data-v='3'] .lank { text-decoration-thickness: 2px; }
-:root[data-v='2'] .korn, :root[data-v='3'] .korn { position: relative; }
-:root[data-v='2'] .korn::after, :root[data-v='3'] .korn::after {
-	content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.14; mix-blend-mode: overlay;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+/* Soundcheck (nov 2026): svart linje överst, tung Bodoni i namnet och kontaktrubriken,
+   rött Boman, röd titelrad, Antonio i etiketter. Fotona visas alltid i original.
+   Låg optisk storlek (opsz) ger tjockare hårlinjer, så att t.ex. N:et i Nicole syns helt. */
+.publik { border-top: 6px solid var(--color-svart); }
+.publik .etikett { font-family: 'Antonio', 'Arial Narrow', sans-serif; font-size: 0.8rem; letter-spacing: 0.12em; }
+.hero-namn, #kontakt h2.jatte {
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	font-optical-sizing: none;
+	font-variation-settings: 'opsz' 18;
 }
-
-/* 3 · Hela vägen: + svart remsa under menyn, jättenamnet går in över bilden, meningen i tung Bodoni */
-:root[data-v='3'] .remsa {
-	display: block; margin-top: 20px; padding: 10px clamp(16px, 3vw, 40px); background: var(--color-svart); color: var(--color-krita);
-	font-family: 'Antonio', 'Arial Narrow', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-	white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-:root[data-v='3'] .roller { display: none; }
-:root[data-v='3'] .hero-namn { position: relative; z-index: 20; white-space: nowrap; font-size: clamp(4.4rem, 19vw, 22rem); }
-:root[data-v='3'] .hero-namn em { position: relative; z-index: 20; display: inline-block; }
-:root[data-v='3'] .om .jatte.ord-in { font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
-:root[data-v='3'] .om .jatte.ord-in [data-namn-mal] { font-style: italic; color: var(--color-rod); }
-:root[data-v='3'] #kontakt h2 em { color: var(--color-rod); }
-:root[data-v='3'] #kontakt { border-top: 6px solid var(--color-rod); }
-@media (max-width: 767px) {
-	:root[data-v='3'] .hero-namn { white-space: normal; font-size: clamp(4.2rem, 22vw, 7rem); }
-}
+.hero-namn { line-height: 0.88; }
+.hero-namn em, #kontakt h2.jatte em { color: var(--color-rod); font-weight: 500; }
+[data-namn-mal] { font-weight: 800; font-optical-sizing: none; font-variation-settings: 'opsz' 18; }
+.roller { color: var(--color-rod); }
+#kontakt { border-top: 6px solid var(--color-rod); }

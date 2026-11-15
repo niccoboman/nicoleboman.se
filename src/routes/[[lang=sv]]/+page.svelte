@@ -36,7 +36,7 @@
 			<li><a href="https://bomannicole.substack.com/" target="_blank" rel="noopener noreferrer" class="etikett streck inline-block py-1.5 text-svart">Substack<span class="sr-only"> {g.nyFlik}</span></a></li>
 		</ul>
 	</div>
-	<figure class="hero-bild korn start-in md:col-span-5 md:col-start-8" style="animation-delay:0.15s">
+	<figure class="start-in md:col-span-5 md:col-start-8" style="animation-delay:0.15s">
 		<img
 			src="/bilder/scen-bw-1200.webp"
 			srcset="/bilder/scen-bw-1200.webp 1200w, /bilder/scen-bw-2160.webp 2160w"
@@ -54,7 +54,7 @@
 <section id="om" class="om mt-[18vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<p class="etikett reveal text-grafit">{t.om.etikett}</p>
 	<div class="mt-8 grid gap-10 md:grid-cols-12 md:gap-8">
-		<figure class="bild korn md:col-span-5">
+		<figure class="bild md:col-span-5">
 			<img
 				src="/bilder/portratt-900.webp"
 				srcset="/bilder/portratt-900.webp 900w, /bilder/portratt-1600.webp 1600w"

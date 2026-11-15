@@ -17,7 +17,6 @@ export const text = {
 	en: {
 		nav: { om: 'About', arbete: 'Work', kontakt: 'Contact' },
 		hoppa: 'Skip to content',
-		remsa: 'AI consultant · AI educator · Keynote speaker · Sweden / worldwide',
 		sprakbyte: { etikett: 'SV', namn: 'Svenska', lang: 'sv' },
 		tema: { tillMork: 'Dark mode', tillLjus: 'Light mode' },
 		huvudmeny: 'Main menu',
@@ -90,7 +89,6 @@ export const text = {
 	sv: {
 		nav: { om: 'Om', arbete: 'Arbete', kontakt: 'Kontakt' },
 		hoppa: 'Hoppa till innehållet',
-		remsa: 'AI-konsult · AI-utbildare · Keynote speaker · Sverige / världen',
 		sprakbyte: { etikett: 'EN', namn: 'English', lang: 'en' },
 		tema: { tillMork: 'Mörkt läge', tillLjus: 'Ljust läge' },
 		huvudmeny: 'Huvudmeny',
