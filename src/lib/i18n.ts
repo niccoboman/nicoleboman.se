@@ -61,9 +61,9 @@ export const text = {
 					},
 					{
 						nr: '03',
-						titel: 'Advisory',
+						titel: 'AI mapping',
 						lank: 'Book a call',
-						text: 'Mapping and strategy work. I go through how you work today and suggest what to tackle first.'
+						text: 'We look at how you work today and show where AI will help most first. You get a plan to start with.'
 					}
 				]
 			},
@@ -133,9 +133,9 @@ export const text = {
 					},
 					{
 						nr: '03',
-						titel: 'Rådgivning',
+						titel: 'AI-kartläggning',
 						lank: 'Boka ett samtal',
-						text: 'Kartläggningar och strategiarbete. Jag går igenom hur ni arbetar i dag och föreslår vad ni ska ta tag i först.'
+						text: 'Vi går igenom hur ni arbetar i dag och visar var AI gör störst nytta först. Ni får en plan att börja med.'
 					}
 				]
 			},
