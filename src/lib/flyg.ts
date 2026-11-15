@@ -42,7 +42,7 @@ function folj(f: (y: number) => void) {
 }
 
 // Flyg: namnet i inledningen glider ner och krymper med scrollen tills det ligger exakt på
-// målordet (elementet med [data-namn-mal]). Målordet döljs, så det är namnet som landar där.
+// målordet (elementet med [data-namn-mal]). Målordet görs osynligt (opacity, inte visibility, så att det följer med när man kopierar texten).
 // Noden ska vara inline-block och bara innehålla ordet. Gör ingenting vid minskad rörelse.
 // Parametern (t.ex. språket) gör att namnet mäter om när meningen byts ut.
 export function flyg(node: HTMLElement, _nyckel?: unknown) {
@@ -53,7 +53,7 @@ export function flyg(node: HTMLElement, _nyckel?: unknown) {
 	const hamta = () => {
 		const ny = document.querySelector<HTMLElement>('[data-namn-mal]');
 		if (ny !== mal) {
-			if (mal) mal.style.visibility = '';
+			if (mal) mal.style.opacity = '';
 			mal = ny;
 			m = null;
 		}
@@ -95,10 +95,10 @@ export function flyg(node: HTMLElement, _nyckel?: unknown) {
 		if (!mal || !bred.matches) {
 			node.style.transform = '';
 			node.style.willChange = '';
-			if (mal) mal.style.visibility = '';
+			if (mal) mal.style.opacity = '';
 			return;
 		}
-		mal.style.visibility = 'hidden';
+		mal.style.opacity = '0';
 		node.style.willChange = 'transform';
 		if (!m) mat(mal);
 		if (!m) return;
@@ -129,7 +129,7 @@ export function flyg(node: HTMLElement, _nyckel?: unknown) {
 			bred.removeEventListener('change', om);
 			removeEventListener('resize', om);
 			removeEventListener('load', om);
-			if (mal) mal.style.visibility = '';
+			if (mal) mal.style.opacity = '';
 		}
 	};
 }

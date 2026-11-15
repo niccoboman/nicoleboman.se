@@ -30,7 +30,7 @@ export const text = {
 			heroAlt: 'Nicole Boman on stage in a leather jacket, gesturing to the audience, black and white',
 			titlar: 'AI consultant, AI educator and keynote speaker',
 			roller: ['AI consultant', 'AI educator', 'Keynote speaker'],
-			intro: "I'm Nicole. I talk AI on stage and build with it at home.",
+			intro: "I'm Nicole. I talk about AI on stage and build with it at home.",
 
 			om: {
 				etikett: 'About',
