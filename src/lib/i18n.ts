@@ -44,7 +44,7 @@ export const text = {
 
 			arbete: {
 				etikett: 'Work',
-				rubrik: 'This is what I do.',
+				rubrik: 'Stage, classroom, boardroom, screen.',
 				samarbete: 'In collaboration with',
 				poster: [
 					{
@@ -69,7 +69,7 @@ export const text = {
 			},
 			coachning: {
 				etikett: '1:1 coaching',
-				text: 'Personal help with Claude Code or Codex. We build something for your own work.',
+				text: '1:1 in Claude Code or Codex. You leave with something that works.',
 				kort: '1.5 or 3 hours, online, in Swedish.',
 				boka: 'See times and book'
 			}
@@ -78,8 +78,8 @@ export const text = {
 		kontakt: {
 			etikett: 'Contact',
 			rubrik: ['Shall we', 'talk?'],
-			text: "Get in touch if you want to book a talk or training, or just bounce an idea around. Send me a message on LinkedIn and I'll get back to you.",
-			linkedin: 'Message me on LinkedIn',
+			text: 'Message me on LinkedIn. I reply faster than a chatbot. Almost.',
+			linkedin: 'Slide into my DMs',
 			sverige: 'Sweden',
 			sprakResor: 'Talks in English and Swedish · Based in Sweden, available worldwide',
 			foto: 'Photo: Glide Photos, Gustaf Kumlin'
@@ -116,7 +116,7 @@ export const text = {
 
 			arbete: {
 				etikett: 'Arbete',
-				rubrik: 'Det här gör jag.',
+				rubrik: 'Scen, sal, styrelserum, skärm.',
 				samarbete: 'I samarbete med',
 				poster: [
 					{
@@ -141,7 +141,7 @@ export const text = {
 			},
 			coachning: {
 				etikett: 'Coachning 1:1',
-				text: 'Personlig hjälp med Claude Code eller Codex. Vi bygger något för ditt eget arbete.',
+				text: '1:1 i Claude Code eller Codex. Du går därifrån med något som funkar.',
 				kort: '1,5 eller 3 timmar, online.',
 				boka: 'Se tider och boka'
 			}
@@ -150,8 +150,8 @@ export const text = {
 		kontakt: {
 			etikett: 'Kontakt',
 			rubrik: ['Ska vi', 'prata?'],
-			text: 'Hör av dig om du vill boka en föreläsning eller utbildning, eller bara bolla en idé. Skicka ett meddelande på LinkedIn så svarar jag.',
-			linkedin: 'Skriv till mig på LinkedIn',
+			text: 'Skriv på LinkedIn. Jag svarar snabbare än en chattbot. Nästan.',
+			linkedin: 'Hör av dig',
 			sverige: 'Sverige',
 			sprakResor: 'Föreläser på svenska och engelska · Bor i Sverige, reser gärna',
 			foto: 'Foto: Glide Photos, Gustaf Kumlin'
