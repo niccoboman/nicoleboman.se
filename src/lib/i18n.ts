@@ -46,23 +46,27 @@ export const text = {
 				etikett: 'Work',
 				rubrik: 'Stage, classroom, boardroom, screen.',
 				samarbete: 'In collaboration with',
+				studio: 'https://studiosten.se/en/',
 				poster: [
 					{
 						nr: '01',
 						titel: 'Keynotes',
 						lank: 'Book a talk',
+						href: 'https://studiosten.se/en/speaker',
 						text: 'For the leadership team, the whole organisation, the conference. On AI and agents, what the technology can do today and what it means for you.'
 					},
 					{
 						nr: '02',
 						titel: 'Training',
 						lank: 'Book a training',
+						href: 'https://studiosten.se/en/courses',
 						text: 'Courses and workshops in AI, for beginners and for those who want to build their own agents.'
 					},
 					{
 						nr: '03',
 						titel: 'AI mapping',
 						lank: 'Book a call',
+						href: 'https://studiosten.se/en/consulting',
 						text: 'We look at how you work today and show where AI will help most first. You get a plan to start with.'
 					}
 				]
@@ -118,23 +122,27 @@ export const text = {
 				etikett: 'Arbete',
 				rubrik: 'Scen, sal, styrelserum, skärm.',
 				samarbete: 'I samarbete med',
+				studio: 'https://studiosten.se/',
 				poster: [
 					{
 						nr: '01',
 						titel: 'Keynotes',
 						lank: 'Boka en föreläsning',
+						href: 'https://studiosten.se/forsta',
 						text: 'För ledningsgruppen, för hela organisationen, på konferensen. Om AI och agenter, vad tekniken klarar i dag och vad det betyder för er.'
 					},
 					{
 						nr: '02',
 						titel: 'Utbildning',
 						lank: 'Boka en utbildning',
+						href: 'https://studiosten.se/kunna',
 						text: 'Kurser och workshops i AI för nybörjare och för dem som vill bygga egna agenter.'
 					},
 					{
 						nr: '03',
 						titel: 'AI-kartläggning',
 						lank: 'Boka ett samtal',
+						href: 'https://studiosten.se/bygga',
 						text: 'Vi går igenom hur ni arbetar i dag och visar var AI gör störst nytta först. Ni får en plan att börja med.'
 					}
 				]

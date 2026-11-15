@@ -96,9 +96,9 @@
 				<h3 class="jatte text-[clamp(1.9rem,2.4vw,2.6rem)]">{a.titel}</h3>
 				<p class="max-w-[40ch] text-[1.05rem] leading-[1.65] text-grafit">{a.text}</p>
 				<p class="mt-auto pt-4">
-					<a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="lank">{a.lank}<span class="sr-only"> {g.nyFlik}</span></a>
+					<a href={a.href} target="_blank" rel="noopener noreferrer" class="lank">{a.lank}<span class="sr-only"> {g.nyFlik}</span></a>
 				</p>
-				<p class="text-[0.9rem] text-grafit">{t.arbete.samarbete} <a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="streck text-grafit">Studio Stén<span class="sr-only"> {g.nyFlik}</span></a></p>
+				<p class="text-[0.9rem] text-grafit">{t.arbete.samarbete} <a href={t.arbete.studio} target="_blank" rel="noopener noreferrer" class="streck text-grafit">Studio Stén<span class="sr-only"> {g.nyFlik}</span></a></p>
 			</li>
 		{/each}
 		<li id="coachning" class="kort reveal flex scroll-mt-6 flex-col gap-3 border-t border-linje pb-12 pt-6">
@@ -107,7 +107,7 @@
 			<p class="mt-auto pt-4">
 				<a href="https://studiosten.se/coachning" target="_blank" rel="noopener noreferrer" class="lank">{t.coachning.boka}<span class="sr-only"> {g.nyFlik}</span></a>
 			</p>
-			<p class="text-[0.9rem] text-grafit">{t.arbete.samarbete} <a href="https://studiosten.se" target="_blank" rel="noopener noreferrer" class="streck text-grafit">Studio Stén<span class="sr-only"> {g.nyFlik}</span></a></p>
+			<p class="text-[0.9rem] text-grafit">{t.arbete.samarbete} <a href={t.arbete.studio} target="_blank" rel="noopener noreferrer" class="streck text-grafit">Studio Stén<span class="sr-only"> {g.nyFlik}</span></a></p>
 		</li>
 	</ul>
 </section>
