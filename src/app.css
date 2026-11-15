@@ -35,6 +35,8 @@
 	--color-svart: #f2f1ed;
 	--color-grafit: #9a9893;
 	--color-linje: #2e2e2c;
+	/* Något ljusare röd, så att liten röd text klarar 4,5:1 mot svart */
+	--color-rod: #ee5149;
 	color-scheme: dark;
 }
 
@@ -184,6 +186,8 @@
 }
 .hero-namn { line-height: 0.88; }
 .hero-namn em, #kontakt h2.jatte em { color: var(--color-rod); font-weight: 500; }
+/* Korttitlarna: samma tjockare hårlinjer, så att bindestreck och "1:1" syns */
+.kort h3 { font-optical-sizing: none; font-variation-settings: 'opsz' 18; }
 [data-namn-mal] { font-weight: 800; font-optical-sizing: none; font-variation-settings: 'opsz' 18; }
 .roller { color: var(--color-rod); }
 #kontakt { border-top: 6px solid var(--color-rod); }

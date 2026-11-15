@@ -151,7 +151,7 @@ export const text = {
 			etikett: 'Kontakt',
 			rubrik: ['Ska vi', 'prata?'],
 			text: 'Skriv på LinkedIn. Jag svarar snabbare än en chattbot. Nästan.',
-			linkedin: 'Hör av dig',
+			linkedin: 'Hör av dig på LinkedIn',
 			sverige: 'Sverige',
 			sprakResor: 'Föreläser på svenska och engelska · Bor i Sverige, reser gärna',
 			foto: 'Foto: Glide Photos, Gustaf Kumlin'

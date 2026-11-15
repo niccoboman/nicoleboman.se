@@ -171,7 +171,7 @@
 		</main>
 
 		<!-- Kontakt: svart fot med en jättestor blek rubrik i bakgrunden -->
-		<footer id="kontakt" class="relative mt-[20vh] scroll-mt-0 overflow-hidden bg-svart text-krita" use:reveal>
+		<footer id="kontakt" class="relative mt-[clamp(120px,18vh,200px)] scroll-mt-0 overflow-hidden bg-svart text-krita" use:reveal>
 			<div class="relative z-10 px-[clamp(16px,3vw,40px)] pt-[clamp(64px,12vh,140px)]">
 				<div class="grid gap-10 md:grid-cols-12 md:gap-8">
 					<figure class="bild md:col-span-3 max-md:w-1/2">

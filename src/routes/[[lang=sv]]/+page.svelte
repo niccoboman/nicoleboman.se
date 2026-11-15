@@ -51,7 +51,7 @@
 </section>
 
 <!-- Om: porträttet och introt -->
-<section id="om" class="om mt-[18vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
+<section id="om" class="om mt-[clamp(96px,14vh,168px)] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<p class="etikett reveal text-grafit">{t.om.etikett}</p>
 	<div class="mt-8 grid gap-10 md:grid-cols-12 md:gap-8">
 		<figure class="bild md:col-span-5">
@@ -67,21 +67,24 @@
 				class="aspect-[4/5] w-full object-cover object-[50%_20%]"
 			/>
 		</figure>
-		<div class="flex flex-col md:col-span-6 md:col-start-7">
+		<!-- Meningen överst, brödtexten i höjd med bildens underkant -->
+		<div class="flex flex-col gap-12 md:col-span-6 md:col-start-7 md:justify-between">
 			<p class="jatte ord-in text-[clamp(2rem,3.4vw,3.4rem)] leading-[1.12]">
 				<span class="sr-only">{t.intro}</span>
 				<span aria-hidden="true"
 					>{#each t.intro.split(' ') as o, n (n)}{#if o.startsWith('Nicole')}<span data-namn-mal>Nicole</span>{o.slice(6)}{:else}<span>{o}</span>{/if}{' '}{/each}</span
 				>
 			</p>
-			<p class="ingress reveal mt-12">{t.om.stycken[0]}</p>
-			<p class="ingress reveal mt-5 text-grafit"><em>{t.om.stycken[1]}</em></p>
+			<div class="max-w-[46ch] text-[clamp(1.1rem,1.45vw,1.35rem)]">
+				<p class="ingress reveal !text-[length:inherit]">{t.om.stycken[0]}</p>
+				<p class="ingress reveal mt-5 !text-[length:inherit] text-grafit"><em>{t.om.stycken[1]}</em></p>
+			</div>
 		</div>
 	</div>
 </section>
 
 <!-- Arbete -->
-<section id="arbete" class="mt-[22vh] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
+<section id="arbete" class="mt-[clamp(96px,14vh,168px)] scroll-mt-6 px-[clamp(16px,3vw,40px)]" use:reveal>
 	<p class="etikett reveal text-grafit">{t.arbete.etikett}</p>
 	<h2 class="jatte upp mt-6 text-[clamp(2.6rem,5vw,5.5rem)]">{t.arbete.rubrik}</h2>
 
@@ -110,7 +113,7 @@
 </section>
 
 {#if citat.length}
-	<section class="mt-[16vh] px-[clamp(16px,3vw,40px)]" use:reveal>
+	<section class="mt-[clamp(96px,14vh,168px)] px-[clamp(16px,3vw,40px)]" use:reveal>
 		<p class="etikett reveal">Röster</p>
 		<div class="mt-10 grid gap-14 md:grid-cols-2">
 			{#each citat as c (c.citat)}
